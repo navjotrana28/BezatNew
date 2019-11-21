@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="@dimen/_10sdp"
+              android:background="@color/white"
+        android:orientation="vertical">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+        <ImageView
+                android:id="@+id/imgStore"
+                android:layout_width="@dimen/_96sdp"
+                android:layout_height="@dimen/_96sdp"
+                android:src="@drawable/restaurantdummy"/>
+        <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_96sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@color/colorPrimary"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_12sdp"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/storeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dessange"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/muli_semibold"/>
+            <TextView
+                    android:id="@+id/bill_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date: 2019-06-04"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/muli_regular"/>
+
+            <TextView
+                    android:id="@+id/bill_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bill No:1211"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/muli_regular"/>
+
+            <TextView
+                    android:id="@+id/purchase_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Amount : 15000"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/muli_regular"/>
+        </LinearLayout>
+    </LinearLayout>
+<View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:background="@color/colorPrimary"/>
+
+</LinearLayout>

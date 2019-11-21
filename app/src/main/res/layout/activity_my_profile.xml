@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Toolbar
+            android:id="@+id/topImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetEnd="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_28sdp"
+                    android:src="@mipmap/ic_back"/>
+            <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="@dimen/_14sdp"
+                    android:fontFamily="@font/muli_bold"
+                    android:text="@string/title_profile"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:src="@drawable/save"/>
+        </LinearLayout>
+    </Toolbar>
+
+    <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topImage">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_132sdp"
+                    android:layout_marginTop="@dimen/_28sdp"
+                    android:src="@drawable/user_profile"
+                    />
+            </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+        <EditText
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+            android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/colorPrimary"
+                    android:gravity="center"
+                    android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/muli_bold"/>
+
+            <EditText
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorPrimary"
+                    android:gravity="center"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/muli_bold"/>
+
+            <LinearLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <EditText
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Mobile"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:textColorHint="@color/colorPrimary"
+                        android:gravity="start"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:fontFamily="@font/muli_bold"/>
+
+                    <LinearLayout android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:background="@drawable/strokebtn"
+                                  android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Bahrain"
+                                  android:padding="@dimen/_5sdp"
+                        android:textColor="@color/colorPrimary"/>
+                        <View android:layout_width="1dp" android:layout_height="@dimen/_24sdp"
+                        android:background="@color/cardview_dark_background"/>
+
+                        <ImageView android:layout_width="@dimen/_24sdp"
+                                   android:layout_height="@dimen/_24sdp"
+                        android:src="@drawable/ic_arrow_drop_down_black_24dp"/>
+
+                    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <EditText
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address"
+                        android:layout_weight="1"
+                        android:inputType="text"
+                        android:textColorHint="@color/colorPrimary"
+                        android:gravity="start"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:fontFamily="@font/muli_bold"/>
+
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:background="@drawable/strokebtn"
+                              android:gravity="center_vertical"
+                              android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="Bahrain"
+                              android:padding="@dimen/_5sdp"
+                              android:textColor="@color/colorPrimary"/>
+                    <View android:layout_width="1dp" android:layout_height="@dimen/_24sdp"
+                          android:background="@color/cardview_dark_background"/>
+
+                    <ImageView android:layout_width="@dimen/_24sdp"
+                               android:layout_height="@dimen/_24sdp"
+                               android:src="@drawable/ic_arrow_drop_down_black_24dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Gender"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorPrimary"
+                    android:gravity="start"
+
+                    android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/muli_bold"/>
+
+            <EditText
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorPrimary"
+                    android:gravity="start"
+
+                    android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/muli_bold"/>
+
+            <EditText
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Date of birth"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorPrimary"
+                    android:gravity="start"
+
+                    android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/muli_bold"/>
+
+            <EditText
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="FacebookId"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/colorPrimary"
+                    android:gravity="start"
+
+                    android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:fontFamily="@font/muli_bold"/>
+
+
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

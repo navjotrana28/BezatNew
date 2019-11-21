@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.MainHomeActivty">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/toolbarbg"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+            <ImageView
+                    android:id="@+id/topImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_48sdp"
+                    android:src="@drawable/logo_text"
+                    android:scaleType="fitCenter"/>
+            <ImageView android:layout_width="@dimen/_28sdp"
+                       android:layout_height="@dimen/_28sdp"
+                       android:layout_alignParentEnd="true"
+                       android:layout_centerVertical="true"
+                       android:paddingEnd="@dimen/_10sdp"
+                       android:tint="@color/white"
+                       android:src="@drawable/notification"/>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_main_home_activty"/>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

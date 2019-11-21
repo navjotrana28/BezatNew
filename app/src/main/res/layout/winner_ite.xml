@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/colorPrimary"
+              android:orientation="vertical">
+    <ImageView android:layout_width="match_parent"
+               android:id="@+id/imgWinner"
+               android:layout_height="@dimen/_132sdp"
+               android:scaleType="fitXY"
+               android:src="@drawable/ic_image_black_24dp"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_24sdp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimary">
+
+        <TextView android:layout_width="@dimen/_110sdp"
+                  android:layout_height="match_parent"
+                  android:gravity="center_vertical|end"
+                  android:fontFamily="@font/muli_bold"
+                  android:paddingStart="@dimen/_10sdp"
+
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_12sdp"
+                  android:text="@string/partner_name"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:gravity="center_vertical"
+                  android:fontFamily="@font/muli_bold"
+                  android:paddingStart="@dimen/_10sdp"
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_12sdp"
+                  android:id="@+id/txtProductName"
+                  android:text="Partner Name"/>
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_24sdp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimary">
+
+        <TextView android:layout_width="@dimen/_110sdp"
+                  android:layout_height="match_parent"
+                  android:gravity="center_vertical|end"
+                  android:fontFamily="@font/muli_bold"
+                  android:paddingStart="@dimen/_10sdp"
+
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_12sdp"
+                  android:text="@string/winner_name"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:gravity="center_vertical"
+                  android:fontFamily="@font/muli_bold"
+                  android:paddingStart="@dimen/_10sdp"
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_12sdp"
+                  android:id="@+id/txtWinner"
+                  android:text="Partner Name"/>
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_24sdp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimary">
+
+        <TextView android:layout_width="@dimen/_110sdp"
+                  android:layout_height="match_parent"
+                  android:gravity="center_vertical|end"
+                  android:fontFamily="@font/muli_bold"
+                  android:paddingStart="@dimen/_10sdp"
+
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_12sdp"
+                  android:text="@string/prize"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:gravity="center_vertical"
+                  android:fontFamily="@font/muli_bold"
+                  android:paddingStart="@dimen/_10sdp"
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_12sdp"
+                  android:id="@+id/txtPrize"
+                  android:text="@string/partner_name"/>
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_24sdp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimary">
+
+        <TextView android:layout_width="@dimen/_110sdp"
+                  android:layout_height="match_parent"
+
+                  android:gravity="center_vertical|end"
+                  android:fontFamily="@font/muli_bold"
+                  android:paddingStart="@dimen/_10sdp"
+
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_12sdp"
+                  android:text="@string/date"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:gravity="center_vertical"
+                  android:fontFamily="@font/muli_bold"
+                  android:paddingStart="@dimen/_10sdp"
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_12sdp"
+                  android:id="@+id/txtDate"
+                  android:text="@string/partner_name"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_vertical"
+                  android:fontFamily="@font/muli_regular"
+                  android:paddingStart="@dimen/_10sdp"
+                  android:paddingEnd="@dimen/_10sdp"
+                  android:textSize="@dimen/_13sdp"
+                  android:text="bezat Raffle"/>
+
+    </LinearLayout>
+</LinearLayout>

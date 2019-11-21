@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.TotalCoupons">
+    <Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbarbg"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetEnd="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_28sdp"
+                    android:src="@mipmap/ic_back"/>
+            <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="@dimen/_14sdp"
+                    android:fontFamily="@font/muli_bold"
+            android:text="@string/total_coupon"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:src="@drawable/search"/>
+        </LinearLayout>
+    </Toolbar>
+    <LinearLayout
+            android:layout_below="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+    android:orientation="vertical">
+        <include layout="@layout/total_coupon_item"/>
+        <include layout="@layout/total_coupon_item"/>
+        <include layout="@layout/total_coupon_item"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleTotalCoupons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
+</RelativeLayout>

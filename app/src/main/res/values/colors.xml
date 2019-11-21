@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#700167</color>
+    <color name="colorPrimaryDark">#700167</color>
+    <color name="colorPrimaryTrans">#55700167</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="langbg">#B94BAC</color>
+    <color name="navTrans">#66700167</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="partnerline">#E0B035</color>
+    <color name="whitegray">#F0F0F0</color>
+
+</resources>

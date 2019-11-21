@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+            android:id="@+id/txtCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="India"
+            android:fontFamily="@font/muli_semibold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14sdp"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorPrimary"/>
+</LinearLayout>
