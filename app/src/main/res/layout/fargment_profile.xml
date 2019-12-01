@@ -55,7 +55,7 @@
                     android:id="@+id/profile_constraint_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white">
+                    android:background="@color/colorPrimary">
 
                 <androidx.cardview.widget.CardView
                         android:id="@+id/front_edit"
@@ -81,13 +81,14 @@
                             android:id="@+id/edit_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@color/white">
+                            android:background="@color/colorPrimary">
 
                         <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/front_edit_icon"
                                 android:layout_width="@dimen/icon_size_normal"
                                 android:layout_height="@dimen/icon_size_normal"
                                 android:layout_gravity="center"
+                                android:background="@color/white"
                                 android:padding="6dp"
                                 android:src="@drawable/ic_edit_borderless_8dp"
                                 app:layout_constraintStart_toStartOf="parent"
