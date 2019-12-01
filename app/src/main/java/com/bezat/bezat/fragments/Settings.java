@@ -274,12 +274,12 @@ public class Settings extends Fragment implements View.OnClickListener {
         }
         if (view.getId()==R.id.txtContactUs)
         {
-            Bundle bundle=new Bundle();
-            bundle.putString("pages", "contactus");
-            Pages pages=new Pages();
+//            Bundle bundle=new Bundle();
+//            bundle.putString("pages", "contactus");
+//            Pages pages=new Pages();
+            ContactUsFragment fragment = new ContactUsFragment();
             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, pages);
-            pages.setArguments(bundle);
+            ft.replace(R.id.container, fragment);
             ft.addToBackStack(null);
             ft.commit();
         }

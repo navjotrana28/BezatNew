@@ -11,5 +11,7 @@
     <color name="transparent">#00000000</color>
     <color name="partnerline">#E0B035</color>
     <color name="whitegray">#F0F0F0</color>
+    <color name="dark_grey">#B6B6B8</color>
+
 
 </resources>

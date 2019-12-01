@@ -38,4 +38,6 @@
     <dimen name="spacing_extra_large">64dp</dimen>
     <dimen name="spacing_moderate">12dp</dimen>
     <dimen name="spacing_slightly_extra_small">3dp</dimen>
+    <dimen name="corner_radius">18dp</dimen>
+    <dimen name="card_elevation">10dp</dimen>
 </resources>
