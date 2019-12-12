@@ -17,8 +17,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/app_logo"
-
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/tilEmail"/>
+
+    <Button
+            android:id="@+id/skip_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/icon_size_moderate"
+            android:background="@drawable/button_background"
+            android:text="@string/skip"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/topImage"
+            app:layout_constraintTop_toTopOf="@id/topImage" />
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

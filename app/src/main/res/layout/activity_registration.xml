@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
             android:id="@+id/topImage"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,34 +33,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
         >
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorPrimary"
-
-            >
-                <com.google.android.material.textfield.TextInputEditText
-                        style="@style/field"
-                        android:id="@+id/etName"
-                        android:hint="@string/name"
-                        android:textColor="@android:color/black"
-                />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorPrimary">
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                        style="@style/field"
-                        android:hint="@string/email"
-                        android:id="@+id/etEmail"
-                        android:inputType="textEmailAddress"
-                        android:textColor="@android:color/black"
-                />
-
-            </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -109,37 +80,10 @@
                     android:textColorHint="@color/colorPrimary">
                 <com.google.android.material.textfield.TextInputEditText
                         style="@style/field"
-                        android:hint="@string/gender"
-                        android:id="@+id/etGender"
-                        android:textColor="@android:color/black"
-                />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorPrimary">
-                <com.google.android.material.textfield.TextInputEditText
-                        style="@style/field"
-                        android:hint="@string/dob"
-                        android:id="@+id/etDOB"
-                        android:textColor="@android:color/black"
-                />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorPrimary">
-                <com.google.android.material.textfield.TextInputEditText
-                        style="@style/field"
+                        android:id="@+id/etPassword"
                         android:hint="@string/password"
                         android:inputType="textPassword"
-                        android:id="@+id/etPassword"
-                        android:textColor="@android:color/black"
-                />
+                        android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -152,9 +96,69 @@
                         android:id="@+id/etConfirmPassword"
                         android:hint="@string/confirm_password"
                         android:inputType="textPassword"
+                        android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/name_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimary"
+                    android:visibility="invisible"
+
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etName"
+                        style="@style/field"
+                        android:hint="@string/name"
+                        android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/gender_edit_text"
+                    android:layout_width="match_parent"
+                    android:visibility="invisible"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimary">
+                <com.google.android.material.textfield.TextInputEditText
+                        style="@style/field"
+                        android:id="@+id/etGender"
+                        android:hint="@string/gender"
+                        android:textColor="@android:color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimary"
+                    android:visibility="invisible">
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        style="@style/field"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@android:color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/date_of_birth_edit_text"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimary">
+                <com.google.android.material.textfield.TextInputEditText
+                        style="@style/field"
+                        android:id="@+id/etDOB"
+                        android:hint="@string/dob"
                         android:textColor="@android:color/black"
                 />
             </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                     android:layout_width="@dimen/_140sdp"
                     android:layout_height="wrap_content"

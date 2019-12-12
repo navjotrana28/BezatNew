@@ -4,11 +4,15 @@ package com.bezat.bezat;
 import com.bezat.bezat.api.contactusResponse.ContactUsRequest;
 import com.bezat.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezat.bezat.interfaces.ContactUsSuccessResponse;
+import com.bezat.bezat.interfaces.RegisterUserCallBack;
 import com.bezat.bezat.interfaces.SearchRetaierInterface;
+import com.bezat.bezat.models.RegisterRequestResponse;
+import com.bezat.bezat.models.RegisterUserRequest;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
-import com.bezat.bezat.utils.URLS;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
@@ -56,6 +60,34 @@ public class ClientRetrofit {
                     @Override
                     public void onComplete() {
 
+                    }
+                });
+    }
+
+    public void registerUser(RegisterUserRequest request, RegisterUserCallBack callBack) {
+        CompositeDisposable compositeDisposable = new CompositeDisposable();
+        serviceRetrofit.registerUser(request.password, request.mobile_code, request.phone)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<RegisterRequestResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(RegisterRequestResponse response) {
+                        callBack.onResponse(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callBack.onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        compositeDisposable.clear();
                     }
                 });
     }

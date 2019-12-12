@@ -2,7 +2,9 @@ package com.bezat.bezat;
 
 
 import com.bezat.bezat.api.contactusResponse.ContactUsResponse;
+import com.bezat.bezat.models.RegisterRequestResponse;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
+
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -28,5 +30,10 @@ public interface ServiceRetrofit {
                                                      @Field("retailerId") String retailerId,
                                                      @Field("ratings") String ratings);
 
+    @FormUrlEncoded
+    @POST("user/register")
+    Observable<RegisterRequestResponse> registerUser(@Field("password") String password,
+                                                     @Field("mobile_code") String mobile_code,
+                                                     @Field("phone") String phone);
 }
 

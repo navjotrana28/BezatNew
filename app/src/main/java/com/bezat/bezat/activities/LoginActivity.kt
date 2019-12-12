@@ -4,11 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 import com.bezat.bezat.R
 import com.bezat.bezat.api.LoginRequest
 import com.bezat.bezat.utils.SharedPrefs
-
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
 
@@ -26,6 +25,9 @@ class LoginActivity : AppCompatActivity() {
         initUI()
     }
     fun initUI(){
+        skip_button.setOnClickListener {
+            startActivity(Intent(this, MainHomeActivty::class.java))
+        }
         btnLogin.setOnClickListener {
             doLogin()
         }

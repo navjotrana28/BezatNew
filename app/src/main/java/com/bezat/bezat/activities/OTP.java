@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -11,15 +12,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import com.android.volley.*;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.bezat.bezat.MyApplication;
 import com.bezat.bezat.R;
 import com.bezat.bezat.utils.Loader;
 import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import com.bezat.bezat.utils.VolleyMultipartRequest;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,7 +63,7 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
             forgot=getIntent().getStringExtra("Forgot");
         }
 
-        otp=getIntent().getStringExtra("otp");
+        otp = getIntent().getExtras().get("otp").toString();
         deviceId=getIntent().getStringExtra("deviceId");
         dob=getIntent().getStringExtra("dob");
         email=getIntent().getStringExtra("email");
@@ -72,6 +79,10 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        if (otp != null && otp.equals(etOTP.getText().toString()) && forgot.equals("")) {
+            finish();
+            return;
+        }
         if (view.getId()==R.id.btnSave)
         {
          if (etOTP.getText().toString().equals(""))
