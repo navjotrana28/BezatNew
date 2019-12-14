@@ -46,6 +46,8 @@
                         android:textColorHint="@color/colorPrimary"
                         android:hint="@string/country"
                         android:layout_weight="1"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
                 >
 
                     <com.google.android.material.textfield.TextInputEditText
