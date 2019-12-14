@@ -1,5 +1,6 @@
 package com.bezat.bezat.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -21,6 +22,7 @@ import com.bezat.bezat.models.RegisterUserRequest
 import com.bezat.bezat.utils.*
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_registration.*
+import kotlinx.android.synthetic.main.fragment_settings2.*
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
@@ -92,7 +94,6 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
     override fun onResponse(response: RegisterRequestResponse?) {
         if (response?.status.equals("success")) {
-            isOtpValidated = true
             otp = response?.userInfo!!.otp.toString()
             val intent = Intent(this@RegistrationActivity, OTP::class.java)
             intent.putExtra("otp", otp)
@@ -103,8 +104,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             intent.putExtra("dob", "")
             intent.putExtra("email", "")
             intent.putExtra("gender", "")
-            startActivity(intent)
-            showAllView()
+            startActivityForResult(intent, 0)
         }
     }
 
@@ -265,5 +265,18 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                 }
             }
         MyApplication.getInstance().addToRequestQueue(volleyMultipartRequest)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 0) {
+            if (resultCode == Activity.RESULT_OK) {
+                data?.let {
+                    isOtpValidated = it.getBooleanExtra(OTP.IS_OTP_VERIFIED, false)
+                    if (isOtpValidated) {
+                        showAllView()
+                    }
+                }
+            }
+        }
     }
 }
