@@ -3,7 +3,10 @@ package com.bezat.bezat;
 
 import com.bezat.bezat.api.contactusResponse.ContactUsRequest;
 import com.bezat.bezat.api.contactusResponse.ContactUsResponse;
+import com.bezat.bezat.api.feedbackResponse.FeedbackRequest;
+import com.bezat.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezat.bezat.interfaces.ContactUsSuccessResponse;
+import com.bezat.bezat.interfaces.FeedbackCallback;
 import com.bezat.bezat.interfaces.RegisterUserCallBack;
 import com.bezat.bezat.interfaces.SearchRetaierInterface;
 import com.bezat.bezat.models.RegisterRequestResponse;
@@ -120,30 +123,30 @@ public class ClientRetrofit {
                 });
     }
 
-//    public  void feedBackRequestApi(,final SearchRetaierInterface retaierInterface) {
-//        serviceRetrofit.getFeedbackRequest()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Observer<SearchResponseResult>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onNext(SearchResponseResult responseResult) {
-//                        retaierInterface.onSuccess(responseResult);
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
-//    }
+    public void feedBackRequestApi(FeedbackRequest request, final FeedbackCallback callback) {
+        serviceRetrofit.getFeedbackRequest(request.getUserId(), request.getFeedback(), request.getRetailerId(), request.getRatings())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<FeedbackResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(FeedbackResponse responseResult) {
+                        callback.onSuccess(responseResult);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }
