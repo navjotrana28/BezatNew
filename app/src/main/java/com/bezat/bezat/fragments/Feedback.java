@@ -12,6 +12,7 @@ import com.bezat.bezat.R;
 import com.bezat.bezat.api.feedbackResponse.FeedbackRequest;
 import com.bezat.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezat.bezat.interfaces.FeedbackCallback;
+import com.bezat.bezat.utils.SharedPrefs;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,11 +45,10 @@ public class Feedback extends Fragment {
             FeedbackRequest request = new FeedbackRequest();
             request.setFeedback(text.getText().toString());
             request.setRatings(String.valueOf(ratingBar.getNumStars()));
-            request.setUserId("123");
+            request.setUserId(SharedPrefs.getKey(getActivity(), "userId"));
             request.setRetailerId("1448");
             feedbackToServer(request);
         });
-
     }
 
     private void onClickBackButton(View view) {
