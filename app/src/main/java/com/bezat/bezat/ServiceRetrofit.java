@@ -2,6 +2,7 @@ package com.bezat.bezat;
 
 
 import com.bezat.bezat.api.contactusResponse.ContactUsResponse;
+import com.bezat.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezat.bezat.models.RegisterRequestResponse;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
 
@@ -25,10 +26,10 @@ public interface ServiceRetrofit {
 
     @FormUrlEncoded
     @POST("user/feedback")
-    Observable<ContactUsResponse> getFeedbackRequest(@Field("userId") String userId,
-                                                     @Field("feedback") String feedback,
-                                                     @Field("retailerId") String retailerId,
-                                                     @Field("ratings") String ratings);
+    Observable<FeedbackResponse> getFeedbackRequest(@Field("userId") String userId,
+                                                    @Field("feedback") String feedback,
+                                                    @Field("retailerId") String retailerId,
+                                                    @Field("ratings") String ratings);
 
     @FormUrlEncoded
     @POST("user/register")
