@@ -7,6 +7,7 @@ import com.bezat.bezat.models.RegisterRequestResponse;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
 
 import io.reactivex.Observable;
+import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -36,5 +37,9 @@ public interface ServiceRetrofit {
     Observable<RegisterRequestResponse> registerUser(@Field("password") String password,
                                                      @Field("mobile_code") String mobile_code,
                                                      @Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("staff/logout")
+    Call<Void> getLogoutAPi(@Field("userId") String userId);
 }
 
