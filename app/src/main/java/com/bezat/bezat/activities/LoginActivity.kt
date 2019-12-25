@@ -26,7 +26,9 @@ class LoginActivity : AppCompatActivity() {
     }
     fun initUI(){
         skip_button.setOnClickListener {
-            startActivity(Intent(this, MainHomeActivty::class.java))
+            val intent = Intent(this, Homepage::class.java)
+            SharedPrefs.setGuestUser(this, true)
+            startActivity(intent)
         }
         btnLogin.setOnClickListener {
             doLogin()

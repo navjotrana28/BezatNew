@@ -28,7 +28,7 @@
     <string name="address">Address</string>
     <string name="gender">Gender</string>
     <string name="dob">Date Of Birth</string>
-    <string name="fav_offers">Favorite Offers</string>
+    <string name="fav_offers">Favorite</string>
     <string name="prizes">Prizes</string>
     <string name="total_coupon">Total Coupons</string>
     <string name="partners">Partners</string>
@@ -108,6 +108,8 @@
     <string name="otp">OTP</string>
     <string name="resend">RESEND</string>
     <string name="didn_t_receive_the_otp">Didn\'t receive the OTP?</string>
+    <string name="yes_label">Yes</string>
+    <string name="no_label">No</string>
 
 
 </resources>

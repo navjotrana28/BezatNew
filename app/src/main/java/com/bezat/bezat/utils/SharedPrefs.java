@@ -20,6 +20,16 @@ public class SharedPrefs {
         return value;
     }
 
+    public static void setGuestUser(Context context, boolean isGuestUser) {
+        sharedPreferences = context.getSharedPreferences("prefsData", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putBoolean("is_guest_user", true).apply();
+    }
+
+    public static boolean isGuestUser(Context context) {
+        sharedPreferences = context.getSharedPreferences("prefsData", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("is_guest_user", false);
+    }
+
     public static void deleteSharedPrefs(Context context) {
         sharedPreferences = context.getSharedPreferences("prefsData", Context.MODE_PRIVATE);
         sharedPreferences.edit().clear().commit();

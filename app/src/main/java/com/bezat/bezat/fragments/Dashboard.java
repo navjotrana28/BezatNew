@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,6 +24,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -34,11 +37,17 @@ import com.bezat.bezat.models.DashBoardItem;
 import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import com.google.android.material.tabs.TabLayout;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,6 +76,8 @@ public class Dashboard extends Fragment {
     List<DashBoardItem> dashBoardItem;
     View rootView;
     String lang = "";
+    boolean isGuestUser;
+    String signOutLabel;
 
     public Dashboard() {
         // Required empty public constructor
@@ -104,10 +115,19 @@ public class Dashboard extends Fragment {
             lang = "";
         }
         rootView = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        initSignOutLabel();
         initViewPager();
         setDashboardData();
         getProfile();
         return rootView;
+    }
+
+    private void initSignOutLabel() {
+        if (SharedPrefs.isGuestUser(getContext())) {
+            signOutLabel = getString(R.string.sign_up);
+        } else {
+            signOutLabel = getString(R.string.sign_out);
+        }
     }
 
     private void initViewPager() {
@@ -196,10 +216,10 @@ public class Dashboard extends Fragment {
 
         dashBoardItem.add(new DashBoardItem(
                 R.drawable.logout,
-                getString(R.string.sign_out) + ""
+                signOutLabel
         ));
 
-        PostAdapter postAdapter = new PostAdapter(dashBoardItem);
+        PostAdapter postAdapter = new PostAdapter(dashBoardItem, isGuestUser);
 
         recycle.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(getActivity(), R.dimen._1sdp);
@@ -358,11 +378,12 @@ public class Dashboard extends Fragment {
 
     private class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {
         List<DashBoardItem> dashBoardItems;
+        boolean isGuestUser;
 
-        public PostAdapter(List<DashBoardItem> dashBoardItems) {
+        public PostAdapter(List<DashBoardItem> dashBoardItems, boolean isGuestUser) {
             this.dashBoardItems = dashBoardItems;
+            this.isGuestUser = isGuestUser;
         }
-
 
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -385,6 +406,7 @@ public class Dashboard extends Fragment {
                             dashBoardItems.get(position).getDrawable()));
                 }
 
+                holder.bind(position);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -401,105 +423,138 @@ public class Dashboard extends Fragment {
 
             TextView text;
             ImageView image;
+            ConstraintLayout viewForItem;
+            View view;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
 
                 text = itemView.findViewById(R.id.text);
                 image = itemView.findViewById(R.id.image);
+                viewForItem = itemView.findViewById(R.id.main_view);
+                view = itemView;
+            }
 
+            private void bind(int position) {
 
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.sign_out))) {
-                            new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
-                                    .setMessage("Are you sure, you want to LOGOUT?")
+                if (SharedPrefs.isGuestUser(getContext()) &&
+                        (dashBoardItem.get(position).getName().equals(getString(R.string.get_coupon)) ||
+                                dashBoardItem.get(position).getName().equals("Feedback") ||
+                                dashBoardItem.get(position).getName().equals(getString(R.string.fav_offers)) ||
+                                dashBoardItem.get(position).getName().equals(getString(R.string.total_coupon)))) {
+                    view.setEnabled(false);
+                    view.setClickable(false);
+                    image.setAlpha(0.5f);
+                    text.setAlpha(0.5f);
+                } else {
 
-                                    // Specifying a listener allows you to take an action before dismissing the dialog.
-                                    // The dialog is automatically dismissed when a dialog button is clicked.
-                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            ClientRetrofit retrofit = new ClientRetrofit();
-                                            retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"));
-                                            SharedPrefs.deleteSharedPrefs(getActivity());
-                                            startActivity(new Intent(getActivity(), LoginActivity.class));
-                                            getActivity().finish();
-                                        }
-                                    })
+                    itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.sign_out))) {
+                                new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
+                                        .setMessage("Are you sure, you want to LOGOUT?")
 
-                                    // A null listener allows the button to dismiss the dialog and take no further action.
-                                    .setNegativeButton(android.R.string.no, null)
-                                    .setIcon(android.R.drawable.ic_dialog_alert)
-                                    .show();
+                                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                                        // The dialog is automatically dismissed when a dialog button is clicked.
+                                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                ClientRetrofit retrofit = new ClientRetrofit();
+                                                retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"));
+                                                SharedPrefs.deleteSharedPrefs(getActivity());
+                                                startActivity(new Intent(getActivity(), LoginActivity.class));
+                                                getActivity().finish();
+                                            }
+                                        })
 
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.total_coupon))) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new TotalCoupon());
-                            ft.addToBackStack(null);
-                            ft.commit();
+                                        // A null listener allows the button to dismiss the dialog and take no further action.
+                                        .setNegativeButton(android.R.string.no, null)
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .show();
 
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.prizes))) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new Prizes());
-                            ft.addToBackStack(null);
-                            ft.commit();
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.sign_up))) {
+                                new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme)
+                                        .setMessage("You will be taken to the login screen, okay?")
+                                        .setPositiveButton(R.string.yes_label, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                getActivity().finish();
+                                            }
+                                        })
 
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.winners))) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new BezatWinner());
-                            ft.addToBackStack(null);
-                            ft.commit();
+                                        // A null listener allows the button to dismiss the dialog and take no further action.
+                                        .setNegativeButton(R.string.no_label, null)
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .show();
 
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new FavouriteOffer());
-                            ft.addToBackStack(null);
-                            ft.commit();
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.total_coupon))) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.container, new TotalCoupon());
+                                ft.addToBackStack(null);
+                                ft.commit();
 
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.get_coupon))) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new GetCoupon());
-                            ft.addToBackStack(null);
-                            ft.commit();
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.prizes))) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.container, new Prizes());
+                                ft.addToBackStack(null);
+                                ft.commit();
 
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.partners))) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.winners))) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.container, new BezatWinner());
+                                ft.addToBackStack(null);
+                                ft.commit();
+
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.container, new FavouriteOffer());
+                                ft.addToBackStack(null);
+                                ft.commit();
+
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.get_coupon))) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.container, new GetCoupon());
+                                ft.addToBackStack(null);
+                                ft.commit();
+
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.partners))) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 //                            ft.replace(R.id.container, new Partners());
-                            ft.replace(R.id.container, new SearchRetailer());
-                            ft.addToBackStack(null);
-                            ft.commit();
+                                ft.replace(R.id.container, new SearchRetailer());
+                                ft.addToBackStack(null);
+                                ft.commit();
 
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.vip_offers))) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new VIPOffer());
-                            ft.addToBackStack(null);
-                            ft.commit();
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase(getString(R.string.my_profile))) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new MyProfile());
-                            ft.addToBackStack(null);
-                            ft.commit();
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.vip_offers))) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.container, new VIPOffer());
+                                ft.addToBackStack(null);
+                                ft.commit();
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.my_profile))) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.container, new MyProfile());
+                                ft.addToBackStack(null);
+                                ft.commit();
 
-                        } else if (dashBoardItems.get(getAdapterPosition())
-                                .getName().equalsIgnoreCase("Feedback")) {
-                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container, new Feedback());
-                            ft.addToBackStack(null);
-                            ft.commit();
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase("Feedback")) {
+                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.container, new Feedback());
+                                ft.addToBackStack(null);
+                                ft.commit();
 
+                            }
                         }
-                    }
-                });
+                    });
+                }
 
             }
         }

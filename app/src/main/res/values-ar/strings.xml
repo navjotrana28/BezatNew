@@ -101,5 +101,7 @@
     <string name="otp">مكتب المدعي العام</string>
     <string name="resend">إعادة إرسال</string>
     <string name="didn_t_receive_the_otp">لم أستلم OTP؟</string>
+    <string name="yes_label">Yes</string>
+    <string name="no_label">No</string>
 
 </resources>
