@@ -2,7 +2,8 @@ package com.bezat.bezat.utils
 
 class URLS {
     companion object {
-        const val BASE_PATH = "http://bindu.biz/bezatapi/"
+        //        const val BASE_PATH = "http://bindu.biz/bezatapi/"
+        const val BASE_PATH = "http://bezatapp.com/bezatapi/"
         val OUTER_URL = BASE_PATH+"user/front_banner"
         val LOGIN_URL = BASE_PATH+"user/login"
         val REGISTER_URL = BASE_PATH+"user/register"

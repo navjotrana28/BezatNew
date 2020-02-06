@@ -22,7 +22,7 @@ public class SharedPrefs {
 
     public static void setGuestUser(Context context, boolean isGuestUser) {
         sharedPreferences = context.getSharedPreferences("prefsData", Context.MODE_PRIVATE);
-        sharedPreferences.edit().putBoolean("is_guest_user", true).apply();
+        sharedPreferences.edit().putBoolean("is_guest_user", isGuestUser).apply();
     }
 
     public static boolean isGuestUser(Context context) {

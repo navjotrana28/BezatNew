@@ -69,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
 
                     SharedPrefs.setKey(this@LoginActivity,"userId",it.userID);
                     SharedPrefs.setKey(this@LoginActivity,"LoggedIn","true");
+                    SharedPrefs.setGuestUser(this, false)
                     startActivity(Intent(this@LoginActivity,Homepage::class.java))
                     finishAffinity();
                 }, this::showMessage)
