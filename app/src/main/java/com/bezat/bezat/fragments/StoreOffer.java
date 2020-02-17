@@ -106,6 +106,7 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
         }
         rootView = inflater.inflate(R.layout.fragment_store_offer, container, false);
         String storeId=getArguments().getString("storeId");
+        Log.d("storeIdnam", storeId);
         imgBanner=rootView.findViewById(R.id.imgBanner);
         txtTwitter=rootView.findViewById(R.id.txtTwitter);
         txtInsta=rootView.findViewById(R.id.txtInsta);
@@ -154,7 +155,7 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
                                insta=jsonObject.getString("instagram");
                                fb=jsonObject.getString("facebook");
                                 google=jsonObject.getString("website");
-                                txtPhone.setText(jsonObject.getString("phone_no"));
+//                                txtPhone.setText(jsonObject.getString("phone_no"));
                                 phone=jsonObject.getString("phone_no");
                                 JSONArray storeArray=jsonObject.getJSONArray("store_offers");
 

@@ -30,7 +30,6 @@ class URLS {
         val GET_COUNTRY = BASE_PATH+"user/get_country"
         val FORGOT_PASSWORD = BASE_PATH+"user/forgot_password"
         val GET_LOCATION = BASE_PATH+"user/location"
-
         val STORE_BY_OFFER = BASE_PATH+"store/offers?"
         val OFFER_DETAILS = BASE_PATH+"store/offer_details?"
         val OTP_VALIDATION = BASE_PATH+"user/otp_validation"

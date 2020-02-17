@@ -7,16 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bezat.bezat.ClientRetrofit;
 import com.bezat.bezat.R;
 import com.bezat.bezat.adapter.SearchAdapter;
 import com.bezat.bezat.adapter.SearchVerticalAdapter;
+import com.bezat.bezat.interfaces.CategoryId;
 import com.bezat.bezat.interfaces.SearchRetaierInterface;
 import com.bezat.bezat.interfaces.SearchRetailerCallback;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseData;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
+import org.json.JSONException;
 
 
 /**
@@ -29,6 +32,7 @@ public class SearchRetailer extends Fragment {
     private RecyclerView recyclerViewHorizontal, recyclerViewVertical;
     private SearchVerticalAdapter verticalAdapter;
     private View progressBar;
+    String categoryId = "";
     private SearchResponseResult searchResponseResult = new SearchResponseResult();
     private SearchResponseData responseData = new SearchResponseData();
 
@@ -58,7 +62,23 @@ public class SearchRetailer extends Fragment {
     }
 
     private void setUpRecyclerViewVertical() {
-        verticalAdapter = new SearchVerticalAdapter(getActivity(), responseData);
+        verticalAdapter = new SearchVerticalAdapter(getActivity(), responseData, new CategoryId() {
+            @Override
+            public void onSuccess(String categoryId) {
+                try {
+                    StoreOffer storeOffer = new StoreOffer();
+                    Bundle args = new Bundle();
+                    args.putString("storeId", categoryId);
+                    storeOffer.setArguments(args);
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, storeOffer);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         recyclerViewVertical.setLayoutManager(layoutManager);
         recyclerViewVertical.setAdapter(verticalAdapter);

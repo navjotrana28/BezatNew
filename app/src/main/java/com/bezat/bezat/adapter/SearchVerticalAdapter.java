@@ -1,24 +1,31 @@
 package com.bezat.bezat.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bezat.bezat.R;
+import com.bezat.bezat.fragments.StoreOffer;
+import com.bezat.bezat.interfaces.CategoryId;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseData;
 import com.squareup.picasso.Picasso;
+import org.json.JSONException;
 
 public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAdapter.MyViewHolder> {
 
     private Context mcontext;
+    CategoryId categoryId;
     private SearchResponseData responseResult;
 
-    public SearchVerticalAdapter(Context context, SearchResponseData responseResult) {
+    public SearchVerticalAdapter(Context context, SearchResponseData responseResult, CategoryId categoryId) {
         mcontext = context;
+        this.categoryId = categoryId;
         this.responseResult = responseResult;
     }
 
@@ -66,6 +73,7 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
                 @Override
                 public void onClick(View view) {
                     int pos = getAdapterPosition();
+                    categoryId.onSuccess(responseResult.getStores().get(pos).getStoreId());
                 }
             });
         }

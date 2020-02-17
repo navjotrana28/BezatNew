@@ -228,7 +228,8 @@ public class Partner_store extends Fragment implements View.OnClickListener {
                 };
         MyApplication.getInstance().addToRequestQueue(jsonObjectRequest);
     }
-    private void getStoreList(String category_id,String	location_id) {
+
+    public void getStoreList(String category_id, String location_id) {
         JSONObject object = new JSONObject();
         String Url= URLS.Companion.getSTORE_BY_LOCATION()+"userId="+ SharedPrefs.getKey(getActivity(),"userId")
                 +"&category_id="+category_id+"&location_id="+location_id;
