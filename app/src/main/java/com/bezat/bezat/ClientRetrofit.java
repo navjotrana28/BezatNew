@@ -5,14 +5,11 @@ import com.bezat.bezat.api.contactusResponse.ContactUsRequest;
 import com.bezat.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezat.bezat.api.feedbackResponse.FeedbackRequest;
 import com.bezat.bezat.api.feedbackResponse.FeedbackResponse;
-import com.bezat.bezat.interfaces.ContactUsSuccessResponse;
-import com.bezat.bezat.interfaces.FeedbackCallback;
-import com.bezat.bezat.interfaces.RegisterUserCallBack;
-import com.bezat.bezat.interfaces.SearchRetaierInterface;
+import com.bezat.bezat.interfaces.*;
+import com.bezat.bezat.models.CountryData;
 import com.bezat.bezat.models.RegisterRequestResponse;
 import com.bezat.bezat.models.RegisterUserRequest;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
-
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -153,4 +150,33 @@ public class ClientRetrofit {
     public void logOutAPi(String userID) {
         serviceRetrofit.getLogoutAPi(userID);
     }
+
+    public void getCountries(final CountryCallBack callback) {
+        serviceRetrofit.getCountryResponse()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CountryData>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(CountryData responseResult) {
+                        callback.onSuccess(responseResult);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+
 }

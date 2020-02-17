@@ -3,6 +3,7 @@ package com.bezat.bezat;
 
 import com.bezat.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezat.bezat.api.feedbackResponse.FeedbackResponse;
+import com.bezat.bezat.models.CountryData;
 import com.bezat.bezat.models.RegisterRequestResponse;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
 
@@ -41,5 +42,9 @@ public interface ServiceRetrofit {
     @FormUrlEncoded
     @POST("staff/logout")
     Call<Void> getLogoutAPi(@Field("userId") String userId);
+
+    @FormUrlEncoded
+    @GET("user/get_country")
+    Observable<CountryData> getCountryResponse();
 }
 

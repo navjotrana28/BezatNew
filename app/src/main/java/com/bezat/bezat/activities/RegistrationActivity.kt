@@ -200,7 +200,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                 phone.error = getString(R.string.empty_phone)
             }
             if ((request.mobile_code + request.phone).isPhoneValid() ||
-                (request.mobile_code + request.phone).length <= 7
+                (request.mobile_code + request.phone).length >= 7
             ) {
                 isValid = false
                 phone.error = getString(R.string.invalid_phone)
