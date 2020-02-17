@@ -1,15 +1,18 @@
 package com.bezat.bezat.fragments;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,10 +25,13 @@ import com.bezat.bezat.R;
 import com.bezat.bezat.utils.Loader;
 import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
+import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,9 +53,11 @@ public class Notification extends Fragment {
     private String mParam1;
     private String mParam2;
     RecyclerView recNotiFicationList;
+    ImageView notifyImg;
     Loader loader;
     private OnFragmentInteractionListener mListener;
-    String lang="";
+    String lang = "";
+
     public Notification() {
         // Required empty public constructor
     }
@@ -85,16 +93,16 @@ public class Notification extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            lang="_ar";
+            lang = "_ar";
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            lang="";
+            lang = "";
         }
-        rootView=inflater.inflate(R.layout.fragment_notification, container, false);
-        recNotiFicationList=rootView.findViewById(R.id.recNotiFicationList);
-        loader= new Loader(getContext());
+        rootView = inflater.inflate(R.layout.fragment_notification, container, false);
+        recNotiFicationList = rootView.findViewById(R.id.recNotiFicationList);
+        loader = new Loader(getContext());
         loader.show();
         getNotificationList();
         return rootView;
@@ -102,16 +110,16 @@ public class Notification extends Fragment {
 
     private void getNotificationList() {
         JSONObject object = new JSONObject();
-        String vipUrl= URLS.Companion.getNOTIFICATION_LIST()
-                +"userId="+SharedPrefs.getKey(getActivity(),"userId");
-        Log.v("notificationurl",vipUrl+" ");
+        String vipUrl = URLS.Companion.getNOTIFICATION_LIST()
+                + "userId=" + SharedPrefs.getKey(getActivity(), "userId");
+        Log.v("notificationurl", vipUrl + " ");
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        vipUrl ,
+                        vipUrl,
                         object,
                         response -> {
                             loader.dismiss();
-                            Log.v("NotificationResponse",response+" ");
+                            Log.v("NotificationResponse", response + " ");
                             try {
                                 PostAdapter postAdapter = new PostAdapter(response.getJSONArray("result"));
                                 StaggeredGridLayoutManager layoutManager =
@@ -129,7 +137,7 @@ public class Notification extends Fragment {
                         },
                         error -> {
                             loader.dismiss();
-                            Log.v("NotificationError",error.toString()+" ");
+                            Log.v("NotificationError", error.toString() + " ");
                         }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -209,13 +217,14 @@ public class Notification extends Fragment {
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
-                holder.txtDesc.setText(jsonArray.getJSONObject(position).getString("description"+lang));
-                holder.txtTitle.setText(jsonArray.getJSONObject(position).getString("title"+lang));
+                holder.txtDesc.setText(jsonArray.getJSONObject(position).getString("description" + lang));
+                holder.txtTitle.setText(jsonArray.getJSONObject(position).getString("title" + lang));
                 holder.txtTime.setText(jsonArray.getJSONObject(position).getString("time_ago"));
+                String path = jsonArray.getJSONObject(position).getString("image");
+                Picasso.get().load(path).into(notifyImg);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
 
         @Override
@@ -225,15 +234,16 @@ public class Notification extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView txtDesc,txtTitle,txtTime;
+            TextView txtDesc, txtTitle, txtTime;
 
 
             public MyViewHolder(View itemView) {
                 super(itemView);
 
-                txtDesc=itemView.findViewById(R.id.txtDesc);
-                txtTitle=itemView.findViewById(R.id.txtTitle);
-                txtTime=itemView.findViewById(R.id.txtTime);
+                txtDesc = itemView.findViewById(R.id.txtDesc);
+                txtTitle = itemView.findViewById(R.id.txtTitle);
+                txtTime = itemView.findViewById(R.id.txtTime);
+                notifyImg = itemView.findViewById(R.id.notifyImg);
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
