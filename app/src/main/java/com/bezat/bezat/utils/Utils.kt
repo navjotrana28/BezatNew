@@ -28,12 +28,14 @@ fun RecyclerView.addLineDecorator(context: Context, inset:Int = (context.resourc
             ContextCompat.getDrawable(context, R.drawable.div_primary)!!, inset, 0, inset, 0)
     ) })
 }
-fun <T>EditText.convertToSpinner(selection:List<T>, getDisplayText:(T)->String, postAction: ((T, String) -> Unit)? = null){
+
+fun <T>EditText.convertToSpinner(selection:List<T>, getDisplayText:(T)->String,selectionImage:(T) -> String, postAction: ((T, String) -> Unit)? = null){
     keyListener = null
-    val dialog = Selector(context, selection, getDisplayText, { obj, text -> setText(text); error = null; postAction?.invoke(obj,text)})
+    val dialog = Selector(context, selection, getDisplayText,selectionImage, { obj, text -> setText(text); error = null; postAction?.invoke(obj,text)})
     setOnClickListener { dialog.show() }
     setOnFocusChangeListener { _, hasFocus -> if(hasFocus) dialog.show() }
 }
+
 fun EditText.convertToDatePicker(postAction: ((String) -> Unit)? = null) {
     keyListener = null
     val d = Calendar.getInstance()

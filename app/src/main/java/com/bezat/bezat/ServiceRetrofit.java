@@ -43,7 +43,6 @@ public interface ServiceRetrofit {
     @POST("staff/logout")
     Call<Void> getLogoutAPi(@Field("userId") String userId);
 
-    @FormUrlEncoded
     @GET("user/get_country")
     Observable<CountryData> getCountryResponse();
 }

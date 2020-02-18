@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +23,10 @@ import com.bezat.bezat.models.searchRetailerResponses.SearchResponseData;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
 import org.json.JSONException;
 
+import java.util.List;
+
+import io.reactivex.Observable;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +41,7 @@ public class SearchRetailer extends Fragment {
     String categoryId = "";
     private SearchResponseResult searchResponseResult = new SearchResponseResult();
     private SearchResponseData responseData = new SearchResponseData();
+    private SearchView searchView;
 
     public SearchRetailer() {
         // Required empty public constructor
@@ -50,11 +57,27 @@ public class SearchRetailer extends Fragment {
         recyclerViewVertical = view.findViewById(R.id.recyclerView_vertical);
         progressBar = view.findViewById(R.id.progress_bar_search);
         imgBack = view.findViewById(R.id.img_back);
+        searchView = view.findViewById(R.id.search_view);
         setUpRecyclerView();
         setUpRecyclerViewVertical();
         loadSeachData();
         onCLickBackButton();
+        initSearchView();
         return view;
+    }
+
+    private void initSearchView() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     private void onCLickBackButton() {
@@ -117,4 +140,9 @@ public class SearchRetailer extends Fragment {
         recyclerViewHorizontal.setLayoutManager(layoutManager);
         recyclerViewHorizontal.setAdapter(adapter);
     }
+
+//    private Observable<List<SearchResponseData>> getAfterQuery(List<SearchResponseData> searchableData, String query) {
+//        return Observable.just(searchableData)
+//                .
+//    }
 }

@@ -110,6 +110,7 @@
     <string name="didn_t_receive_the_otp">Didn\'t receive the OTP?</string>
     <string name="yes_label">Yes</string>
     <string name="no_label">No</string>
+    <string name="country_logo">Country Logo</string>
 
 
 </resources>

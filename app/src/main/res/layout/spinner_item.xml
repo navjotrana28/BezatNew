@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/default_margin"
-    android:textColor="@color/colorPrimary"
-    android:textSize="@dimen/default_size"
-    android:background="@drawable/ripple_white_primary"
-    android:id="@android:id/text1"
-    />
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_white_primary"
+            android:padding="@dimen/default_margin"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/default_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+            android:id="@+id/countryIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/country_logo"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

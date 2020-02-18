@@ -21,8 +21,8 @@ import com.bezat.bezat.models.RegisterRequestResponse
 import com.bezat.bezat.models.RegisterUserRequest
 import com.bezat.bezat.utils.*
 import com.google.android.material.textfield.TextInputLayout
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_registration.*
-import kotlinx.android.synthetic.main.fragment_settings2.*
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
@@ -53,13 +53,16 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             }
         }
         etDOB.convertToDatePicker { date = it }
-        country.convertToSpinner(
-            listOf(
-                "Bahrain" to "00973",
-                "Saudi Arabia" to "00966",
-                "United Arab Emirates" to "00971"
-            ), { it.first }) { obj, _ -> code = obj.second }
-        etGender.convertToSpinner(listOf("Female", "Male"), { it })
+
+        GetCountryService().getCountries({ countryData ->
+            country.convertToSpinner(
+                countryData.result, { it.name }, {
+                    it.img
+                }) { obj, _ -> code = obj.phoneCode }
+        }, {})
+        etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it })
+
+
     }
 
     private fun validateForOtpAndSave() {
