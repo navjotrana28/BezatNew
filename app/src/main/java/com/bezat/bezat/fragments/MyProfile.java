@@ -16,12 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -30,12 +25,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezat.bezat.MyApplication;
 import com.bezat.bezat.R;
@@ -43,7 +33,7 @@ import com.bezat.bezat.utils.Loader;
 import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import com.bezat.bezat.utils.VolleyMultipartRequest;
-
+import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -119,6 +109,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fargment_profile, container, false);
         loader = new Loader(getContext());
+        getProfile();
         imgProfile = rootView.findViewById(R.id.imgProfile);
         etName = rootView.findViewById(R.id.etName);
         etEmail = rootView.findViewById(R.id.etEmail);
@@ -129,7 +120,6 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         etPhone = rootView.findViewById(R.id.etPhone);
         txtSave = rootView.findViewById(R.id.txtSave);
         ConstraintLayout editButtonLayout = rootView.findViewById(R.id.edit_profile);
-
         etDob.setOnClickListener(this);
         etCountry.setOnClickListener(this);
         phone_code = SharedPrefs.getKey(getActivity(), "phone_code");
@@ -245,6 +235,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 Bitmap newbitMap = Bitmap.createScaledBitmap(bitmap, ivWidth, newHeight, true);
 
                 imgProfile.setImageBitmap(newbitMap);
+                SharedPrefs.setKey(getActivity(), "image", newbitMap.toString());
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -343,6 +334,16 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                 SharedPrefs.setKey(getActivity(), "gender", gender);
                                 String dob = userInfo.getString("dob");
                                 SharedPrefs.setKey(getActivity(), "dob", dob);
+                                phone_code = SharedPrefs.getKey(getActivity(), "phone_code");
+                                etName.setText(SharedPrefs.getKey(getActivity(), "user_name"));
+                                etEmail.setText(SharedPrefs.getKey(getActivity(), "email"));
+                                etCountry.setText(SharedPrefs.getKey(getActivity(), "country"));
+                                etAddress.setText(SharedPrefs.getKey(getActivity(), "address"));
+                                etGender.setText(SharedPrefs.getKey(getActivity(), "gender"));
+                                etDob.setText(SharedPrefs.getKey(getActivity(), "dob"));
+                                etPhone.setText(SharedPrefs.getKey(getActivity(), "phone"));
+                                String path = SharedPrefs.getKey(getActivity(), "image");
+                                Picasso.get().load(path).into(imgProfile);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -475,11 +476,11 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             public void onResponse(NetworkResponse response) {
                 loader.dismiss();
                 String res = new String(response.data);
-                if (gender.equalsIgnoreCase("Male")) {
-                    imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.profile));
-                } else {
-                    imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_femaleicon));
-                }
+//                if (gender.equalsIgnoreCase("Male")) {
+//                    imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.profile));
+//                } else {
+//                    imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_femaleicon));
+//                }
                 Log.v("responseprofile", res + "");
             }
         }, new Response.ErrorListener() {

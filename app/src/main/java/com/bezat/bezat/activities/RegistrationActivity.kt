@@ -61,7 +61,13 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                 }) { obj, _ -> code = obj.phoneCode }
         }, {})
         etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it })
+    }
 
+    private fun callImageMethod() {
+        if (country.text?.equals("Bahrain")!!)
+            Picasso.get().load("http://bezatapp.com/manage_App/assets/flags/bh.png").into(countryIcon)
+        if (country.text?.equals("India")!!)
+            Picasso.get().load("http://bezatapp.com/manage_App/assets/flags/in.png").into(countryIcon)
 
     }
 
