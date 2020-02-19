@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,11 +20,6 @@ import com.bezat.bezat.interfaces.SearchRetaierInterface;
 import com.bezat.bezat.interfaces.SearchRetailerCallback;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseData;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
-import org.json.JSONException;
-
-import java.util.List;
-
-import io.reactivex.Observable;
 
 
 /**

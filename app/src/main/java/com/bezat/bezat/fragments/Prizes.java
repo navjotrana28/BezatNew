@@ -12,16 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.OrientationHelper;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.*;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezat.bezat.MyApplication;
 import com.bezat.bezat.R;
 import com.bezat.bezat.utils.Loader;
+import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,8 +40,6 @@ import java.util.Map;
  * create an instance of this fragment.
  */
 public class Prizes extends Fragment implements View.OnClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -56,6 +52,8 @@ public class Prizes extends Fragment implements View.OnClickListener {
     Loader loader;
     String currentDate;
     ImageView imgBack;
+    String lang = "";
+    RecyclerView bezatRec;
     private OnFragmentInteractionListener mListener;
 
     public Prizes() {
@@ -94,7 +92,16 @@ public class Prizes extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView=inflater.inflate(R.layout.fragment_prizes, container, false);
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+        }
+
         recPrizes=rootView.findViewById(R.id.recPrizes);
+        bezatRec = rootView.findViewById(R.id.bezatRec);
         imgBack = rootView.findViewById(R.id.imgBack);
         loader=new Loader(getContext());
         loader.show();
@@ -113,7 +120,6 @@ public class Prizes extends Fragment implements View.OnClickListener {
     }
 
     private void getPrizes() {
-
         JSONObject object = new JSONObject();
         String prizesUrl=URLS.Companion.getPRIZES_LIST()+currentDate;
         Log.v("prizesUrl",prizesUrl);
@@ -125,15 +131,49 @@ public class Prizes extends Fragment implements View.OnClickListener {
                             loader.dismiss();
                             try {
 
-                                PostAdapter postAdapter = new PostAdapter(response.getJSONObject("result")
-                                .getJSONArray("raffles"));
+                                JSONArray bezatJsonArray = new JSONArray();
+                                JSONArray otherJsonArray = new JSONArray();
+                                JSONArray array = response.getJSONObject("result")
+                                        .getJSONArray("raffles");
+                                for (int i = 0; i < array.length(); i++) {
+                                    if (array.getJSONObject(i).getString("raffle_category")
+                                            .equalsIgnoreCase("bezat")) {
+                                        JSONObject objectRaffles = new JSONObject();
+                                        objectRaffles.put("raffle_id", array.getJSONObject(i).getString("raffle_id"));
+                                        objectRaffles.put("raffle_name", array.getJSONObject(i).getString("raffle_name"));
+                                        objectRaffles.put("raffle_name_ar", array.getJSONObject(i).getString("raffle_name_ar"));
+                                        objectRaffles.put("prize", array.getJSONObject(i).getString("prize"));
+                                        objectRaffles.put("prize_ar", array.getJSONObject(i).getString("prize_ar"));
+                                        objectRaffles.put("draw_date", array.getJSONObject(i).getString("draw_date"));
+                                        objectRaffles.put("crcdt", array.getJSONObject(i).getString("crcdt"));
+                                        objectRaffles.put("raffle_category", array.getJSONObject(i).getString("raffle_category"));
+                                        bezatJsonArray.put(objectRaffles);
+                                    } else {
+                                        JSONObject objectRaffles = new JSONObject();
+                                        objectRaffles.put("raffle_id", array.getJSONObject(i).getString("raffle_id"));
+                                        objectRaffles.put("raffle_name", array.getJSONObject(i).getString("raffle_name"));
+                                        objectRaffles.put("raffle_name_ar", array.getJSONObject(i).getString("raffle_name_ar"));
+                                        objectRaffles.put("prize", array.getJSONObject(i).getString("prize"));
+                                        objectRaffles.put("prize_ar", array.getJSONObject(i).getString("prize_ar"));
+                                        objectRaffles.put("draw_date", array.getJSONObject(i).getString("draw_date"));
+                                        objectRaffles.put("crcdt", array.getJSONObject(i).getString("crcdt"));
+                                        objectRaffles.put("raffle_category", array.getJSONObject(i).getString("raffle_category"));
+                                        otherJsonArray.put(objectRaffles);
 
-                                //  recyclerView.setHasFixedSize(true);
-                                StaggeredGridLayoutManager layoutManager =
-                                        new StaggeredGridLayoutManager(1, OrientationHelper.VERTICAL);
-                                layoutManager.setGapStrategy(
-                                        StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
-                                recPrizes.setLayoutManager(layoutManager);
+                                    }
+                                }
+
+                                PostAdapter1 postAdapter1 = new PostAdapter1(bezatJsonArray);
+                                bezatRec.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+                                if (postAdapter1 != null && postAdapter1.getItemCount() > 0) {
+                                    bezatRec.setAdapter(postAdapter1);
+                                }
+                                Log.v("prizesresponse", response + "");
+                                PostAdapter postAdapter = new PostAdapter(otherJsonArray);
+
+                                recPrizes.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
                                 recPrizes.setItemAnimator(new DefaultItemAnimator());
                                 if (postAdapter != null && postAdapter.getItemCount() > 0) {
                                     recPrizes.setAdapter(postAdapter);
@@ -227,7 +267,8 @@ public class Prizes extends Fragment implements View.OnClickListener {
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
-                holder.txtPrizeName.setText(jsonArray.getJSONObject(position).getString("raffle_name"));
+                holder.txtPrizeName.setText(jsonArray.getJSONObject(position).getString("raffle_name" + lang));
+                holder.txtPrizePrice.setText(jsonArray.getJSONObject(position).getString("prize" + lang));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -242,24 +283,98 @@ public class Prizes extends Fragment implements View.OnClickListener {
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
             TextView txtPrizeName;
+            TextView txtPrizePrice;
+
             public MyViewHolder(View itemView) {
                 super(itemView);
 
-                txtPrizeName=itemView.findViewById(R.id.txtPrizeName);
-
+                txtPrizeName = itemView.findViewById(R.id.txtPrizeName);
+                txtPrizePrice = itemView.findViewById(R.id.txtPrizePrice);
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         try {
-                        PrizeDetails prizeDetails=new PrizeDetails();
-                        Bundle args = new Bundle();
-                        args.putString("raffle_id",jsonArray.getJSONObject(getAdapterPosition()).getString("raffle_id") );
-                        args.putString("raffle_category", jsonArray.getJSONObject(getAdapterPosition()).getString("raffle_category"));
-                        prizeDetails.setArguments(args);
-                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.container,prizeDetails);
-                        ft.addToBackStack(null);
-                        ft.commit();
+                            PrizeDetails prizeDetails = new PrizeDetails();
+                            Bundle args = new Bundle();
+                            args.putString("raffle_id", jsonArray.getJSONObject(getAdapterPosition()).getString("raffle_id"));
+                            args.putString("raffle_category", jsonArray.getJSONObject(getAdapterPosition()).getString("raffle_category"));
+                            prizeDetails.setArguments(args);
+                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.container, prizeDetails);
+                            ft.addToBackStack(null);
+                            ft.commit();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+            }
+        }
+    }
+
+    private class PostAdapter1 extends RecyclerView.Adapter<PostAdapter1.MyViewHolder> {
+        JSONArray jsonArray;
+
+        public PostAdapter1(JSONArray array) {
+            this.jsonArray = array;
+        }
+
+        public void append(JSONArray array) {
+            try {
+                for (int i = 0; i < array.length(); i++) {
+                    this.jsonArray.put(array.get(i));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.prizes_irtm, parent, false);
+            return new MyViewHolder(itemView);
+        }
+
+        @Override
+        public void onBindViewHolder(MyViewHolder holder, int position) {
+            try {
+                holder.txtPrizeName.setText(jsonArray.getJSONObject(position).getString("raffle_name" + lang));
+                holder.txtPrizePrice.setText(jsonArray.getJSONObject(position).getString("prize" + lang));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return jsonArray.length();
+        }
+
+        public class MyViewHolder extends RecyclerView.ViewHolder {
+
+            TextView txtPrizeName;
+            TextView txtPrizePrice;
+            public MyViewHolder(View itemView) {
+                super(itemView);
+
+                txtPrizeName=itemView.findViewById(R.id.txtPrizeName);
+                txtPrizePrice = itemView.findViewById(R.id.txtPrizePrice);
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        try {
+                            PrizeDetails prizeDetails = new PrizeDetails();
+                            Bundle args = new Bundle();
+                            args.putString("raffle_id", jsonArray.getJSONObject(getAdapterPosition()).getString("raffle_id"));
+                            args.putString("raffle_category", jsonArray.getJSONObject(getAdapterPosition()).getString("raffle_category"));
+                            prizeDetails.setArguments(args);
+                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.container, prizeDetails);
+                            ft.addToBackStack(null);
+                            ft.commit();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
