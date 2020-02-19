@@ -29,9 +29,9 @@ fun RecyclerView.addLineDecorator(context: Context, inset:Int = (context.resourc
     ) })
 }
 
-fun <T>EditText.convertToSpinner(selection:List<T>, getDisplayText:(T)->String,selectionImage:(T) -> String, postAction: ((T, String) -> Unit)? = null){
+fun <T>EditText.convertToSpinner(selection:List<T>, getDisplayText:(T)->String,selectionImage:(T) -> String, setImageOnClick:(T) ->Unit, postAction: ((T, String) -> Unit)? = null){
     keyListener = null
-    val dialog = Selector(context, selection, getDisplayText,selectionImage, { obj, text -> setText(text); error = null; postAction?.invoke(obj,text)})
+    val dialog = Selector(context, selection, getDisplayText,selectionImage,setImageOnClick, { obj, text -> setText(text); error = null; postAction?.invoke(obj,text)})
     setOnClickListener { dialog.show() }
     setOnFocusChangeListener { _, hasFocus -> if(hasFocus) dialog.show() }
 }

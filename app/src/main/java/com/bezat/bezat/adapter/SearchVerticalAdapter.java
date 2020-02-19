@@ -14,22 +14,25 @@ import com.bezat.bezat.R;
 import com.bezat.bezat.fragments.StoreOffer;
 import com.bezat.bezat.interfaces.CategoryId;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseData;
+import com.bezat.bezat.models.searchRetailerResponses.SearchRetailerStore;
 import com.squareup.picasso.Picasso;
 import org.json.JSONException;
+
+import java.util.List;
 
 public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAdapter.MyViewHolder> {
 
     private Context mcontext;
     CategoryId categoryId;
-    private SearchResponseData responseResult;
+    private List<SearchRetailerStore> responseResult;
 
-    public SearchVerticalAdapter(Context context, SearchResponseData responseResult, CategoryId categoryId) {
+    public SearchVerticalAdapter(Context context, List<SearchRetailerStore> responseResult, CategoryId categoryId) {
         mcontext = context;
         this.categoryId = categoryId;
         this.responseResult = responseResult;
     }
 
-    public void setDatumList(SearchResponseData datumList) {
+    public void setDatumList(List<SearchRetailerStore> datumList) {
         this.responseResult = datumList;
         notifyDataSetChanged();
     }
@@ -45,17 +48,17 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.imnageHorizontalName.setText(responseResult.getStores().get(position).getStoreName());
+        holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName());
         Picasso.get()
-                .load(responseResult.getStores().get(position).getStoreImage())
+                .load(responseResult.get(position).getStoreImage())
                 .resize(500, 200)
                 .into(holder.imageHorizontal);
     }
 
     @Override
     public int getItemCount() {
-        if (responseResult.getStores() != null) {
-            return responseResult.getStores().size();
+        if (responseResult != null) {
+            return responseResult.size();
         } else
             return 0;
     }
@@ -73,7 +76,7 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
                 @Override
                 public void onClick(View view) {
                     int pos = getAdapterPosition();
-                    categoryId.onSuccess(responseResult.getStores().get(pos).getStoreId());
+                    categoryId.onSuccess(responseResult.get(pos).getStoreId());
                 }
             });
         }

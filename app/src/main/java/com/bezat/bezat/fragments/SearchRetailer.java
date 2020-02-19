@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,19 @@ import com.bezat.bezat.interfaces.SearchRetaierInterface;
 import com.bezat.bezat.interfaces.SearchRetailerCallback;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseData;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
+import com.bezat.bezat.models.searchRetailerResponses.SearchRetailerStore;
+
+import org.json.JSONException;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -36,6 +50,7 @@ public class SearchRetailer extends Fragment {
     private SearchResponseResult searchResponseResult = new SearchResponseResult();
     private SearchResponseData responseData = new SearchResponseData();
     private SearchView searchView;
+    private List<SearchRetailerStore> retailerData;
 
     public SearchRetailer() {
         // Required empty public constructor
@@ -69,6 +84,7 @@ public class SearchRetailer extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                getAfterQuery(retailerData, newText);
                 return false;
             }
         });
@@ -79,7 +95,7 @@ public class SearchRetailer extends Fragment {
     }
 
     private void setUpRecyclerViewVertical() {
-        verticalAdapter = new SearchVerticalAdapter(getActivity(), responseData, new CategoryId() {
+        verticalAdapter = new SearchVerticalAdapter(getActivity(), responseData.getStores(), new CategoryId() {
             @Override
             public void onSuccess(String categoryId) {
                 try {
@@ -106,11 +122,11 @@ public class SearchRetailer extends Fragment {
         clientRetrofit.SearchRetailerResult(new SearchRetaierInterface() {
             @Override
             public void onSuccess(SearchResponseResult responseResult) {
+                retailerData = responseResult.getResult().get(0).getStores();
                 searchResponseResult = responseResult;
                 adapter.setDatumList(responseResult);
                 adapter.notifyDataSetChanged();
-                verticalAdapter.setDatumList(responseResult.getResult().get(0));
-                verticalAdapter.notifyDataSetChanged();
+                verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores());
                 progressBar.setVisibility(View.GONE);
 
             }
@@ -126,8 +142,8 @@ public class SearchRetailer extends Fragment {
         adapter = new SearchAdapter(getActivity(), searchResponseResult, new SearchRetailerCallback() {
             @Override
             public void onClickHorizonView(int pos) {
-                verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos));
-                verticalAdapter.notifyDataSetChanged();
+                retailerData = searchResponseResult.getResult().get(pos).getStores();
+                verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos).getStores());
             }
         });
         layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
@@ -135,8 +151,30 @@ public class SearchRetailer extends Fragment {
         recyclerViewHorizontal.setAdapter(adapter);
     }
 
-//    private Observable<List<SearchResponseData>> getAfterQuery(List<SearchResponseData> searchableData, String query) {
-//        return Observable.just(searchableData)
-//                .
-//    }
+    private void getAfterQuery(List<SearchRetailerStore> searchableData, String query) {
+        CompositeDisposable disposable = new CompositeDisposable();
+         Observable.just(searchableData)
+                .flatMap(Observable::fromIterable)
+                .filter(searchRetailerStore -> searchRetailerStore.getStoreName().toLowerCase().contains(query.toLowerCase()))
+                .toList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<SearchRetailerStore>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(List<SearchRetailerStore> searchRetailerStores) {
+                        verticalAdapter.setDatumList(searchRetailerStores);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+
+    }
 }

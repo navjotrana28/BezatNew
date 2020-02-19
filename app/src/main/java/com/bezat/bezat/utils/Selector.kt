@@ -20,6 +20,7 @@ class Selector<T>(
     val list: List<T>,
     val getTitle: (T) -> String,
     val getImage: (T) -> String,
+    val setImageOnClick:(T) -> Unit,
     val action: (T, String) -> Unit
 ) : Dialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,13 +35,16 @@ class Selector<T>(
         root.layoutManager = LinearLayoutManager(root.context)
         root.addLineDecorator(context, 0)
         root.adapter =
-            SelectorAdapter(list, getImage, getTitle, { p0, p1 -> action(p0, p1); dismiss() })
+            SelectorAdapter(list, getImage, getTitle,setImageOnClick, { p0, p1 -> action(p0, p1); dismiss() })
     }
 }
 
 private class SelectorAdapter<T>(
     val list: List<T>,
-    val image: (T) -> String, val getString: (T) -> String, val action: (T, String) -> Unit
+    val image: (T) -> String,
+    val getString: (T) -> String,
+    val setImageOnClick:(T) ->Unit,
+    val action: (T, String) -> Unit
 ) : RecyclerView.Adapter<SelectorViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): SelectorViewHolder {
         return SelectorViewHolder(
@@ -52,6 +56,7 @@ private class SelectorAdapter<T>(
         ).apply {
             view.setOnClickListener {
                 action(list[adapterPosition], textView.text.toString())
+                setImageOnClick.invoke(list[adapterPosition])
             }
         }
     }
