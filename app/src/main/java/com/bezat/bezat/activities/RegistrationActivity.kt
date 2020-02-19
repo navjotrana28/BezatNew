@@ -56,11 +56,11 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
         GetCountryService().getCountries({ countryData ->
             country.convertToSpinner(
-                countryData.result, { it.name }, {
-                    it.img
+                countryData.result, { it.name }, { it.img }, {
+                    Picasso.get().load(it.img).into(countryIcon)
                 }) { obj, _ -> code = obj.phoneCode }
         }, {})
-        etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it })
+        etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it }, {})
     }
 
     private fun callImageMethod() {
