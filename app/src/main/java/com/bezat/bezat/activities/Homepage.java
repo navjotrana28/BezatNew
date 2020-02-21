@@ -39,24 +39,33 @@ public class Homepage extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
                     getSupportFragmentManager().popBackStack();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new Dashboard());
+                    ft.commit();
 
-                    viewPager.setCurrentItem(0);
+//                    viewPager.setCurrentItem(0);
                     return true;
                 case R.id.navigation_bell:
                     getSupportFragmentManager().popBackStack();
-
-                    viewPager.setCurrentItem(1);
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new Notification());
+                    ft.commit();
+//                    viewPager.setCurrentItem(1);
                     return true;
                 case R.id.navigation_profile:
                     getSupportFragmentManager().popBackStack();
-
-                    viewPager.setCurrentItem(2);
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new MyProfile());
+                    ft.commit();
+//                    viewPager.setCurrentItem(2);
                     return true;
 
                 case R.id.navigation_settings:
                     getSupportFragmentManager().popBackStack();
-
-                    viewPager.setCurrentItem(3);
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new Settings());
+                    ft.commit();
+//                    viewPager.setCurrentItem(3);
                     return true;
             }
             return false;
@@ -72,43 +81,41 @@ public class Homepage extends AppCompatActivity {
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
-
         setContentView(R.layout.activity_home);
+
+        ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.container, new Dashboard());
+        ft.commit();
 
         BottomNavigationView navView = findViewById(R.id.navigation);
         frameLayout = findViewById(R.id.container);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        currentFragment = new Dashboard();
-        ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.viewPagerhome, currentFragment);
-        ft.commit();
-        viewPager = findViewById(R.id.viewPagerhome);
-        addTabs(viewPager);
+//        viewPager = findViewById(R.id.viewPagerhome);
+//        addTabs(viewPager);
         setPageChangeListener(navView);
 
     }
 
     private void setPageChangeListener(BottomNavigationView navView) {
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                navView.getMenu().getItem(position).setChecked(true);
-                if (position == 3) {
-                    findViewById(R.id.container).setVisibility(View.VISIBLE);
-                }
-                navView.getMenu().getItem(position).setChecked(true);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                navView.getMenu().getItem(position).setChecked(true);
+//                if (position == 3) {
+//                    findViewById(R.id.container).setVisibility(View.VISIBLE);
+//                }
+//                navView.getMenu().getItem(position).setChecked(true);
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
     }
 
     private void addTabs(ViewPager viewPager) {

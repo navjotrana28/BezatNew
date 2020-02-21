@@ -122,8 +122,8 @@ public class TotalCoupon extends Fragment {
         Date date = new Date();
         currentDate = formatter.format(date);
         txtDate.setText(currentDate);
-//        getTotalCoupon();
-        getTotalCoupons();
+        getTotalCoupon();
+//        getTotalCoupons();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override

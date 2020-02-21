@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -168,6 +170,10 @@ public class Prizes extends Fragment implements View.OnClickListener {
 
                                 if (postAdapter1 != null && postAdapter1.getItemCount() > 0) {
                                     bezatRec.setAdapter(postAdapter1);
+                                }else{
+                                    CardView view = rootView.findViewById(R.id.bezat_raffles);
+                                    view.setVisibility(View.GONE);
+                                    bezatRec.setVisibility(View.GONE);
                                 }
                                 Log.v("prizesresponse", response + "");
                                 PostAdapter postAdapter = new PostAdapter(otherJsonArray);
