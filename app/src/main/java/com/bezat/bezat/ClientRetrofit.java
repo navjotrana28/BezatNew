@@ -7,6 +7,7 @@ import com.bezat.bezat.api.feedbackResponse.FeedbackRequest;
 import com.bezat.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezat.bezat.interfaces.*;
 import com.bezat.bezat.models.CountryData;
+import com.bezat.bezat.models.CouponResult;
 import com.bezat.bezat.models.RegisterRequestResponse;
 import com.bezat.bezat.models.RegisterUserRequest;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
@@ -106,6 +107,32 @@ public class ClientRetrofit {
                     @Override
                     public void onNext(SearchResponseResult responseResult) {
                         retaierInterface.onSuccess(responseResult);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void totalCouponsResult(String userId, String currentDate, final TotalCouponsCallback couponsCallback) {
+        serviceRetrofit.getCouponResult(userId, currentDate)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CouponResult>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(CouponResult responseResult) {
+                        couponsCallback.onSuccess(responseResult);
                     }
 
                     @Override

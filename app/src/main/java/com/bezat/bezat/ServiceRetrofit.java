@@ -4,9 +4,9 @@ package com.bezat.bezat;
 import com.bezat.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezat.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezat.bezat.models.CountryData;
+import com.bezat.bezat.models.CouponResult;
 import com.bezat.bezat.models.RegisterRequestResponse;
 import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
-
 import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -25,6 +25,11 @@ public interface ServiceRetrofit {
 
     @GET("category/list")
     Observable<SearchResponseResult> getSearchRetaierSuccess();
+
+    @FormUrlEncoded
+    @POST("raffles/user_monthly_raffles?")
+    Observable<CouponResult> getCouponResult(@Field("userId") String userId,
+                                             @Field("&year_month=") String currentDate);
 
     @FormUrlEncoded
     @POST("user/feedback")

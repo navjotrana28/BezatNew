@@ -513,6 +513,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("apikey", "12345678");
+                headers.put("Content-Type", "application/json");
                 return headers;
             }
 

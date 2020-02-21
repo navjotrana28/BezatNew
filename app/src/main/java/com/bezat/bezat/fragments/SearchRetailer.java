@@ -151,7 +151,7 @@ public class SearchRetailer extends Fragment {
         recyclerViewHorizontal.setAdapter(adapter);
     }
 
-    private void getAfterQuery(List<SearchRetailerStore> searchableData, String query) {
+    public void getAfterQuery(List<SearchRetailerStore> searchableData, String query) {
         CompositeDisposable disposable = new CompositeDisposable();
          Observable.just(searchableData)
                 .flatMap(Observable::fromIterable)
