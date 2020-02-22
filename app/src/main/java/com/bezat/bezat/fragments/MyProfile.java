@@ -16,7 +16,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -25,7 +30,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import com.android.volley.*;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezat.bezat.MyApplication;
 import com.bezat.bezat.R;
@@ -34,11 +44,15 @@ import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import com.bezat.bezat.utils.VolleyMultipartRequest;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -471,16 +485,12 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                String addres, String gender,
                                String dob, String country_id, String image) {
 
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLS.Companion.getPROFILE_Edit(), new Response.Listener<NetworkResponse>() {
+            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLS.Companion.getPROFILE_Edit(), new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 loader.dismiss();
                 String res = new String(response.data);
-//                if (gender.equalsIgnoreCase("Male")) {
-//                    imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.profile));
-//                } else {
-//                    imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_femaleicon));
-//                }
+                Toast.makeText(getContext(), res, Toast.LENGTH_LONG).show();
                 Log.v("responseprofile", res + "");
             }
         }, new Response.ErrorListener() {
@@ -508,6 +518,15 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 System.out.println("object" + params + " ");
                 return params;
             }
+                private void textParse(DataOutputStream dataOutputStream, Map<String, String> params, String encoding) throws IOException {
+                    try {
+                        for (Map.Entry<String, String> entry : params.entrySet()) {
+                            buildTextPart(dataOutputStream, entry.getKey(), entry.getValue());
+                        }
+                    } catch (UnsupportedEncodingException uee) {
+                        throw new RuntimeException("Encoding not supported: " + encoding, uee);
+                    }
+                }
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
