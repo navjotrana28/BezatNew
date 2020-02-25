@@ -50,8 +50,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -485,7 +483,13 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                String addres, String gender,
                                String dob, String country_id, String image) {
 
-            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLS.Companion.getPROFILE_Edit(), new Response.Listener<NetworkResponse>() {
+        String saveddata = "{" + "\"phone_code\":" + "\"" + phone_code + "\"," + "\"phone\":" + "\"" + phone + "\","
+                + "\"country_id\":" + "\"" + country_id + "\"," + "\"userId\":" + "\"" + userId + "\"," +
+                "\"image\"" + "\"" + image + "\"" + "}";
+        Log.v("savedData", saveddata + "");
+
+
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLS.Companion.getPROFILE_Edit(), new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 loader.dismiss();
@@ -506,33 +510,36 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("userId", userId);
-                params.put("user_name", user_name);
-                params.put("phone_code", phone_code);
-                params.put("phone", phone);
-                params.put("addres", addres);
-                params.put("gender", gender);
-                params.put("dob", dob);
-                params.put("country_id", country_id);
-                params.put("image", image);
-                System.out.println("object" + params + " ");
+//                params.put("userId", userId);
+//                params.put("user_name", user_name);
+//                params.put("phone_code", phone_code);
+//                params.put("phone", phone);
+//                params.put("addres", addres);
+//                params.put("gender", gender);
+//                params.put("dob", dob);
+//                params.put("country_id", country_id);
+//                params.put("image", image);
+//                System.out.println("object" + params + " ");
                 return params;
             }
-                private void textParse(DataOutputStream dataOutputStream, Map<String, String> params, String encoding) throws IOException {
-                    try {
-                        for (Map.Entry<String, String> entry : params.entrySet()) {
-                            buildTextPart(dataOutputStream, entry.getKey(), entry.getValue());
-                        }
-                    } catch (UnsupportedEncodingException uee) {
-                        throw new RuntimeException("Encoding not supported: " + encoding, uee);
-                    }
+            @Override
+            public String getBodyContentType(){
+                return "application/json; charset=utf-8";
+            }
+            @Override
+            public byte[] getBody() throws AuthFailureError{
+                try {
+                    return saveddata == null ? null:saveddata.getBytes("utf-8");
+                } catch (UnsupportedEncodingException e) {
+                    return null;
                 }
+            }
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("apikey", "12345678");
-                headers.put("Content-Type", "application/json");
+//                headers.put("Content-Type", "application/json");
                 return headers;
             }
 
