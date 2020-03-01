@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -236,18 +237,20 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 bitmap = (Bitmap) data.getExtras().get("data");
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
+                byte[] byteArray = bytes.toByteArray();
+                String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                SharedPrefs.setKey(getActivity(), "image", "data:image/jpeg;base64," + encoded);
                 Log.e("Activity", "Pick from Camera::>>> ");
 
-                int currentBitmapWidth = bitmap.getWidth();
-                int currentBitmapHeight = bitmap.getHeight();
+//                int currentBitmapWidth = bitmap.getWidth();
+//                int currentBitmapHeight = bitmap.getHeight();
+//
+//                int ivWidth = imgProfile.getWidth();
+//                int newHeight = (int) Math.floor((double) currentBitmapHeight * ((double) ivWidth / (double) currentBitmapWidth));
+//
+//                Bitmap newbitMap = Bitmap.createScaledBitmap(bitmap, ivWidth, newHeight, true);
 
-                int ivWidth = imgProfile.getWidth();
-                int newHeight = (int) Math.floor((double) currentBitmapHeight * ((double) ivWidth / (double) currentBitmapWidth));
-
-                Bitmap newbitMap = Bitmap.createScaledBitmap(bitmap, ivWidth, newHeight, true);
-
-                imgProfile.setImageBitmap(newbitMap);
-                SharedPrefs.setKey(getActivity(), "image", newbitMap.toString());
+                imgProfile.setImageBitmap(bitmap);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -258,8 +261,11 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
-                Log.e("Activity", "Pick from Gallery::>>> ");
                 imgProfile.setImageBitmap(bitmap);
+                byte[] byteArray = bytes.toByteArray();
+                String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                SharedPrefs.setKey(getActivity(), "image", "data:image/jpeg;base64," + encoded);
+                Log.e("Activity", "Pick from Gallery::>>> ");
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -483,9 +489,9 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                String addres, String gender,
                                String dob, String country_id, String image) {
 
-        String saveddata = "{" + "\"phone_code\":" + "\"" + phone_code + "\"," + "\"phone\":" + "\"" + phone + "\","
-                + "\"country_id\":" + "\"" + country_id + "\"," + "\"userId\":" + "\"" + userId + "\"," +
-                "\"image\"" + "\"" + image + "\"" + "}";
+        String saveddata = "{" + "\"phone_code\":" + "\"" + phone_code + "\"," + "\"phone\":"
+                + "\"" + phone + "\"," + "\"country_id\":" + "\"" + country_id +
+                "\"," + "\"userId\":" + "\"" + userId + "\"," + "\"image\":" + "\"" + image + "\"" + "}";
         Log.v("savedData", saveddata + "");
 
 
@@ -510,26 +516,24 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-//                params.put("userId", userId);
-//                params.put("user_name", user_name);
-//                params.put("phone_code", phone_code);
 //                params.put("phone", phone);
 //                params.put("addres", addres);
 //                params.put("gender", gender);
 //                params.put("dob", dob);
 //                params.put("country_id", country_id);
-//                params.put("image", image);
 //                System.out.println("object" + params + " ");
                 return params;
             }
+
             @Override
-            public String getBodyContentType(){
+            public String getBodyContentType() {
                 return "application/json; charset=utf-8";
             }
+
             @Override
-            public byte[] getBody() throws AuthFailureError{
+            public byte[] getBody() throws AuthFailureError {
                 try {
-                    return saveddata == null ? null:saveddata.getBytes("utf-8");
+                    return saveddata == null ? null : saveddata.getBytes("utf-8");
                 } catch (UnsupportedEncodingException e) {
                     return null;
                 }
