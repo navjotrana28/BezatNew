@@ -141,7 +141,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/muli_semibold"
                         android:gravity="center"
-                        android:text="@string/other_raffles"
+                        android:text="Other Raffles"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_15sdp" />
             </androidx.cardview.widget.CardView>

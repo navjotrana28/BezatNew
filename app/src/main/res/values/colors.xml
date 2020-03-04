@@ -14,5 +14,9 @@
     <color name="divider_grey">#e4e4e5</color>
     <color name="dark_grey">#B6B6B8</color>
     <color name="golden">#ffd700</color>
+    <color name="color_green">#14808d</color>
+    <color name="lightest_grey">#8BE9E9E9</color>
+    <color name="green">#6FFA17</color>
+
 
 </resources>
