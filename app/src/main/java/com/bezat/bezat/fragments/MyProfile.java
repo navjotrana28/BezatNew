@@ -69,6 +69,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    String encoded = "";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -263,7 +264,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
                 imgProfile.setImageBitmap(bitmap);
                 byte[] byteArray = bytes.toByteArray();
-                String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 SharedPrefs.setKey(getActivity(), "image", "data:image/jpeg;base64," + encoded);
                 Log.e("Activity", "Pick from Gallery::>>> ");
 
@@ -405,6 +406,8 @@ public class MyProfile extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.txtSave) {
             loader.show();
+            String image = SharedPrefs.getKey(getActivity(), "image").replaceAll
+                    ("(?:\\r\\n|\\n\\r|\\n|\\r)", "");
             updateProfile(SharedPrefs.getKey(getActivity(), "userId"),
                     etName.getText().toString(),
                     phone_code,
@@ -413,7 +416,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                     etGender.getText().toString(),
                     etDob.getText().toString(),
                     SharedPrefs.getKey(getActivity(), "country_id"),
-                    SharedPrefs.getKey(getActivity(), "image")
+                    image
             );
         }
         if (view.getId() == R.id.etDob) {
@@ -489,9 +492,14 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                String addres, String gender,
                                String dob, String country_id, String image) {
 
-        String saveddata = "{" + "\"phone_code\":" + "\"" + phone_code + "\"," + "\"phone\":"
-                + "\"" + phone + "\"," + "\"country_id\":" + "\"" + country_id +
-                "\"," + "\"userId\":" + "\"" + userId + "\"," + "\"image\":" + "\"" + image + "\"" + "}";
+        String saveddata = "{" + "\"phone_code\":" + "\"" + phone_code + "\","
+                + "\"user_name\":" + "\"" + user_name + "\"," +
+                "\"address\":" + "\"" + addres + "\"," +
+                "\"dob\":" + "\""  + dob + "\"," +
+                "\"phone\":" + "\"" + phone + "\"," +
+                "\"country_id\":" + "\"" + country_id + "\"," +
+                "\"userId\":" + "\"" + userId + "\"," +
+                "\"image\":" + "\"" + image + "\"" + "}";
         Log.v("savedData", saveddata + "");
 
 
