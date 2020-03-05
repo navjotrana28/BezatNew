@@ -5,27 +5,28 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezat.bezat.MyApplication;
 import com.bezat.bezat.R;
 import com.bezat.bezat.utils.Loader;
-import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import com.bruce.pickerview.popwindow.DatePickerPopWin;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,9 +59,10 @@ public class BezatWinner extends Fragment {
     View rootView;
     RecyclerView recWinner;
     Loader loader;
-    ImageView imgBack,imgSearch;
+    ImageView imgBack, imgSearch;
     TextView txtDate;
-    String currentDate="";
+    String currentDate = "";
+
     public BezatWinner() {
         // Required empty public constructor
     }
@@ -96,17 +98,17 @@ public class BezatWinner extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView=inflater.inflate(R.layout.activity_bezat_winner, container, false);
+        rootView = inflater.inflate(R.layout.activity_bezat_winner, container, false);
 
-        recWinner=rootView.findViewById(R.id.recWinner);
-        imgBack=rootView.findViewById(R.id.imgBack);
-        txtDate=rootView.findViewById(R.id.txtDate);
-        imgSearch=rootView.findViewById(R.id.imgSearch);
-        loader= new Loader(getContext());
+        recWinner = rootView.findViewById(R.id.recWinner);
+        imgBack = rootView.findViewById(R.id.imgBack);
+        txtDate = rootView.findViewById(R.id.txtDate);
+        imgSearch = rootView.findViewById(R.id.imgSearch);
+        loader = new Loader(getContext());
         loader.show();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH);
         Date date = new Date();
-        currentDate=formatter.format(date);
+        currentDate = formatter.format(date);
         txtDate.setText(currentDate);
         getWinner();
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -124,12 +126,10 @@ public class BezatWinner extends Fragment {
                     @Override
                     public void onDatePickCompleted(int year, int month, int day, String dateDesc) {
 //                        Toast.makeText(getActivity(), dateDesc, Toast.LENGTH_SHORT).show();
-                        if ((month+1)<10)
-                        {
-                            txtDate.setText(year + "-0" + (month ));
-                        }
-                        else {
-                            txtDate.setText(year + "-" + (month ));
+                        if ((month + 1) < 10) {
+                            txtDate.setText(year + "-0" + (month));
+                        } else {
+                            txtDate.setText(year + "-" + (month));
                         }
                         currentDate = txtDate.getText().toString();
                         loader.show();
@@ -155,12 +155,10 @@ public class BezatWinner extends Fragment {
                     @Override
                     public void onDatePickCompleted(int year, int month, int day, String dateDesc) {
 //                        Toast.makeText(getActivity(), dateDesc, Toast.LENGTH_SHORT).show();
-                        if ((month+1)<10)
-                        {
-                            txtDate.setText(year + "-0" + (month ));
-                        }
-                        else {
-                            txtDate.setText(year + "-" + (month ));
+                        if ((month + 1) < 10) {
+                            txtDate.setText(year + "-0" + (month));
+                        } else {
+                            txtDate.setText(year + "-" + (month));
                         }
                         currentDate = txtDate.getText().toString();
                         loader.show();
@@ -185,15 +183,15 @@ public class BezatWinner extends Fragment {
     private void getWinner() {
 
         JSONObject object = new JSONObject();
-        String Url= URLS.Companion.getGET_WINNER()+currentDate;
+        String Url = URLS.Companion.getGET_WINNER() + currentDate.replace("-", "");
 
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        Url ,
+                        Url,
                         object,
                         response -> {
                             loader.dismiss();
-                            Log.v("winnerresponse",response+" ");
+                            Log.v("winnerresponse", response + " ");
                             try {
                                 PostAdapter postAdapter = new PostAdapter(response.getJSONObject("result").getJSONArray("winners"));
                                 StaggeredGridLayoutManager layoutManager =
@@ -309,17 +307,17 @@ public class BezatWinner extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView txtProductName,txtWinner,txtPrize,txtDate;
+            TextView txtProductName, txtWinner, txtPrize, txtDate;
             ImageView imgWinner;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
 
-                txtProductName=itemView.findViewById(R.id.txtProductName);
-                txtWinner=itemView.findViewById(R.id.txtWinner);
-                txtPrize=itemView.findViewById(R.id.txtPrize);
-                txtDate=itemView.findViewById(R.id.txtDate);
-                imgWinner=itemView.findViewById(R.id.imgWinner);
+                txtProductName = itemView.findViewById(R.id.txtProductName);
+                txtWinner = itemView.findViewById(R.id.txtWinner);
+                txtPrize = itemView.findViewById(R.id.txtPrize);
+                txtDate = itemView.findViewById(R.id.txtDate);
+                imgWinner = itemView.findViewById(R.id.imgWinner);
 
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
