@@ -6,8 +6,8 @@
         android:layout_height="wrap_content">
     <ImageView
             android:id="@+id/image_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
             android:src="@drawable/bezat_contact_logo"
             app:layout_constraintBottom_toTopOf="@+id/text_horizontal"
             app:layout_constraintEnd_toEndOf="parent"

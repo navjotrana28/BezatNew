@@ -321,10 +321,12 @@ public class TotalCoupon extends Fragment {
 
                 holder.txtBilldate.setText("Date : " + jsonArray.getJSONObject(position).getString("bill_date"));
                 holder.txtBillno.setText(jsonArray.getJSONObject(position).getString("bill_no"));
-                holder.txtRaffles.setText("Raffles : " + jsonArray.getJSONObject(position).getString("raffles"));
+                holder.txtRaffles.setText(jsonArray.getJSONObject(position).getString("raffles"));
                 holder.txtStoreName.setText(jsonArray.getJSONObject(position).getString("storeName" + lang));
+                holder.txtCouponNo.setText(jsonArray.getJSONObject(position).getString("totalCoupons" + lang));
 
-                Picasso.get().load(jsonArray.getJSONObject(position).getString("store_logo")).into(holder.imgCoupon);
+                Picasso.get().load(jsonArray.getJSONObject(position).getString("store_logo"))
+                        .into(holder.imgCoupon);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -339,7 +341,7 @@ public class TotalCoupon extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView txtStoreName, txtRaffles, txtBillno, txtBilldate;
+            TextView txtStoreName, txtRaffles, txtBillno, txtBilldate,txtCouponNo;
             ImageView imgCoupon;
 
             public MyViewHolder(View itemView) {
@@ -350,6 +352,7 @@ public class TotalCoupon extends Fragment {
                 txtRaffles = itemView.findViewById(R.id.txtRaffles);
                 txtStoreName = itemView.findViewById(R.id.txtStoreName);
                 imgCoupon = itemView.findViewById(R.id.imgCoupon);
+                txtCouponNo = itemView.findViewById(R.id.txtcouponNo);
 
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

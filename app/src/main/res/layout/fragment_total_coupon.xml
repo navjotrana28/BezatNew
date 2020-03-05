@@ -91,14 +91,12 @@
             android:layout_below="@+id/search_total_coupons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleTotalCoupons"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary">
+                android:layout_height="wrap_content">
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
