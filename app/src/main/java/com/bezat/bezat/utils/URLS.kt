@@ -8,7 +8,7 @@ class URLS {
         val LOGIN_URL = BASE_PATH+"user/login"
         val REGISTER_URL = BASE_PATH+"user/register"
         val USER_BANNER = BASE_PATH+"user/banners"
-        val LATEST_OFFER = BASE_PATH+"user/latest_offers?"
+        val LATEST_OFFER = BASE_PATH+"store/saved_offer_list?"
         val CATEGORY_LIST = BASE_PATH+"category/list"
         val VIP_OFFER = BASE_PATH+"user/vip_offer?"
         val GET_WINNER = BASE_PATH+"raffles/winners?year_month="

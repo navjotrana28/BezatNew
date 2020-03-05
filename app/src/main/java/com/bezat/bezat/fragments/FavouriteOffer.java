@@ -4,31 +4,37 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezat.bezat.MyApplication;
 import com.bezat.bezat.R;
 import com.bezat.bezat.utils.Loader;
+import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -55,6 +61,8 @@ public class FavouriteOffer extends Fragment {
     RecyclerView recOffer;
     Loader loader;
     View rootView;
+    private String currentDate = "";
+
     public FavouriteOffer() {
         // Required empty public constructor
     }
@@ -90,11 +98,14 @@ public class FavouriteOffer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView=inflater.inflate(R.layout.activity_favourite_offer, container, false);
+        rootView = inflater.inflate(R.layout.activity_favourite_offer, container, false);
         imgBack = rootView.findViewById(R.id.imgBack);
-                recOffer=rootView.findViewById(R.id.recOffer);
-        loader= new Loader(getContext());
+        recOffer = rootView.findViewById(R.id.recOffer);
+        loader = new Loader(getContext());
         loader.show();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        Date date = new Date();
+        currentDate = formatter.format(date);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,20 +155,23 @@ public class FavouriteOffer extends Fragment {
         JSONObject object = new JSONObject();
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        URLS.Companion.getLATEST_OFFER()+"userId=16&currentDate=2019-06-25",
+//                        URLS.Companion.getLATEST_OFFER() + "userId=16&currentDate=2019-06-25",
+                        URLS.Companion.getLATEST_OFFER() + "userId=" + SharedPrefs.getKey(getActivity(),
+                                "userId") + "&currentDate=" + currentDate,
                         object,
                         response -> {
                             loader.dismiss();
                             try {
 
-                                PostAdapter   postAdapter = new PostAdapter(response.getJSONArray("result"));
+                                PostAdapter postAdapter = new PostAdapter(response.getJSONArray("result"));
 
                                 //  recyclerView.setHasFixedSize(true);
                                 StaggeredGridLayoutManager layoutManager =
                                         new StaggeredGridLayoutManager(1, OrientationHelper.VERTICAL);
                                 layoutManager.setGapStrategy(
                                         StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
-                                recOffer.setLayoutManager(layoutManager);                                recOffer.setItemAnimator(new DefaultItemAnimator());
+                                recOffer.setLayoutManager(layoutManager);
+                                recOffer.setItemAnimator(new DefaultItemAnimator());
                                 if (postAdapter != null && postAdapter.getItemCount() > 0) {
                                     recOffer.setAdapter(postAdapter);
                                 }
@@ -167,7 +181,7 @@ public class FavouriteOffer extends Fragment {
                         },
                         error -> {
                             loader.dismiss();
-                            Log.v("error",error.getMessage()+" ");
+                            Log.v("error", error.getMessage() + " ");
 
 
                         }) {
@@ -235,20 +249,20 @@ public class FavouriteOffer extends Fragment {
             public MyViewHolder(View itemView) {
                 super(itemView);
 
-                reTailerName=itemView.findViewById(R.id.reTailerName);
-                imgBanner=itemView.findViewById(R.id.imgBanner);
+                reTailerName = itemView.findViewById(R.id.reTailerName);
+                imgBanner = itemView.findViewById(R.id.imgBanner);
 
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         try {
-                            OfferDetails offerDetails=new OfferDetails();
+                            OfferDetails offerDetails = new OfferDetails();
                             Bundle args = new Bundle();
-                            args.putString("offerId",jsonArray.getJSONObject(getAdapterPosition()).getString("offer_id") );
+                            args.putString("offerId", jsonArray.getJSONObject(getAdapterPosition()).getString("offer_id"));
                             offerDetails.setArguments(args);
                             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                            ft.replace(R.id.container,offerDetails);
+                            ft.replace(R.id.container, offerDetails);
                             ft.addToBackStack(null);
                             ft.commit();
                         } catch (JSONException e) {
