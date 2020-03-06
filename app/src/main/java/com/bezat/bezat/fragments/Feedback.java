@@ -6,22 +6,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
 import androidx.fragment.app.Fragment;
+
 import com.bezat.bezat.ClientRetrofit;
 import com.bezat.bezat.R;
+import com.bezat.bezat.activities.MainActivity;
 import com.bezat.bezat.api.feedbackResponse.FeedbackRequest;
 import com.bezat.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezat.bezat.interfaces.FeedbackCallback;
+import com.bezat.bezat.interfaces.SearchRetaierInterface;
+import com.bezat.bezat.models.searchRetailerResponses.SearchResponseData;
+import com.bezat.bezat.models.searchRetailerResponses.SearchResponseResult;
+import com.bezat.bezat.models.searchRetailerResponses.SearchRetailerStore;
 import com.bezat.bezat.utils.SharedPrefs;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Feedback extends Fragment {
     EditText text;
-    RatingBar ratingBar;
+    private RatingBar ratingBar;
     Button button;
     ImageView imgBack;
+    private AutoCompleteTextView suggestion_box;
+    private SearchResponseResult searchResponseResult = new SearchResponseResult();
+    private SearchResponseData responseData = new SearchResponseData();
+    private SearchView searchView;
+    private ArrayList<String> category = new ArrayList<>();
+    ArrayList<String> store_id = new ArrayList<>();
 
     public Feedback() {
         // Required empty public constructor
@@ -33,11 +49,36 @@ public class Feedback extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
+        suggestion_box = view.findViewById(R.id.suggestionBox);
+        apiCallForSuggestionViewData();
         addViews(view);
         onCLickSendBtn();
         onClickBackButton(view);
 
         return view;
+    }
+
+    private void apiCallForSuggestionViewData() {
+        ClientRetrofit clientRetrofit = new ClientRetrofit();
+        clientRetrofit.SearchRetailerResult(new SearchRetaierInterface() {
+            @Override
+            public void onSuccess(SearchResponseResult responseResult) {
+                searchResponseResult = responseResult;
+                for (int i = 0; i < searchResponseResult.getResult().size(); i++) {
+                    for (int j = 0; j < searchResponseResult.getResult().get(i).getStores().size(); j++) {
+                        category.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreName());
+                        store_id.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreId());
+                    }
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, category);
+                suggestion_box.setAdapter(arrayAdapter);
+            }
+
+            @Override
+            public void onFailure(Throwable e) {
+            }
+        });
     }
 
     private void onCLickSendBtn() {
@@ -46,9 +87,18 @@ public class Feedback extends Fragment {
             request.setFeedback(text.getText().toString());
             request.setRatings(String.valueOf(ratingBar.getNumStars()));
             request.setUserId(SharedPrefs.getKey(getActivity(), "userId"));
-            request.setRetailerId("1448");
+            request.setRetailerId(getRetailerId());
             feedbackToServer(request);
         });
+    }
+
+    private String getRetailerId() {
+        for (int i = 0; i < category.size(); i++) {
+            if (suggestion_box.getEditableText().toString().equals(category.get(i))) {
+                return store_id.get(i);
+            }
+        }
+        return null;
     }
 
     private void onClickBackButton(View view) {
@@ -76,6 +126,7 @@ public class Feedback extends Fragment {
     private void addViews(View view) {
         text = view.findViewById(R.id.edit_text);
         ratingBar = view.findViewById(R.id.rating_bar);
+//        ratingBar.setRating(5);
         button = view.findViewById(R.id.send_button);
 
     }
