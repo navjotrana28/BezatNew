@@ -16,9 +16,8 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_24sdp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="30dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="22dp"
             android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
@@ -46,11 +45,11 @@
 
         <androidx.cardview.widget.CardView
                 android:id="@+id/dateCardView"
-                android:layout_width="150dp"
+                android:layout_width="140dp"
                 android:layout_height="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/corner_radius"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="40dp"
                 app:cardElevation="@dimen/card_elevation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,10 +74,9 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_24sdp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:gravity="center_vertical"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
@@ -107,12 +105,12 @@
 
         <androidx.cardview.widget.CardView
                 android:id="@+id/prizecard"
-                android:layout_width="150dp"
+                android:layout_width="140dp"
                 android:layout_height="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/corner_radius"
                 app:cardElevation="@dimen/card_elevation"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
