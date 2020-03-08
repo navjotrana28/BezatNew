@@ -495,7 +495,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         String saveddata = "{" + "\"phone_code\":" + "\"" + phone_code + "\","
                 + "\"user_name\":" + "\"" + user_name + "\"," +
                 "\"address\":" + "\"" + addres + "\"," +
-                "\"dob\":" + "\""  + dob + "\"," +
+                "\"dob\":" + "\"" + dob + "\"," +
                 "\"phone\":" + "\"" + phone + "\"," +
                 "\"country_id\":" + "\"" + country_id + "\"," +
                 "\"userId\":" + "\"" + userId + "\"," +
@@ -507,7 +507,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(NetworkResponse response) {
                 loader.dismiss();
-                String res = new String(response.data);
+                String res = new String("Your profile has been updated successfully");
                 Toast.makeText(getContext(), res, Toast.LENGTH_LONG).show();
                 Log.v("responseprofile", res + "");
             }

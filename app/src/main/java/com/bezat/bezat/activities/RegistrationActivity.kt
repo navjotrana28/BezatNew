@@ -56,7 +56,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
         GetCountryService().getCountries({ countryData ->
             country.convertToSpinner(
-                countryData.result, { it.name }, { it.img }, {
+                countryData.result, { it.name }, { it.phoneCode }, {
                     Picasso.get().load(it.img).into(countryIcon)
                 }) { obj, _ -> code = obj.phoneCode }
         }, {})
@@ -209,7 +209,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                 phone.error = getString(R.string.empty_phone)
             }
             if (
-//                (request.mobile_code + request.phone).isPhoneValid() ||
+//               (request.mobile_code + request.phone).isPhoneValid() ||
                 (request.mobile_code + request.phone).length <= 7) {
                 isValid = false
                 phone.error = getString(R.string.invalid_phone)

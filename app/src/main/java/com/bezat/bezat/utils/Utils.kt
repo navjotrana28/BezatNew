@@ -18,22 +18,41 @@ class Utils {
     companion object {
     }
 }
-fun RecyclerView.addLineDecorator(context: Context, inset:Int = (context.resources.getDimension(R.dimen.default_margin)/2f).toInt()){
+
+fun RecyclerView.addLineDecorator(
+    context: Context,
+    inset: Int = (context.resources.getDimension(R.dimen.default_margin) / 2f).toInt()
+) {
     addItemDecoration(
         DividerItemDecoration(
             context,
             RecyclerView.VERTICAL
-        ).apply { setDrawable(
-        InsetDrawable(
-            ContextCompat.getDrawable(context, R.drawable.div_primary)!!, inset, 0, inset, 0)
-    ) })
+        ).apply {
+            setDrawable(
+                InsetDrawable(
+                    ContextCompat.getDrawable(context, R.drawable.div_primary)!!, inset, 0, inset, 0
+                )
+            )
+        })
 }
 
-fun <T>EditText.convertToSpinner(selection:List<T>, getDisplayText:(T)->String,selectionImage:(T) -> String, setImageOnClick:(T) ->Unit, postAction: ((T, String) -> Unit)? = null){
+fun <T> EditText.convertToSpinner(
+    selection: List<T>,
+    getDisplayText: (T) -> String,
+    selectionImage: (T) -> String,
+    setImageOnClick: (T) -> Unit,
+    postAction: ((T, String) -> Unit)? = null
+) {
     keyListener = null
-    val dialog = Selector(context, selection, getDisplayText,selectionImage,setImageOnClick, { obj, text -> setText(text); error = null; postAction?.invoke(obj,text)})
+    val dialog = Selector(
+        context,
+        selection,
+        getDisplayText,
+        selectionImage,
+        setImageOnClick,
+        { obj, text -> setText(text); error = null; postAction?.invoke(obj, text) })
     setOnClickListener { dialog.show() }
-    setOnFocusChangeListener { _, hasFocus -> if(hasFocus) dialog.show() }
+    setOnFocusChangeListener { _, hasFocus -> if (hasFocus) dialog.show() }
 }
 
 fun EditText.convertToDatePicker(postAction: ((String) -> Unit)? = null) {
@@ -41,13 +60,15 @@ fun EditText.convertToDatePicker(postAction: ((String) -> Unit)? = null) {
     val d = Calendar.getInstance()
     val dialog = DatePickerDialog(context, { _, y, mm, d ->
         val m = mm + 1;
-        val tmp = "$y-${if (m > 9) "$m" else "0$m"}-${if (d < 10) "0$d" else "$d"}";setText(tmp); error = null; postAction?.invoke(tmp)
+        val tmp =
+            "$y-${if (m > 9) "$m" else "0$m"}-${if (d < 10) "0$d" else "$d"}";setText(tmp); error =
+        null; postAction?.invoke(tmp)
     }, 1997, 1, 1)
     setOnClickListener { dialog.show() }
     setOnFocusChangeListener { _, hasFocus -> if (hasFocus) dialog.show() }
 }
 
-fun String.isPhoneValid():Boolean {
+fun String.isPhoneValid(): Boolean {
     return try {
         val util = PhoneNumberUtil.getInstance()
         util.isValidNumber(util.parse("+${this.substring(2)}", null))
@@ -55,15 +76,17 @@ fun String.isPhoneValid():Boolean {
         false
     }
 }
-fun Context.showMessage(message:String = getString(R.string.someting_wrong)) {
+
+fun Context.showMessage(message: String = getString(R.string.someting_wrong)) {
     AlertDialog.Builder(this).setMessage(message).setPositiveButton(R.string.ok) { d, _ ->
         d.dismiss()
     }.create().show()
 }
+
 fun String.toList(): MutableList<Pair<String, *>> {
     val p = JSONObject(this)
-    val list = mutableListOf<Pair<String,*>>()
-    for(i in p.keys()){
+    val list = mutableListOf<Pair<String, *>>()
+    for (i in p.keys()) {
         list.add(i to p.get(i))
     }
     return list

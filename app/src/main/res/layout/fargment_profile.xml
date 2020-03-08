@@ -1,56 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
-   <androidx.appcompat.widget.Toolbar
-           android:id="@+id/topImage"
-           app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           android:layout_width="match_parent"
-           android:layout_height="@dimen/_45sdp"
-           android:background="@color/colorPrimary">
-       <RelativeLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-           <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="@dimen/_50sdp"
-                   android:text="@string/title_profile"
-                   android:gravity="center"
-                   android:fontFamily="@font/muli_semibold"
-                   android:textSize="@dimen/default_size"
-                   android:scaleType="fitCenter"/>
-           <TextView
-                   android:id="@+id/txtSave"
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent"
-                   android:text="@string/save"
-                   android:paddingEnd="@dimen/_10sdp"
-                   android:layout_alignParentEnd="true"
-                   android:gravity="center"
-                   />
-       </RelativeLayout>
+        android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/topImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:fontFamily="@font/muli_semibold"
+                    android:gravity="center"
+                    android:scaleType="fitCenter"
+                    android:text="@string/title_profile"
+                    android:textSize="@dimen/default_size" />
+
+            <TextView
+                    android:id="@+id/txtSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:text="@string/save" />
+        </RelativeLayout>
 
 
-   </androidx.appcompat.widget.Toolbar>
-<View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/langbg"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/langbg" />
 
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/topImage"
-            >
+            android:layout_below="@+id/topImage">
+
         <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/profile_constraint_layout"
                     android:layout_width="match_parent"
@@ -101,8 +106,8 @@
                         android:id="@+id/vehicle_front_photo"
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:visibility="visible"
                         android:background="@color/white"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -117,8 +122,8 @@
                                 android:id="@+id/imgProfile"
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_124sdp"
-                                android:scaleType="fitCenter"
                                 android:background="@color/colorPrimary"
+                                android:scaleType="fitCenter"
                                 android:src="@drawable/ic_femaleicon"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -134,86 +139,89 @@
 
             <EditText
                     android:id="@+id/etName"
-                style="@style/field"
+                    style="@style/field"
                     android:layout_marginTop="@dimen/_12sdp"
-                android:hint="@string/name"
-            />
+                    android:hint="@string/name" />
+
             <EditText
                     android:id="@+id/etEmail"
-                style="@style/field"
-                android:hint="@string/email"
-            />
+                    style="@style/field"
+                    android:hint="@string/email" />
+
             <TextView
                     android:id="@+id/etCountry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/black"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="20dp"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginStart="20dp"
                     android:drawableEnd="@drawable/ic_expand_more_black_24dp"
-                    android:hint="@string/country"/>
+                    android:hint="@string/country"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/black" />
+
             <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@color/colorPrimary"/>
+                    android:layout_marginEnd="20dp"
+                    android:background="@color/colorPrimary" />
 
             <EditText
                     android:id="@+id/etPhone"
                     style="@style/field"
-                    android:hint="@string/phone_number"
-                    />
+                    android:hint="@string/phone_number" />
+
             <EditText
                     android:id="@+id/etAddress"
-                style="@style/field"
-                android:backgroundTint="@color/colorPrimary"
-                android:inputType="textMultiLine"
-                android:maxLines="4"
-                android:textColorHint="@color/colorPrimary"
-                android:hint="@string/address"
-            />
+                    android:visibility="gone"
+                    style="@style/field"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:hint="@string/address"
+                    android:inputType="textMultiLine"
+                    android:maxLines="4"
+                    android:textColorHint="@color/colorPrimary" />
 
             <TextView
                     android:id="@+id/etGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/black"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/colorPrimary"
                     android:drawableEnd="@drawable/ic_expand_more_black_24dp"
-                    android:hint="@string/gender"/>
+                    android:hint="@string/gender"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/black" />
+
             <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@color/colorPrimary"/>
+                    android:layout_marginEnd="20dp"
+                    android:background="@color/colorPrimary" />
 
             <TextView
                     android:id="@+id/etDob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/black"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/colorPrimary"
                     android:drawableEnd="@drawable/ic_expand_more_black_24dp"
-                    android:hint="@string/dob"/>
+                    android:hint="@string/dob"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/black" />
+
             <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@color/colorPrimary"/>
+                    android:layout_marginEnd="20dp"
+                    android:background="@color/colorPrimary" />
 
         </LinearLayout>
     </ScrollView>

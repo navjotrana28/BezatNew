@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:completionThreshold="1"
-                    android:hint="Choose retailer name"
+                    android:hint="Choose retailer here"
                     android:paddingRight="30dp"
                     android:maxLines="1"
                     android:backgroundTint="@android:color/transparent"
