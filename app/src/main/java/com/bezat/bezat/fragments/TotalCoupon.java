@@ -324,7 +324,6 @@ public class TotalCoupon extends Fragment {
                 holder.txtRaffles.setText(jsonArray.getJSONObject(position).getString("raffles"));
                 holder.txtStoreName.setText(jsonArray.getJSONObject(position).getString("storeName" + lang));
                 holder.txtCouponNo.setText(jsonArray.getJSONObject(position).getString("totalCoupons" + lang));
-
                 Picasso.get().load(jsonArray.getJSONObject(position).getString("store_logo"))
                         .into(holder.imgCoupon);
 

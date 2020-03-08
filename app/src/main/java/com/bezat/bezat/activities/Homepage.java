@@ -36,41 +36,41 @@ public class Homepage extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_dashboard:
-                    getSupportFragmentManager().popBackStack();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new Dashboard());
-                    ft.commit();
+        switch (item.getItemId()) {
+            case R.id.navigation_dashboard:
+                getSupportFragmentManager().popBackStack();
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new Dashboard());
+                ft.commit();
 
 //                    viewPager.setCurrentItem(0);
-                    return true;
-                case R.id.navigation_bell:
-                    getSupportFragmentManager().popBackStack();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new Notification());
-                    ft.commit();
+                return true;
+            case R.id.navigation_bell:
+                getSupportFragmentManager().popBackStack();
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new Notification());
+                ft.commit();
 //                    viewPager.setCurrentItem(1);
-                    return true;
-                case R.id.navigation_profile:
-                    getSupportFragmentManager().popBackStack();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new MyProfile());
-                    ft.commit();
+                return true;
+            case R.id.navigation_profile:
+                getSupportFragmentManager().popBackStack();
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new MyProfile());
+                ft.commit();
 //                    viewPager.setCurrentItem(2);
-                    return true;
+                return true;
 
-                case R.id.navigation_settings:
-                    getSupportFragmentManager().popBackStack();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new Settings());
-                    ft.commit();
+            case R.id.navigation_settings:
+                getSupportFragmentManager().popBackStack();
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new Settings());
+                ft.commit();
 //                    viewPager.setCurrentItem(3);
-                    return true;
-            }
-            return false;
+                return true;
         }
-    };
+        return false;
+    }
+};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,68 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       xmlns:app="http://schemas.android.com/apk/res-auto"
-                                       app:contentPadding="@dimen/_10sdp"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="@dimen/_1sdp"
-                                        android:layout_marginTop="@dimen/_2sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_4sdp"
-                                       >
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center_vertical"
-                android:orientation="horizontal">
+        app:contentPadding="@dimen/_10sdp">
 
-        <ImageView
-                android:id="@+id/notifyImg"
-                android:layout_width="@dimen/_48sdp"
-                   android:layout_height="@dimen/_48sdp"
-                   android:src="@drawable/app_logo"
-        />
     <LinearLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <TextView
-                android:id="@+id/txtTitle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/notifyImg"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:src="@drawable/app_logo"
+
+                />
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="You Won 2 Coupon"
-                android:fontFamily="@font/muli_bold"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/_12sdp"
-                android:paddingStart="@dimen/_12sdp"
-                android:textColor="@color/colorPrimary"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-        <TextView
-                android:id="@+id/txtDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="You Won 2 Coupon"
-                android:fontFamily="@font/muli_regular"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/_11sdp"
-                android:paddingStart="@dimen/_11sdp"
-                android:textColor="@color/colorPrimary"/>
-        <TextView
-                android:id="@+id/txtTime"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="2 days ago"
-                android:fontFamily="@font/muli_regular"
-                android:gravity="bottom|end"
-                android:textSize="@dimen/_12sdp"
-                android:textColor="@color/colorPrimary"/>
+            <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:text="You Won 2 Coupon"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                    android:id="@+id/txtDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_regular"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_11sdp"
+                    android:text="You Won 2 Coupon"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_11sdp" />
+
+            <TextView
+                    android:id="@+id/txtTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/muli_regular"
+                    android:gravity="bottom|end"
+                    android:text="2 days ago"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-    </LinearLayout>
-
 
 
 </androidx.cardview.widget.CardView>

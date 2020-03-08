@@ -458,7 +458,7 @@ public class Dashboard extends Fragment {
 
                                         // Specifying a listener allows you to take an action before dismissing the dialog.
                                         // The dialog is automatically dismissed when a dialog button is clicked.
-                                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 ClientRetrofit retrofit = new ClientRetrofit();
                                                 retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"));
@@ -469,7 +469,7 @@ public class Dashboard extends Fragment {
                                         })
 
                                         // A null listener allows the button to dismiss the dialog and take no further action.
-                                        .setNegativeButton(android.R.string.no, null)
+                                        .setNegativeButton("No", null)
                                         .setIcon(android.R.drawable.ic_dialog_alert)
                                         .show();
 
