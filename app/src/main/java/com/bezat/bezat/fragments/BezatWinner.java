@@ -172,7 +172,6 @@ public class BezatWinner extends Fragment {
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
                         .maxYear(2100) // max year in loop
-
                         .build();
                 pickerPopWin.showPopWin(getActivity());
             }
@@ -322,8 +321,6 @@ public class BezatWinner extends Fragment {
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-
                     }
                 });
 

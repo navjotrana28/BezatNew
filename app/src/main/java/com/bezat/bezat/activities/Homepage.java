@@ -1,12 +1,16 @@
 package com.bezat.bezat.activities;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +24,10 @@ import com.bezat.bezat.fragments.MyProfile;
 import com.bezat.bezat.fragments.Notification;
 import com.bezat.bezat.fragments.Settings;
 import com.bezat.bezat.utils.SharedPrefs;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Locale;
 
@@ -36,41 +43,41 @@ public class Homepage extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.navigation_dashboard:
-                getSupportFragmentManager().popBackStack();
-                ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new Dashboard());
-                ft.commit();
+            switch (item.getItemId()) {
+                case R.id.navigation_dashboard:
+                    getSupportFragmentManager().popBackStack();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new Dashboard());
+                    ft.commit();
 
 //                    viewPager.setCurrentItem(0);
-                return true;
-            case R.id.navigation_bell:
-                getSupportFragmentManager().popBackStack();
-                ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new Notification());
-                ft.commit();
+                    return true;
+                case R.id.navigation_bell:
+                    getSupportFragmentManager().popBackStack();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new Notification());
+                    ft.commit();
 //                    viewPager.setCurrentItem(1);
-                return true;
-            case R.id.navigation_profile:
-                getSupportFragmentManager().popBackStack();
-                ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new MyProfile());
-                ft.commit();
+                    return true;
+                case R.id.navigation_profile:
+                    getSupportFragmentManager().popBackStack();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new MyProfile());
+                    ft.commit();
 //                    viewPager.setCurrentItem(2);
-                return true;
+                    return true;
 
-            case R.id.navigation_settings:
-                getSupportFragmentManager().popBackStack();
-                ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new Settings());
-                ft.commit();
+                case R.id.navigation_settings:
+                    getSupportFragmentManager().popBackStack();
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new Settings());
+                    ft.commit();
 //                    viewPager.setCurrentItem(3);
-                return true;
+                    return true;
+            }
+            return false;
         }
-        return false;
-    }
-};
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +89,27 @@ public class Homepage extends AppCompatActivity {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
         setContentView(R.layout.activity_home);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel
+                    ("MyNotifications", "MyNotifications", NotificationManager.IMPORTANCE_DEFAULT);
 
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = ("Successful");
+                        if (!task.isSuccessful()) {
+                            msg = ("Failed");
+                        }
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+// ----------------------------------------------------------
         ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container, new Dashboard());
         ft.commit();

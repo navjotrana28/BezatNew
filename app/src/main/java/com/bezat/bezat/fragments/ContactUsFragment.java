@@ -1,6 +1,8 @@
 package com.bezat.bezat.fragments;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +26,7 @@ public class ContactUsFragment extends Fragment {
     ImageView imgBack;
     private EditText name, email, comments;
     private Button sendBtn;
+    private ImageView insta,youtube;
 
 
     public ContactUsFragment() {
@@ -72,9 +75,26 @@ public class ContactUsFragment extends Fragment {
     private void addViews(View view) {
         name = view.findViewById(R.id.contact_name_edit_text);
         email = view.findViewById(R.id.contact_email_edit_text);
+        insta = view.findViewById(R.id.contact_insta);
+        youtube = view.findViewById(R.id.contact_browser);
         comments = view.findViewById(R.id.contact_comments_edit_text);
         sendBtn = view.findViewById(R.id.contact_button);
         imgBack = view.findViewById(R.id.img_back);
+
+        insta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse
+                        ("https://instagram.com/bezat.bh?igshid=11q4aefhaxp98")));
+            }
+        });
+        youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse
+                        ("https://m.youtube.com/watch?v=PH8T9aZrRqg")));
+            }
+        });
 
     }
 

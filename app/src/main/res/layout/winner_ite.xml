@@ -30,6 +30,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
         <TextView
                 android:id="@+id/txtWinner"
                 android:layout_width="match_parent"
@@ -81,7 +82,7 @@
 
         <androidx.cardview.widget.CardView
                 android:id="@+id/coffee_shops"
-                android:layout_width="150dp"
+                android:layout_width="160dp"
                 android:layout_height="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/corner_radius"
