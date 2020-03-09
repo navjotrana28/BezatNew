@@ -7,7 +7,9 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -24,6 +27,7 @@ import com.bezat.bezat.utils.Loader;
 import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -52,7 +56,7 @@ public class PrizeDetails extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String raffle_category,raffle_id;
+    String raffle_category, raffle_id;
     Loader loader;
     View rootView;
     TextView txtPrize;
@@ -96,16 +100,16 @@ public class PrizeDetails extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView=inflater.inflate(R.layout.fragment_prize_details, container, false);
-        txtPrize=rootView.findViewById(R.id.txtPrize);
-        imgPrize=rootView.findViewById(R.id.imgPrize);
+        rootView = inflater.inflate(R.layout.fragment_prize_details, container, false);
+        txtPrize = rootView.findViewById(R.id.txtPrize);
+        imgPrize = rootView.findViewById(R.id.imgPrize);
         imgBack = rootView.findViewById(R.id.imgBack);
         btnDraw = rootView.findViewById(R.id.btnDraw);
-        raffle_category=getArguments().getString("raffle_category");
-        raffle_id=getArguments().getString("raffle_id");
-        loader=new Loader(getContext());
+        raffle_category = getArguments().getString("raffle_category");
+        raffle_id = getArguments().getString("raffle_id");
+        loader = new Loader(getContext());
         loader.show();
-        getRaffledetails(raffle_category,raffle_id);
+        getRaffledetails(raffle_category, raffle_id);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,18 +122,29 @@ public class PrizeDetails extends Fragment {
 
     private void getRaffledetails(String raffle_category, String raffle_id) {
         JSONObject object = new JSONObject();
-        String vipUrl= URLS.Companion.getPRIZES_DETAILS()+raffle_id+"&raffle_category="+raffle_category;
-        Log.v("raffle_details",vipUrl+" ");
+        String vipUrl = URLS.Companion.getPRIZES_DETAILS() + raffle_id + "&raffle_category=" + raffle_category;
+        Log.v("raffle_details", vipUrl + " ");
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        vipUrl ,
+                        vipUrl,
                         object,
                         response -> {
                             loader.dismiss();
                             try {
-                                JSONObject jsonObject=response.getJSONObject("result").getJSONObject("raffles");
-                                txtPrize.setText("Prize : "+jsonObject.getString("prize"));
-                                btnDraw.setText("RAFFLE DRAW IN:"+getDifDays(jsonObject.getString("draw_date"))+" Days");
+                                String draw = "";
+                                JSONObject jsonObject = response.getJSONObject("result").getJSONObject("raffles");
+                                txtPrize.setText("Prize : " + jsonObject.getString("prize"));
+                                String difDate = getDifDays(jsonObject.getString("draw_date"));
+                                if (Integer.parseInt(difDate) > 1) {
+                                    draw = "RAFFLE DRAW IN " + difDate + " DAYS";
+                                } else if (Integer.parseInt(difDate) < 0) {
+                                    draw = "RAFFLE DRAW " + Math.abs(Integer.parseInt(difDate)) + " DAYS BEFORE";
+                                } else if (Integer.parseInt(difDate) == 0) {
+                                    draw = "RAFFLE DRAW ANNOUNCE TODAY";
+                                } else if (Integer.parseInt(difDate) == 1) {
+                                    draw = "RAFFLE DRAW ANNOUNCE TOMORROW";
+                                }
+                                btnDraw.setText(draw);
                                 Picasso.get().load(jsonObject.getString("img")).into(imgPrize);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -182,25 +197,25 @@ public class PrizeDetails extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-    public String getDifDays(String inputString2)
-    {
-        String diffDays="";
+
+    public String getDifDays(String inputString2) {
+        String diffDays = "";
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date date = new Date();
-       String inputString1=formatter.format(date);
+        String inputString1 = formatter.format(date);
 
 
         try {
             Date date1 = myFormat.parse(inputString1);
             Date date2 = myFormat.parse(inputString2);
             long diff = date2.getTime() - date1.getTime();
-            diffDays=TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)+" ";
-            System.out.println ("Days: " + TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
+            diffDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + " ";
+            System.out.println("Days: " + TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return diffDays;
+        return diffDays.replace(" ", "");
     }
 }
