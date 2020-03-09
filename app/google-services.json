@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "185487695950",
+    "firebase_url": "https://bezatnew.firebaseio.com",
+    "project_id": "bezatnew",
+    "storage_bucket": "bezatnew.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185487695950:android:73a86d2c84186d0fce231f",
+        "android_client_info": {
+          "package_name": "com.bezat.bezat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185487695950-300g1ikbhlje4eu5jstgdpsbdjjhlqrh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bezat.bezat",
+            "certificate_hash": "07d8f90265f366d41e4624994abc1be4865411d2"
+          }
+        },
+        {
+          "client_id": "185487695950-pfe0fsb0ga3uk66ljog7t1iqh8ovh5qd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrMY8B4TVPsQoDjgtC3Z0HztyalV4dgNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185487695950-pfe0fsb0ga3uk66ljog7t1iqh8ovh5qd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
