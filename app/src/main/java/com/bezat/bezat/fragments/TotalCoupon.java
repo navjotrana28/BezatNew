@@ -147,6 +147,7 @@ public class TotalCoupon extends Fragment {
                         currentDate = txtDate.getText().toString();
                         loader.show();
                         getTotalCoupon();
+
                     }
                 }).textConfirm("Done") //text of confirm button
                         .textCancel("Cancel") //text of cancel button
@@ -195,7 +196,6 @@ public class TotalCoupon extends Fragment {
 
     private void getTotalCoupons() {
         loadSeachData();
-
     }
 
     private void loadSeachData() {
@@ -211,7 +211,7 @@ public class TotalCoupon extends Fragment {
 
             @Override
             public void onFailure(Throwable e) {
-
+                loader.dismiss();
             }
         });
     }
