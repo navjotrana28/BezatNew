@@ -26,7 +26,7 @@ public class ContactUsFragment extends Fragment {
     ImageView imgBack;
     private EditText name, email, comments;
     private Button sendBtn;
-    private ImageView insta,youtube;
+    private ImageView insta,youtube,twitter,whatsapp,dialer;
 
 
     public ContactUsFragment() {
@@ -77,6 +77,9 @@ public class ContactUsFragment extends Fragment {
         email = view.findViewById(R.id.contact_email_edit_text);
         insta = view.findViewById(R.id.contact_insta);
         youtube = view.findViewById(R.id.contact_browser);
+        twitter = view.findViewById(R.id.contact_twitter);
+        dialer = view.findViewById(R.id.contact_dialer);
+        whatsapp = view.findViewById(R.id.contact_whattsApp);
         comments = view.findViewById(R.id.contact_comments_edit_text);
         sendBtn = view.findViewById(R.id.contact_button);
         imgBack = view.findViewById(R.id.img_back);
@@ -93,6 +96,31 @@ public class ContactUsFragment extends Fragment {
             public void onClick(View view) {
                 startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse
                         ("https://m.youtube.com/watch?v=PH8T9aZrRqg")));
+            }
+        });
+
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse
+                        ("https://twitter.com/bezatapp?s=08")));
+            }
+        });
+            dialer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:+97313399993"));
+                    startActivity(intent);
+                }
+            });
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("smsto:" + "+97313399993");
+                Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+                i.setPackage("com.whatsapp");
+                startActivity(Intent.createChooser(i, "+97313399993"));
             }
         });
 
