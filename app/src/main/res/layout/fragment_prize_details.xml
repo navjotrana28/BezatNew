@@ -80,9 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-
-                    android:text="Prize: Meet a star"/>
+                    android:textSize="@dimen/_14sdp"/>
         </androidx.cardview.widget.CardView>
 
 
@@ -93,8 +91,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12sdp"
-                android:fontFamily="@font/muli_semibold"
-                android:text="lucky draw announce in:23 Day"/>
+                android:fontFamily="@font/muli_semibold"/>
 
 
     </LinearLayout>

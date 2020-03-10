@@ -139,7 +139,7 @@ public class PrizeDetails extends Fragment {
                                     int temp = Integer.parseInt(difDate) - 1;
                                     draw = "RAFFLE DRAW IN " + temp + " DAYS";
                                 } else if (Integer.parseInt(difDate) < 0) {
-                                    draw = "RAFFLE DRAW " + Math.abs(Integer.parseInt(difDate)) + " DAYS BEFORE";
+                                    draw = "RAFFLE HELD " + Math.abs(Integer.parseInt(difDate)) + " DAYS BEFORE";
                                 } else if (Integer.parseInt(difDate) == 0) {
                                     draw = "RAFFLE DRAW ANNOUNCE TODAY";
                                 } else if (Integer.parseInt(difDate) == 1) {
