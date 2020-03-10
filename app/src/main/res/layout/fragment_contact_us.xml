@@ -172,12 +172,12 @@
                 android:id="@+id/contact_dialer"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
                 android:src="@drawable/dialer1"
+                android:layout_marginTop="@dimen/_40sdp"
                 app:layout_constraintEnd_toStartOf="@+id/contact_whattsApp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contact_button" />
+                app:layout_constraintTop_toBottomOf="@+id/contact_button"
+                />
 
         <ImageView
                 android:id="@+id/contact_whattsApp"
@@ -195,52 +195,29 @@
                 android:layout_height="40dp"
                 android:src="@drawable/instagram_logo"
                 app:layout_constraintBottom_toBottomOf="@+id/contact_whattsApp"
-                app:layout_constraintEnd_toStartOf="@+id/contact_snapchat"
+                app:layout_constraintEnd_toStartOf="@+id/contact_twitter"
                 app:layout_constraintStart_toEndOf="@+id/contact_whattsApp"
                 app:layout_constraintTop_toTopOf="@+id/contact_whattsApp" />
-
-        <ImageView
-                android:id="@+id/contact_snapchat"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="30dp"
-                android:src="@drawable/snapchat_logo"
-                app:layout_constraintBottom_toBottomOf="@+id/contact_insta"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/contact_insta"
-                app:layout_constraintTop_toTopOf="@+id/contact_insta" />
 
         <ImageView
                 android:id="@+id/contact_twitter"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
                 android:src="@drawable/twitter_logo"
-                app:layout_constraintEnd_toStartOf="@id/contact_whattsApp"
-                app:layout_constraintStart_toEndOf="@id/contact_dialer"
-                app:layout_constraintTop_toBottomOf="@+id/contact_whattsApp"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_insta"
+                app:layout_constraintStart_toEndOf="@+id/contact_insta"
+                app:layout_constraintEnd_toStartOf="@+id/contact_browser"
+                app:layout_constraintTop_toTopOf="@+id/contact_insta" />
 
-                />
-        <!--        <ImageView-->
-        <!--                android:id="@+id/contact_fb"-->
-        <!--                android:layout_width="40dp"-->
-        <!--                android:layout_height="40dp"-->
-        <!--                android:layout_marginTop="10dp"-->
-        <!--                android:src="@drawable/facebook_logo"-->
-        <!--                app:layout_constraintEnd_toStartOf="@+id/contact_insta"-->
-        <!--                app:layout_constraintStart_toEndOf="@+id/contact_whattsApp"-->
-        <!--                app:layout_constraintTop_toBottomOf="@+id/contact_whattsApp"-->
-        <!--        />-->
         <ImageView
                 android:id="@+id/contact_browser"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/browser_logo"
-                app:layout_constraintEnd_toStartOf="@+id/contact_snapchat"
-                app:layout_constraintStart_toEndOf="@+id/contact_insta"
-                app:layout_constraintTop_toBottomOf="@+id/contact_snapchat"
-
+                android:src="@drawable/utube"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_twitter"
+                app:layout_constraintStart_toEndOf="@+id/contact_twitter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/contact_twitter"
                 />
 
 
