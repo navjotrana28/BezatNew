@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -201,6 +202,11 @@ public class BezatWinner extends Fragment {
                                 recWinner.setItemAnimator(new DefaultItemAnimator());
                                 if (postAdapter != null && postAdapter.getItemCount() > 0) {
                                     recWinner.setAdapter(postAdapter);
+                                    recWinner.setVisibility(View.VISIBLE);
+                                } else {
+                                    recWinner.setVisibility(View.GONE);
+                                    Toast.makeText(getActivity(), "No Winners Available", Toast.LENGTH_SHORT).show();
+
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

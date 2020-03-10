@@ -10,11 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -30,6 +33,7 @@ import com.bezat.bezat.utils.SharedPrefs;
 import com.bezat.bezat.utils.URLS;
 import com.bruce.pickerview.popwindow.DatePickerPopWin;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -238,6 +242,11 @@ public class TotalCoupon extends Fragment {
                                 recycleTotalCoupons.setItemAnimator(new DefaultItemAnimator());
                                 if (postAdapter != null && postAdapter.getItemCount() > 0) {
                                     recycleTotalCoupons.setAdapter(postAdapter);
+                                    recycleTotalCoupons.setVisibility(View.VISIBLE);
+
+                                } else {
+                                    recycleTotalCoupons.setVisibility(View.GONE);
+                                    Toast.makeText(getActivity(), "No Coupons Available", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -340,7 +349,7 @@ public class TotalCoupon extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView txtStoreName, txtRaffles, txtBillno, txtBilldate,txtCouponNo;
+            TextView txtStoreName, txtRaffles, txtBillno, txtBilldate, txtCouponNo;
             ImageView imgCoupon;
 
             public MyViewHolder(View itemView) {
