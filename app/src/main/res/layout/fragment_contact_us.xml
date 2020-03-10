@@ -209,17 +209,18 @@
                 app:layout_constraintEnd_toStartOf="@+id/contact_browser"
                 app:layout_constraintTop_toTopOf="@+id/contact_insta" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/contact_browser"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/utube"
+                app:civ_border_color="@color/orange"
+                app:civ_border_width="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/contact_twitter"
                 app:layout_constraintStart_toEndOf="@+id/contact_twitter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/contact_twitter"
                 />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
