@@ -2,14 +2,14 @@
 <manifest
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        package="com.bezat.bezat">
+        package="com.bezatnew.bezat">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
 
 
     <application
-            android:name=".MyApplication"
+            android:name="com.bezatnew.bezat.MyApplication"
             android:allowBackup="true"
             android:autoMirrored="true"
             android:icon="@drawable/app_logo"
@@ -19,55 +19,55 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.ChangePassword">
+        <activity android:name="com.bezatnew.bezat.activities.ChangePassword">
         </activity>
-        <activity android:name=".activities.OTP">
+        <activity android:name="com.bezatnew.bezat.activities.OTP">
         </activity>
-        <activity android:name=".activities.ChooseLanguage">
+        <activity android:name="com.bezatnew.bezat.activities.ChooseLanguage">
         </activity>
-        <activity android:name=".activities.OfferDetails">
+        <activity android:name="com.bezatnew.bezat.activities.OfferDetails">
         </activity>
-        <activity android:name=".activities.FavouriteOffer">
+        <activity android:name="com.bezatnew.bezat.activities.FavouriteOffer">
         </activity>
-        <activity android:name=".activities.GetCoupon">
+        <activity android:name="com.bezatnew.bezat.activities.GetCoupon">
         </activity>
-        <activity android:name=".activities.BezatWinner">
+        <activity android:name="com.bezatnew.bezat.activities.BezatWinner">
         </activity>
-        <activity android:name=".activities.Prizes">
+        <activity android:name="com.bezatnew.bezat.activities.Prizes">
         </activity>
-        <activity android:name=".activities.ContactUs">
+        <activity android:name="com.bezatnew.bezat.activities.ContactUs">
         </activity>
-        <activity android:name=".activities.Notifications">
+        <activity android:name="com.bezatnew.bezat.activities.Notifications">
         </activity>
-        <activity android:name=".activities.MyProfile">
+        <activity android:name="com.bezatnew.bezat.activities.MyProfile">
         </activity>
-        <activity android:name=".activities.MyFavourite">
+        <activity android:name="com.bezatnew.bezat.activities.MyFavourite">
         </activity>
-        <activity android:name=".activities.TotalCoupons">
+        <activity android:name="com.bezatnew.bezat.activities.TotalCoupons">
         </activity>
         <activity
-                android:name=".activities.MainHomeActivty"
+                android:name="com.bezatnew.bezat.activities.MainHomeActivty"
                 android:label="@string/title_activity_main_home_activty"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".activities.RegistrationActivity"
+                android:name="com.bezatnew.bezat.activities.RegistrationActivity"
                 android:theme="@style/opposite">
         </activity>
         <activity
-                android:name=".activities.Homepage"
+                android:name="com.bezatnew.bezat.activities.Homepage"
                 android:label="@string/title_activity_home"
                 android:theme="@style/HomePageTheme">
         </activity>
         <activity
-                android:name=".activities.LoginActivity"
+                android:name="com.bezatnew.bezat.activities.LoginActivity"
                 android:label="@string/title_activity_login">
         </activity>
-        <activity android:name=".activities.AdActivity"/>
-        <activity android:name=".activities.Intro"/>
-        <activity android:name=".activities.ForgotPassword"/>
+        <activity android:name="com.bezatnew.bezat.activities.AdActivity"/>
+        <activity android:name="com.bezatnew.bezat.activities.Intro"/>
+        <activity android:name="com.bezatnew.bezat.activities.ForgotPassword"/>
         <activity
-                android:name=".activities.MainActivity"
+                android:name="com.bezatnew.bezat.activities.MainActivity"
                 android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -76,7 +76,7 @@
             </intent-filter>
         </activity>
 
-            <service android:name=".activities.MyMessagingService">
+            <service android:name="com.bezatnew.bezat.activities.MyMessagingService">
                 <intent-filter>
                     <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 </intent-filter>

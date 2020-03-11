@@ -8,7 +8,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.bezat.bezat"
+        applicationId "com.bezatnew.bezat"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1

@@ -81,7 +81,7 @@
                         android:textSize="@dimen/_11sdp"
                         android:fontFamily="@font/muli_semibold"
                         android:text="Fitness &amp; Healthcare"/>
-                <com.bezat.bezat.utils.MySpinner
+                <com.bezatnew.bezat.utils.MySpinner
                         android:visibility="gone"
                         android:id="@+id/spinner"
                         android:layout_weight="1"
@@ -117,7 +117,7 @@
                     android:layout_marginStart="@dimen/_7sdp"
                     android:gravity="center_vertical"
                     android:background="@drawable/strokebtn">
-                <com.bezat.bezat.utils.MySpinner
+                <com.bezatnew.bezat.utils.MySpinner
                         android:visibility="gone"
                         android:id="@+id/spinnerLoc"
                         android:layout_weight="1"
