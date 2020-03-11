@@ -1,8 +1,8 @@
-package com.bezat.bezat.api
+package com.bezatnew.bezat.api
 
 import android.os.Looper
 import android.util.Log
-import com.bezat.bezat.utils.URLS
+import com.bezatnew.bezat.utils.URLS
 import com.github.kittinunf.fuel.httpGet
 
 class BannerOuterRequest {

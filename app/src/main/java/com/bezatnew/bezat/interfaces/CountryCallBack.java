@@ -1,6 +1,6 @@
-package com.bezat.bezat.interfaces;
+package com.bezatnew.bezat.interfaces;
 
-import com.bezat.bezat.models.CountryData;
+import com.bezatnew.bezat.models.CountryData;
 
 public interface CountryCallBack {
 

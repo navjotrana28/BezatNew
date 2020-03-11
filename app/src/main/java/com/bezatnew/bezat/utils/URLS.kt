@@ -1,4 +1,4 @@
-package com.bezat.bezat.utils
+package com.bezatnew.bezat.utils
 
 class URLS {
     companion object {

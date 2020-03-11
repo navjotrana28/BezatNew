@@ -1,7 +1,7 @@
-package com.bezat.bezat.utils
+package com.bezatnew.bezat.utils
 
-import com.bezat.bezat.ServiceRetrofit
-import com.bezat.bezat.models.CountryData
+import com.bezatnew.bezat.ServiceRetrofit
+import com.bezatnew.bezat.models.CountryData
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

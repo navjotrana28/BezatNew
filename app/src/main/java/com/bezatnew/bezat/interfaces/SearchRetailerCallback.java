@@ -1,4 +1,4 @@
-package com.bezat.bezat.interfaces;
+package com.bezatnew.bezat.interfaces;
 
 public interface SearchRetailerCallback {
 
