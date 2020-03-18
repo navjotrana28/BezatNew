@@ -51,16 +51,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/_20sdp"
-            android:gravity="center"
             android:orientation="vertical"
+        android:gravity="center_horizontal"
             android:layout_below="@+id/toolbar">
         
         <ImageView
                 android:id="@+id/imgPrize"
-                android:maxHeight="@dimen/_196sdp"
-                android:minHeight="@dimen/_124sdp"
-                android:minWidth="@dimen/_124sdp"
-                android:layout_width="wrap_content"
+            android:maxHeight="@dimen/_226sdp"
+            android:minHeight="@dimen/_168sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
                 android:scaleType="fitXY"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_image_black_24dp"/>
@@ -68,8 +68,8 @@
         <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:layout_marginBottom="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_marginEnd="@dimen/_2sdp"
                 app:cardBackgroundColor="@color/white"

@@ -111,7 +111,7 @@ public class BezatWinner extends Fragment {
         Date date = new Date();
         currentDate = formatter.format(date);
         txtDate.setText(currentDate);
-        getWinner();
+        getWinner("");
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,7 +134,7 @@ public class BezatWinner extends Fragment {
                         }
                         currentDate = txtDate.getText().toString();
                         loader.show();
-                        getWinner();
+                        getWinner(currentDate);
                     }
                 }).textConfirm("Done") //text of confirm button
                         .textCancel("Cancel") //text of cancel button
@@ -163,7 +163,7 @@ public class BezatWinner extends Fragment {
                         }
                         currentDate = txtDate.getText().toString();
                         loader.show();
-                        getWinner();
+                        getWinner(currentDate);
                     }
                 }).textConfirm("Done") //text of confirm button
                         .textCancel("Cancel") //text of cancel button
@@ -180,10 +180,10 @@ public class BezatWinner extends Fragment {
         return rootView;
     }
 
-    private void getWinner() {
+    private void getWinner(String date) {
 
         JSONObject object = new JSONObject();
-        String Url = URLS.Companion.getGET_WINNER() + currentDate.replace("-", "");
+        String Url = URLS.Companion.getGET_WINNER() + date;
 
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,

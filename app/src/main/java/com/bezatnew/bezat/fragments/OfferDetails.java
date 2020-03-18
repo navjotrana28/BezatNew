@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -59,6 +60,7 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
     String offerId;
     ImageView imgBack;
     String lang="";
+    LinearLayout linearLayout;
     public OfferDetails() {
         // Required empty public constructor
     }
@@ -112,8 +114,10 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
         btnRedeem=rootView.findViewById(R.id.btnRedeem);
         imgSaved = rootView.findViewById(R.id.imgSaved);
         imgBack = rootView.findViewById(R.id.imgBack);
+        linearLayout = rootView.findViewById(R.id.offer_detail_layout);
         loader=new Loader(getContext());
          offerId=getArguments().getString("offerId");
+         loader.show();
         getOfferDetails(SharedPrefs.getKey(getActivity(),"userId"),
                 offerId);
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -137,9 +141,8 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
                         Url ,
                         object,
                         response -> {
-                            loader.dismiss();
                             try {
-                            JSONObject jsonResult=response.getJSONObject("result");
+                                JSONObject jsonResult=response.getJSONObject("result");
                                 Picasso.get().load(jsonResult.getString("offer_img")).into(offer_img);
                                 offer_coupon_code.setText(jsonResult.getString("offer_coupon_code"));
                                 store_name.setText(jsonResult.getString("store_name"+lang));
@@ -155,6 +158,8 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
                                     imgSaved.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                                     is_saved=false;
                                 }
+                                linearLayout.setVisibility(View.VISIBLE);
+                                loader.dismiss();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

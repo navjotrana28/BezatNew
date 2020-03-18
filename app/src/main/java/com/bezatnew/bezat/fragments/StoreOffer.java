@@ -6,7 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
@@ -58,9 +60,11 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
     Button btnAllOffer;
     ImageView imgBack;
     String lang="";
-    TextView txtTwitter,txtInsta,txtFb,txtWeb,txtPhone,txtStoreName;
+    LinearLayout wholeStorelayout;
+    TextView txtStoreName;
+    ImageButton txtTwitter, txtInsta, txtFb, txtWeb, txtPhone, txtSnap, txtLoc;
     private OnFragmentInteractionListener mListener;
-    String phone="",google="",fb="",insta="",twit="";
+    String phone = "", google = "", fb = "", insta = "", twit = "", snap = "", location = "";
 
     public StoreOffer() {
         // Required empty public constructor
@@ -113,9 +117,12 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
         txtFb=rootView.findViewById(R.id.txtFb);
         txtWeb=rootView.findViewById(R.id.txtWeb);
         txtPhone=rootView.findViewById(R.id.txtPhone);
+        txtLoc = rootView.findViewById(R.id.txtLoc);
+        txtSnap = rootView.findViewById(R.id.txtSnap);
         txtStoreName=rootView.findViewById(R.id.txtStoreName);
         btnAllOffer=rootView.findViewById(R.id.btnAllOffer);
         imgBack=rootView.findViewById(R.id.imgBack);
+        wholeStorelayout = rootView.findViewById(R.id.wholeStorelayout);
 
         imgBack.setOnClickListener(this);
         txtTwitter.setOnClickListener(this);
@@ -149,16 +156,53 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
                             try {
                                 JSONObject jsonObject=response.getJSONObject("result");
                                 Picasso.get().load(jsonObject.getString("store_image")).into(imgBanner);
-                                txtStoreName.setText(jsonObject.getString("storeName")+lang);
-
-                                twit=jsonObject.getString("twitter");
-                               insta=jsonObject.getString("instagram");
-                               fb=jsonObject.getString("facebook");
-                                google=jsonObject.getString("website");
+                                txtStoreName.setText(jsonObject.getString("storeName" + lang));
+                                if (jsonObject.isNull("twitter")
+                                        || jsonObject.getString("twitter").equals("")) {
+                                    txtTwitter.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
+                                } else {
+                                    twit = jsonObject.getString("twitter");
+                                }
+                                if (jsonObject.isNull("instagram")
+                                        || jsonObject.getString("instagram").equals("")) {
+                                    txtInsta.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
+                                } else {
+                                    insta = jsonObject.getString("instagram");
+                                }
+                                if (jsonObject.isNull("facebook")
+                                        || jsonObject.getString("facebook").equals("")) {
+                                    txtFb.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
+                                } else {
+                                    fb = jsonObject.getString("facebook");
+                                }
+                                if (jsonObject.isNull("website")
+                                        || jsonObject.getString("website").equals("")) {
+                                    txtWeb.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
+                                } else {
+                                    google = jsonObject.getString("website");
+                                }
+                                if (jsonObject.isNull("snapchat")
+                                        || jsonObject.getString("snapchat").equals("")) {
+                                    txtSnap.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
+                                } else {
+                                    snap = jsonObject.getString("snapchat");
+                                }
+                                if (jsonObject.isNull("google_location")
+                                        || jsonObject.getString("google_location").equals("")) {
+                                    txtLoc.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
+                                } else {
+                                    location = jsonObject.getString("google_location");
+                                }
 //                                txtPhone.setText(jsonObject.getString("phone_no"));
-                                phone=jsonObject.getString("phone_no");
-                                JSONArray storeArray=jsonObject.getJSONArray("store_offers");
-
+                                if (jsonObject.isNull("phone_no")
+                                        || jsonObject.getString("phone_no").equals("")) {
+                                    txtPhone.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
+                                } else {
+                                    phone = jsonObject.getString("phone_no");
+                                }
+                                JSONArray storeArray = jsonObject.getJSONArray("store_offers");
+                                wholeStorelayout.setVisibility(View.VISIBLE);
+                                loader.dismiss();
                                 btnAllOffer.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -235,8 +279,23 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
             else {
                 startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://facebook.com/")));
             }
+        } else if (view.getId() == R.id.txtLoc) {
+            if (location != null && !location.isEmpty()) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("http://maps.google.com/maps?saddr=" + location));
+                startActivity(intent);
+            } else {
+                txtLoc.setEnabled(false);
+            }
         }
-       else if (view.getId()==R.id.txtWeb)
+        else if (view.getId() == R.id.txtSnap) {
+            if (snap != null && !snap.isEmpty()) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(snap)));
+            } else {
+                txtSnap.setEnabled(false);
+            }
+        }
+        else if (view.getId()==R.id.txtWeb)
         {
             if (google!=null && !google.isEmpty()) {
                 startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse(google)));

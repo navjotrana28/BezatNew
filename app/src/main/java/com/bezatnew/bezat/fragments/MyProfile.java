@@ -123,7 +123,6 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fargment_profile, container, false);
         loader = new Loader(getContext());
-        getProfile();
         imgProfile = rootView.findViewById(R.id.imgProfile);
         etName = rootView.findViewById(R.id.etName);
         etEmail = rootView.findViewById(R.id.etEmail);
@@ -133,21 +132,15 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         etDob = rootView.findViewById(R.id.etDob);
         etPhone = rootView.findViewById(R.id.etPhone);
         txtSave = rootView.findViewById(R.id.txtSave);
+        getProfile();
         ConstraintLayout editButtonLayout = rootView.findViewById(R.id.edit_profile);
         etDob.setOnClickListener(this);
         etCountry.setOnClickListener(this);
-        phone_code = SharedPrefs.getKey(getActivity(), "phone_code");
-        etName.setText(SharedPrefs.getKey(getActivity(), "user_name"));
-        etEmail.setText(SharedPrefs.getKey(getActivity(), "email"));
-        etCountry.setText(SharedPrefs.getKey(getActivity(), "country"));
-        etAddress.setText(SharedPrefs.getKey(getActivity(), "address"));
-        etGender.setText(SharedPrefs.getKey(getActivity(), "gender"));
-        etDob.setText(SharedPrefs.getKey(getActivity(), "dob"));
-        etPhone.setText(SharedPrefs.getKey(getActivity(), "phone"));
+
 
         if (SharedPrefs.getKey(getActivity(), "gender").equalsIgnoreCase("Male")) {
             imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.profile));
-            imgProfile.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            imgProfile.setScaleType(ImageView.ScaleType.FIT_XY);
         } else {
             imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_femaleicon));
             imgProfile.setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -317,7 +310,6 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                         vipUrl,
                         object,
                         response -> {
-                            loader.dismiss();
                             Log.v("NotificationResponse", response + " ");
                             try {
                                 JSONObject userInfo = response.getJSONObject("userInfo");
@@ -363,6 +355,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                 etPhone.setText(SharedPrefs.getKey(getActivity(), "phone"));
                                 String path = SharedPrefs.getKey(getActivity(), "image");
                                 Picasso.get().load(path).into(imgProfile);
+                                loader.dismiss();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -412,7 +405,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                     etName.getText().toString(),
                     phone_code,
                     etPhone.getText().toString(),
-                    etAddress.getText().toString(),
+                    etEmail.getText().toString(),
                     etGender.getText().toString(),
                     etDob.getText().toString(),
                     SharedPrefs.getKey(getActivity(), "country_id"),
@@ -489,16 +482,17 @@ public class MyProfile extends Fragment implements View.OnClickListener {
 
     private void updateProfile(String userId, String user_name,
                                String phone_code, String phone,
-                               String addres, String gender,
+                               String email, String gender,
                                String dob, String country_id, String image) {
 
         String saveddata = "{" + "\"phone_code\":" + "\"" + phone_code + "\","
                 + "\"user_name\":" + "\"" + user_name + "\"," +
-                "\"address\":" + "\"" + addres + "\"," +
+                "\"email\":" + "\"" + email + "\"," +
                 "\"dob\":" + "\"" + dob + "\"," +
                 "\"phone\":" + "\"" + phone + "\"," +
                 "\"country_id\":" + "\"" + country_id + "\"," +
                 "\"userId\":" + "\"" + userId + "\"," +
+                "\"gender\":" + "\"" + gender + "\"," +
                 "\"image\":" + "\"" + image + "\"" + "}";
         Log.v("savedData", saveddata + "");
 
