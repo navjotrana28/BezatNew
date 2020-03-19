@@ -362,7 +362,6 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                 String path = SharedPrefs.getKey(getActivity(), "image");
                                 Picasso.get().load(path).into(imgProfile);
                                 SharedPrefs.setKey(getActivity(), "image", "");
-
                                 loader.dismiss();
 
                             } catch (JSONException e) {

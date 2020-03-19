@@ -4,8 +4,11 @@ import android.app.Activity
 import android.content.Context
 import com.bezatnew.bezat.MyApp
 import com.bezatnew.bezat.api.UserInfo
+import com.google.firebase.iid.FirebaseInstanceId
 import com.google.gson.Gson
+import java.util.*
 
+@Suppress("DEPRECATION")
 class PreferenceManager {
 private constructor()
     companion object {
@@ -20,7 +23,7 @@ private constructor()
     get() {
         var toReturn = getString(keyDeviceId, MyApp.MyApp?.applicationContext)
         if (toReturn == null)
-            toReturn = "xxxxxxxxx"//UUID.randomUUID().toString()
+            toReturn = FirebaseInstanceId.getInstance().token.toString()                        //UUID.randomUUID().toString()
         setString(keyDeviceId, toReturn, MyApp.MyApp?.applicationContext)
         return toReturn
     }
