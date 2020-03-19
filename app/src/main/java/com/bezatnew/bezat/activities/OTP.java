@@ -161,11 +161,12 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
 
     private void otpVerification() {
         Loader loader = new Loader(context);
-        loader.show();
+//        loader.show();
 
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLS.Companion.getOTP_VALIDATION(), new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
+                Loader loader = new Loader(context);
                 loader.dismiss();
                 String res = new String(response.data);
                 try {
@@ -196,6 +197,7 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Loader loader = new Loader(context);
                 loader.dismiss();
                 String json = null;
                 String Message;

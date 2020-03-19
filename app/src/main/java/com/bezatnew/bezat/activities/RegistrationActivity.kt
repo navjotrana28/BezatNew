@@ -45,11 +45,17 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
     var otp: String? = null
     var date: String? = null
     fun initUI() {
+        val loader = Loader(this)
+        loader.dismiss()
         save.setOnClickListener {
+            val loader = Loader(this)
+            loader.show()
             if (!isOtpValidated) {
                 validateForOtpAndSave()
+
             } else {
                 validateAndSave()
+
             }
         }
         etDOB.convertToDatePicker { date = it }
@@ -103,6 +109,8 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
     override fun onResponse(response: RegisterRequestResponse?) {
         if (response?.status.equals("success")) {
+            val loader = Loader(this)
+            loader.dismiss()
             otp = response?.userInfo!!.otp.toString()
             val intent = Intent(this@RegistrationActivity, OTP::class.java)
             intent.putExtra("otp", otp)

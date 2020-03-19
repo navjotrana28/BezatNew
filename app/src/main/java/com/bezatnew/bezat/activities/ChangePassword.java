@@ -54,7 +54,7 @@ public class ChangePassword extends AppCompatActivity {
         imgBack = findViewById(R.id.imgBack);
 
         loader=new Loader(context);
-
+        loader.dismiss();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
