@@ -7,6 +7,7 @@ class URLS {
         val OUTER_URL = BASE_PATH+"user/front_banner"
         val LOGIN_URL = BASE_PATH+"user/login"
         val REGISTER_URL = BASE_PATH+"user/register"
+        val COMPLETEREGISTER_URL = BASE_PATH+"user/completeRegister"
         val USER_BANNER = BASE_PATH+"user/banners"
         val LATEST_OFFER = BASE_PATH+"store/saved_offer_list?"
         val CATEGORY_LIST = BASE_PATH+"category/list"

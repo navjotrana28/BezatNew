@@ -149,4 +149,8 @@ public class ChangePassword extends AppCompatActivity {
         };
         MyApplication.getInstance().addToRequestQueue(volleyMultipartRequest);
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

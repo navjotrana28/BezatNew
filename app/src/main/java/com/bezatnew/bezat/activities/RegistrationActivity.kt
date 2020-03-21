@@ -1,12 +1,15 @@
 package com.bezatnew.bezat.activities
 
 import android.app.Activity
+import android.app.Dialog
+import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
@@ -45,12 +48,31 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
     var otp: String? = null
     var date: String? = null
     fun initUI() {
-        val loader = Loader(this)
+        val loader = Loader(this);
         loader.dismiss()
+
+        etGender.setOnClickListener {
+//            etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it }, {})
+            val dialog = Dialog(this!!, R.style.Theme_AppCompat_Light_Dialog)
+            dialog.setContentView(R.layout.gender_dialog)
+            dialog.show()
+            val txtFemale = dialog.findViewById(R.id.txtFemale) as TextView
+            val txtMale = dialog.findViewById(R.id.txtMale) as TextView
+
+            txtFemale.setOnClickListener {
+                etGender.setText("Female")
+                dialog.dismiss()
+            }
+            txtMale.setOnClickListener {
+                etGender.setText("Male")
+                dialog.dismiss()
+            }
+        }
+
         save.setOnClickListener {
-            val loader = Loader(this)
-            loader.show()
+//            loader.show()
             if (!isOtpValidated) {
+
                 validateForOtpAndSave()
 
             } else {
@@ -66,7 +88,6 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                     Picasso.get().load(it.img).into(countryIcon)
                 }) { obj, _ -> code = obj.phoneCode }
         }, {})
-        etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it }, {})
     }
 
     private fun callImageMethod() {
@@ -84,6 +105,9 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
         request.phone = phone.text.toString()
         if (validateForOtp(request)) {
             registerUser(request)
+        }else{
+            val loader = Loader(this);
+            loader.dismiss()
         }
     }
 
@@ -101,7 +125,8 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             phone = phone.text.toString(),
             mobileCode = code ?: "",
             dob = date ?: "",
-            password = etPassword.text.toString()
+            password = etPassword.text.toString(),
+            userID = SharedPrefs.getKey(this,"userId")
         )
         if (validate(request))
             register(request)
@@ -111,7 +136,11 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
         if (response?.status.equals("success")) {
             val loader = Loader(this)
             loader.dismiss()
+            if (response != null) {
+                SharedPrefs.setKey(this,"userId",response.userID.toString())
+            }
             otp = response?.userInfo!!.otp.toString()
+            Log.d("otp=",otp)
             val intent = Intent(this@RegistrationActivity, OTP::class.java)
             intent.putExtra("otp", otp)
             intent.putExtra("deviceId", PreferenceManager.instance.deviceId)
@@ -133,8 +162,9 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
         request.register(this, { response ->
             //response return case
             response.evaluate(this, {
-                otpVerification()
+//                otpVerification()
                 Toast.makeText(this, getString(R.string.reg_success), Toast.LENGTH_SHORT).show()
+                finish()
             }) {
                 this@RegistrationActivity.showMessage(it)
             }
@@ -229,7 +259,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
     private fun otpVerification() {
         val loader = Loader(this)
-        loader.show()
+//        loader.show()
 
         val volleyMultipartRequest =
             object : VolleyMultipartRequest(Request.Method.POST, URLS.OTP_VALIDATION,
@@ -293,9 +323,16 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                     isOtpValidated = it.getBooleanExtra(OTP.IS_OTP_VERIFIED, false)
                     if (isOtpValidated) {
                         showAllView()
+                        val loader = Loader(this)
+                        loader.dismiss()
                     }
                 }
+            }else{
+                onBackPressed()
             }
+        }
+        else{
+            onBackPressed()
         }
     }
 }

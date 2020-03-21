@@ -27,14 +27,15 @@ data class RegisterRequest(
     @SerializedName("password")
     val password: String,
     @SerializedName("phone")
-    val phone: String
+    val phone: String,
+    @SerializedName("userID")
+    val userID: String
 ){
     fun generate() = Gson().toJson(this)
     fun register(context:RegistrationActivity, onSuccess: (RegisterResponse)->Unit,onError:(String)->Unit){
         val dialog = Loader(context)
         dialog.show()
-        URLS.REGISTER_URL.httpPost(generate().toList()).responseObject(CommonDeserializer(RegisterResponse::class.java)){_,_,result->
-            if(dialog.isShowing)
+        URLS.COMPLETEREGISTER_URL.httpPost(generate().toList()).responseObject(CommonDeserializer(RegisterResponse::class.java)){_,_,result->
                 dialog.dismiss()
             val(response, error) = result
             if(error == null) {
@@ -44,10 +45,12 @@ data class RegisterRequest(
                 }
                 else
                 {
+                    dialog.dismiss()
                     onError(response?.errorMessage?:context.getString(R.string.someting_wrong))
                 }
             }
             else {
+                dialog.dismiss()
                 onError(context.getString(R.string.someting_wrong))
                 error.printStackTrace()
             }

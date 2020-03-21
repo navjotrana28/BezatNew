@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -101,7 +104,6 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
 
     private void resendOTP() {
 
-
         Loader loader = new Loader(context);
         loader.show();
 
@@ -161,12 +163,11 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
 
     private void otpVerification() {
         Loader loader = new Loader(context);
-//        loader.show();
+        loader.show();
 
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLS.Companion.getOTP_VALIDATION(), new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
-                Loader loader = new Loader(context);
                 loader.dismiss();
                 String res = new String(response.data);
                 try {
@@ -178,8 +179,6 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
                             intent.putExtra("phone", phone);
                             startActivity(intent);
 
-                        } else {
-                            finish();
                         }
                         Toast.makeText(OTP.this,
                                 jsonObject.getString("success_msg"), Toast.LENGTH_LONG).show();
@@ -239,5 +238,10 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+       finish();
     }
 }
