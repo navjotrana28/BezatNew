@@ -7,6 +7,9 @@ public class RegisterRequestResponse {
     @SerializedName("status")
     @Expose
     public String status;
+    @SerializedName("error_msg")
+    @Expose
+    public String error_msg;
     @SerializedName("userID")
     @Expose
     public Integer userID;

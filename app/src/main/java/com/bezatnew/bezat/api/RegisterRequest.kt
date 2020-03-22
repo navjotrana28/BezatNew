@@ -20,14 +20,14 @@ data class RegisterRequest(
     val email: String,
     @SerializedName("gender")
     val gender: String,
-    @SerializedName("mobile_code")
-    val mobileCode: String,
+//    @SerializedName("mobile_code")
+//    val mobileCode: String,
     @SerializedName("name")
     val name: String,
-    @SerializedName("password")
-    val password: String,
-    @SerializedName("phone")
-    val phone: String,
+//    @SerializedName("password")
+//    val password: String,
+//    @SerializedName("phone")
+//    val phone: String,
     @SerializedName("userID")
     val userID: String
 ){

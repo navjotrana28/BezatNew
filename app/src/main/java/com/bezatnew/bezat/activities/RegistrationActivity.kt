@@ -122,10 +122,10 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             email = etEmail.text.toString(),
             name = etName.text.toString(),
             gender = etGender.text.toString(),
-            phone = phone.text.toString(),
-            mobileCode = code ?: "",
+//            phone = phone.text.toString(),
+//            mobileCode = code ?: "",
             dob = date ?: "",
-            password = etPassword.text.toString(),
+//            password = etPassword.text.toString(),
             userID = SharedPrefs.getKey(this,"userId")
         )
         if (validate(request))
@@ -151,6 +151,11 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             intent.putExtra("email", "")
             intent.putExtra("gender", "")
             startActivityForResult(intent, 0)
+        }else{
+            if (response != null) {
+                Toast.makeText(this, response.error_msg.toString(), Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 

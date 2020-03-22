@@ -85,11 +85,11 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (otp != null && otp.equals(etOTP.getText().toString()) && forgot.equals("")) {
-            Intent resultIntent = new Intent();
-            resultIntent.putExtra(IS_OTP_VERIFIED, true);
-            setResult(Activity.RESULT_OK, resultIntent);
-            finish();
-            return;
+//            Intent resultIntent = new Intent();
+//            resultIntent.putExtra(IS_OTP_VERIFIED, true);
+//            setResult(Activity.RESULT_OK, resultIntent);
+//            finish();
+//            return;
         }
         if (view.getId() == R.id.btnSave) {
             if (etOTP.getText().toString().equals("")) {
@@ -182,6 +182,10 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
                         }
                         Toast.makeText(OTP.this,
                                 jsonObject.getString("success_msg"), Toast.LENGTH_LONG).show();
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra(IS_OTP_VERIFIED, true);
+                        setResult(Activity.RESULT_OK, resultIntent);
+                        finish();
 
                     } else {
                         Toast.makeText(OTP.this,
@@ -242,6 +246,12 @@ public class OTP extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-       finish();
+        if(getApplicationContext().equals(this)) {
+            finish();
+        }
+        else{
+            finish();
+            finish();
+        }
     }
 }
