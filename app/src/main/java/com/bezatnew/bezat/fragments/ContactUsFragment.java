@@ -18,6 +18,7 @@ import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.api.contactusResponse.ContactUsRequest;
 import com.bezatnew.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezatnew.bezat.interfaces.ContactUsSuccessResponse;
+import com.bezatnew.bezat.utils.SharedPrefs;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +27,7 @@ public class ContactUsFragment extends Fragment {
     ImageView imgBack;
     private EditText name, email, comments;
     private Button sendBtn;
+    String lang="";
     private ImageView insta,youtube,twitter,whatsapp,dialer;
 
 
@@ -38,6 +40,13 @@ public class ContactUsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang="_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang="";
+        }
         View view = inflater.inflate(R.layout.fragment_contact_us, container, false);
         addViews(view);
         onClickSendButton();

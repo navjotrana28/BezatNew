@@ -41,6 +41,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     PostAdapter postAdapter;
     Context context=ForgotPassword.this;
     Button btnSend;
+    ImageView imgBack;
     EditText etPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         etCode=findViewById(R.id.txtCode);
         btnSend = findViewById(R.id.btnSend);
         etPhone = findViewById(R.id.etPhone);
+        imgBack = findViewById(R.id.imgBackForgot);
         etCode.setOnClickListener(this);
         loader=new Loader(context);
         loader.show();
@@ -75,6 +77,12 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             }
         });
         getCountryList();
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void getOTP(String phone) {

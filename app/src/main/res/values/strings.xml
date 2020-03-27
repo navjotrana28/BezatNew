@@ -111,6 +111,14 @@
     <string name="yes_label">Yes</string>
     <string name="no_label">No</string>
     <string name="country_logo">Country Logo</string>
+    <string name="get_feedback">Feedback</string>
+    <string name="send_contact_us">SEND</string>
+    <string name="get_name">NAME:</string>
+    <string name="get_email">EMAIL:</string>
+    <string name="get_comments">COMMENTS:</string>
+    <string name="user_name_Login">Username / Phone number</string>
+    <string name="skip_login">SKIP</string>
+
 
 
 </resources>

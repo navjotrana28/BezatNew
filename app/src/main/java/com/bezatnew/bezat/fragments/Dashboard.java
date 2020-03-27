@@ -207,7 +207,7 @@ public class Dashboard extends Fragment {
         ));
         dashBoardItem.add(new DashBoardItem(
                 R.drawable.feedback,
-                "Feedback"
+                getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
                 R.drawable.vip_offers,

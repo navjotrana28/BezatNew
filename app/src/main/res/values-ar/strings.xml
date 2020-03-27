@@ -101,7 +101,16 @@
     <string name="otp">مكتب المدعي العام</string>
     <string name="resend">إعادة إرسال</string>
     <string name="didn_t_receive_the_otp">لم أستلم OTP؟</string>
-    <string name="yes_label">Yes</string>
-    <string name="no_label">No</string>
+    <string name="yes_label">نعم</string>
+    <string name="no_label">لا</string>
+    <string name="get_feedback">ردود الفعل</string>
+    <string name="country_logo">شعار البلد</string>
+    <string name="send_contact_us">ارسال</string>
+    <string name="get_name">اسم:</string>
+    <string name="get_email">البريد الالكتروني:</string>
+    <string name="get_comments">تعليقات:</string>
+    <string name="user_name_Login">اسم المستخدم / رقم الهاتف</string>
+    <string name="skip_login">تخطي</string>
+
 
 </resources>
