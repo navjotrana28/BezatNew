@@ -439,7 +439,7 @@ public class Dashboard extends Fragment {
 
                 if (SharedPrefs.isGuestUser(getContext()) &&
                         (dashBoardItem.get(position).getName().equals(getString(R.string.get_coupon)) ||
-                                dashBoardItem.get(position).getName().equals("Feedback") ||
+                                dashBoardItem.get(position).getName().equals(getString(R.string.get_feedback)) ||
                                 dashBoardItem.get(position).getName().equals(getString(R.string.fav_offers)) ||
                                 dashBoardItem.get(position).getName().equals(getString(R.string.total_coupon)))) {
                     view.setEnabled(false);
@@ -545,7 +545,7 @@ public class Dashboard extends Fragment {
                                 ft.commit();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
-                                    .getName().equalsIgnoreCase("Feedback")) {
+                                    .getName().equalsIgnoreCase(getString(R.string.get_feedback))) {
                                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                                 ft.replace(R.id.container, new Feedback());
                                 ft.addToBackStack(null);

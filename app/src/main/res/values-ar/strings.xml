@@ -82,7 +82,7 @@
     <string name="bezat_winner">الفائزين</string>
     <string name="phone_number">رقم الهاتف</string>
     <string name="code">Code</string>
-    <string name="send">Send</string>
+    <string name="send">ارسال</string>
     <string name="please_enter_your_register_phone_number_below_we_will_send_a_code_to_reset_your_password">يرجى إدخال عنوان البريديرجى إدخال رقم هاتفك المسجل أدناه. سنرسل رمزًا لإعادة تعيين كلمة المرور الخاصة بك</string>
     <string name="my_favourite">My Favourite</string>
     <string name="google">GOOGLE</string>
@@ -112,6 +112,17 @@
     <string name="user_name_Login">اسم المستخدم / رقم الهاتف</string>
     <string name="skip_login">تخطي</string>
     <string name="you_will_take_to_login_screen">"سيتم نقلك إلى شاشة تسجيل الدخول، حسناً؟"</string>
+    <string name="search_by_retailer_name">البحث حسب اسم بائع التجزئة</string>
+    <string name="choose_retailer_here">اختر بائع التجزئة هنا</string>
+    <string name="note_your_feedback_will_be_sent_to_the_retailer">ملاحظة: سيتم إرسال ملاحظاتك إلى بائع التجزئة</string>
+    <string name="rate_your_star">تقييم نجمك</string>
+    <string name="search_retailer">البحث عن متاجر التجزئة</string>
+    <string name="bezat_yearly">بيزات سنويا</string>
+    <string name="bezat_monthly">بيزات شهريًا</string>
+    <string name="search_by_retailer">البحث حسب بائع التجزئة</string>
+    <string name="enter_password">أدخل كلمة المرور</string>
+    <string name="enter_mobile_no">أدخل رقم الهاتف المحمول</string>
+    <string name="view_all_offers">عرض جميع العروض</string>
 
 
 </resources>

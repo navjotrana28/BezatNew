@@ -85,7 +85,7 @@
             android:background="@drawable/round_corners"
             android:backgroundTint="@color/divider_grey"
             android:iconifiedByDefault="false"
-            android:queryHint="Search by Retailer"
+            android:queryHint="@string/search_by_retailer"
     />
     <LinearLayout
             android:layout_below="@+id/search_total_coupons"

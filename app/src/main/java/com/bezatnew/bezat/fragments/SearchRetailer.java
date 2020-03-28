@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bezatnew.bezat.ClientRetrofit;
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.adapter.SearchAdapter;
@@ -22,6 +23,7 @@ import com.bezatnew.bezat.interfaces.SearchRetailerCallback;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseData;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchRetailerStore;
+import com.bezatnew.bezat.utils.SharedPrefs;
 
 import java.util.List;
 
@@ -48,6 +50,7 @@ public class SearchRetailer extends Fragment {
     private SearchResponseData responseData = new SearchResponseData();
     private SearchView searchView;
     private List<SearchRetailerStore> retailerData;
+    private String lang = "";
 
     public SearchRetailer() {
         // Required empty public constructor
@@ -57,6 +60,13 @@ public class SearchRetailer extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+        }
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_retailer, container, false);
         recyclerViewHorizontal = view.findViewById(R.id.recyclerView_horizontal);
@@ -151,7 +161,7 @@ public class SearchRetailer extends Fragment {
 
     public void getAfterQuery(List<SearchRetailerStore> searchableData, String query) {
         CompositeDisposable disposable = new CompositeDisposable();
-         Observable.just(searchableData)
+        Observable.just(searchableData)
                 .flatMap(Observable::fromIterable)
                 .filter(searchRetailerStore -> searchRetailerStore.getStoreName().toLowerCase().contains(query.toLowerCase()))
                 .toList()

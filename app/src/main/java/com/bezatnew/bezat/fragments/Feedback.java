@@ -35,6 +35,7 @@ public class Feedback extends Fragment {
     private SearchView searchView;
     private ArrayList<String> category = new ArrayList<>();
     ArrayList<String> store_id = new ArrayList<>();
+    private String lang = "";
 
     public Feedback() {
         // Required empty public constructor
@@ -44,6 +45,13 @@ public class Feedback extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang="_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang="";
+        }
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
         suggestion_box = view.findViewById(R.id.suggestionBox);

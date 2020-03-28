@@ -225,7 +225,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_height="@dimen/_44sdp"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="View All Offers"
+                android:text="@string/view_all_offers"
                 android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/muli_bold"
                 android:textColor="@color/white"
