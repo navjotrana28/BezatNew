@@ -130,6 +130,7 @@
     <string name="search_by_retailer">Search by Retailer</string>
     <string name="enter_mobile_no">Enter Mobile No</string>
     <string name="view_all_offers">View All Offers</string>
+    <string name="SEND" />
 
 
 </resources>
