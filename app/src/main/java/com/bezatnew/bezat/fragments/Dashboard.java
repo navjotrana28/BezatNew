@@ -476,7 +476,7 @@ public class Dashboard extends Fragment {
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.sign_up))) {
                                 new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme)
-                                        .setMessage("You will be taken to the login screen, okay?")
+                                        .setMessage(getString(R.string.you_will_take_to_login_screen))
                                         .setPositiveButton(R.string.yes_label, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 getActivity().finish();

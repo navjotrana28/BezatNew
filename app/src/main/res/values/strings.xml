@@ -118,8 +118,7 @@
     <string name="get_comments">COMMENTS:</string>
     <string name="user_name_Login">Username / Phone number</string>
     <string name="skip_login">SKIP</string>
-
-
+    <string name="you_will_take_to_login_screen">You will be taken to the login screen, okay?</string>
 
 
 </resources>

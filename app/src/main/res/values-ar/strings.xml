@@ -111,6 +111,7 @@
     <string name="get_comments">تعليقات:</string>
     <string name="user_name_Login">اسم المستخدم / رقم الهاتف</string>
     <string name="skip_login">تخطي</string>
+    <string name="you_will_take_to_login_screen">"سيتم نقلك إلى شاشة تسجيل الدخول، حسناً؟"</string>
 
 
 </resources>
