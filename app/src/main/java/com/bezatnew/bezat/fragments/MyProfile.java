@@ -236,7 +236,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             try {
                 bitmap = (Bitmap) data.getExtras().get("data");
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
                 byte[] byteArray = bytes.toByteArray();
                 String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 SharedPrefs.setKey(getActivity(), "image", "data:image/jpeg;base64," + encoded);
