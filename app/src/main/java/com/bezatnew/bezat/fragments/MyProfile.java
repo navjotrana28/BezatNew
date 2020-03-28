@@ -149,7 +149,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             imgProfile.setScaleType(ImageView.ScaleType.FIT_XY);
         } else {
             imgProfile.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_femaleicon));
-            imgProfile.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            imgProfile.setScaleType(ImageView.ScaleType.FIT_XY);
 
         }
         etGender.setOnClickListener(this);

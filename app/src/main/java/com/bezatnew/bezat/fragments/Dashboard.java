@@ -454,11 +454,11 @@ public class Dashboard extends Fragment {
                             if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.sign_out))) {
                                 new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
-                                        .setMessage("Are you sure, you want to LOGOUT?")
+                                        .setMessage(getActivity().getString(R.string.logout_confirm))
 
                                         // Specifying a listener allows you to take an action before dismissing the dialog.
                                         // The dialog is automatically dismissed when a dialog button is clicked.
-                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 ClientRetrofit retrofit = new ClientRetrofit();
                                                 retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"));
@@ -469,7 +469,7 @@ public class Dashboard extends Fragment {
                                         })
 
                                         // A null listener allows the button to dismiss the dialog and take no further action.
-                                        .setNegativeButton("No", null)
+                                        .setNegativeButton(R.string.no_label, null)
                                         .setIcon(android.R.drawable.ic_dialog_alert)
                                         .show();
 
