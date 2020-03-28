@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -61,6 +63,8 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -241,15 +245,6 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 SharedPrefs.setKey(getActivity(), "image", "data:image/jpeg;base64," + encoded);
                 Log.e("Activity", "Pick from Camera::>>> ");
-
-//                int currentBitmapWidth = bitmap.getWidth();
-//                int currentBitmapHeight = bitmap.getHeight();
-//
-//                int ivWidth = imgProfile.getWidth();
-//                int newHeight = (int) Math.floor((double) currentBitmapHeight * ((double) ivWidth / (double) currentBitmapWidth));
-//
-//                Bitmap newbitMap = Bitmap.createScaledBitmap(bitmap, ivWidth, newHeight, true);
-
                 imgProfile.setImageBitmap(bitmap);
 
             } catch (Exception e) {
@@ -260,8 +255,9 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
-                imgProfile.setImageBitmap(bitmap);
+                Bitmap bitmap1 = rotateImageIfRequired(getContext(),bitmap,selectedImage);
+                imgProfile.setImageBitmap(bitmap1);
+                bitmap1.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
                 byte[] byteArray = bytes.toByteArray();
                 encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 SharedPrefs.setKey(getActivity(), "image", "data:image/jpeg;base64," + encoded);
@@ -272,6 +268,27 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             }
         }
     }
+    private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) throws IOException {
+        InputStream input = context.getContentResolver().openInputStream(selectedImage);
+        ExifInterface ei;
+        if (Build.VERSION.SDK_INT > 23) {
+            ei = new ExifInterface(input);
+        } else {
+            ei = new ExifInterface(selectedImage.getPath());
+        }
+        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+        switch (orientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                return rotateImage(img, 90);
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                return rotateImage(img, 180);
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                return rotateImage(img, 270);
+            default:
+                return img;
+        }
+    }
+
 
 
     private void getCountryList() {
