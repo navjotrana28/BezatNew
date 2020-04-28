@@ -1,86 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        package="com.bezatnew.bezat">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bezatnew.bezat">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-            android:name="com.bezatnew.bezat.MyApplication"
-            android:allowBackup="true"
-            android:autoMirrored="true"
-            android:icon="@drawable/app_logo"
-            android:label="@string/app_name"
-            android:roundIcon="@drawable/app_logo"
-            android:supportsRtl="true"
+        android:name="com.bezatnew.bezat.MyApplication"
+        android:allowBackup="true"
+        android:autoMirrored="true"
+        android:configChanges="orientation"
+        android:icon="@drawable/app_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/app_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name="com.bezatnew.bezat.activities.ChangePassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.OTP"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.ChooseLanguage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.OfferDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.FavouriteOffer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.GetCoupon"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.BezatWinner"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.Prizes"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.ContactUs"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.Notifications"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.MyProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.MyFavourite"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.TotalCoupons"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.MainHomeActivty"
+            android:label="@string/title_activity_main_home_activty"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:usesCleartextTraffic="true"
-            tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.bezatnew.bezat.activities.ChangePassword">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.OTP">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.ChooseLanguage">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.OfferDetails">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.FavouriteOffer">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.GetCoupon">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.BezatWinner">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.Prizes">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.ContactUs">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.Notifications">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.MyProfile">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.MyFavourite">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.TotalCoupons">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-                android:name="com.bezatnew.bezat.activities.MainHomeActivty"
-                android:label="@string/title_activity_main_home_activty"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:name="com.bezatnew.bezat.activities.RegistrationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/opposite" />
         <activity
-                android:name="com.bezatnew.bezat.activities.RegistrationActivity"
-                android:theme="@style/opposite">
-        </activity>
+            android:name="com.bezatnew.bezat.activities.Homepage"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:theme="@style/HomePageTheme" />
         <activity
-                android:name="com.bezatnew.bezat.activities.Homepage"
-                android:label="@string/title_activity_home"
-                android:theme="@style/HomePageTheme">
-        </activity>
+            android:name="com.bezatnew.bezat.activities.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" />
         <activity
-                android:name="com.bezatnew.bezat.activities.LoginActivity"
-                android:label="@string/title_activity_login">
-        </activity>
-        <activity android:name="com.bezatnew.bezat.activities.AdActivity"/>
-        <activity android:name="com.bezatnew.bezat.activities.Intro"/>
-        <activity android:name="com.bezatnew.bezat.activities.ForgotPassword"/>
+            android:name="com.bezatnew.bezat.activities.AdActivity"
+            android:screenOrientation="portrait" />
         <activity
-                android:name="com.bezatnew.bezat.activities.MainActivity"
-                android:theme="@style/SplashTheme">
+            android:name="com.bezatnew.bezat.activities.Intro"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.ForgotPassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bezatnew.bezat.activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-            <service android:name="com.bezatnew.bezat.activities.MyMessagingService">
-                <intent-filter>
-                    <action android:name="com.google.firebase.MESSAGING_EVENT" />
-                </intent-filter>
-            </service>
+        <service android:name="com.bezatnew.bezat.activities.MyMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
