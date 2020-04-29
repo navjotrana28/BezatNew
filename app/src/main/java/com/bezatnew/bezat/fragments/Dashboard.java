@@ -229,8 +229,6 @@ public class Dashboard extends Fragment {
 
             recycle.setAdapter(postAdapter);
         }
-
-
     }
 
     @Override

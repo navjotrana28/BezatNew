@@ -128,7 +128,7 @@ public class Settings extends Fragment implements View.OnClickListener {
         initSignOutLabel();
 
 
-        if (SharedPrefs.getKey(getActivity(), "push_notification").equalsIgnoreCase("1")) {
+        if (SharedPrefs.getKey(getActivity(), "push_notification_status").equalsIgnoreCase("1")) {
             switches.setChecked(true);
         } else {
             switches.setChecked(false);
@@ -136,10 +136,10 @@ public class Settings extends Fragment implements View.OnClickListener {
         switches.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    SharedPrefs.setKey(getActivity(), "push_notification", "1");
+                    SharedPrefs.setKey(getActivity(), "push_notification_status", "1");
                     notificationChange("1");
                 } else {
-                    SharedPrefs.setKey(getActivity(), "push_notification", "0");
+                    SharedPrefs.setKey(getActivity(), "push_notification_status", "0");
                     notificationChange("0");
                 }
             }
