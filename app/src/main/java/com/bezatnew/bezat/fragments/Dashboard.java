@@ -440,10 +440,32 @@ public class Dashboard extends Fragment {
                                 dashBoardItem.get(position).getName().equals(getString(R.string.get_feedback)) ||
                                 dashBoardItem.get(position).getName().equals(getString(R.string.fav_offers)) ||
                                 dashBoardItem.get(position).getName().equals(getString(R.string.total_coupon)))) {
-                    view.setEnabled(false);
-                    view.setClickable(false);
+//                    view.setEnabled(false);
+//                    view.setClickable(false);
                     image.setAlpha(0.5f);
                     text.setAlpha(0.5f);
+                    itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.total_coupon))) {
+                                getActivity().finish();
+
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
+                                getActivity().finish();
+
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.get_feedback))) {
+                                getActivity().finish();
+
+                            } else if (dashBoardItems.get(getAdapterPosition())
+                                    .getName().equalsIgnoreCase(getString(R.string.get_coupon))) {
+                                getActivity().finish();
+                            }
+                        }
+                    });
+
                 } else {
 
                     itemView.setOnClickListener(new View.OnClickListener() {
@@ -548,7 +570,6 @@ public class Dashboard extends Fragment {
                                 ft.replace(R.id.container, new Feedback());
                                 ft.addToBackStack(null);
                                 ft.commit();
-
                             }
                         }
                     });
