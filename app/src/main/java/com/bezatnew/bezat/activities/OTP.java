@@ -60,7 +60,6 @@ public class OTP extends AppCompatActivity implements View.OnClickListener,
     GoogleApiClient mGoogleApiClient;
     MySMSBroadCastReceiver mySMSBroadCastReceiver;
     private int RESOLVE_HINT = 2;
-    TextView inputOtp;
     EditText etOTP;
     Button btnSave;
     String otp, deviceId, dob, email, gender, mobileCode,
