@@ -12,11 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.MyApplication;
@@ -26,6 +28,7 @@ import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.bezatnew.bezat.utils.VolleyMultipartRequest;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,39 +42,40 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     TextView etCode;
     Loader loader;
     PostAdapter postAdapter;
-    Context context=ForgotPassword.this;
+    Context context = ForgotPassword.this;
+    SmsHashCodeHelper smsHashCodeHelper = new SmsHashCodeHelper(this);
     Button btnSend;
     ImageView imgBack;
     EditText etPhone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (SharedPrefs.getKey(this,"selectedlanguage").contains("ar")) {
+        if (SharedPrefs.getKey(this, "selectedlanguage").contains("ar")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             setLocale("ar");
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
         setContentView(R.layout.activity_forgot_password);
-        etCode=findViewById(R.id.txtCode);
+        etCode = findViewById(R.id.txtCode);
         btnSend = findViewById(R.id.btnSend);
         etPhone = findViewById(R.id.etPhone);
         imgBack = findViewById(R.id.imgBackForgot);
         etCode.setOnClickListener(this);
-        loader=new Loader(context);
+        loader = new Loader(context);
         loader.show();
+        // sms hash code helper :
+
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (etPhone.getText().toString().isEmpty())
-                {
+                if (etPhone.getText().toString().isEmpty()) {
                     etPhone.setText(getString(R.string.empty_phone));
                 }
-                if (etCode.getText().toString().isEmpty())
-                {
+                if (etCode.getText().toString().isEmpty()) {
                     etCode.setText("country code is empty");
-                }
-                else {
+                } else {
                     getOTP(etPhone.getText().toString());
                 }
             }
@@ -95,21 +99,19 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                 loader.dismiss();
                 String res = new String(response.data);
                 try {
-                    JSONObject jsonObject=new JSONObject(res);
-                    if (jsonObject.getString("status").equalsIgnoreCase("success"))
-                    {
-                        Intent intent=new Intent(ForgotPassword.this,OTP.class);
-                        intent.putExtra("Forgot","Forgot");
-                        intent.putExtra("phone",phone);
-                        intent.putExtra("mobileCode",etCode.getText().toString());
+                    JSONObject jsonObject = new JSONObject(res);
+                    if (jsonObject.getString("status").equalsIgnoreCase("success")) {
+                        Intent intent = new Intent(ForgotPassword.this, OTP.class);
+                        intent.putExtra("Forgot", "Forgot");
+                        intent.putExtra("phone", phone);
+                        intent.putExtra("mobileCode", etCode.getText().toString());
                         startActivity(intent);
                         Toast.makeText(ForgotPassword.this,
-                                jsonObject.getString("success_msg"),Toast.LENGTH_LONG).show();
+                                jsonObject.getString("success_msg"), Toast.LENGTH_LONG).show();
                         finish();
-                    }
-                    else {
+                    } else {
                         Toast.makeText(ForgotPassword.this,
-                                jsonObject.getString("error_msg"),Toast.LENGTH_LONG).show();
+                                jsonObject.getString("error_msg"), Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -124,14 +126,16 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                 String json = null;
                 String Message;
                 NetworkResponse response = error.networkResponse;
-                Log.v("response",response.data+"");
+                Log.v("response", response.data + "");
             }
         }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("phone",phone);
-                System.out.println("object"+params+" ");
+                params.put("phone", phone);
+                String hashCode = String.valueOf(smsHashCodeHelper.getAppHashCode());
+                params.put("smsHashCode", hashCode.substring(1, hashCode.length() - 1));
+                System.out.println("object" + params + " ");
                 return params;
             }
 
@@ -153,10 +157,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
 
     private void getCountryList() {
         JSONObject object = new JSONObject();
-        String Url= URLS.Companion.getGET_COUNTRY();
+        String Url = URLS.Companion.getGET_COUNTRY();
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        Url ,
+                        Url,
                         object,
                         response -> {
                             loader.dismiss();
@@ -181,11 +185,12 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     }
 
     Dialog dialog;
+
     private void showDialog() {
-        dialog=new Dialog(ForgotPassword.this);
+        dialog = new Dialog(ForgotPassword.this);
         dialog.setContentView(R.layout.country_dialog);
         dialog.show();
-        RecyclerView recCountry=dialog.findViewById(R.id.recCountry);
+        RecyclerView recCountry = dialog.findViewById(R.id.recCountry);
         StaggeredGridLayoutManager layoutManager =
                 new StaggeredGridLayoutManager(1, OrientationHelper.VERTICAL);
         layoutManager.setGapStrategy(
@@ -196,12 +201,12 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             recCountry.setAdapter(postAdapter);
         }
     }
+
     @Override
     public void onClick(View view) {
-if (view.getId()==R.id.txtCode)
-{
-    showDialog();
-}
+        if (view.getId() == R.id.txtCode) {
+            showDialog();
+        }
     }
 
 
@@ -236,7 +241,7 @@ if (view.getId()==R.id.txtCode)
 
                 holder.txtCountry.setText(jsonArray.getJSONObject(position).getString("name"));
                 holder.txtCode.setText(jsonArray.getJSONObject(position).getString("phone_code"));
-                holder.txtCountryCode.setText("("+jsonArray.getJSONObject(position).getString("country_code")+")");
+                holder.txtCountryCode.setText("(" + jsonArray.getJSONObject(position).getString("country_code") + ")");
                 Picasso.get().load(jsonArray.getJSONObject(position).getString("img")).into(holder.imgFlag);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -251,18 +256,17 @@ if (view.getId()==R.id.txtCode)
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView txtCountry,txtCode,txtCountryCode;
+            TextView txtCountry, txtCode, txtCountryCode;
             ImageView imgFlag;
 
 
             public MyViewHolder(View itemView) {
                 super(itemView);
-                imgFlag=itemView.findViewById(R.id.imgFlag);
+                imgFlag = itemView.findViewById(R.id.imgFlag);
 
-                txtCountry=itemView.findViewById(R.id.txtCountry);
-                txtCode=itemView.findViewById(R.id.txtCode);
-                txtCountryCode=itemView.findViewById(R.id.txtCountryCode);
-
+                txtCountry = itemView.findViewById(R.id.txtCountry);
+                txtCode = itemView.findViewById(R.id.txtCode);
+                txtCountryCode = itemView.findViewById(R.id.txtCountryCode);
 
 
                 itemView.setOnClickListener(new View.OnClickListener() {
@@ -281,10 +285,10 @@ if (view.getId()==R.id.txtCode)
             }
         }
 
-}
+    }
 
     public void setLocale(String lang) {
-        SharedPrefs.setKey(ForgotPassword.this,"selectedlanguage",lang);
+        SharedPrefs.setKey(ForgotPassword.this, "selectedlanguage", lang);
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
