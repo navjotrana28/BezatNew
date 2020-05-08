@@ -149,7 +149,6 @@ public class SearchRetailer extends Fragment {
         adapter = new SearchAdapter(getActivity(), searchResponseResult, new SearchRetailerCallback() {
             @Override
             public void onClickHorizonView(int pos) {
-
                 retailerData = searchResponseResult.getResult().get(pos).getStores();
                 verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos).getStores());
             }
