@@ -20,6 +20,7 @@ import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
 import com.bezatnew.bezat.utils.SharedPrefs;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,7 +77,8 @@ public class Feedback extends Fragment {
                     }
                 }
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, category);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
+                        android.R.layout.simple_spinner_dropdown_item, category);
                 suggestion_box.setAdapter(arrayAdapter);
             }
 
