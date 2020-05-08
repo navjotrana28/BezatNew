@@ -189,7 +189,7 @@ public class Dashboard extends Fragment {
 
 
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.prizes,
+                R.drawable.prize,
                 getString(R.string.prizes) + ""
         ));
         dashBoardItem.add(new DashBoardItem(

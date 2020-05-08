@@ -88,12 +88,17 @@ public class Feedback extends Fragment {
 
     private void onCLickSendBtn() {
         button.setOnClickListener(v -> {
-            FeedbackRequest request = new FeedbackRequest();
-            request.setFeedback(text.getText().toString());
-            request.setRatings(String.valueOf(ratingBar.getNumStars()));
-            request.setUserId(SharedPrefs.getKey(getActivity(), "userId"));
-            request.setRetailerId(getRetailerId());
-            feedbackToServer(request);
+            if (text.getText().toString().matches("")){
+                Toast.makeText(getActivity(), "fill the form first!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                FeedbackRequest request = new FeedbackRequest();
+                request.setFeedback(text.getText().toString());
+                request.setRatings(String.valueOf(ratingBar.getNumStars()));
+                request.setUserId(SharedPrefs.getKey(getActivity(), "userId"));
+                request.setRetailerId(getRetailerId());
+                feedbackToServer(request);
+            }
         });
     }
 
@@ -116,7 +121,7 @@ public class Feedback extends Fragment {
         clientRetrofit.feedBackRequestApi(request, new FeedbackCallback() {
             @Override
             public void onSuccess(FeedbackResponse response) {
-                Toast.makeText(getContext(), response.getStatus(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), response.getStatus()+"! Your feebback has been sent sucessfully", Toast.LENGTH_LONG).show();
                 getActivity().onBackPressed();
             }
 

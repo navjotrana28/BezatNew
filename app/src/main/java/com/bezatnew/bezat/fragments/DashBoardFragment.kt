@@ -59,7 +59,7 @@ class DashBoardFragment : Fragment() {
         val list= mutableListOf<DashBoardItem>()
         list.add(
             DashBoardItem(
-                R.drawable.get_coupon,
+                R.drawable.qr_code,
                 R.string.get_coupon
             ) {})
         list.add(
@@ -69,12 +69,12 @@ class DashBoardFragment : Fragment() {
             ) {})
         list.add(
             DashBoardItem(
-                R.drawable.prizes,
+                R.drawable.prize,
                 R.string.prizes
             ) {})
         list.add(
             DashBoardItem(
-                R.drawable.total_coupon,
+                R.drawable.total_coupons,
                 R.string.total_coupon
             ) {})
         list.add(
@@ -94,7 +94,7 @@ class DashBoardFragment : Fragment() {
             ) {})
         list.add(
             DashBoardItem(
-                R.drawable.vip_offers,
+                R.drawable.vip_logo,
                 R.string.vip_offers
             ) {})
         list.add(

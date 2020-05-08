@@ -6,15 +6,15 @@
         android:layout_height="wrap_content">
     <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/image_horizontal"
-            android:layout_width="60dp"
+            android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/bezat_contact_logo"
-            app:civ_border_width="2dp"
+            android:padding="2dp"
+            android:background="@drawable/btn_back"
             app:layout_constraintBottom_toTopOf="@+id/text_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:civ_border_color="@color/colorPrimary"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
             android:id="@+id/text_horizontal"

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.interfaces.SearchRetailerCallback;
@@ -47,6 +48,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
                 .resize(500, 500)
                 .centerInside()
                 .into(holder.imageHorizontal);
+
     }
 
     @Override
@@ -65,9 +67,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             super(view);
             imageHorizontal = view.findViewById(R.id.image_horizontal);
             imnageHorizontalName = view.findViewById(R.id.text_horizontal);
-
+            int ab=0;
             view.setOnClickListener(view1 -> {
                 int pos = getAdapterPosition();
+                imageHorizontal.setBackgroundResource(R.drawable.btn_back2);
+
+
                 searchRetailerCallback.onClickHorizonView(pos);
             });
         }
