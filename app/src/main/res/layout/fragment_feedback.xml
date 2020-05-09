@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:completionThreshold="1"
                     android:hint="@string/choose_retailer_here"
-                    android:paddingRight="30dp"
+                    android:paddingEnd="30dp"
                     android:maxLines="1"
                     android:backgroundTint="@android:color/transparent"
                     android:textColor="@color/black"

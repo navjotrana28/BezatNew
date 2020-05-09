@@ -255,7 +255,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                Bitmap bitmap1 = rotateImageIfRequired(getContext(),bitmap,selectedImage);
+                Bitmap bitmap1 = rotateImageIfRequired(getContext(), bitmap, selectedImage);
                 imgProfile.setImageBitmap(bitmap1);
                 bitmap1.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
                 byte[] byteArray = bytes.toByteArray();
@@ -268,6 +268,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             }
         }
     }
+
     private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) throws IOException {
         InputStream input = context.getContentResolver().openInputStream(selectedImage);
         ExifInterface ei;
@@ -288,7 +289,6 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 return img;
         }
     }
-
 
 
     private void getCountryList() {
@@ -462,27 +462,30 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             datePickerDialog.show();
         }
         if (view.getId() == R.id.etGender) {
-
-            Dialog dialog = new Dialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog);
-            dialog.setContentView(R.layout.gender_dialog);
-            dialog.show();
-            TextView txtFemale = (TextView) dialog.findViewById(R.id.txtFemale);
-            TextView txtMale = (TextView) dialog.findViewById(R.id.txtMale);
-
-            txtFemale.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    etGender.setText("Female");
-                    dialog.dismiss();
-                }
-            });
-            txtMale.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    etGender.setText("Male");
-                    dialog.dismiss();
-                }
-            });
+            if (etGender.getText().equals("Female") || etGender.getText().equals("Male")) {
+                Toast.makeText(getActivity(), "Pls contact admin to change your gender",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                Dialog dialog = new Dialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog);
+                dialog.setContentView(R.layout.gender_dialog);
+                dialog.show();
+                TextView txtFemale = (TextView) dialog.findViewById(R.id.txtFemale);
+                TextView txtMale = (TextView) dialog.findViewById(R.id.txtMale);
+                txtFemale.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        etGender.setText("Female");
+                        dialog.dismiss();
+                    }
+                });
+                txtMale.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        etGender.setText("Male");
+                        dialog.dismiss();
+                    }
+                });
+            }
 
         }
         if (view.getId() == R.id.etCountry) {

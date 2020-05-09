@@ -179,7 +179,7 @@ public class Dashboard extends Fragment {
         recycle = rootView.findViewById(R.id.recycle);
         dashBoardItem = dashBoardItem = new ArrayList<>();
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.get_coupon,
+                R.drawable.qr_code,
                 getString(R.string.get_coupon) + ""
         ));
         dashBoardItem.add(new DashBoardItem(

@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import com.android.volley.*;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
@@ -14,6 +17,7 @@ import com.bezatnew.bezat.utils.Loader;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.bezatnew.bezat.utils.VolleyMultipartRequest;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,74 +25,65 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChangePassword extends AppCompatActivity {
-        String code,phone;
-        TextView etCode;
-        EditText etPhone,etPassword,etConfirmPassword;
+    String code, phone;
+    TextView etCode;
+    EditText etPhone, etPassword, etConfirmPassword;
     Button btnSave;
     ImageView imgBack;
     Loader loader;
-    String lang="";
-    Context context=ChangePassword.this;
+    String lang = "";
+    Context context = ChangePassword.this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (SharedPrefs.getKey(ChangePassword.this,"selectedlanguage").contains("ar")) {
-           getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            lang="_ar";
+        if (SharedPrefs.getKey(ChangePassword.this, "selectedlanguage").contains("ar")) {
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
         } else {
-           getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            lang="";
+            getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
         }
         setContentView(R.layout.activity_change_password);
-        phone=getIntent().getStringExtra("phone");
-        code=getIntent().getStringExtra("code");
+        phone = getIntent().getStringExtra("phone");
+        code = getIntent().getStringExtra("code");
 
-        etCode=findViewById(R.id.etCode);
-        etPhone=findViewById(R.id.etPhone);
-        etPassword=findViewById(R.id.etPassword);
-        etConfirmPassword=findViewById(R.id.etConfirmPassword);
+        etCode = findViewById(R.id.etCode);
+        etPhone = findViewById(R.id.etPhone);
+        etPassword = findViewById(R.id.etPassword);
+        etConfirmPassword = findViewById(R.id.etConfirmPassword);
         etPhone.setText(phone);
         etCode.setText(code);
 
-        btnSave=findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnSave);
         imgBack = findViewById(R.id.imgBack);
 
-        loader=new Loader(context);
+        loader = new Loader(context);
         loader.dismiss();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               onBackPressed();
+                onBackPressed();
             }
         });
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (etCode.getText().toString().isEmpty())
-                {
+                if (etCode.getText().toString().isEmpty()) {
                     etCode.setError("please fill code");
-                }
-                else if (etPhone.getText().toString().isEmpty())
-                {
+                } else if (etPhone.getText().toString().isEmpty()) {
                     etPhone.setError("Please fill the phone");
-                }
-                else if (etPassword.getText().toString().isEmpty())
-                {
+                } else if (etPassword.getText().toString().isEmpty()) {
                     etPhone.setError("Please fill the password");
-                }
-                else if(etConfirmPassword.getText().toString().isEmpty())
-                {
+                } else if (etConfirmPassword.getText().toString().isEmpty()) {
                     etConfirmPassword.setError("please fill confirm password");
-                }
-                else if (!etConfirmPassword.getText().toString().equals(etPassword.getText().toString()))
-                {
+                } else if (!etConfirmPassword.getText().toString().equals(etPassword.getText().toString())) {
                     etConfirmPassword.setError("password and confirm password doesn't match");
-                }
-                else {
-                    String phone=etCode.getText().toString()+etPhone.getText().toString();
-                    String password=etPassword.getText().toString();
-                    changePassword(phone,password);
+                } else {
+                    String phone = etCode.getText().toString() + etPhone.getText().toString();
+                    String password = etPassword.getText().toString();
+                    changePassword(phone, password);
                 }
             }
         });
@@ -102,17 +97,15 @@ public class ChangePassword extends AppCompatActivity {
             public void onResponse(NetworkResponse response) {
                 loader.dismiss();
                 String res = new String(response.data);
-                Log.v("changepassword",res);
+                Log.v("changepassword", res);
                 try {
-                    JSONObject jsonObject=new JSONObject(res);
-                    Toast.makeText(context,jsonObject.getString("success_msg"),Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(ChangePassword.this,LoginActivity.class));
-                   finishAffinity();
+                    JSONObject jsonObject = new JSONObject(res);
+                    Toast.makeText(context, jsonObject.getString("success_msg"), Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(ChangePassword.this, LoginActivity.class));
+                    finishAffinity();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -121,16 +114,16 @@ public class ChangePassword extends AppCompatActivity {
                 String json = null;
                 String Message;
                 NetworkResponse response = error.networkResponse;
-                Log.v("response",response.data+"");
+                Log.v("response", response.data + "");
             }
         }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("phone", phone);
-                params.put("password",password);
+                params.put("password", password);
 
-                System.out.println("object"+params+" ");
+                System.out.println("object" + params + " ");
                 return params;
             }
 
@@ -149,6 +142,7 @@ public class ChangePassword extends AppCompatActivity {
         };
         MyApplication.getInstance().addToRequestQueue(volleyMultipartRequest);
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
