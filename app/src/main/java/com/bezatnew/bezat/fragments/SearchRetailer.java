@@ -1,12 +1,15 @@
 package com.bezatnew.bezat.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -79,6 +82,14 @@ public class SearchRetailer extends Fragment {
         loadSeachData();
         onCLickBackButton();
         initSearchView();
+        int id=searchView.getContext().getResources().getIdentifier("android:id/search_src_text",null,null);
+        TextView textView=searchView.findViewById(id);
+        textView.setHintTextColor(Color.rgb(105,105,105));
+        textView.setTextColor(Color.rgb(105,105,105));
+//        int searchIconId = searchView.getContext().getResources().getIdentifier("android:id/search_button",null, null);
+//        ImageView searchIcon = (ImageView) searchView.findViewById(searchIconId);
+//        searchIcon.setImageResource(R.drawable.ic_search_black_24dp);
+
         return view;
     }
 
