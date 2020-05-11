@@ -46,12 +46,12 @@ public class Feedback extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            lang="_ar";
+            lang = "_ar";
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            lang="";
+            lang = "";
         }
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
@@ -72,7 +72,11 @@ public class Feedback extends Fragment {
                 searchResponseResult = responseResult;
                 for (int i = 0; i < searchResponseResult.getResult().size(); i++) {
                     for (int j = 0; j < searchResponseResult.getResult().get(i).getStores().size(); j++) {
-                        category.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreName());
+                        if (lang.equals("_ar")) {
+                            category.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreNameAr());
+                        } else {
+                            category.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreName());
+                        }
                         store_id.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreId());
                     }
                 }
@@ -90,10 +94,9 @@ public class Feedback extends Fragment {
 
     private void onCLickSendBtn() {
         button.setOnClickListener(v -> {
-            if (text.getText().toString().matches("")){
+            if (text.getText().toString().matches("")) {
                 Toast.makeText(getActivity(), "fill the form first!", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 FeedbackRequest request = new FeedbackRequest();
                 request.setFeedback(text.getText().toString());
                 request.setRatings(String.valueOf(ratingBar.getNumStars()));
@@ -123,7 +126,7 @@ public class Feedback extends Fragment {
         clientRetrofit.feedBackRequestApi(request, new FeedbackCallback() {
             @Override
             public void onSuccess(FeedbackResponse response) {
-                Toast.makeText(getContext(), response.getStatus()+"! Your feebback has been sent sucessfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), response.getStatus() + "! Your feebback has been sent sucessfully", Toast.LENGTH_LONG).show();
                 getActivity().onBackPressed();
             }
 

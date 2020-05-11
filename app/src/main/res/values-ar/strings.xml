@@ -124,6 +124,8 @@
     <string name="enter_mobile_no">أدخل رقم الهاتف المحمول</string>
     <string name="view_all_offers">عرض جميع العروض</string>
     <string name="SEND">ارسال</string>
+    <string name="submit_feedback_buton">إرسال</string>
+    <string name="write_your_feedback_section">كتابة ملاحظاتك</string>
 
 
 </resources>
