@@ -38,7 +38,7 @@
                     android:gravity="center"
                     android:textSize="@dimen/_15sdp"
                     android:textColor="@color/white"
-                    android:text="Prize Details"/>
+                    android:text="@string/prize_details_prizes_section"/>
             <ImageView
 
                     android:layout_width="wrap_content"

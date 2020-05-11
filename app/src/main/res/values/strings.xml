@@ -133,6 +133,14 @@
     <string name="SEND">SEND </string>
     <string name="submit_feedback_buton">SUBMIT</string>
     <string name="write_your_feedback_section">Write your feedback</string>
+    <string name="prize_prizes_section">Prize :</string>
+    <string name="prize_details_prizes_section">Prize Details</string>
+    <string name="raffle_draw_announce_tomorrow">RAFFLE DRAW ANNOUNCE TOMORROW</string>
+    <string name="raffle_draw_announce_today">RAFFLE DRAW ANNOUNCE TODAY</string>
+    <string name="raffle_held">RAFFLE HELD</string>
+    <string name="days_before">DAYS BEFORE</string>
+    <string name="raffle_draw_in">RAFFLE DRAW IN</string>
+    <string name="days_prizes">DAYS</string>
 
 
 </resources>

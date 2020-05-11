@@ -126,6 +126,14 @@
     <string name="SEND">ارسال</string>
     <string name="submit_feedback_buton">إرسال</string>
     <string name="write_your_feedback_section">كتابة ملاحظاتك</string>
+    <string name="prize_prizes_section">جائزه:</string>
+    <string name="prize_details_prizes_section">تفاصيل الجائزة</string>
+    <string name="raffle_draw_announce_tomorrow">السحب السحب يعلن غدا</string>
+    <string name="raffle_draw_announce_today">السحب السحب يعلن اليوم</string>
+    <string name="raffle_held">عقد السحب</string>
+    <string name="days_before">قبل أيام</string>
+    <string name="raffle_draw_in">السحب في السحب</string>
+    <string name="days_prizes">ايام</string>
 
 
 </resources>
