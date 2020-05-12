@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.ClientRetrofit;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
+import com.bezatnew.bezat.activities.ForgotPassword;
 import com.bezatnew.bezat.activities.LoginActivity;
 import com.bezatnew.bezat.adapter.SliderAdapter;
 import com.bezatnew.bezat.models.DashBoardItem;
@@ -179,7 +181,7 @@ public class Dashboard extends Fragment {
         recycle = rootView.findViewById(R.id.recycle);
         dashBoardItem = dashBoardItem = new ArrayList<>();
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.qr_code_icon,
+                R.drawable.scancoupon_icon,
                 getString(R.string.get_coupon) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
@@ -192,7 +194,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.prizes) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.total_coupons,
+                R.drawable.totalcoupons,
                 getString(R.string.total_coupon) + ""
         ));
 
@@ -205,7 +207,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.winners) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.feedback_icon,
+                R.drawable.feedbackicon3,
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
@@ -443,18 +445,25 @@ public class Dashboard extends Fragment {
                         public void onClick(View view) {
                             if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.total_coupon))) {
+                                toastMsg(view);
+
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
+                                toastMsg(view);
+
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.get_feedback))) {
+                                toastMsg(view);
+
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.get_coupon))) {
+                                toastMsg(view);
                                 getActivity().finish();
                             }
                         }
@@ -572,5 +581,11 @@ public class Dashboard extends Fragment {
             }
         }
     }
+
+    private void toastMsg(View view) {
+        Toast.makeText(view.getContext(), "Sign in to access this section.",
+                Toast.LENGTH_LONG).show();
+    }
+
 
 }
