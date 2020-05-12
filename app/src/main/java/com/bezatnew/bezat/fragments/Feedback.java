@@ -2,6 +2,7 @@ package com.bezatnew.bezat.fragments;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,8 +95,10 @@ public class Feedback extends Fragment {
 
     private void onCLickSendBtn() {
         button.setOnClickListener(v -> {
-            if (text.getText().toString().matches("")) {
-                Toast.makeText(getActivity(), "fill the form first!", Toast.LENGTH_SHORT).show();
+            System.out.println("suggestion box" +suggestion_box.getText().toString());
+            System.out.println("suggestion editable" +suggestion_box.getEditableText().toString());
+            if (text.getText().toString().matches("") || suggestion_box.getEditableText().toString().matches("")) {
+                Toast.makeText(getActivity(), "Fill the form first!", Toast.LENGTH_SHORT).show();
             } else {
                 FeedbackRequest request = new FeedbackRequest();
                 request.setFeedback(text.getText().toString());
@@ -126,7 +129,7 @@ public class Feedback extends Fragment {
         clientRetrofit.feedBackRequestApi(request, new FeedbackCallback() {
             @Override
             public void onSuccess(FeedbackResponse response) {
-                Toast.makeText(getContext(), response.getStatus() + "! Your feebback has been sent sucessfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext()," Your feedback has been sent successfully.", Toast.LENGTH_LONG).show();
                 getActivity().onBackPressed();
             }
 
