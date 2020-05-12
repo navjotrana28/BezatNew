@@ -179,7 +179,7 @@ public class Dashboard extends Fragment {
         recycle = rootView.findViewById(R.id.recycle);
         dashBoardItem = dashBoardItem = new ArrayList<>();
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.qr_code,
+                R.drawable.qr_code_icon,
                 getString(R.string.get_coupon) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
@@ -187,13 +187,12 @@ public class Dashboard extends Fragment {
                 getString(R.string.fav_offers) + ""
         ));
 
-
         dashBoardItem.add(new DashBoardItem(
                 R.drawable.prize,
                 getString(R.string.prizes) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.total_coupon,
+                R.drawable.total_coupons,
                 getString(R.string.total_coupon) + ""
         ));
 
@@ -206,11 +205,11 @@ public class Dashboard extends Fragment {
                 getString(R.string.winners) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.feedback,
+                R.drawable.feedback_icon,
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.vip_offers,
+                R.drawable.vip_logo,
                 getString(R.string.vip_offers) + ""
         ));
 
@@ -395,14 +394,9 @@ public class Dashboard extends Fragment {
             try {
 
                 holder.text.setText(dashBoardItems.get(position).getName() + " ");
-                final int sdk = android.os.Build.VERSION.SDK_INT;
-                if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                    holder.image.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(),
-                            dashBoardItems.get(position).getDrawable()));
-                } else {
-                    holder.image.setBackground(ContextCompat.getDrawable(getActivity(),
-                            dashBoardItems.get(position).getDrawable()));
-                }
+
+                holder.image.setBackground(ContextCompat.getDrawable(getActivity(),
+                        dashBoardItems.get(position).getDrawable()));
 
                 holder.bind(position);
 
