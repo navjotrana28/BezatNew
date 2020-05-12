@@ -67,7 +67,8 @@ public class ClientRetrofit {
 
     public void registerUser(RegisterUserRequest request, RegisterUserCallBack callBack) {
         CompositeDisposable compositeDisposable = new CompositeDisposable();
-        serviceRetrofit.registerUser(request.password, request.mobile_code, request.phone)
+        serviceRetrofit.registerUser(request.password, request.mobile_code, request.phone,
+                request.smsHashCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<RegisterRequestResponse>() {

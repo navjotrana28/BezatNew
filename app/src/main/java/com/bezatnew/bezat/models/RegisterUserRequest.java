@@ -15,4 +15,7 @@ public class RegisterUserRequest {
     @SerializedName("phone")
     @Expose
     public String phone;
+    @SerializedName("smsHashCode")
+    @Expose
+    public String smsHashCode;
 }
