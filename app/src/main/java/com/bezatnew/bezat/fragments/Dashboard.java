@@ -583,7 +583,7 @@ public class Dashboard extends Fragment {
     }
 
     private void toastMsg(View view) {
-        Toast.makeText(view.getContext(), "Sign in to access this section.",
+        Toast.makeText(view.getContext(), getString(R.string.sign_in_to_access_this_action),
                 Toast.LENGTH_LONG).show();
     }
 
