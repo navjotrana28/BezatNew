@@ -85,7 +85,6 @@ public class GetCoupon extends Fragment {
         else{
             Toast.makeText(rootView.getContext(),getString(R.string.no_coupons_at_this_moment),
                     Toast.LENGTH_LONG).show();
-            getActivity().finish();
         }
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override

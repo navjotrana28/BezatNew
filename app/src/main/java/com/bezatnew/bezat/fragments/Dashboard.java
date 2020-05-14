@@ -3,6 +3,7 @@ package com.bezatnew.bezat.fragments;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ import com.bezatnew.bezat.models.DashBoardItem;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.google.android.material.tabs.TabLayout;
+
+import net.glxn.qrgen.android.QRCode;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -541,11 +544,16 @@ public class Dashboard extends Fragment {
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.get_coupon))) {
-                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.container, new GetCoupon());
-                                ft.addToBackStack(null);
-                                ft.commit();
 
+                                if (SharedPrefs.getKey(getActivity(), "user_code").equals("")) {
+                                    Toast.makeText(rootView.getContext(), getString(R.string.no_coupons_at_this_moment),
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                    ft.replace(R.id.container, new GetCoupon());
+                                    ft.addToBackStack(null);
+                                    ft.commit();
+                                }
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.partners))) {
                                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
