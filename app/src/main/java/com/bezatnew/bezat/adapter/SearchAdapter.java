@@ -49,7 +49,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         Picasso.get()
                 .load(responseResult.getResult().get(position).getCategoryImage())
                 .resize(500, 500)
-                .centerInside()
+                .centerCrop()
                 .into(holder.imageHorizontal);
         if (position == previousValue) {
             holder.imageHorizontal.setBackgroundResource(R.drawable.btn_back2);

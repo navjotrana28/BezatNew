@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,14 +121,25 @@ public class TotalCoupon extends Fragment {
         imgSearch = rootView.findViewById(R.id.imgSearch);
         imgBack = rootView.findViewById(R.id.imgBack);
         searchView = rootView.findViewById(R.id.search_view);
+//        searchView.setQueryHint(Html.fromHtml("<font color = #696969>"+getResources().getString(R.string.search_by_retailer)));
+//        int id=searchView.getContext().getResources().getIdentifier("android:id/search_src_text",null,null);
+//        TextView textView=searchView.findViewById(id);
+//        textView.setHintTextColor(Color.rgb(105,105,105));
+//        textView.setTextColor(Color.rgb(105,105,105));
         loader = new Loader(getContext());
         loader.show();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH);
         Date date = new Date();
         currentDate = formatter.format(date);
         txtDate.setText(currentDate);
+
+
+//        int id=searchView.getContext().getResources().getIdentifier("android:id/search_src_text",null,null);
+//        TextView textView=searchView.findViewById(id);
+//        textView.setHintTextColor(Color.rgb(105,105,105));
+//        textView.setTextColor(Color.rgb(105,105,105));
         getTotalCoupon();
-//        getTotalCoupons();
+        getTotalCoupons();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override

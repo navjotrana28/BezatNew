@@ -38,6 +38,8 @@ public class Homepage extends AppCompatActivity {
     FragmentTransaction ft;
     ViewPagerAdapter adapter;
     ViewPager viewPager;
+    MenuItem prevmenuItem;
+    Dashboard dashboard;
     FrameLayout frameLayout;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -58,14 +60,13 @@ public class Homepage extends AppCompatActivity {
                     ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.container, new Notification());
                     ft.commit();
-//                    viewPager.setCurrentItem(1);
                     return true;
                 case R.id.navigation_profile:
                     getSupportFragmentManager().popBackStack();
                     ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.container, new MyProfile());
                     ft.commit();
-//                    viewPager.setCurrentItem(2);
+//                   viewPager.setCurrentItem(2);
                     return true;
 
                 case R.id.navigation_settings:
@@ -118,10 +119,34 @@ public class Homepage extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.navigation);
         frameLayout = findViewById(R.id.container);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//        viewPager = findViewById(R.id.viewPagerhome);
+        viewPager = findViewById(R.id.viewPagerhome);
 //        addTabs(viewPager);
         setPageChangeListener(navView);
 
+
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                if (prevmenuItem !=null){
+//                    prevmenuItem.setChecked(false);
+//                }else {
+//                    navView.getMenu().getItem(0).setChecked(false);
+//                }
+//                navView.getMenu().getItem(position).setChecked(true);
+//                prevmenuItem=navView.getMenu().getItem(position);
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
+//        addTabs(viewPager);
     }
 
     private void setPageChangeListener(BottomNavigationView navView) {

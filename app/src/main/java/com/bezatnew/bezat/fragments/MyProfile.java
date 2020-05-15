@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.os.ConfigurationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
@@ -62,6 +64,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage;
@@ -463,8 +466,12 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         }
         if (view.getId() == R.id.etGender) {
             if (etGender.getText().equals("Female") || etGender.getText().equals("Male")) {
-                Toast.makeText(getActivity(), "Pls contact admin to change your gender",
-                        Toast.LENGTH_LONG).show();
+                if (ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).toLanguageTags().equals("ar")){
+                        Toast.makeText(getActivity(),"يرجى الاتصال بالمسؤول لتغيير جنسك" ,Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getActivity(), "Pls contact admin to change your gender",
+                            Toast.LENGTH_LONG).show();
+                }
             } else {
                 Dialog dialog = new Dialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog);
                 dialog.setContentView(R.layout.gender_dialog);

@@ -59,168 +59,175 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgProfile"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/corner_radius"
+            app:cardElevation="@dimen/card_elevation"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgProfile"
-            app:layout_constraintVertical_bias="0.0">
-
-        <androidx.cardview.widget.CardView
-                android:id="@+id/contact_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:cardElevation="@dimen/card_elevation"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/corner_radius"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                    android:id="@+id/contact_name_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    android:hint="@string/get_name"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/dark_grey"
-                    android:textSize="14sp" />
+                android:id="@+id/contact_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:hint="@string/get_name"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-                android:id="@+id/contact_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardElevation="@dimen/card_elevation"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/corner_radius"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contact_name">
+            android:id="@+id/contact_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/corner_radius"
+            app:cardElevation="@dimen/card_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contact_name">
 
             <EditText
-                    android:id="@+id/contact_email_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    android:hint="@string/get_email"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/dark_grey"
-                    android:textSize="14sp" />
+                android:id="@+id/contact_email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:hint="@string/get_email"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp" />
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-                android:id="@+id/contact_comments"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardElevation="@dimen/card_elevation"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/corner_radius"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contact_email">
+            android:id="@+id/contact_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/corner_radius"
+            app:cardElevation="@dimen/card_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contact_email">
 
             <EditText
-                    android:id="@+id/contact_comments_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    android:ems="10"
-                    android:gravity="start"
-                    android:hint="@string/get_comments"
-                    android:lines="4"
-                    android:maxLength="140"
-                    android:paddingStart="15dp"
-                    android:paddingTop="5dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/dark_grey"
-                    android:textSize="14sp" />
+                android:id="@+id/contact_comments_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:ems="10"
+                android:gravity="start"
+                android:hint="@string/get_comments"
+                android:lines="4"
+                android:maxLength="140"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14sp" />
         </androidx.cardview.widget.CardView>
 
         <Button
-                android:id="@+id/contact_button"
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/round_edge_and_color_background"
-                android:text="@string/send_contact_us"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contact_comments" />
+            android:id="@+id/contact_button"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/round_edge_and_color_background"
+            android:text="@string/send_contact_us"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contact_comments" />
 
         <ImageView
-                android:id="@+id/contact_dialer"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/dialer1"
-                android:layout_marginTop="@dimen/_40sdp"
-                app:layout_constraintEnd_toStartOf="@+id/contact_whattsApp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contact_button"
-                />
+            android:id="@+id/contact_dialer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="52dp"
+            android:src="@drawable/dialer1"
+            app:layout_constraintEnd_toStartOf="@+id/contact_whattsApp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contact_button" />
 
         <ImageView
-                android:id="@+id/contact_whattsApp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/whatsapp_logo"
-                app:layout_constraintBottom_toBottomOf="@+id/contact_dialer"
-                app:layout_constraintEnd_toStartOf="@+id/contact_insta"
-                app:layout_constraintStart_toEndOf="@+id/contact_dialer"
-                app:layout_constraintTop_toTopOf="@+id/contact_dialer" />
+            android:id="@+id/contact_whattsApp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/whatsapp_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/contact_dialer"
+            app:layout_constraintEnd_toStartOf="@+id/contact_insta"
+            app:layout_constraintStart_toEndOf="@+id/contact_dialer"
+            app:layout_constraintTop_toTopOf="@+id/contact_dialer"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-                android:id="@+id/contact_insta"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/instagram_logo"
-                app:layout_constraintBottom_toBottomOf="@+id/contact_whattsApp"
-                app:layout_constraintEnd_toStartOf="@+id/contact_twitter"
-                app:layout_constraintStart_toEndOf="@+id/contact_whattsApp"
-                app:layout_constraintTop_toTopOf="@+id/contact_whattsApp" />
+            android:id="@+id/contact_insta"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/instagram_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/contact_whattsApp"
+            app:layout_constraintEnd_toStartOf="@+id/contact_twitter"
+            app:layout_constraintStart_toEndOf="@+id/contact_whattsApp"
+            app:layout_constraintTop_toTopOf="@+id/contact_whattsApp" />
 
         <ImageView
-                android:id="@+id/contact_twitter"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/twitter_logo"
-                app:layout_constraintBottom_toBottomOf="@+id/contact_insta"
-                app:layout_constraintStart_toEndOf="@+id/contact_insta"
-                app:layout_constraintEnd_toStartOf="@+id/contact_browser"
-                app:layout_constraintTop_toTopOf="@+id/contact_insta" />
+            android:id="@+id/contact_twitter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/twitter_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/contact_insta"
+            app:layout_constraintEnd_toStartOf="@+id/contact_browser"
+            app:layout_constraintStart_toEndOf="@+id/contact_insta"
+            app:layout_constraintTop_toTopOf="@+id/contact_insta" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/contact_browser"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/utube"
-                app:civ_border_color="@color/orange"
-                app:civ_border_width="3dp"
-                app:layout_constraintBottom_toBottomOf="@+id/contact_twitter"
-                app:layout_constraintStart_toEndOf="@+id/contact_twitter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/contact_twitter"
-                />
+            android:id="@+id/contact_browser"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
+            android:src="@drawable/utube"
+            app:civ_border_color="@color/orange"
+            app:civ_border_width="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/contact_twitter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/contact_twitter"
+            app:layout_constraintTop_toTopOf="@+id/contact_twitter" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

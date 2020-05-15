@@ -210,7 +210,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.vip_offers,
+                R.drawable.vip_logo,
                 getString(R.string.vip_offers) + ""
         ));
 
