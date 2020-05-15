@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.utils.SharedPrefs;
@@ -76,11 +77,15 @@ public class GetCoupon extends Fragment {
         txtUserCode=rootView.findViewById(R.id.txtUserCode);
         imgQr=rootView.findViewById(R.id.imgQr);
         imgBack = rootView.findViewById(R.id.imgBack);
-        Bitmap myBitmap = QRCode.from(SharedPrefs.getKey(getActivity(),"user_code")).bitmap();
-        imgQr.setImageBitmap(myBitmap);
-
-        txtUserCode.setText(SharedPrefs.getKey(getActivity(),"user_code"));
-
+        if(!SharedPrefs.getKey(getActivity(),"user_code").equals("")) {
+            Bitmap myBitmap = QRCode.from(SharedPrefs.getKey(getActivity(), "user_code")).bitmap();
+            imgQr.setImageBitmap(myBitmap);
+            txtUserCode.setText(SharedPrefs.getKey(getActivity(), "user_code"));
+        }
+        else{
+            Toast.makeText(rootView.getContext(),getString(R.string.no_coupons_at_this_moment),
+                    Toast.LENGTH_LONG).show();
+        }
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.interfaces.CategoryId;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchRetailerStore;
@@ -20,6 +22,7 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
     private Context mcontext;
     CategoryId categoryId;
     private List<SearchRetailerStore> responseResult;
+    private String lang;
 
     public SearchVerticalAdapter(Context context, List<SearchRetailerStore> responseResult, CategoryId categoryId) {
         mcontext = context;
@@ -27,8 +30,9 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
         this.responseResult = responseResult;
     }
 
-    public void setDatumList(List<SearchRetailerStore> datumList) {
+    public void setDatumList(List<SearchRetailerStore> datumList, String lang) {
         this.responseResult = datumList;
+        this.lang = lang;
         notifyDataSetChanged();
     }
 
@@ -43,7 +47,11 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName());
+        if (lang.matches("_ar")) {
+            holder.imnageHorizontalName.setText(responseResult.get(position).getStoreNameAr());
+        } else {
+            holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName());
+        }
         Picasso.get()
                 .load(responseResult.get(position).getStoreImage())
                 .resize(500, 200)

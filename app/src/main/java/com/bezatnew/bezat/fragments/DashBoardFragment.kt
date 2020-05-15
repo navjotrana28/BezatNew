@@ -74,7 +74,7 @@ class DashBoardFragment : Fragment() {
             ) {})
         list.add(
             DashBoardItem(
-                R.drawable.total_coupons,
+                R.drawable.totalcoupons,
                 R.string.total_coupon
             ) {})
         list.add(

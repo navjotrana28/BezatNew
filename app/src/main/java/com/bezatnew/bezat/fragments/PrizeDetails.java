@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.utils.Loader;
+import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.squareup.picasso.Picasso;
 
@@ -57,6 +58,7 @@ public class PrizeDetails extends Fragment {
     TextView txtPrize;
     ImageView imgPrize;
     Button btnDraw;
+    String lang = "";
     ImageView imgBack;
     private OnFragmentInteractionListener mListener;
 
@@ -96,6 +98,13 @@ public class PrizeDetails extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_prize_details, container, false);
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+        }
         txtPrize = rootView.findViewById(R.id.txtPrize);
         imgPrize = rootView.findViewById(R.id.imgPrize);
         imgBack = rootView.findViewById(R.id.imgBack);
@@ -128,17 +137,22 @@ public class PrizeDetails extends Fragment {
                             try {
                                 String draw = "";
                                 JSONObject jsonObject = response.getJSONObject("result").getJSONObject("raffles");
-                                txtPrize.setText("Prize : " + jsonObject.getString("prize"));
+                                if (lang.equals("_ar")) {
+                                    txtPrize.setText(getString(R.string.prize_prizes_section) + " " + jsonObject.getString("prize_ar"));
+                                } else {
+                                    txtPrize.setText(getString(R.string.prize_prizes_section) + " " + jsonObject.getString("prize"));
+                                }
                                 String difDate = getDifDays(jsonObject.getString("draw_date"));
                                 if (Integer.parseInt(difDate) > 1) {
                                     int temp = Integer.parseInt(difDate) - 1;
-                                    draw = "RAFFLE DRAW IN " + temp + " DAYS";
+                                    draw = getString(R.string.raffle_draw_in) + " " + temp + " " + getString(R.string.days_prizes);
                                 } else if (Integer.parseInt(difDate) < 0) {
-                                    draw = "RAFFLE HELD " + Math.abs(Integer.parseInt(difDate)) + " DAYS BEFORE";
+                                    draw = getString(R.string.raffle_held) + " " + Math.abs(Integer.parseInt(difDate))
+                                            + " " + getString(R.string.days_before);
                                 } else if (Integer.parseInt(difDate) == 0) {
-                                    draw = "RAFFLE DRAW ANNOUNCE TODAY";
+                                    draw = getString(R.string.raffle_draw_announce_today);
                                 } else if (Integer.parseInt(difDate) == 1) {
-                                    draw = "RAFFLE DRAW ANNOUNCE TOMORROW";
+                                    draw = getString(R.string.raffle_draw_announce_tomorrow);
                                 }
                                 btnDraw.setText(draw);
                                 Picasso.get().load(jsonObject.getString("img")).into(imgPrize);

@@ -124,6 +124,20 @@
     <string name="enter_mobile_no">أدخل رقم الهاتف المحمول</string>
     <string name="view_all_offers">عرض جميع العروض</string>
     <string name="SEND">ارسال</string>
+    <string name="submit_feedback_buton">إرسال</string>
+    <string name="write_your_feedback_section">كتابة ملاحظاتك</string>
+    <string name="prize_prizes_section">جائزه:</string>
+    <string name="prize_details_prizes_section">تفاصيل الجائزة</string>
+    <string name="raffle_draw_announce_tomorrow">السحب السحب يعلن غدا</string>
+    <string name="raffle_draw_announce_today">السحب السحب يعلن اليوم</string>
+    <string name="raffle_held">عقد السحب</string>
+    <string name="days_before">قبل أيام</string>
+    <string name="raffle_draw_in">السحب في السحب</string>
+    <string name="days_prizes">ايام</string>
+    <string name="your_feedback_has_been_sent_successfully">تم إرسال ملاحظاتك بنجاح.</string>
+    <string name="fill_the_form_first">ملء النموذج أولا!</string>
+    <string name="sign_in_to_access_this_action">تسجيل الدخول للوصول إلى هذا القسم.</string>
+    <string name="no_coupons_at_this_moment">لا كوبونات في هذه اللحظة.</string>
 
 
 </resources>

@@ -1,97 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="match_parent"
-        tools:context=".activities.GetCoupon">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.GetCoupon">
+
     <Toolbar
-            android:id="@+id/toolbar"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:contentInsetLeft="0dp"
-            android:contentInsetStart="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetStart="0dp"
-            android:contentInsetRight="0dp"
-            android:contentInsetEnd="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetEnd="0dp">
-        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_24sdp"
+                android:src="@mipmap/ic_back" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-            <ImageView
-                    android:id="@+id/imgBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_24sdp"
-                    android:src="@mipmap/ic_back"/>
-            <TextView
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_bold"
-                    android:gravity="center"
-                    android:textSize="@dimen/_15sdp"
-                    android:textColor="@color/white"
-                    android:text="Prize Details"/>
+                android:layout_weight="1"
+                android:fontFamily="@font/muli_bold"
+                android:gravity="center"
+                android:text="@string/prize_details_prizes_section"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp" />
+
             <ImageView
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_24sdp"
-                    android:visibility="invisible"
-                    android:src="@mipmap/ic_back"/>
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_24sdp"
+                android:src="@mipmap/ic_back"
+                android:visibility="invisible" />
         </LinearLayout>
     </Toolbar>
+
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/_20sdp"
-            android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:gravity="center_horizontal"
-            android:layout_below="@+id/toolbar">
-        
+        android:orientation="vertical"
+        android:padding="@dimen/_20sdp">
+
         <ImageView
-                android:id="@+id/imgPrize"
-            android:maxHeight="@dimen/_226sdp"
-            android:minHeight="@dimen/_168sdp"
+            android:id="@+id/imgPrize"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_170sdp"
             android:layout_marginTop="@dimen/_20sdp"
-                android:layout_width="match_parent"
-                android:scaleType="fitXY"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_image_black_24dp"/>
+            android:maxHeight="@dimen/_200sdp"
+            android:minHeight="@dimen/_168sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_image_black_24dp" />
 
         <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:layout_marginStart="@dimen/_2sdp"
-                android:layout_marginEnd="@dimen/_2sdp"
-                app:cardBackgroundColor="@color/white"
-                app:contentPadding="@dimen/_12sdp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            app:cardBackgroundColor="@color/white"
+            app:contentPadding="@dimen/_12sdp">
+
             <TextView
-                    android:id="@+id/txtPrize"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"/>
+                android:id="@+id/txtPrize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
         </androidx.cardview.widget.CardView>
 
 
         <Button
-                android:id="@+id/btnDraw"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_44sdp"
-                android:backgroundTint="@color/colorPrimary"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp"
-                android:fontFamily="@font/muli_semibold"/>
+            android:id="@+id/btnDraw"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_44sdp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/muli_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
 
 
     </LinearLayout>
