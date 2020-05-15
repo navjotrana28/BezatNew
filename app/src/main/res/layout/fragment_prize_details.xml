@@ -63,7 +63,7 @@
         <ImageView
             android:id="@+id/imgPrize"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_170sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:maxHeight="@dimen/_200sdp"
             android:minHeight="@dimen/_168sdp"
