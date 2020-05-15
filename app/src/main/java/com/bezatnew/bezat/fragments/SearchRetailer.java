@@ -141,9 +141,9 @@ public class SearchRetailer extends Fragment {
             public void onSuccess(SearchResponseResult responseResult) {
                 retailerData = responseResult.getResult().get(0).getStores();
                 searchResponseResult = responseResult;
-                adapter.setDatumList(responseResult,lang);
+                adapter.setDatumList(responseResult);
                 adapter.notifyDataSetChanged();
-                verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores(),lang);
+                verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores());
                 progressBar.setVisibility(View.GONE);
             }
 
@@ -159,7 +159,7 @@ public class SearchRetailer extends Fragment {
             @Override
             public void onClickHorizonView(int pos) {
                 retailerData = searchResponseResult.getResult().get(pos).getStores();
-                verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos).getStores(), lang);
+                verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos).getStores());
             }
         });
         layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
@@ -183,7 +183,7 @@ public class SearchRetailer extends Fragment {
 
                     @Override
                     public void onSuccess(List<SearchRetailerStore> searchRetailerStores) {
-                        verticalAdapter.setDatumList(searchRetailerStores, lang);
+                        verticalAdapter.setDatumList(searchRetailerStores);
                     }
 
                     @Override

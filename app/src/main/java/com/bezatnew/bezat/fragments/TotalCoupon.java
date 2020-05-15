@@ -258,7 +258,7 @@ public class TotalCoupon extends Fragment {
 
                                 } else {
                                     recycleTotalCoupons.setVisibility(View.GONE);
-                                    Toast.makeText(getActivity(), "No Coupons Available", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), getString(R.string.no_coupons_available), Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

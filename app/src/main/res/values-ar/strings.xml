@@ -54,7 +54,7 @@
     <string name="invalid_phone">الرجاء إدخال رقم هاتف صحيح</string>
     <string name="empty_gender">Please enter Gender</string>
     <string name="empty_country">Please enter country</string>
-    <string name="loading">loading...</string>
+    <string name="loading">تحميل...</string>
     <string name="reg_success">Registration Successful</string>
     <string name="title_activity_main_home_activty">MainHomeActivty</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -81,7 +81,7 @@
     <string name="favourite_offer">العروض المفضلة</string>
     <string name="bezat_winner">الفائزين</string>
     <string name="phone_number">رقم الهاتف</string>
-    <string name="code">Code</string>
+    <string name="code">التعليمات البرمجيه</string>
     <string name="send">ارسال</string>
     <string name="please_enter_your_register_phone_number_below_we_will_send_a_code_to_reset_your_password">يرجى إدخال عنوان البريديرجى إدخال رقم هاتفك المسجل أدناه. سنرسل رمزًا لإعادة تعيين كلمة المرور الخاصة بك</string>
     <string name="my_favourite">My Favourite</string>
@@ -138,6 +138,12 @@
     <string name="fill_the_form_first">ملء النموذج أولا!</string>
     <string name="sign_in_to_access_this_action">تسجيل الدخول للوصول إلى هذا القسم.</string>
     <string name="no_coupons_at_this_moment">لا كوبونات في هذه اللحظة.</string>
-
+    <string name="offer_price_user">سعر العرض:</string>
+    <string name="orginal_price_user">سعر العربة:</string>
+    <string name="code_offer">التعليمات البرمجيه:</string>
+    <string name="redeem_in_offer">تخليص</string>
+    <string name="offer_detail_inuser">تفاصيل العرض</string>
+    <string name="no_winners_available">لا يوجد فائزون متاحون</string>
+    <string name="no_coupons_available">لا تتوفر كوبونات</string>
 
 </resources>

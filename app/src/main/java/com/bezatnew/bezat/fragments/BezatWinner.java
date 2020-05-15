@@ -24,6 +24,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.utils.Loader;
+import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.bruce.pickerview.popwindow.DatePickerPopWin;
 import com.squareup.picasso.Picasso;
@@ -63,6 +64,7 @@ public class BezatWinner extends Fragment {
     ImageView imgBack, imgSearch;
     TextView txtDate;
     String currentDate = "";
+    private String lang = "";
 
     public BezatWinner() {
         // Required empty public constructor
@@ -98,6 +100,13 @@ public class BezatWinner extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+        }
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.activity_bezat_winner, container, false);
 
@@ -205,7 +214,7 @@ public class BezatWinner extends Fragment {
                                     recWinner.setVisibility(View.VISIBLE);
                                 } else {
                                     recWinner.setVisibility(View.GONE);
-                                    Toast.makeText(getActivity(), "No Winners Available", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), getString(R.string.no_winners_available), Toast.LENGTH_SHORT).show();
 
                                 }
                             } catch (JSONException e) {
@@ -290,9 +299,9 @@ public class BezatWinner extends Fragment {
             try {
 
 
-                holder.txtProductName.setText(jsonArray.getJSONObject(position).getString("retailer"));
+                holder.txtProductName.setText(jsonArray.getJSONObject(position).getString("retailer" + lang));
                 holder.txtWinner.setText(jsonArray.getJSONObject(position).getString("name"));
-                holder.txtPrize.setText(jsonArray.getJSONObject(position).getString("prize"));
+                holder.txtPrize.setText(jsonArray.getJSONObject(position).getString("prize" + lang));
                 holder.txtDate.setText(jsonArray.getJSONObject(position).getString("draw_date"));
                 Picasso.get()
                         .load(jsonArray.getJSONObject(position).getString("image")).
