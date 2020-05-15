@@ -3,7 +3,6 @@ package com.bezatnew.bezat.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +52,7 @@ public class SearchRetailer extends Fragment {
     private SearchResponseData responseData = new SearchResponseData();
     private SearchView searchView;
     private List<SearchRetailerStore> retailerData;
-    private String lang = "";
+    public String lang = "";
 
     public SearchRetailer() {
         // Required empty public constructor
@@ -142,11 +141,10 @@ public class SearchRetailer extends Fragment {
             public void onSuccess(SearchResponseResult responseResult) {
                 retailerData = responseResult.getResult().get(0).getStores();
                 searchResponseResult = responseResult;
-                adapter.setDatumList(responseResult);
+                adapter.setDatumList(responseResult,lang);
                 adapter.notifyDataSetChanged();
-                verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores());
+                verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores(),lang);
                 progressBar.setVisibility(View.GONE);
-
             }
 
             @Override
@@ -161,7 +159,7 @@ public class SearchRetailer extends Fragment {
             @Override
             public void onClickHorizonView(int pos) {
                 retailerData = searchResponseResult.getResult().get(pos).getStores();
-                verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos).getStores());
+                verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos).getStores(), lang);
             }
         });
         layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
@@ -185,7 +183,7 @@ public class SearchRetailer extends Fragment {
 
                     @Override
                     public void onSuccess(List<SearchRetailerStore> searchRetailerStores) {
-                        verticalAdapter.setDatumList(searchRetailerStores);
+                        verticalAdapter.setDatumList(searchRetailerStores, lang);
                     }
 
                     @Override

@@ -3,6 +3,7 @@ package com.bezatnew.bezat.fragments;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
@@ -32,12 +34,15 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.ClientRetrofit;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
+import com.bezatnew.bezat.activities.ForgotPassword;
 import com.bezatnew.bezat.activities.LoginActivity;
 import com.bezatnew.bezat.adapter.SliderAdapter;
 import com.bezatnew.bezat.models.DashBoardItem;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.google.android.material.tabs.TabLayout;
+
+import net.glxn.qrgen.android.QRCode;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -188,13 +193,12 @@ public class Dashboard extends Fragment {
                 getString(R.string.fav_offers) + ""
         ));
 
-
         dashBoardItem.add(new DashBoardItem(
                 R.drawable.prize,
                 getString(R.string.prizes) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.total_coupons,
+                R.drawable.totalcoupons,
                 getString(R.string.total_coupon) + ""
         ));
 
@@ -207,7 +211,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.winners) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.feedback,
+                R.drawable.feedbackicon3,
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
@@ -445,18 +449,25 @@ public class Dashboard extends Fragment {
                         public void onClick(View view) {
                             if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.total_coupon))) {
+                                toastMsg(view);
+
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
+                                toastMsg(view);
+
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.get_feedback))) {
+                                toastMsg(view);
+
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.get_coupon))) {
+                                toastMsg(view);
                                 getActivity().finish();
                             }
                         }
@@ -534,11 +545,16 @@ public class Dashboard extends Fragment {
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.get_coupon))) {
-                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.container, new GetCoupon());
-                                ft.addToBackStack(null);
-                                ft.commit();
 
+                                if (SharedPrefs.getKey(getActivity(), "user_code").equals("")) {
+                                    Toast.makeText(rootView.getContext(), getString(R.string.no_coupons_at_this_moment),
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                    ft.replace(R.id.container, new GetCoupon());
+                                    ft.addToBackStack(null);
+                                    ft.commit();
+                                }
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.partners))) {
                                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
@@ -574,5 +590,11 @@ public class Dashboard extends Fragment {
             }
         }
     }
+
+    private void toastMsg(View view) {
+        Toast.makeText(view.getContext(), getString(R.string.sign_in_to_access_this_action),
+                Toast.LENGTH_LONG).show();
+    }
+
 
 }

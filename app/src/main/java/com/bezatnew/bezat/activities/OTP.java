@@ -154,8 +154,7 @@ public class OTP extends AppCompatActivity implements View.OnClickListener,
                 try {
                     JSONObject jsonObject = new JSONObject(res);
                     if (jsonObject.getString("status").equalsIgnoreCase("success")) {
-                        Toast.makeText(OTP.this,
-                                jsonObject.getString("success_msg"), Toast.LENGTH_LONG).show();
+
                     } else {
                         Toast.makeText(OTP.this,
                                 jsonObject.getString("error_msg"), Toast.LENGTH_LONG).show();

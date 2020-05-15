@@ -103,6 +103,7 @@
         android:textColorHint="@color/dark_grey"
         android:lines="4"
         android:textColor="@color/black"
+        android:paddingStart="@dimen/_2sdp"
         app:layout_constraintTop_toBottomOf="@+id/category"
         tools:layout_editor_absoluteX="20dp" />
 

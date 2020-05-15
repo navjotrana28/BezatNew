@@ -32,6 +32,8 @@ import java.util.*
 
 class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
     private var isOtpValidated: Boolean = false
+    internal var smsHashCodeHelper = SmsHashCodeHelper(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (SharedPrefs.getKey(this, "selectedlanguage").contains("ar")) {
@@ -103,6 +105,9 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
         request.mobile_code = code ?: ""
         request.password = etPassword.text.toString()
         request.phone = phone.text.toString()
+        val hashCode = smsHashCodeHelper.appHashCode.toString()
+        request.smsHashCode = hashCode.substring(1, hashCode.length - 1)
+
         if (validateForOtp(request)) {
             registerUser(request)
         }else{
