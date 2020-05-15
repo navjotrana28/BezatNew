@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.DimenRes;
@@ -193,7 +194,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.prizes) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.total_coupon,
+                R.drawable.total_coupons,
                 getString(R.string.total_coupon) + ""
         ));
 
@@ -210,7 +211,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.vip_offers,
+                R.drawable.vip_logo,
                 getString(R.string.vip_offers) + ""
         ));
 
@@ -396,13 +397,8 @@ public class Dashboard extends Fragment {
 
                 holder.text.setText(dashBoardItems.get(position).getName() + " ");
                 final int sdk = android.os.Build.VERSION.SDK_INT;
-                if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                    holder.image.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(),
-                            dashBoardItems.get(position).getDrawable()));
-                } else {
-                    holder.image.setBackground(ContextCompat.getDrawable(getActivity(),
-                            dashBoardItems.get(position).getDrawable()));
-                }
+                holder.image.setImageDrawable(ContextCompat.getDrawable(getActivity(),
+                        dashBoardItems.get(position).getDrawable()));
 
                 holder.bind(position);
 
@@ -421,7 +417,7 @@ public class Dashboard extends Fragment {
 
             TextView text;
             ImageView image;
-            ConstraintLayout viewForItem;
+            LinearLayout viewForItem;
             View view;
 
             public MyViewHolder(View itemView) {
