@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -535,9 +536,12 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(NetworkResponse response) {
                 loader.dismiss();
-                String res = new String("Your profile has been updated successfully");
-                Toast.makeText(getContext(), res, Toast.LENGTH_LONG).show();
-                Log.v("responseprofile", res + "");
+                Toast toast = Toast.makeText(getContext(), "Your profile has been updated successfully", Toast.LENGTH_SHORT);
+//the default toast view group is a relativelayout
+                LinearLayout toastLayout = (LinearLayout) toast.getView();
+                TextView toastTV = (TextView) toastLayout.getChildAt(0);
+                toastTV.setTextSize(14);
+                toast.show();
             }
         }, new Response.ErrorListener() {
             @Override

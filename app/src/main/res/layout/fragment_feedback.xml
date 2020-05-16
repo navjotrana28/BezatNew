@@ -1,77 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        tools:context=".activities.ContactUs">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.ContactUs">
 
     <Toolbar
-            android:id="@+id/toolbar"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:contentInsetStart="0dp"
-            android:contentInsetLeft="0dp"
-            android:contentInsetEnd="0dp"
-            android:contentInsetRight="0dp"
-            app:contentInsetEnd="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetStart="0dp"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <LinearLayout
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <ImageView
                     android:id="@+id/img_back"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_28sdp"
                     android:src="@mipmap/ic_back" />
+            </LinearLayout>
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/muli_bold"
-                    android:gravity="center"
-                    android:text="@string/get_feedback"
-                    android:textSize="@dimen/_14sdp" />
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/muli_bold"
+                android:gravity="center"
+                android:text="@string/get_feedback"
+                android:textSize="@dimen/_14sdp" />
+
+
+        </RelativeLayout>
+
     </Toolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ImageView
-                android:id="@+id/img_feedback"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/feedback"
-                app:layout_constraintRight_toLeftOf="@+id/contact_name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/img_feedback"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/feedback"
+            app:layout_constraintRight_toLeftOf="@+id/contact_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
-                android:id="@+id/contact_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="@dimen/card_elevation"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_feedback"
-                app:layout_constraintTop_toTopOf="parent" >
+            android:id="@+id/contact_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="@dimen/card_elevation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_feedback"
+            app:layout_constraintTop_toTopOf="parent">
 
             <AutoCompleteTextView
                     android:id="@+id/suggestionBox"
