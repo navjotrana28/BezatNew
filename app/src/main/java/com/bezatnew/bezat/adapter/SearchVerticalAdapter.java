@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.interfaces.CategoryId;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchRetailerStore;
+import com.bezatnew.bezat.utils.SharedPrefs;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
         this.responseResult = responseResult;
     }
 
-    public void setDatumList(List<SearchRetailerStore> datumList, String lang) {
+    public void setDatumList(List<SearchRetailerStore> datumList) {
         this.responseResult = datumList;
         this.lang = lang;
         notifyDataSetChanged();
@@ -42,6 +43,11 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.vertical_adapter_search_retailer, parent, false);
         MyViewHolder mHolder = new MyViewHolder(view);
+        if (SharedPrefs.getKey(view.getContext(), "selectedlanguage").contains("ar")) {
+            lang = "_ar";
+        } else {
+            lang = "";
+        }
         return mHolder;
     }
 

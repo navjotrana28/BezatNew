@@ -86,7 +86,7 @@
             android:hint="Name"
                     android:inputType="textPersonName"
                     android:textColorHint="@color/colorPrimary"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:backgroundTint="@color/colorPrimary"
             android:fontFamily="@font/muli_bold"/>
 
@@ -97,7 +97,7 @@
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/colorPrimary"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:backgroundTint="@color/colorPrimary"
                     android:fontFamily="@font/muli_bold"/>
 
@@ -186,7 +186,6 @@
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/colorPrimary"
                     android:gravity="start"
-
                     android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                     android:backgroundTint="@color/colorPrimary"
                     android:fontFamily="@font/muli_bold"/>

@@ -120,8 +120,8 @@
     <string name="user_name_Login">Username / Phone number</string>
     <string name="skip_login">SKIP</string>
     <string name="you_will_take_to_login_screen">You will be taken to the login screen, okay?</string>
-    <string name="search_by_retailer_name">Search by Retailer name</string>
-    <string name="choose_retailer_here">Choose retailer here</string>
+    <string name="search_by_retailer_name"><font size="15">Search by Retailer name</font></string>
+    <string name="choose_retailer_here"><font size="18">Choose retailer here</font></string>
     <string name="note_your_feedback_will_be_sent_to_the_retailer">Note: Your feedback will be sent to the retailer</string>
     <string name="rate_your_star">Rate your star</string>
     <string name="search_retailer">Search Retailer</string>
@@ -145,6 +145,13 @@
     <string name="fill_the_form_first">Fill the form first!</string>
     <string name="sign_in_to_access_this_action">Sign in to access this section.</string>
     <string name="no_coupons_at_this_moment">No Coupons at this moment.</string>
+    <string name="offer_price_user">Offer Price :</string>
+    <string name="orginal_price_user">Orginal Price :</string>
+    <string name="code_offer">Code:</string>
+    <string name="redeem_in_offer">REDEEM</string>
+    <string name="offer_detail_inuser">Offer Detail</string>
+    <string name="no_winners_available">No Winners Available</string>
+    <string name="no_coupons_available">No Coupons Available</string>
 
 
 </resources>

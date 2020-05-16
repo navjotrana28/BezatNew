@@ -39,6 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                android:paddingEnd="@dimen/_27sdp"
                     android:textSize="@dimen/_14sdp"
                     android:fontFamily="@font/muli_bold"
                     android:text="@string/offers"/>
@@ -73,7 +74,7 @@
                 android:textSize="@dimen/_14sdp"/>
         <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
+                android:layout_height="@dimen/_2sdp"
                 android:background="@color/colorPrimary"/>
 <!--        <LinearLayout-->
 <!--                android:layout_width="match_parent"-->
@@ -154,6 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/_5sdp"
+            app:cardElevation="0dp"
             app:cardBackgroundColor="@color/white"
             app:contentPadding="@dimen/_4sdp">
             <LinearLayout
@@ -173,7 +175,6 @@
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-
                     android:backgroundTint="@color/partnerline"
                     android:background="@drawable/ic_location"/>
 
@@ -220,17 +221,18 @@
 
         <Button
                 android:id="@+id/btnAllOffer"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_marginBottom="@dimen/_20sdp"
-                android:layout_marginTop="30dp"
-                android:layout_height="@dimen/_44sdp"
+                android:layout_marginTop="20dp"
+                android:layout_height="@dimen/_38sdp"
+            android:background="@drawable/btn_back"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="@string/view_all_offers"
-                android:textSize="@dimen/_14sdp"
+                android:text="@string/offers"
+                android:textSize="@dimen/_16sdp"
                 android:fontFamily="@font/muli_bold"
                 android:textColor="@color/white"
-                android:paddingStart="@dimen/_15sdp"
-                android:paddingEnd="@dimen/_15sdp"
+                android:paddingStart="@dimen/_17sdp"
+                android:paddingEnd="@dimen/_17sdp"
                 android:layout_gravity="center"/>
 
     </LinearLayout>

@@ -62,6 +62,7 @@ public class FavouriteOffer extends Fragment {
     Loader loader;
     View rootView;
     private String currentDate = "";
+    private String lang = "";
 
     public FavouriteOffer() {
         // Required empty public constructor
@@ -97,6 +98,13 @@ public class FavouriteOffer extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+        }
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.activity_favourite_offer, container, false);
         imgBack = rootView.findViewById(R.id.imgBack);
@@ -225,7 +233,7 @@ public class FavouriteOffer extends Fragment {
             try {
 
 
-                holder.reTailerName.setText(jsonArray.getJSONObject(position).getString("store_name"));
+                holder.reTailerName.setText(jsonArray.getJSONObject(position).getString("store_name" + lang));
                 Picasso.get().load(jsonArray
                         .optJSONObject(position).optString("store_logo"))
                         .into(holder.imgBanner);

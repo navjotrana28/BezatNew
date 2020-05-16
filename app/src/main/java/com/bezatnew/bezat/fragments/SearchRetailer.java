@@ -3,6 +3,7 @@ package com.bezatnew.bezat.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,7 @@ public class SearchRetailer extends Fragment {
         TextView textView=searchView.findViewById(id);
         textView.setHintTextColor(Color.rgb(105,105,105));
         textView.setTextColor(Color.rgb(105,105,105));
+        textView.setGravity(Gravity.CENTER);
 //        int searchIconId = searchView.getContext().getResources().getIdentifier("android:id/search_button",null, null);
 //        ImageView searchIcon = (ImageView) searchView.findViewById(searchIconId);
 //        searchIcon.setImageResource(R.drawable.ic_search_black_24dp);
@@ -141,9 +143,9 @@ public class SearchRetailer extends Fragment {
             public void onSuccess(SearchResponseResult responseResult) {
                 retailerData = responseResult.getResult().get(0).getStores();
                 searchResponseResult = responseResult;
-                adapter.setDatumList(responseResult,lang);
+                adapter.setDatumList(responseResult);
                 adapter.notifyDataSetChanged();
-                verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores(),lang);
+                verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores());
                 progressBar.setVisibility(View.GONE);
             }
 
@@ -159,7 +161,7 @@ public class SearchRetailer extends Fragment {
             @Override
             public void onClickHorizonView(int pos) {
                 retailerData = searchResponseResult.getResult().get(pos).getStores();
-                verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos).getStores(), lang);
+                verticalAdapter.setDatumList(searchResponseResult.getResult().get(pos).getStores());
             }
         });
         layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
@@ -183,7 +185,7 @@ public class SearchRetailer extends Fragment {
 
                     @Override
                     public void onSuccess(List<SearchRetailerStore> searchRetailerStores) {
-                        verticalAdapter.setDatumList(searchRetailerStores, lang);
+                        verticalAdapter.setDatumList(searchRetailerStores);
                     }
 
                     @Override

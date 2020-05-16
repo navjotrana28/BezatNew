@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -132,7 +133,7 @@ public class TotalCoupon extends Fragment {
         currentDate = formatter.format(date);
         txtDate.setText(currentDate);
         getTotalCoupon();
-//        getTotalCoupons();
+        getTotalCoupons();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -251,7 +252,7 @@ public class TotalCoupon extends Fragment {
 
                                 } else {
                                     recycleTotalCoupons.setVisibility(View.GONE);
-                                    Toast.makeText(getActivity(), "No Coupons Available", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), getString(R.string.no_coupons_available), Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

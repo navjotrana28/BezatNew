@@ -32,9 +32,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         this.searchRetailerCallback = searchRetailerCallback;
     }
 
-    public void setDatumList(SearchResponseResult datumList, String lang) {
+    public void setDatumList(SearchResponseResult datumList) {
         this.responseResult = datumList;
-        this.lang = lang;
         notifyDataSetChanged();
     }
 
@@ -44,6 +43,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.horizontal_adapter_search_retailer, parent, false);
         MyViewHolder mHolder = new MyViewHolder(view);
+        if (SharedPrefs.getKey(view.getContext(), "selectedlanguage").contains("ar")) {
+            lang = "_ar";
+        } else {
+            lang = "";
+        }
 
         return mHolder;
     }
@@ -59,7 +63,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         Picasso.get()
                 .load(responseResult.getResult().get(position).getCategoryImage())
                 .resize(500, 500)
-                .centerInside()
+                .centerCrop()
                 .into(holder.imageHorizontal);
         if (position == previousValue) {
             holder.imageHorizontal.setBackgroundResource(R.drawable.btn_back2);
