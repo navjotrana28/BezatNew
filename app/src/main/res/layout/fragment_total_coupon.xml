@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
+    android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,7 +21,7 @@
             android:contentInsetEnd="0dp"
             app:contentInsetRight="0dp"
             app:contentInsetEnd="0dp">
-        <RelativeLayout
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
@@ -71,23 +72,38 @@
                         android:src="@drawable/search"/>
             </LinearLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
     </Toolbar>
+
     <SearchView
-            android:layout_below="@+id/toolbar"
-            android:id="@+id/search_total_coupons"
-            android:layout_width="wrap_content"
-            android:layout_height="33dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="20dp"
+        android:id="@+id/search_total_coupons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:searchHintIcon="@drawable/ic_search_black_24dp"
         android:background="@drawable/round_corners"
+        android:gravity="left"
         android:searchIcon="@drawable/ic_search_black_24dp"
-        android:gravity="center_horizontal"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search by Retailer"
+        >
+    </SearchView>
+
+
+    <!--<SearchView
+        android:layout_margin="8dp"
+        android:layout_gravity="center"
+            android:layout_below="@+id/toolbar"
+
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corners"
             android:iconifiedByDefault="false"
             android:queryHint="@string/search_by_retailer"
-    />
+        app:defaultQueryHint="@string/search_by_retailer"
+    />-->
     <LinearLayout
             android:layout_below="@+id/search_total_coupons"
             android:layout_width="match_parent"
@@ -102,4 +118,4 @@
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
