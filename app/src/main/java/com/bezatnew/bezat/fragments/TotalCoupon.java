@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -120,24 +121,17 @@ public class TotalCoupon extends Fragment {
         txtDate = rootView.findViewById(R.id.txtDate);
         imgSearch = rootView.findViewById(R.id.imgSearch);
         imgBack = rootView.findViewById(R.id.imgBack);
-        searchView = rootView.findViewById(R.id.search_view);
-//        searchView.setQueryHint(Html.fromHtml("<font color = #696969>"+getResources().getString(R.string.search_by_retailer)));
-//        int id=searchView.getContext().getResources().getIdentifier("android:id/search_src_text",null,null);
-//        TextView textView=searchView.findViewById(id);
-//        textView.setHintTextColor(Color.rgb(105,105,105));
-//        textView.setTextColor(Color.rgb(105,105,105));
+        searchView = rootView.findViewById(R.id.search_total_coupons);
+        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+        TextView textView = (TextView) searchView.findViewById(id);
+        textView.setHintTextColor(R.color.dark_grey);
+        textView.setGravity(Gravity.CENTER);
         loader = new Loader(getContext());
         loader.show();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH);
         Date date = new Date();
         currentDate = formatter.format(date);
         txtDate.setText(currentDate);
-
-
-//        int id=searchView.getContext().getResources().getIdentifier("android:id/search_src_text",null,null);
-//        TextView textView=searchView.findViewById(id);
-//        textView.setHintTextColor(Color.rgb(105,105,105));
-//        textView.setTextColor(Color.rgb(105,105,105));
         getTotalCoupon();
         getTotalCoupons();
 
@@ -258,7 +252,7 @@ public class TotalCoupon extends Fragment {
 
                                 } else {
                                     recycleTotalCoupons.setVisibility(View.GONE);
-                                    Toast.makeText(getActivity(), "No Coupons Available", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), getString(R.string.no_coupons_available), Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

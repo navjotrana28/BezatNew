@@ -42,7 +42,8 @@ public interface ServiceRetrofit {
     @POST("user/register")
     Observable<RegisterRequestResponse> registerUser(@Field("password") String password,
                                                      @Field("mobile_code") String mobile_code,
-                                                     @Field("phone") String phone);
+                                                     @Field("phone") String phone,
+                                                     @Field("smsHashCode") String smsHashCode);
 
     @FormUrlEncoded
     @POST("staff/logout")

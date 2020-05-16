@@ -53,7 +53,7 @@ public class SearchRetailer extends Fragment {
     private SearchResponseData responseData = new SearchResponseData();
     private SearchView searchView;
     private List<SearchRetailerStore> retailerData;
-    private String lang = "";
+    public String lang = "";
 
     public SearchRetailer() {
         // Required empty public constructor
@@ -147,7 +147,6 @@ public class SearchRetailer extends Fragment {
                 adapter.notifyDataSetChanged();
                 verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores());
                 progressBar.setVisibility(View.GONE);
-
             }
 
             @Override

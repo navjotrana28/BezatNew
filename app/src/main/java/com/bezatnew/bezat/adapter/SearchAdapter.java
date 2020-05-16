@@ -12,14 +12,17 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bezatnew.bezat.R;
+import com.bezatnew.bezat.fragments.SearchRetailer;
 import com.bezatnew.bezat.interfaces.SearchRetailerCallback;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
+import com.bezatnew.bezat.utils.SharedPrefs;
 import com.squareup.picasso.Picasso;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
 
     private Context mcontext;
     private SearchResponseResult responseResult;
+    private String lang;
     private SearchRetailerCallback searchRetailerCallback;
     private static int previousValue = 0;
 
@@ -40,12 +43,23 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.horizontal_adapter_search_retailer, parent, false);
         MyViewHolder mHolder = new MyViewHolder(view);
+        if (SharedPrefs.getKey(view.getContext(), "selectedlanguage").contains("ar")) {
+            lang = "_ar";
+        } else {
+            lang = "";
+        }
+
         return mHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder holder, int position) {
-        holder.imnageHorizontalName.setText(responseResult.getResult().get(position).getCategory());
+        SearchRetailer searchRetailer = new SearchRetailer();
+        if (lang.matches("_ar")) {
+            holder.imnageHorizontalName.setText(responseResult.getResult().get(position).getCategoryAr());
+        } else {
+            holder.imnageHorizontalName.setText(responseResult.getResult().get(position).getCategory());
+        }
         Picasso.get()
                 .load(responseResult.getResult().get(position).getCategoryImage())
                 .resize(500, 500)
