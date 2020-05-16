@@ -86,6 +86,7 @@ public class SearchRetailer extends Fragment {
         TextView textView=searchView.findViewById(id);
         textView.setHintTextColor(Color.rgb(105,105,105));
         textView.setTextColor(Color.rgb(105,105,105));
+        textView.setGravity(Gravity.CENTER);
 //        int searchIconId = searchView.getContext().getResources().getIdentifier("android:id/search_button",null, null);
 //        ImageView searchIcon = (ImageView) searchView.findViewById(searchIconId);
 //        searchIcon.setImageResource(R.drawable.ic_search_black_24dp);
