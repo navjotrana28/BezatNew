@@ -469,7 +469,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 if (ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).toLanguageTags().equals("ar")){
                         Toast.makeText(getActivity(),"يرجى الاتصال بالمسؤول لتغيير جنسك" ,Toast.LENGTH_LONG).show();
                 }else {
-                    Toast.makeText(getActivity(), "Pls contact admin to change your gender",
+                    Toast.makeText(getActivity(), "Contact admin to change your gender",
                             Toast.LENGTH_LONG).show();
                 }
             } else {
