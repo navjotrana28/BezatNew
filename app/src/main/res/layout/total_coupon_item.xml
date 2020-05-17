@@ -141,6 +141,7 @@
                     android:text="CF 0905"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10sdp" />
+
         </LinearLayout>
 
 

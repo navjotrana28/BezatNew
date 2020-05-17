@@ -218,7 +218,7 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
                                             ft.commit();
                                         }
                                         else {
-                                            Toast.makeText(getActivity(), "No Offer found", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getActivity(), getString(R.string.no_offer_found), Toast.LENGTH_LONG).show();
                                         }
                                         }
                                 });
