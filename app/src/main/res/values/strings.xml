@@ -28,7 +28,7 @@
     <string name="address">Address</string>
     <string name="gender">Gender</string>
     <string name="dob">Date Of Birth</string>
-    <string name="fav_offers">Favourite</string>
+    <string name="fav_offers">Favourite Offers</string>
     <string name="prizes">Prizes</string>
     <string name="total_coupon">Total Coupons</string>
     <string name="partners">Partners</string>
@@ -152,6 +152,12 @@
     <string name="offer_detail_inuser">Offer Detail</string>
     <string name="no_winners_available">No Winners Available</string>
     <string name="no_coupons_available">No Coupons Available</string>
+
+    <string-array name="array_languages">
+        <item>Change Language</item>
+        <item>English</item>
+        <item>عربى</item>
+    </string-array>
 
 
 </resources>

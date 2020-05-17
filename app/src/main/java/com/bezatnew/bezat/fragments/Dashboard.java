@@ -198,7 +198,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.prizes) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.totalcoupons,
+                R.drawable.total_coupons,
                 getString(R.string.total_coupon) + ""
         ));
 
@@ -211,7 +211,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.winners) + ""
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.feedbackicon3,
+                R.drawable.feedback,
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
@@ -226,6 +226,7 @@ public class Dashboard extends Fragment {
 
         PostAdapter postAdapter = new PostAdapter(dashBoardItem, isGuestUser);
 
+        recycle.setNestedScrollingEnabled(false);
         recycle.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(getActivity(), R.dimen._1sdp);
         recycle.addItemDecoration(itemDecoration);
