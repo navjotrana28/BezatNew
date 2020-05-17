@@ -7,8 +7,11 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -92,6 +95,33 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
         });
         txtEnglish.setOnClickListener(this);
         txtArabic.setOnClickListener(this);
+
+        Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner_language);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
+                R.array.array_languages, R.layout.spinner_item_language);
+        adapter.setDropDownViewResource(R.layout.spinner_item_language);
+        spinner.setAdapter(adapter);
+        spinner.setPrompt("Change language");
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0){
+
+                }else if(position==1){
+                    setLocale("en");
+                }else{
+                    setLocale("ar");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         return rootView;
     }
 
