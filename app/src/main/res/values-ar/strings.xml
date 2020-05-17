@@ -134,10 +134,10 @@
     <string name="days_before">قبل أيام</string>
     <string name="raffle_draw_in">السحب في السحب</string>
     <string name="days_prizes">ايام</string>
-    <string name="your_feedback_has_been_sent_successfully">تم إرسال ملاحظاتك بنجاح.</string>
+    <string name="your_feedback_has_been_sent_successfully">تم إرسال ملاحظاتك بنجاح</string>
     <string name="fill_the_form_first">ملء النموذج أولا!</string>
-    <string name="sign_in_to_access_this_action">تسجيل الدخول للوصول إلى هذا القسم.</string>
-    <string name="no_coupons_at_this_moment">لا كوبونات في هذه اللحظة.</string>
+    <string name="sign_in_to_access_this_action">تسجيل الدخول للوصول إلى هذا القسم</string>
+    <string name="no_coupons_at_this_moment">لا كوبونات في هذه اللحظة</string>
     <string name="offer_price_user">سعر العرض:</string>
     <string name="orginal_price_user">سعر العربة:</string>
     <string name="code_offer">التعليمات البرمجيه:</string>
@@ -145,5 +145,6 @@
     <string name="offer_detail_inuser">تفاصيل العرض</string>
     <string name="no_winners_available">لا يوجد فائزون متاحون</string>
     <string name="no_coupons_available">لا تتوفر كوبونات</string>
+    <string name="no_offer_found">لم يتم العثور على عرض</string>
 
 </resources>
