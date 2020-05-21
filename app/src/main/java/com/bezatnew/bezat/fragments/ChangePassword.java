@@ -49,6 +49,8 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
     private String mParam1;
     private String mParam2;
 
+    ViewGroup container_view;
+
     private OnFragmentInteractionListener mListener;
     View rootView;
     EditText etConfirmPassword,etPassword,etPhone;
@@ -100,6 +102,8 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang="";
         }
+        container_view = container;
+        container.setClickable(true);
         rootView=inflater.inflate(R.layout.fragment_change_password, container, false);
         etCode=rootView.findViewById(R.id.etCode);
         etPhone=rootView.findViewById(R.id.etPhone);
@@ -117,6 +121,7 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
+                container.setClickable(false);
             }
         });
         btnSave.setOnClickListener(new View.OnClickListener() {

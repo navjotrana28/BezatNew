@@ -80,6 +80,7 @@ public class MyFavourites extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        container.setClickable(true);
         rootView= inflater.inflate(R.layout.activity_my_favourite, container, false);
         recFav=rootView.findViewById(R.id.recFav);
         loader=new Loader(getContext());

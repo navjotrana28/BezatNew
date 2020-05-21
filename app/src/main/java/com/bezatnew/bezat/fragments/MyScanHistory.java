@@ -95,6 +95,8 @@ public class MyScanHistory extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        container.setClickable(true);
+
         rootView=inflater.inflate(R.layout.fragment_my_scan_history, container, false);
         scanHistory=rootView.findViewById(R.id.scanHistory);
         txtDate = rootView.findViewById(R.id.txtDate);

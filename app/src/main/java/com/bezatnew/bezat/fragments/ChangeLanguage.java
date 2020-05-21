@@ -88,6 +88,7 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        container.setClickable(true);
         rootView= inflater.inflate(R.layout.fragment_change_language, container, false);
         etLanguage=rootView.findViewById(R.id.etLanguage);
         txtArabic = rootView.findViewById(R.id.txtArabic);
