@@ -91,6 +91,7 @@ public class Homepage extends AppCompatActivity {
                         ft.commit();
                         viewPager.setCurrentItem(0);
                     }
+                    frameLayout.setClickable(false);
                     break;
                 case R.id.navigation_bell:
                     if(lang.equals("a")){
@@ -104,6 +105,7 @@ public class Homepage extends AppCompatActivity {
                         ft.commit();
                         viewPager.setCurrentItem(1);
                     }
+                    frameLayout.setClickable(false);
                     break;
                 case R.id.navigation_profile:
                     if(lang.equals("a")){
@@ -117,6 +119,7 @@ public class Homepage extends AppCompatActivity {
                         ft.commit();
                         viewPager.setCurrentItem(2);
                     }
+                    frameLayout.setClickable(false);
                     break;
                 case R.id.navigation_settings:
                     if(lang.equals("a")){
@@ -130,6 +133,7 @@ public class Homepage extends AppCompatActivity {
                         ft.commit();
                         viewPager.setCurrentItem(3);
                     }
+                    frameLayout.setClickable(false);
                     break;
             }
             return false;
@@ -220,6 +224,7 @@ public class Homepage extends AppCompatActivity {
                 ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.container, new BlankFragment());
                 ft.commit();
+                frameLayout.setClickable(false);
             }
 
             @Override
