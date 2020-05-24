@@ -2,6 +2,7 @@ package com.bezatnew.bezat.fragments;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
@@ -43,9 +44,17 @@ public class ContactUsFragment extends Fragment {
         if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang="_ar";
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+            name.setTypeface(typeface);
+            email.setTypeface(typeface);
+            comments.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang="";
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+            name.setTypeface(typeface);
+            email.setTypeface(typeface);
+            comments.setTypeface(typeface);
         }
         View view = inflater.inflate(R.layout.fragment_contact_us, container, false);
         addViews(view);

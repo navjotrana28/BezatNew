@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -215,7 +217,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.vip_logo,
+                R.drawable.vip_logo1,
                 getString(R.string.vip_offers) + ""
         ));
 
@@ -223,7 +225,10 @@ public class Dashboard extends Fragment {
                 R.drawable.logout,
                 signOutLabel
         ));
-
+//        Bitmap b=BitmapFactory.decodeResource(getResources(),R.drawable.vip_logo);
+//        Bitmap bs=Bitmap.createScaledBitmap(b,270,180,true);
+//        int r=dashBoardItem.indexOf(R.drawable.vip_logo);
+//        dashBoardItem.set(r,)
         PostAdapter postAdapter = new PostAdapter(dashBoardItem, isGuestUser);
 
         recycle.setNestedScrollingEnabled(false);

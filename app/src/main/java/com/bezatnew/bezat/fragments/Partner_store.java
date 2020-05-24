@@ -1,6 +1,7 @@
 package com.bezatnew.bezat.fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -108,9 +109,15 @@ public class Partner_store extends Fragment implements View.OnClickListener {
         if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang="_ar";
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+            spinnerText.setTypeface(typeface);
+            txtLocation.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang="";
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+            spinnerText.setTypeface(typeface);
+            txtLocation.setTypeface(typeface);
         }
         rootView=inflater.inflate(R.layout.fragment_partner_store, container, false);
         recStore=rootView.findViewById(R.id.recStore);

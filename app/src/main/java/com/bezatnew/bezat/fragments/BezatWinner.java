@@ -2,6 +2,7 @@ package com.bezatnew.bezat.fragments;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -100,20 +101,25 @@ public class BezatWinner extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
-            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            lang = "_ar";
-        } else {
-            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            lang = "";
-        }
-        // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.activity_bezat_winner, container, false);
-
         recWinner = rootView.findViewById(R.id.recWinner);
         imgBack = rootView.findViewById(R.id.imgBack);
         txtDate = rootView.findViewById(R.id.txtDate);
         imgSearch = rootView.findViewById(R.id.imgSearch);
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+            txtDate.setTypeface(typeface);
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+            txtDate.setTypeface(typeface);
+        }
+        // Inflate the layout for this fragment
+        rootView = inflater.inflate(R.layout.activity_bezat_winner, container, false);
+
+
         loader = new Loader(getContext());
         loader.show();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM", Locale.ENGLISH);

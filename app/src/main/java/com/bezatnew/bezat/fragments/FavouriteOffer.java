@@ -1,6 +1,7 @@
 package com.bezatnew.bezat.fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -259,6 +260,17 @@ public class FavouriteOffer extends Fragment {
 
                 reTailerName = itemView.findViewById(R.id.reTailerName);
                 imgBanner = itemView.findViewById(R.id.imgBanner);
+                if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+                    getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+                    lang = "_ar";
+                    Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+                        reTailerName.setTypeface(typeface);
+                } else {
+                    getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+                    lang = "";
+                    Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+                    reTailerName.setTypeface(typeface);
+                }
 
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

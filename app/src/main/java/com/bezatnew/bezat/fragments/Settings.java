@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -98,8 +99,30 @@ public class Settings extends Fragment implements View.OnClickListener {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             setLocale("ar");
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+            txtMyScan.setTypeface(typeface);
+            txtChangeLanguage.setTypeface(typeface);
+            txtChangePassword.setTypeface(typeface);
+            txtAbout.setTypeface(typeface);
+            txtTerms.setTypeface(typeface);
+            txtPrivacy.setTypeface(typeface);
+            txtContactUs.setTypeface(typeface);
+            txtFaq.setTypeface(typeface);
+            txtLogout.setTypeface(typeface);
+            txtMyFav.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+            txtMyScan.setTypeface(typeface);
+            txtChangeLanguage.setTypeface(typeface);
+            txtChangePassword.setTypeface(typeface);
+            txtAbout.setTypeface(typeface);
+            txtTerms.setTypeface(typeface);
+            txtPrivacy.setTypeface(typeface);
+            txtContactUs.setTypeface(typeface);
+            txtFaq.setTypeface(typeface);
+            txtLogout.setTypeface(typeface);
+            txtMyFav.setTypeface(typeface);
         }
         rootView = inflater.inflate(R.layout.fragment_settings2, container, false);
 
