@@ -221,18 +221,18 @@
 
         <Button
                 android:id="@+id/btnAllOffer"
-                android:layout_width="180dp"
+                android:layout_width="240dp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:layout_marginTop="20dp"
                 android:layout_height="@dimen/_38sdp"
             android:background="@drawable/btn_back"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="@string/offers"
+                android:text="@string/view_all_offers"
                 android:textSize="@dimen/_16sdp"
                 android:fontFamily="@font/muli_bold"
                 android:textColor="@color/white"
-                android:paddingStart="@dimen/_17sdp"
-                android:paddingEnd="@dimen/_17sdp"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_15sdp"
                 android:layout_gravity="center"/>
 
     </LinearLayout>
