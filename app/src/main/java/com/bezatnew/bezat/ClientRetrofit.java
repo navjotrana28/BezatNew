@@ -8,6 +8,7 @@ import com.bezatnew.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezatnew.bezat.interfaces.*;
 import com.bezatnew.bezat.models.CountryData;
 import com.bezatnew.bezat.models.CouponResult;
+import com.bezatnew.bezat.models.LogoutResponse;
 import com.bezatnew.bezat.models.RegisterRequestResponse;
 import com.bezatnew.bezat.models.RegisterUserRequest;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
@@ -175,9 +176,32 @@ public class ClientRetrofit {
                 });
     }
 
-    public void logOutAPi(String userID) {
-        serviceRetrofit.getLogoutAPi(userID);
+    public void logOutAPi(String userID, final LogoutCallback logoutCallback) {
+        serviceRetrofit.getLogoutAPi(userID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<LogoutResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(LogoutResponse responseResult) {
+                        logoutCallback.onSuccess(responseResult);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        logoutCallback.onFailure(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
+
 
     public void getCountries(final CountryCallBack callback) {
         serviceRetrofit.getCountryResponse()

@@ -37,7 +37,9 @@ import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.activities.ForgotPassword;
 import com.bezatnew.bezat.activities.LoginActivity;
 import com.bezatnew.bezat.adapter.SliderAdapter;
+import com.bezatnew.bezat.interfaces.LogoutCallback;
 import com.bezatnew.bezat.models.DashBoardItem;
+import com.bezatnew.bezat.models.LogoutResponse;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.google.android.material.tabs.TabLayout;
@@ -489,10 +491,19 @@ public class Dashboard extends Fragment {
                                         .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 ClientRetrofit retrofit = new ClientRetrofit();
-                                                retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"));
-                                                SharedPrefs.deleteSharedPrefs(getActivity());
-                                                startActivity(new Intent(getActivity(), LoginActivity.class));
-                                                getActivity().finish();
+                                                retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"), new LogoutCallback() {
+                                                    @Override
+                                                    public void onSuccess(LogoutResponse responseResult) {
+                                                        SharedPrefs.deleteSharedPrefs(getActivity());
+                                                        startActivity(new Intent(getActivity(), LoginActivity.class));
+                                                        getActivity().finish();
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Throwable e) {
+                                                        Toast.makeText(getContext(), getString(R.string.someting_wrong), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                             }
                                         })
 

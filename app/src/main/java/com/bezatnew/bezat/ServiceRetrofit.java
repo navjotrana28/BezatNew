@@ -5,6 +5,7 @@ import com.bezatnew.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezatnew.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezatnew.bezat.models.CountryData;
 import com.bezatnew.bezat.models.CouponResult;
+import com.bezatnew.bezat.models.LogoutResponse;
 import com.bezatnew.bezat.models.RegisterRequestResponse;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
 import io.reactivex.Observable;
@@ -47,7 +48,7 @@ public interface ServiceRetrofit {
 
     @FormUrlEncoded
     @POST("staff/logout")
-    Call<Void> getLogoutAPi(@Field("userId") String userId);
+    Observable<LogoutResponse> getLogoutAPi(@Field("userID") String userId);
 
     @GET("user/get_country")
     Observable<CountryData> getCountryResponse();
