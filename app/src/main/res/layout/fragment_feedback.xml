@@ -32,6 +32,7 @@
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/img_back"
                     android:layout_width="wrap_content"
@@ -83,100 +84,100 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <AutoCompleteTextView
-                    android:id="@+id/suggestionBox"
-                    android:layout_width="250dp"
-                    android:layout_height="35dp"
+                android:id="@+id/suggestionBox"
+                android:layout_width="250dp"
+                android:layout_height="35dp"
                 android:gravity="center"
-                    android:completionThreshold="1"
-                    android:hint="@string/choose_retailer_here"
-                    android:paddingEnd="30dp"
-                    android:maxLines="1"
+                android:completionThreshold="1"
+                android:hint="@string/choose_retailer_here"
+                android:paddingEnd="30dp"
+                android:maxLines="1"
                 android:background="@drawable/editback"
                 android:elevation="0dp"
                 android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
-                    android:textColor="@color/black"
+                android:textColor="@color/black"
 
-                    android:textColorHint="@color/dark_grey"
-                    android:textSize="14dp" />
+                android:textColorHint="@color/dark_grey"
+                android:textSize="14dp" />
 
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
-            android:id="@+id/edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="10dp"
-            android:paddingStart="5dp"
-            android:background="@drawable/outline_border"
-            android:gravity="start"
-            android:lines="4"
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="10dp"
+        android:paddingStart="5dp"
+        android:background="@drawable/outline_border"
+        android:gravity="start"
+        android:lines="4"
         android:elevation="5dp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/category"
-            tools:layout_editor_absoluteX="20dp" />
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/category"
+        tools:layout_editor_absoluteX="20dp" />
 
     <TextView
-            android:id="@+id/note_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="sans-serif"
-            android:paddingStart="10dp"
-            android:text="@string/note_your_feedback_will_be_sent_to_the_retailer"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text" />
+        android:id="@+id/note_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="sans-serif"
+        android:paddingStart="10dp"
+        android:text="@string/note_your_feedback_will_be_sent_to_the_retailer"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text" />
 
     <RatingBar
-            android:id="@+id/rating_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:isIndicator="?android:attr/ratingBarStyleIndicator"
-            android:numStars="5"
-            android:progressBackgroundTint="@color/divider_grey"
-            android:progressTint="@color/golden"
-            android:stepSize="1.0"
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:isIndicator="?android:attr/ratingBarStyleIndicator"
+        android:numStars="5"
+        android:progressBackgroundTint="@color/divider_grey"
+        android:progressTint="@color/golden"
+        android:stepSize="1.0"
         android:scaleX="0.5"
         android:scaleY="0.7"
         android:minHeight="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/note_text" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note_text" />
 
     <TextView
-            android:id="@+id/rate_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="@string/rate_your_star"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rating_bar" />
+        android:id="@+id/rate_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="@string/rate_your_star"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rating_bar" />
 
     <Button
-            android:id="@+id/send_button"
-            android:layout_width="70dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="25dp"
+        android:id="@+id/send_button"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/btn_back"
-            android:text="@string/send"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rate_text" />
+        android:text="@string/send"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rate_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

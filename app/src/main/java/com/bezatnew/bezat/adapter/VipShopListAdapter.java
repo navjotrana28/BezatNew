@@ -12,26 +12,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.interfaces.CategoryId;
-import com.bezatnew.bezat.models.searchRetailerResponses.SearchRetailerStore;
+import com.bezatnew.bezat.models.vip_list_responses.VipShopListDetails;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAdapter.MyViewHolder> {
+public class VipShopListAdapter extends RecyclerView.Adapter<VipShopListAdapter.MyViewHolder> {
 
     private Context mcontext;
-    CategoryId categoryId;
-    private List<SearchRetailerStore> responseResult;
+    private List<VipShopListDetails> responseResult;
+    private static CategoryId categoryId;
     private String lang;
 
-    public SearchVerticalAdapter(Context context, List<SearchRetailerStore> responseResult, CategoryId categoryId) {
+    public VipShopListAdapter(Context context,List<VipShopListDetails> datumList, CategoryId categoryId ) {
         mcontext = context;
+        this.responseResult = datumList;
         this.categoryId = categoryId;
-        this.responseResult = responseResult;
     }
 
-    public void setDatumList(List<SearchRetailerStore> datumList) {
+    public void setSearchList(List<VipShopListDetails> datumList) {
         this.responseResult = datumList;
         notifyDataSetChanged();
     }
@@ -52,11 +52,8 @@ public class SearchVerticalAdapter extends RecyclerView.Adapter<SearchVerticalAd
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        if (lang.matches("_ar")) {
-            holder.imnageHorizontalName.setText(responseResult.get(position).getStoreNameAr());
-        } else {
-            holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName());
-        }
+
+        holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName() + lang);
         Picasso.get()
                 .load(responseResult.get(position).getStoreImage())
                 .resize(500, 200)

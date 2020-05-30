@@ -578,7 +578,7 @@ public class Dashboard extends Fragment {
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.vip_offers))) {
                                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.container, new VIPOffer());
+                                ft.replace(R.id.container, new VipShopList());
                                 ft.addToBackStack(null);
                                 ft.commit();
                             } else if (dashBoardItems.get(getAdapterPosition())

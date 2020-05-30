@@ -5,13 +5,22 @@ import com.bezatnew.bezat.api.contactusResponse.ContactUsRequest;
 import com.bezatnew.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezatnew.bezat.api.feedbackResponse.FeedbackRequest;
 import com.bezatnew.bezat.api.feedbackResponse.FeedbackResponse;
-import com.bezatnew.bezat.interfaces.*;
+import com.bezatnew.bezat.interfaces.ContactUsSuccessResponse;
+import com.bezatnew.bezat.interfaces.CountryCallBack;
+import com.bezatnew.bezat.interfaces.FeedbackCallback;
+import com.bezatnew.bezat.interfaces.LogoutCallback;
+import com.bezatnew.bezat.interfaces.RegisterUserCallBack;
+import com.bezatnew.bezat.interfaces.SearchRetaierInterface;
+import com.bezatnew.bezat.interfaces.TotalCouponsCallback;
+import com.bezatnew.bezat.interfaces.VipShopListInterface;
 import com.bezatnew.bezat.models.CountryData;
 import com.bezatnew.bezat.models.CouponResult;
 import com.bezatnew.bezat.models.LogoutResponse;
 import com.bezatnew.bezat.models.RegisterRequestResponse;
 import com.bezatnew.bezat.models.RegisterUserRequest;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
+import com.bezatnew.bezat.models.vip_list_responses.VipShopListResponse;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -221,6 +230,33 @@ public class ClientRetrofit {
                     @Override
                     public void onError(Throwable e) {
 
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getVipShopList(String userId, String currentDate, final VipShopListInterface callback) {
+        serviceRetrofit.getVipShopList(userId, currentDate)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<VipShopListResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(VipShopListResponse responseResult) {
+                        callback.onSuccess(responseResult);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.onFailure(e);
                     }
 
                     @Override

@@ -81,11 +81,11 @@ public class SearchRetailer extends Fragment {
         setUpRecyclerViewVertical();
         loadSeachData();
         onCLickBackButton();
-        initSearchView();
-        int id=searchView.getContext().getResources().getIdentifier("android:id/search_src_text",null,null);
-        TextView textView=searchView.findViewById(id);
-        textView.setHintTextColor(Color.rgb(105,105,105));
-        textView.setTextColor(Color.rgb(105,105,105));
+            initSearchView();
+        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+        TextView textView = searchView.findViewById(id);
+        textView.setHintTextColor(Color.rgb(105, 105, 105));
+        textView.setTextColor(Color.rgb(105, 105, 105));
         textView.setGravity(Gravity.CENTER);
 //        int searchIconId = searchView.getContext().getResources().getIdentifier("android:id/search_button",null, null);
 //        ImageView searchIcon = (ImageView) searchView.findViewById(searchIconId);
@@ -173,7 +173,7 @@ public class SearchRetailer extends Fragment {
         CompositeDisposable disposable = new CompositeDisposable();
         Observable.just(searchableData)
                 .flatMap(Observable::fromIterable)
-                .filter(searchRetailerStore -> searchRetailerStore.getStoreName().toLowerCase().contains(query.toLowerCase()))
+                .filter(searchRetailerStore -> (searchRetailerStore.getStoreName() + lang).toLowerCase().contains(query.toLowerCase()))
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
