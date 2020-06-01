@@ -4,17 +4,19 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -24,6 +26,7 @@ import com.bezatnew.bezat.utils.Loader;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,9 +56,10 @@ public class VIPOffer extends Fragment {
     RecyclerView recVipOffer;
     ImageView imgBack;
     View rootView;
+    private String storeId = "";
     Loader loader;
-    String currentDate="";
-   
+    private String currentDate = "";
+
     private OnFragmentInteractionListener mListener;
 
     public VIPOffer() {
@@ -93,15 +97,16 @@ public class VIPOffer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView=inflater.inflate(R.layout.fragment_vipoffer, container, false);
-        recVipOffer=rootView.findViewById(R.id.recVipOffer);
+        rootView = inflater.inflate(R.layout.fragment_vipoffer, container, false);
+        recVipOffer = rootView.findViewById(R.id.recVipOffer);
+        storeId = getArguments().getString("storeId");
         imgBack = rootView.findViewById(R.id.imgBack);
-        loader= new Loader(getContext());
+        loader = new Loader(getContext());
         loader.show();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
-        currentDate=formatter.format(date);
-        getVipOffer();
+        currentDate = formatter.format(date);
+        getVipOffer(storeId);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,14 +116,14 @@ public class VIPOffer extends Fragment {
         return rootView;
     }
 
-    private void getVipOffer() {
+    private void getVipOffer(String storeId) {
         JSONObject object = new JSONObject();
-        String vipUrl=URLS.Companion.getVIP_OFFER()+"userId="+SharedPrefs.getKey(getActivity(),"userId")
-                +"&currentDate="+currentDate;
-        Log.v("vipUrl",vipUrl+" ");
+        String vipUrl = URLS.Companion.getVIP_OFFER_STORE() + "userId=" + SharedPrefs.getKey(getActivity(), "userId")
+                + "&currentDate=" + currentDate + "&storeId=" + storeId;
+        Log.v("vipUrl", vipUrl + " ");
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        vipUrl ,
+                        vipUrl,
                         object,
                         response -> {
                             loader.dismiss();
@@ -238,13 +243,24 @@ public class VIPOffer extends Fragment {
             public MyViewHolder(View itemView) {
                 super(itemView);
 
-                txtDesc=itemView.findViewById(R.id.txtDesc);
-                imgBanner=itemView.findViewById(R.id.imgBanner);
+                txtDesc = itemView.findViewById(R.id.txtDesc);
+                imgBanner = itemView.findViewById(R.id.imgBanner);
 
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        OfferDetails offerDetails = new OfferDetails();
+                        Bundle args = new Bundle();
+                        try {
+                            args.putString("offerId", jsonArray.getJSONObject(getAdapterPosition()).getString("offer_id"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        offerDetails.setArguments(args);
+                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.container, offerDetails);
+                        ft.addToBackStack(null);
+                        ft.commit();
 
                     }
                 });

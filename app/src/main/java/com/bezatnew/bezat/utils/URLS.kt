@@ -12,6 +12,7 @@ class URLS {
         val LATEST_OFFER = BASE_PATH+"store/saved_offer_list?"
         val CATEGORY_LIST = BASE_PATH+"category/list"
         val VIP_OFFER = BASE_PATH+"user/vip_offer?"
+        val VIP_OFFER_STORE = BASE_PATH+"user/vip_offer_store?"
         val GET_WINNER = BASE_PATH+"raffles/winners?year_month="
         val NOTIFICATION_LIST = BASE_PATH+"notification/notification_list?"
         val USER_PROFILE = BASE_PATH+"user/profile?"

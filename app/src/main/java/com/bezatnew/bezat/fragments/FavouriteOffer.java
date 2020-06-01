@@ -164,7 +164,6 @@ public class FavouriteOffer extends Fragment {
         JSONObject object = new JSONObject();
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-//                        URLS.Companion.getLATEST_OFFER() + "userId=16&currentDate=2019-06-25",
                         URLS.Companion.getLATEST_OFFER() + "userId=" + SharedPrefs.getKey(getActivity(),
                                 "userId") + "&currentDate=" + currentDate,
                         object,
@@ -173,7 +172,6 @@ public class FavouriteOffer extends Fragment {
                             try {
 
                                 PostAdapter postAdapter = new PostAdapter(response.getJSONArray("result"));
-
                                 //  recyclerView.setHasFixedSize(true);
                                 StaggeredGridLayoutManager layoutManager =
                                         new StaggeredGridLayoutManager(1, OrientationHelper.VERTICAL);
