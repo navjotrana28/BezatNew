@@ -113,6 +113,7 @@
     <string name="skip_login">تخطي</string>
     <string name="you_will_take_to_login_screen">"سيتم نقلك إلى شاشة تسجيل الدخول، حسناً؟"</string>
     <string name="search_by_retailer_name">البحث حسب اسم بائع التجزئة</string>
+    <string name="search_by_retailer_name_caps"><font size="15">البحث حسب اسم بائع التجزئة</font></string>
     <string name="choose_retailer_here">اختر بائع التجزئة هنا</string>
     <string name="note_your_feedback_will_be_sent_to_the_retailer">ملاحظة: سيتم إرسال ملاحظاتك إلى بائع التجزئة</string>
     <string name="rate_your_star">تقييم نجمك</string>

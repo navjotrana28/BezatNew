@@ -58,7 +58,7 @@
         android:background="@drawable/round_corners"
         android:gravity="center_horizontal"
         android:iconifiedByDefault="false"
-        android:queryHint="@string/search_by_retailer_name"
+        android:queryHint="@string/search_by_retailer_name_caps"
         android:searchHintIcon="@drawable/ic_search_black_24dp"
         android:searchIcon="@drawable/ic_search_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"

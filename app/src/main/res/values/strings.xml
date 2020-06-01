@@ -121,6 +121,7 @@
     <string name="skip_login">SKIP</string>
     <string name="you_will_take_to_login_screen">You will be taken to the login screen, okay?</string>
     <string name="search_by_retailer_name"><font size="15">Search by Retailer name</font></string>
+    <string name="search_by_retailer_name_caps"><font size="15">SEARCH BY RETAILER NAME</font></string>
     <string name="choose_retailer_here"><font size="18">Choose retailer here</font></string>
     <string name="note_your_feedback_will_be_sent_to_the_retailer">Note: Your feedback will be sent to the retailer</string>
     <string name="rate_your_star">Rate your star</string>
