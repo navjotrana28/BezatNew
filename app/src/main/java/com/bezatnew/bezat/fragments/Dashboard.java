@@ -215,7 +215,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.vip_logo,
+                R.drawable.vip_offer,
                 getString(R.string.vip_offers) + ""
         ));
 
@@ -400,7 +400,7 @@ public class Dashboard extends Fragment {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
 
-                holder.text.setText(dashBoardItems.get(position).getName() + " ");
+                holder.text.setText(dashBoardItems.get(position).getName());
                 final int sdk = android.os.Build.VERSION.SDK_INT;
                 holder.image.setImageDrawable(ContextCompat.getDrawable(getActivity(),
                         dashBoardItems.get(position).getDrawable()));

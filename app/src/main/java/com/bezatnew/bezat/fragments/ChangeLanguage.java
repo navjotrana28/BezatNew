@@ -105,8 +105,8 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
 
         List<String> l = new ArrayList<>();
         l.add("");
-        l.add("English");
-        l.add("Arabic");
+        l.add("ENGLISH");
+        l.add("عربى");
 
         Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner_language);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getBaseContext(),
