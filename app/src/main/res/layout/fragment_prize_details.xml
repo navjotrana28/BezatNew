@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/muli_bold"
+                android:fontFamily="@font/tajawal_bold"
                 android:gravity="center"
                 android:text="@string/prize_details_prizes_section"
                 android:textColor="@color/white"

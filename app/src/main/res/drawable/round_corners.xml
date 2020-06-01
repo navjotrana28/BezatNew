@@ -8,6 +8,6 @@
             android:bottomRightRadius="20dp"
             android:topLeftRadius="20dp"
             android:topRightRadius="20dp"/>
-    <stroke android:width="2dp" android:color="@color/cardview_shadow_start_color"/>
+    <stroke android:width="0.5dp" android:color="@color/cardview_shadow_start_color"/>
 </shape>
 

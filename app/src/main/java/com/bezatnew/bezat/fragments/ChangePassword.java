@@ -105,20 +105,20 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
         if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang="_ar";
-            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
-            etCode.setTypeface(typeface);
-            etPhone.setTypeface(typeface);
-            etPassword.setTypeface(typeface);
-            etConfirmPassword.setTypeface(typeface);
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+//            etCode.setTypeface(typeface);
+//            etPhone.setTypeface(typeface);
+//            etPassword.setTypeface(typeface);
+//            etConfirmPassword.setTypeface(typeface);
 
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang="";
-            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
-            etCode.setTypeface(typeface);
-            etPhone.setTypeface(typeface);
-            etPassword.setTypeface(typeface);
-            etConfirmPassword.setTypeface(typeface);
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+//            etCode.setTypeface(typeface);
+//            etPhone.setTypeface(typeface);
+//            etPassword.setTypeface(typeface);
+//            etConfirmPassword.setTypeface(typeface);
         }
 
         etCode.setOnClickListener(this);

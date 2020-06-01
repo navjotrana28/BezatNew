@@ -120,8 +120,8 @@ public class TotalCoupon extends Fragment {
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
-            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
-            txtDate.setTypeface(typeface);
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+//            txtDate.setTypeface(typeface);
         }
         rootView = inflater.inflate(R.layout.fragment_total_coupon, container, false);
         recycleTotalCoupons = rootView.findViewById(R.id.recycleTotalCoupons);
@@ -378,7 +378,6 @@ public class TotalCoupon extends Fragment {
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
 
                     }
                 });

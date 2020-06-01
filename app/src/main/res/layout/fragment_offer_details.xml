@@ -38,7 +38,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="@dimen/_14sdp"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:text="@string/offer_detail_inuser"/>
             <ImageView
                     android:layout_width="wrap_content"
@@ -86,7 +86,6 @@
                    android:tint="@color/partnerline"
                    android:src="@drawable/ic_favorite_black_24dp"/>
        </LinearLayout>
-
        <TextView
                android:id="@+id/offer_descp"
                android:layout_width="wrap_content"
@@ -95,7 +94,7 @@
                android:maxLines="1"
                android:ellipsize="end"
                android:textColor="@color/colorPrimary"
-               android:fontFamily="@font/muli_bold"
+               android:fontFamily="@font/tajawal_regular"
                android:textSize="@dimen/_16sdp"
                android:text="Meet a star"/>
        <LinearLayout
@@ -103,19 +102,18 @@
                android:layout_height="wrap_content"
                android:gravity="center"
                android:orientation="horizontal">
-
            <TextView
 
                    android:layout_width="@dimen/_96sdp"
                    android:padding="@dimen/_3sdp"
-                   android:background="@color/colorPrimary"
                    android:layout_height="wrap_content"
                    android:text="@string/offer_price_user"
                    android:gravity="end"
                    android:textSize="@dimen/_13sdp"
-                   android:textColor="@color/white"
+                   android:textColor="@color/colorPrimary"
                    android:fontFamily="@font/muli_regular"/>
            <TextView
+
                    android:id="@+id/discount_price"
                    android:layout_width="@dimen/_96sdp"
                    android:padding="@dimen/_3sdp"
@@ -143,9 +141,8 @@
                    android:minWidth="@dimen/_148sdp"
                    android:text="@string/orginal_price_user"
                    android:gravity="end"
-                   android:background="@color/colorPrimary"
                    android:textSize="@dimen/_13sdp"
-                   android:textColor="@color/white"
+                   android:textColor="@color/colorPrimary"
                    android:fontFamily="@font/muli_regular"/>
            <TextView
                    android:id="@+id/actual_price"
@@ -177,8 +174,9 @@
                    android:layout_height="wrap_content"
                    android:text="@string/code_offer"
                    android:gravity="end"
+               android:paddingRight="@dimen/_7sdp"
                    android:textColor="@color/colorPrimary"
-                   android:fontFamily="@font/muli_semibold"/>
+                   android:fontFamily="@font/muli_regular"/>
            <TextView
                    android:id="@+id/offer_coupon_code"
                    android:layout_weight="1"
@@ -189,7 +187,7 @@
                    android:gravity="start"
                    android:textSize="@dimen/_14sdp"
                    android:textColor="@color/colorPrimary"
-                   android:fontFamily="@font/muli_semibold"/>
+                   android:fontFamily="@font/muli_regular"/>
        </LinearLayout>
        <Button
                android:id="@+id/btnRedeem"

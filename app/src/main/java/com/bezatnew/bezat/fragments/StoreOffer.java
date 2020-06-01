@@ -110,8 +110,8 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang="";
-            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
-            txtStoreName.setTypeface(typeface);
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+//            txtStoreName.setTypeface(typeface);
         }
         rootView = inflater.inflate(R.layout.fragment_store_offer, container, false);
         String storeId=getArguments().getString("storeId");

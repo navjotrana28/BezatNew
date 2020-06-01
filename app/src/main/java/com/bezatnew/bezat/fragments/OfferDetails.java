@@ -100,21 +100,21 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
         if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang="_ar";
-            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
-            offer_coupon_code.setTypeface(typeface);
-            store_name.setTypeface(typeface);
-            offer_descp.setTypeface(typeface);
-            discount_price.setTypeface(typeface);
-            actual_price.setTypeface(typeface);
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+//            offer_coupon_code.setTypeface(typeface);
+//            store_name.setTypeface(typeface);
+//            offer_descp.setTypeface(typeface);
+//            discount_price.setTypeface(typeface);
+//            actual_price.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang="";
-            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
-            offer_coupon_code.setTypeface(typeface);
-            store_name.setTypeface(typeface);
-            offer_descp.setTypeface(typeface);
-            discount_price.setTypeface(typeface);
-            actual_price.setTypeface(typeface);
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+//            offer_coupon_code.setTypeface(typeface);
+//            store_name.setTypeface(typeface);
+//            offer_descp.setTypeface(typeface);
+//            discount_price.setTypeface(typeface);
+//            actual_price.setTypeface(typeface);
         }
         rootView=inflater.inflate(R.layout.fragment_offer_details, container, false);
         imgBarCode=rootView.findViewById(R.id.imgBarCode);

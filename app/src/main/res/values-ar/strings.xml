@@ -146,5 +146,6 @@
     <string name="no_winners_available">لا يوجد فائزون متاحون</string>
     <string name="no_coupons_available">لا تتوفر كوبونات</string>
     <string name="no_offer_found">لم يتم العثور على عرض</string>
+    <string name="type_your_feedback">اكتب ملاحظاتك</string>
 
 </resources>

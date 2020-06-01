@@ -84,7 +84,7 @@
                     android:layout_width="@dimen/_196sdp"
                     android:layout_height="@dimen/_44sdp"
                     android:text="@string/save"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:textSize="@dimen/_14sdp"
                     android:backgroundTint="@color/colorPrimary"/>
         </LinearLayout>
