@@ -5,10 +5,12 @@ import com.bezatnew.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezatnew.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezatnew.bezat.models.CountryData;
 import com.bezatnew.bezat.models.CouponResult;
+import com.bezatnew.bezat.models.LogoutResponse;
 import com.bezatnew.bezat.models.RegisterRequestResponse;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
+import com.bezatnew.bezat.models.vip_list_responses.VipShopListResponse;
+
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -46,8 +48,13 @@ public interface ServiceRetrofit {
                                                      @Field("smsHashCode") String smsHashCode);
 
     @FormUrlEncoded
+    @POST("user/vip_offer")
+    Observable<VipShopListResponse> getVipShopList(@Field("userId") String userId,
+                                                   @Field("currentDate") String currentDate);
+
+    @FormUrlEncoded
     @POST("staff/logout")
-    Call<Void> getLogoutAPi(@Field("userId") String userId);
+    Observable<LogoutResponse> getLogoutAPi(@Field("userID") String userId);
 
     @GET("user/get_country")
     Observable<CountryData> getCountryResponse();
