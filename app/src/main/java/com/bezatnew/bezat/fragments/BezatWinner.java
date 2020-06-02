@@ -299,10 +299,9 @@ public class BezatWinner extends Fragment {
             try {
 
 
-                holder.txtProductName.setText(jsonArray.getJSONObject(position).getString("retailer" + lang));
-                holder.txtWinner.setText(jsonArray.getJSONObject(position).getString("name"));
-                holder.txtPrize.setText(jsonArray.getJSONObject(position).getString("prize")+"$");
-                holder.txtPrize.setText(jsonArray.getJSONObject(position).getString("prize" + lang)+"$");
+                holder.txtProductName.setText(jsonArray.getJSONObject(position).getString("retailer" + lang).toUpperCase());
+                holder.txtWinner.setText(jsonArray.getJSONObject(position).getString("name").toUpperCase());
+                holder.txtPrize.setText("$ " + jsonArray.getJSONObject(position).getString("prize" + lang));
                 holder.txtDate.setText(jsonArray.getJSONObject(position).getString("draw_date"));
                 Picasso.get()
                         .load(jsonArray.getJSONObject(position).getString("image")).
