@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:fontFamily="@font/muli_bold"
+                android:fontFamily="@font/tajawal_bold"
                 android:gravity="center"
                 android:text="@string/get_coupon"
                 android:textSize="@dimen/_14sdp" />
@@ -96,6 +96,7 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="PARIIQYO"/>
+
 
 
 

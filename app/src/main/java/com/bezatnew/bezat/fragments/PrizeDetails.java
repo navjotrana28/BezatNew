@@ -1,6 +1,7 @@
 package com.bezatnew.bezat.fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -101,9 +102,13 @@ public class PrizeDetails extends Fragment {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang = "_ar";
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+//            txtPrize.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+//            txtPrize.setTypeface(typeface);
         }
         txtPrize = rootView.findViewById(R.id.txtPrize);
         imgPrize = rootView.findViewById(R.id.imgPrize);

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -217,7 +219,7 @@ public class Dashboard extends Fragment {
                 getString(R.string.get_feedback)
         ));
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.vip_offer,
+                R.drawable.vip_logo1,
                 getString(R.string.vip_offers) + ""
         ));
 
@@ -402,7 +404,7 @@ public class Dashboard extends Fragment {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
 
-                holder.text.setText(dashBoardItems.get(position).getName());
+                holder.text.setText(dashBoardItems.get(position).getName() + " ");
                 final int sdk = android.os.Build.VERSION.SDK_INT;
                 holder.image.setImageDrawable(ContextCompat.getDrawable(getActivity(),
                         dashBoardItems.get(position).getDrawable()));
@@ -424,6 +426,7 @@ public class Dashboard extends Fragment {
 
             TextView text;
             ImageView image;
+            LinearLayout viewForItem;
             View view;
 
             public MyViewHolder(View itemView) {
@@ -431,6 +434,7 @@ public class Dashboard extends Fragment {
 
                 text = itemView.findViewById(R.id.text);
                 image = itemView.findViewById(R.id.image);
+                viewForItem = itemView.findViewById(R.id.main_view);
                 view = itemView;
             }
 

@@ -1,6 +1,7 @@
 package com.bezatnew.bezat.fragments;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,9 +52,13 @@ public class Feedback extends Fragment {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang = "_ar";
+            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+            suggestion_box.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+//            suggestion_box.setTypeface(typeface);
         }
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
@@ -145,6 +150,13 @@ public class Feedback extends Fragment {
         ratingBar = view.findViewById(R.id.rating_bar);
 //        ratingBar.setRating(5);
         button = view.findViewById(R.id.send_button);
+//        if (lang.equals("_ar")) {
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+//            text.setTypeface(typeface);
+//        }else {
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
+//            text.setTypeface(typeface);
+//        }
 
     }
 

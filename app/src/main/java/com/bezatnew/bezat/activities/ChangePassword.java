@@ -18,6 +18,7 @@ import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.bezatnew.bezat.utils.VolleyMultipartRequest;
 
+import org.intellij.lang.annotations.JdkConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,6 +41,7 @@ public class ChangePassword extends AppCompatActivity {
         if (SharedPrefs.getKey(ChangePassword.this, "selectedlanguage").contains("ar")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang = "_ar";
+
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
