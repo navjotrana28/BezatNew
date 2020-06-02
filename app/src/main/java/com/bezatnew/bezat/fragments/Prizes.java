@@ -101,6 +101,7 @@ public class Prizes extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        container.setClickable(true);
         rootView = inflater.inflate(R.layout.fragment_prizes, container, false);
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);

@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/ripple_white_primary"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="@dimen/_10sdp">
+    android:gravity="center"
+    android:padding="@dimen/_6sdp">
 
     <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_weight="1"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter" />
+        android:id="@+id/image"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 
     <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:fontFamily="@font/tajawal_medium"
-        android:textSize="@dimen/_16sdp"
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:gravity="center"
-        android:textColor="@color/colorPrimary" />
+        android:fontFamily="Tajawal"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintDimensionRatio="h,1:0.3"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
 </LinearLayout>

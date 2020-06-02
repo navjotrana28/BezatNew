@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.bezatnew.bezat.R
 import com.bezatnew.bezat.utils.SharedPrefs
 import com.bezatnew.bezat.utils.URLS
 import com.github.kittinunf.fuel.core.FuelManager
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main);
         if (SharedPrefs.getKey(this, "selectedlanguage").contains("ar")) {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
         } else {
