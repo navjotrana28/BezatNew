@@ -2,7 +2,7 @@ package com.bezatnew.bezat.fragments;
 
 
 import android.content.Intent;
-import android.graphics.Typeface;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;

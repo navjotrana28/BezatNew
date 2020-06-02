@@ -3,7 +3,6 @@ package com.bezatnew.bezat.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -116,13 +115,10 @@ public class TotalCoupon extends Fragment {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang = "_ar";
-            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
-            txtDate.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
-//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
-//            txtDate.setTypeface(typeface);
+
         }
         rootView = inflater.inflate(R.layout.fragment_total_coupon, container, false);
         recycleTotalCoupons = rootView.findViewById(R.id.recycleTotalCoupons);
@@ -382,7 +378,6 @@ public class TotalCoupon extends Fragment {
 
                     }
                 });
-
             }
         }
     }

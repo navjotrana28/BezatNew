@@ -86,7 +86,7 @@
         android:gravity="left"
         android:searchIcon="@drawable/ic_search_black_24dp"
         android:iconifiedByDefault="false"
-        android:queryHint="Search by Retailer"
+        android:queryHint="@string/search_by_retailer"
         >
     </SearchView>
 
