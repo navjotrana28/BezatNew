@@ -7,6 +7,7 @@ import com.bezatnew.bezat.models.CountryData;
 import com.bezatnew.bezat.models.CouponResult;
 import com.bezatnew.bezat.models.LogoutResponse;
 import com.bezatnew.bezat.models.RegisterRequestResponse;
+import com.bezatnew.bezat.models.fav_offers_responses.FavOffersResponse;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
 import com.bezatnew.bezat.models.vip_list_responses.VipShopListResponse;
 
@@ -51,6 +52,12 @@ public interface ServiceRetrofit {
     @POST("user/vip_offer")
     Observable<VipShopListResponse> getVipShopList(@Field("userId") String userId,
                                                    @Field("currentDate") String currentDate);
+
+
+    @FormUrlEncoded
+    @POST("user/saved_offers")
+    Observable<FavOffersResponse> getFavOffersList(@Field("userId") String userId,
+                                                 @Field("currentDate") String currentDate);
 
     @FormUrlEncoded
     @POST("staff/logout")

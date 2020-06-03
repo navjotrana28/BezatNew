@@ -551,7 +551,7 @@ public class Dashboard extends Fragment {
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
                                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.container, new FavouriteOffer());
+                                ft.replace(R.id.container, new FavOffersList());
                                 ft.addToBackStack(null);
                                 ft.commit();
 

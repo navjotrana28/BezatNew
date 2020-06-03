@@ -54,6 +54,7 @@ public class FavouriteOffer extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String storeId = "";
 
     private OnFragmentInteractionListener mListener;
     ImageView imgBarCode;
@@ -108,6 +109,7 @@ public class FavouriteOffer extends Fragment {
         }
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.activity_favourite_offer, container, false);
+        storeId = getArguments().getString("storeId");
         imgBack = rootView.findViewById(R.id.imgBack);
         recOffer = rootView.findViewById(R.id.recOffer);
         loader = new Loader(getContext());
@@ -164,8 +166,8 @@ public class FavouriteOffer extends Fragment {
         JSONObject object = new JSONObject();
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        URLS.Companion.getLATEST_OFFER() + "userId=" + SharedPrefs.getKey(getActivity(),
-                                "userId") + "&currentDate=" + currentDate,
+                        URLS.Companion.getSTORE_OFFER() + "userId=" + SharedPrefs.getKey(getActivity(),
+                                "userId") + "&currentDate=" + currentDate + "&retailerId=" + storeId,
                         object,
                         response -> {
                             loader.dismiss();
@@ -223,15 +225,13 @@ public class FavouriteOffer extends Fragment {
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.favourite_item, parent, false);
+                    .inflate(R.layout.vip_offer_item, parent, false);
             return new MyViewHolder(itemView);
         }
 
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
-
-
                 holder.reTailerName.setText(jsonArray.getJSONObject(position).getString("store_name" + lang));
                 Picasso.get().load(jsonArray
                         .optJSONObject(position).optString("store_logo"))
@@ -256,7 +256,7 @@ public class FavouriteOffer extends Fragment {
             public MyViewHolder(View itemView) {
                 super(itemView);
 
-                reTailerName = itemView.findViewById(R.id.reTailerName);
+                reTailerName = itemView.findViewById(R.id.txtDesc);
                 imgBanner = itemView.findViewById(R.id.imgBanner);
 
                 itemView.setOnClickListener(new View.OnClickListener() {
