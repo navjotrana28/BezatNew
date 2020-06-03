@@ -52,8 +52,11 @@ public class FavOffersAdapter extends RecyclerView.Adapter<FavOffersAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
-        holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName() + lang);
+        if (lang.equals("_ar")) {
+            holder.imnageHorizontalName.setText(responseResult.get(position).getStoreNameAr());
+        } else {
+            holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName());
+        }
         Picasso.get()
                 .load(responseResult.get(position).getStoreImage())
                 .resize(500, 200)

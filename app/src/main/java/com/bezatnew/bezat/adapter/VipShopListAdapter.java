@@ -25,7 +25,7 @@ public class VipShopListAdapter extends RecyclerView.Adapter<VipShopListAdapter.
     private static CategoryId categoryId;
     private String lang;
 
-    public VipShopListAdapter(Context context,List<VipShopListDetails> datumList, CategoryId categoryId ) {
+    public VipShopListAdapter(Context context, List<VipShopListDetails> datumList, CategoryId categoryId) {
         mcontext = context;
         this.responseResult = datumList;
         this.categoryId = categoryId;
@@ -53,7 +53,11 @@ public class VipShopListAdapter extends RecyclerView.Adapter<VipShopListAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName() + lang);
+        if (lang.equals("_ar")) {
+            holder.imnageHorizontalName.setText(responseResult.get(position).getStoreNameAr());
+        } else {
+            holder.imnageHorizontalName.setText(responseResult.get(position).getStoreName());
+        }
         Picasso.get()
                 .load(responseResult.get(position).getStoreImage())
                 .resize(500, 200)
