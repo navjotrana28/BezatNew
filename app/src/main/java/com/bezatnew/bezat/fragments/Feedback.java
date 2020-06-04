@@ -51,8 +51,8 @@ public class Feedback extends Fragment {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang = "_ar";
-            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
-            suggestion_box.setTypeface(typeface);
+//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
+//            suggestion_box.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
