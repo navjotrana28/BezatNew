@@ -125,11 +125,14 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
                 txtTitle.setText(l.get(position));
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_language);
                 if(position==1){
+                    convertView.setBackgroundColor(0xFFF2F2F2);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.english_icon));
                 }else if(position==2){
+                    convertView.setBackgroundColor(0xFFF2F2F2);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.arabic_icon));
                 }
                 else{
+                    convertView.setBackgroundColor(0xFFFFFFFF);
                     imageView.setImageDrawable(null);
                 }
 

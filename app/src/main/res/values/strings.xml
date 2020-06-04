@@ -160,5 +160,7 @@
         <item>عربى</item>
     </string-array>
 
+    <string name="arabic">عربى</string>
+
 
 </resources>
