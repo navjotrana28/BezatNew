@@ -94,7 +94,7 @@
                android:maxLines="1"
                android:ellipsize="end"
                android:textColor="@color/colorPrimary"
-               android:fontFamily="@font/tajawal_regular"
+               android:fontFamily="@font/tajawal_bold"
                android:textSize="@dimen/_16sdp"
                android:text="Meet a star"/>
        <LinearLayout

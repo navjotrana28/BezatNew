@@ -59,7 +59,6 @@ public class FavOffersList extends Fragment {
     ImageView imgBack;
     View rootView;
     Loader loader;
-    String currentDate = "";
     private FavOffersAdapter verticalAdapter;
     LinearLayoutManager layoutManager;
     private RecyclerView recyclerViewVertical;
@@ -121,8 +120,8 @@ public class FavOffersList extends Fragment {
         loader.show();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
-        currentDate = formatter.format(date);
-        getVipOffer();
+        String currentDate = formatter.format(date);
+        getVipOffer(currentDate);
         initSearchView();
         int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
         TextView textView = searchView.findViewById(id);
@@ -139,7 +138,7 @@ public class FavOffersList extends Fragment {
         return rootView;
     }
 
-    private void getVipOffer() {
+    private void getVipOffer(String currentDate) {
         ClientRetrofit clientRetrofit = new ClientRetrofit();
         clientRetrofit.getFavOffersList(SharedPrefs.getKey(getActivity(), "userId"), currentDate,
                 new FavOffersListInterface() {
