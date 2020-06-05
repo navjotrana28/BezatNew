@@ -12,26 +12,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.interfaces.CategoryId;
-import com.bezatnew.bezat.models.vip_list_responses.VipShopListDetails;
+import com.bezatnew.bezat.models.fav_offers_responses.FavOffersDetails;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class VipShopListAdapter extends RecyclerView.Adapter<VipShopListAdapter.MyViewHolder> {
+public class FavOffersAdapter extends RecyclerView.Adapter<FavOffersAdapter.MyViewHolder> {
 
     private Context mcontext;
-    private List<VipShopListDetails> responseResult;
+    private List<FavOffersDetails> responseResult;
     private static CategoryId categoryId;
     private String lang;
 
-    public VipShopListAdapter(Context context, List<VipShopListDetails> datumList, CategoryId categoryId) {
+    public FavOffersAdapter(Context context, List<FavOffersDetails> datumList, CategoryId categoryId) {
         mcontext = context;
         this.responseResult = datumList;
         this.categoryId = categoryId;
     }
 
-    public void setSearchList(List<VipShopListDetails> datumList) {
+    public void setSearchList(List<FavOffersDetails> datumList) {
         this.responseResult = datumList;
         notifyDataSetChanged();
     }
@@ -52,7 +52,6 @@ public class VipShopListAdapter extends RecyclerView.Adapter<VipShopListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         if (lang.equals("_ar")) {
             holder.imnageHorizontalName.setText(responseResult.get(position).getStoreNameAr());
         } else {

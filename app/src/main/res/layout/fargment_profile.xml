@@ -160,7 +160,7 @@
                     android:drawableEnd="@drawable/ic_expand_more_black_24dp"
                     android:hint="@string/country"
                     android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/black" />
+                    android:textColorHint="@color/colorPrimary" />
 
             <View
                     android:layout_width="match_parent"

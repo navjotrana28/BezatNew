@@ -83,6 +83,7 @@ public class Pages extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        container.setClickable(true);
         rootView=inflater.inflate(R.layout.fragment_pages, container, false);
         web=rootView.findViewById(R.id.web);
         loader=new Loader(getContext());

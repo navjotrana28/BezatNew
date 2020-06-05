@@ -227,10 +227,7 @@ public class Dashboard extends Fragment {
                 R.drawable.logout,
                 signOutLabel
         ));
-//        Bitmap b=BitmapFactory.decodeResource(getResources(),R.drawable.vip_logo);
-//        Bitmap bs=Bitmap.createScaledBitmap(b,270,180,true);
-//        int r=dashBoardItem.indexOf(R.drawable.vip_logo);
-//        dashBoardItem.set(r,)
+
         PostAdapter postAdapter = new PostAdapter(dashBoardItem, isGuestUser);
 
         recycle.setNestedScrollingEnabled(false);
@@ -429,7 +426,6 @@ public class Dashboard extends Fragment {
 
             TextView text;
             ImageView image;
-            LinearLayout viewForItem;
             View view;
 
             public MyViewHolder(View itemView) {
@@ -437,7 +433,6 @@ public class Dashboard extends Fragment {
 
                 text = itemView.findViewById(R.id.text);
                 image = itemView.findViewById(R.id.image);
-                viewForItem = itemView.findViewById(R.id.main_view);
                 view = itemView;
             }
 
@@ -556,7 +551,7 @@ public class Dashboard extends Fragment {
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
                                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.container, new FavouriteOffer());
+                                ft.replace(R.id.container, new FavOffersList());
                                 ft.addToBackStack(null);
                                 ft.commit();
 

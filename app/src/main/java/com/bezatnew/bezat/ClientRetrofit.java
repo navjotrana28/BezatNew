@@ -7,6 +7,7 @@ import com.bezatnew.bezat.api.feedbackResponse.FeedbackRequest;
 import com.bezatnew.bezat.api.feedbackResponse.FeedbackResponse;
 import com.bezatnew.bezat.interfaces.ContactUsSuccessResponse;
 import com.bezatnew.bezat.interfaces.CountryCallBack;
+import com.bezatnew.bezat.interfaces.FavOffersListInterface;
 import com.bezatnew.bezat.interfaces.FeedbackCallback;
 import com.bezatnew.bezat.interfaces.LogoutCallback;
 import com.bezatnew.bezat.interfaces.RegisterUserCallBack;
@@ -18,6 +19,7 @@ import com.bezatnew.bezat.models.CouponResult;
 import com.bezatnew.bezat.models.LogoutResponse;
 import com.bezatnew.bezat.models.RegisterRequestResponse;
 import com.bezatnew.bezat.models.RegisterUserRequest;
+import com.bezatnew.bezat.models.fav_offers_responses.FavOffersResponse;
 import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
 import com.bezatnew.bezat.models.vip_list_responses.VipShopListResponse;
 
@@ -266,5 +268,29 @@ public class ClientRetrofit {
                 });
     }
 
+    public void getFavOffersList(String userId, String currentDate, final FavOffersListInterface callback) {
+        serviceRetrofit.getFavOffersList(userId, currentDate)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<FavOffersResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+                    @Override
+                    public void onNext(FavOffersResponse responseResult) {
+                        callback.onSuccess(responseResult);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.onFailure(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 
 }

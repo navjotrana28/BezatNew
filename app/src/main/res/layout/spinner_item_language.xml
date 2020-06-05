@@ -4,31 +4,33 @@
     android:layout_width="fill_parent"
     >
     
-    <TextView
-        android:id="@+id/tv_language"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:paddingBottom="5dp"
-        android:hint="Change Language"
-        android:textColorHint="@color/dark_grey"
-        android:paddingTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
-    </TextView>
-    
     <LinearLayout
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:gravity="center"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="fill_parent">
         <ImageView
+            android:layout_marginRight="8dp"
             android:id="@+id/iv_language"
             android:layout_width="24dp"
             android:layout_height="24dp">
-
         </ImageView>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_language"
+            android:textColor="#000000"
+            android:paddingBottom="5dp"
+            android:hint="CHANGE LANGUAGE"
+            android:textColorHint="@color/dark_grey"
+            android:paddingTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
     </LinearLayout>
 
 </RelativeLayout>

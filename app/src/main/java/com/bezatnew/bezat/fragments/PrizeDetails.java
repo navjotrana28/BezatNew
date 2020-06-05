@@ -1,7 +1,6 @@
 package com.bezatnew.bezat.fragments;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;

@@ -39,5 +39,6 @@
     <dimen name="spacing_moderate">12dp</dimen>
     <dimen name="spacing_slightly_extra_small">3dp</dimen>
     <dimen name="corner_radius">16dp</dimen>
-    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="card_elevation_contact_us">4dp</dimen>
 </resources>

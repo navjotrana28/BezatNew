@@ -2,7 +2,6 @@ package com.bezatnew.bezat.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,6 +49,8 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
     private String mParam1;
     private String mParam2;
 
+    ViewGroup container_view;
+
     private OnFragmentInteractionListener mListener;
     View rootView;
     EditText etConfirmPassword,etPassword,etPhone;
@@ -93,7 +94,16 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        // Inflate the layout for this fragment
+        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang="_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang="";
+        }
+        container_view = container;
+        container.setClickable(true);
         rootView=inflater.inflate(R.layout.fragment_change_password, container, false);
         etCode=rootView.findViewById(R.id.etCode);
         etPhone=rootView.findViewById(R.id.etPhone);
@@ -101,26 +111,6 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
         etConfirmPassword=rootView.findViewById(R.id.etConfirmPassword);
         btnSave=rootView.findViewById(R.id.btnSave);
         imgBack = rootView.findViewById(R.id.imgBack);
-        // Inflate the layout for this fragment
-        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
-            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            lang="_ar";
-//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
-//            etCode.setTypeface(typeface);
-//            etPhone.setTypeface(typeface);
-//            etPassword.setTypeface(typeface);
-//            etConfirmPassword.setTypeface(typeface);
-
-        } else {
-            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            lang="";
-//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
-//            etCode.setTypeface(typeface);
-//            etPhone.setTypeface(typeface);
-//            etPassword.setTypeface(typeface);
-//            etConfirmPassword.setTypeface(typeface);
-        }
-
         etCode.setOnClickListener(this);
         etCode.setText(SharedPrefs.getKey(getActivity(),"phone_code"));
         etPhone.setText(SharedPrefs.getKey(getActivity(),"phone"));
@@ -131,6 +121,7 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
+                container.setClickable(false);
             }
         });
         btnSave.setOnClickListener(new View.OnClickListener() {

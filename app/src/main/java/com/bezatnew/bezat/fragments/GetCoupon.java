@@ -73,6 +73,7 @@ public class GetCoupon extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        container.setClickable(true);
         rootView=inflater.inflate(R.layout.fragment_get_coupon, container, false);
         txtUserCode=rootView.findViewById(R.id.txtUserCode);
         imgQr=rootView.findViewById(R.id.imgQr);

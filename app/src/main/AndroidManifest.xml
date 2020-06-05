@@ -86,8 +86,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.bezatnew.bezat.activities.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -2,7 +2,7 @@ package com.bezatnew.bezat.fragments;
 
 
 import android.content.Intent;
-import android.graphics.Typeface;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
@@ -41,6 +41,7 @@ public class ContactUsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        container.setClickable(true);
         if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang="_ar";

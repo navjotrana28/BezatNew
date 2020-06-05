@@ -88,6 +88,7 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        container.setClickable(true);
         rootView= inflater.inflate(R.layout.fragment_change_language, container, false);
         etLanguage=rootView.findViewById(R.id.etLanguage);
         txtArabic = rootView.findViewById(R.id.txtArabic);
@@ -104,8 +105,8 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
 
         List<String> l = new ArrayList<>();
         l.add("");
-        l.add("English");
-        l.add("Arabic");
+        l.add("ENGLISH");
+        l.add("عربى");
 
         Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner_language);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getBaseContext(),
@@ -124,11 +125,14 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
                 txtTitle.setText(l.get(position));
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_language);
                 if(position==1){
+                    convertView.setBackgroundColor(0xFFF2F2F2);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.english_icon));
                 }else if(position==2){
+                    convertView.setBackgroundColor(0xFFF2F2F2);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.arabic_icon));
                 }
                 else{
+                    convertView.setBackgroundColor(0xFFFFFFFF);
                     imageView.setImageDrawable(null);
                 }
 

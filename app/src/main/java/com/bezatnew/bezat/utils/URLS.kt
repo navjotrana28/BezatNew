@@ -10,6 +10,7 @@ class URLS {
         val COMPLETEREGISTER_URL = BASE_PATH+"user/completeRegister"
         val USER_BANNER = BASE_PATH+"user/banners"
         val LATEST_OFFER = BASE_PATH+"store/saved_offer_list?"
+        val STORE_OFFER = BASE_PATH+"user/store_offer?"
         val CATEGORY_LIST = BASE_PATH+"category/list"
         val VIP_OFFER = BASE_PATH+"user/vip_offer?"
         val VIP_OFFER_STORE = BASE_PATH+"user/vip_offer_store?"

@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-    android:background="@color/whitegray"
+    android:background="@color/white"
     android:orientation="vertical"
         tools:context=".activities.TotalCoupons">
 
@@ -49,21 +49,35 @@
         </LinearLayout>
     </Toolbar>
 
-    <Spinner
-        android:theme="@style/MatchSpinnerTheme"
-        android:popupBackground="@color/white"
-        android:textAlignment="center"
-        android:background="@drawable/round_corners"
-        android:gravity="center"
-        android:id="@+id/spinner_language"
+    <RelativeLayout
         android:layout_marginTop="100dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        >
+        android:layout_height="50dp">
+        <Spinner
+            android:popupElevation="0dp"
+            android:theme="@style/MatchSpinnerTheme"
+            android:popupBackground="@color/white"
+            android:textAlignment="center"
+            android:background="@drawable/round_corners"
+            android:gravity="center"
+            android:id="@+id/spinner_language"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
+        </Spinner>
+        <ImageView
+            android:src="@drawable/ic_down"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="24dp"
+            android:layout_height="24dp">
 
-    </Spinner>
+        </ImageView>
+    </RelativeLayout>
 
     <LinearLayout
         android:visibility="gone"

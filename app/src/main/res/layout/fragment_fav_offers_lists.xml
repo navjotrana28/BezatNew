@@ -41,7 +41,7 @@
                 android:fontFamily="@font/muli_bold"
                 android:gravity="start|center_vertical"
                 android:paddingEnd="60dp"
-                android:text="@string/vip_offers"
+                android:text="@string/fav_offers"
                 android:textAlignment="center"
                 android:textSize="@dimen/_14sdp" />
         </LinearLayout>

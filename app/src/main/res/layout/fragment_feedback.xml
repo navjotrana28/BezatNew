@@ -141,7 +141,7 @@
     <RatingBar
 
         android:id="@+id/rating_bar"
-        style="@style/Widget.AppCompat.RatingBar.Small"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:isIndicator="?android:attr/ratingBarStyleIndicator"
