@@ -168,14 +168,15 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:backgroundTint="@color/partnerline"
-                    android:background="@drawable/ic_phone"/>
+                    android:background="@drawable/phone"/>
+
                 <ImageButton
                     android:id="@+id/txtLoc"
                     android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:backgroundTint="@color/partnerline"
-                    android:background="@drawable/ic_location"/>
+                    android:background="@drawable/whatsapp"
+                    android:backgroundTint="@color/partnerline" />
 
                 <ImageButton
                     android:id="@+id/txtInsta"
@@ -183,7 +184,7 @@
                     android:layout_height="@dimen/_24sdp"
                     android:backgroundTint="@color/partnerline"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:background="@drawable/ic_insta"/>
+                    android:background="@drawable/ig"/>
 
                 <ImageButton
                     android:id="@+id/txtSnap"
@@ -191,7 +192,7 @@
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:backgroundTint="@color/partnerline"
-                    android:background="@drawable/ic_snap"/>
+                    android:background="@drawable/snapchat"/>
 
                 <ImageButton
                     android:id="@+id/txtTwitter"
@@ -199,14 +200,14 @@
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:backgroundTint="@color/partnerline"
-                    android:background="@drawable/ic_twitter"/>
+                    android:background="@drawable/twitter"/>
 
                 <ImageButton
                     android:id="@+id/txtFb"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:background="@drawable/ic_fb"
+                    android:background="@drawable/fb"
                     android:backgroundTint="@color/partnerline" />
 
                 <ImageButton
@@ -215,7 +216,7 @@
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:backgroundTint="@color/partnerline"
-                    android:background="@drawable/ic_web"/>
+                    android:background="@drawable/web"/>
 
 
 

@@ -169,7 +169,7 @@ public class Offers extends Fragment {
             try {
                 holder.offer_descp.setText(jsonArray.getJSONObject(position).getString("offer_descp"));
                 holder.discount_price.setText("BD "+jsonArray.getJSONObject(position).getString("discount_price"));
-                holder.actual_price.setText("Origanal Price:BD "+jsonArray.getJSONObject(position).getString("actual_price"));
+                holder.actual_price.setText("Original Price:BD "+jsonArray.getJSONObject(position).getString("actual_price"));
                 Picasso.get().load(jsonArray.getJSONObject(position).getString("offer_img"))
                         .into(holder.offer_img);
             } catch (Exception e) {
