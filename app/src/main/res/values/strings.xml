@@ -25,6 +25,7 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="country">Please select country</string>
+    <string name="country_label">Country</string>
     <string name="address">Address</string>
     <string name="gender">Gender</string>
     <string name="dob">Date Of Birth</string>

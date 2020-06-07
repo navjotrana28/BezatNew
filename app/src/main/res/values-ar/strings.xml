@@ -24,7 +24,7 @@
     <string name="push_notification">إخطارات</string>
     <string name="name">اسم*</string>
     <string name="email">البريد الإلكتروني*</string>
-    <string name="country">بلد*</string>
+    <string name="country_label">بلد*</string>
     <string name="address">Address</string>
     <string name="gender">جنس*</string>
     <string name="dob">*تاريخ الولادة</string>
@@ -150,5 +150,6 @@
     <string name="type_your_feedback">اكتب ملاحظاتك</string>
 
     <string name="arabic">عربى</string>
+    <string name="country">الرجاء اختيار البلد</string>
 
 </resources>
