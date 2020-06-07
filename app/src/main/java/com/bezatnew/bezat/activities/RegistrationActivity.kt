@@ -307,7 +307,6 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                     val params = HashMap<String, String>()
                     params["phone"] = phone.toString()
                     params["otp_code"] = otp.toString()
-                    println("object$params ")
                     return params
                 }
 
