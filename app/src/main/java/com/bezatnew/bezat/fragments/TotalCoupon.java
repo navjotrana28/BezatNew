@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -137,7 +140,7 @@ public class TotalCoupon extends Fragment {
         currentDate = formatter.format(date);
         txtDate.setText(currentDate);
         getTotalCoupon();
-        getTotalCoupons();
+//        getTotalCoupons();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,8 +173,7 @@ public class TotalCoupon extends Fragment {
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
-                        .maxYear(2100) // max year in loop
-
+                        .maxYear(Integer.parseInt(currentDate.substring(0, 4))+1) // max year in loop
                         .build();
                 pickerPopWin.showPopWin(getActivity());
             }
@@ -180,6 +182,7 @@ public class TotalCoupon extends Fragment {
             @Override
             public void onClick(View view) {
                 DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
+
                     @Override
                     public void onDatePickCompleted(int year, int month, int day, String dateDesc) {
 //                        Toast.makeText(getActivity(), dateDesc, Toast.LENGTH_SHORT).show();
@@ -199,7 +202,7 @@ public class TotalCoupon extends Fragment {
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
-                        .maxYear(2100) // max year in loop
+                        .maxYear(Integer.parseInt(currentDate.substring(0, 4))+1) // max year in loop
 
                         .build();
                 pickerPopWin.showPopWin(getActivity());
