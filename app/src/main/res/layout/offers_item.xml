@@ -62,7 +62,7 @@
                 android:textSize="@dimen/_12sdp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/muli_semibold"
-                android:text="Origanal Price:BD 100.00"/>
+                android:text="Original Price:BD 100.00"/>
     </LinearLayout>
 
 </RelativeLayout>

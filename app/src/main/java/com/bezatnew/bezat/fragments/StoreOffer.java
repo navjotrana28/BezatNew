@@ -109,6 +109,7 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
             lang="";
 
         }
+        container.setClickable(true);
         rootView = inflater.inflate(R.layout.fragment_store_offer, container, false);
         String storeId=getArguments().getString("storeId");
         Log.d("storeIdnam", storeId);

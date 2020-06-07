@@ -77,6 +77,7 @@ public class Offers extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        container.setClickable(true);
         rootView=inflater.inflate(R.layout.fragment_offers, container, false);
         recOffer=rootView.findViewById(R.id.recOffer);
         imgBack=rootView.findViewById(R.id.imgBack);
