@@ -180,12 +180,8 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
 
                 }else if(position==1){
                     setLocale("en");
-                    ImageView v = view.findViewById(R.id.iv_language);
-                    v.setImageDrawable(getResources().getDrawable(R.drawable.english_icon));
                 }else{
                     setLocale("ar");
-                    ImageView v = view.findViewById(R.id.iv_language);
-                    v.setImageDrawable(getResources().getDrawable(R.drawable.arabic_icon));
                 }
             }
 
