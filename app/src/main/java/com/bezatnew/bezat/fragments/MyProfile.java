@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -60,12 +59,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import static com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage;
@@ -381,7 +376,12 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                 etDob.setText(SharedPrefs.getKey(getActivity(), "dob"));
                                 etPhone.setText(SharedPrefs.getKey(getActivity(), "phone"));
                                 String path = SharedPrefs.getKey(getActivity(), "image");
-                                Picasso.get().load(path).into(imgProfile);
+                                if (path.equals("")) {
+                                    Picasso.get().load(R.drawable.maleicon).into(imgProfile);
+
+                                } else {
+                                    Picasso.get().load(path).into(imgProfile);
+                                }
                                 SharedPrefs.setKey(getActivity(), "image", "");
                                 loader.dismiss();
 
@@ -467,9 +467,9 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         }
         if (view.getId() == R.id.etGender) {
             if (etGender.getText().equals("Female") || etGender.getText().equals("Male")) {
-                if (ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).toLanguageTags().equals("ar")){
-                        Toast.makeText(getActivity(),"يرجى الاتصال بالمسؤول لتغيير جنسك" ,Toast.LENGTH_LONG).show();
-                }else {
+                if (ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).toLanguageTags().equals("ar")) {
+                    Toast.makeText(getActivity(), "يرجى الاتصال بالمسؤول لتغيير جنسك", Toast.LENGTH_LONG).show();
+                } else {
                     Toast.makeText(getActivity(), "Contact admin to change your gender",
                             Toast.LENGTH_LONG).show();
                 }

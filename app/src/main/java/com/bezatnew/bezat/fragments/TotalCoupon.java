@@ -5,12 +5,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,9 @@ import com.bezatnew.bezat.utils.Loader;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.bruce.pickerview.popwindow.DatePickerPopWin;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexWrap;
+import com.google.android.flexbox.FlexboxLayout;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -42,7 +46,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -137,7 +145,7 @@ public class TotalCoupon extends Fragment {
         currentDate = formatter.format(date);
         txtDate.setText(currentDate);
         getTotalCoupon();
-        getTotalCoupons();
+//        getTotalCoupons();
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,8 +178,7 @@ public class TotalCoupon extends Fragment {
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
-                        .maxYear(2100) // max year in loop
-
+                        .maxYear(Integer.parseInt(currentDate.substring(0, 4)) + 1) // max year in loop
                         .build();
                 pickerPopWin.showPopWin(getActivity());
             }
@@ -180,6 +187,7 @@ public class TotalCoupon extends Fragment {
             @Override
             public void onClick(View view) {
                 DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
+
                     @Override
                     public void onDatePickCompleted(int year, int month, int day, String dateDesc) {
 //                        Toast.makeText(getActivity(), dateDesc, Toast.LENGTH_SHORT).show();
@@ -199,7 +207,7 @@ public class TotalCoupon extends Fragment {
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
-                        .maxYear(2100) // max year in loop
+                        .maxYear(Integer.parseInt(currentDate.substring(0, 4))+1) // max year in loop
 
                         .build();
                 pickerPopWin.showPopWin(getActivity());
@@ -338,9 +346,30 @@ public class TotalCoupon extends Fragment {
         public void onBindViewHolder(PostAdapter.MyViewHolder holder, int position) {
             try {
 
+                String s = jsonArray.getJSONObject(position).getString("raffles");
+                String[] arr = s.split(",");
+                //holder.txtRaffles.setText(arr.length+"");
+
+                holder.ll.setFlexDirection(FlexDirection.ROW);
+                holder.ll.setFlexWrap(FlexWrap.WRAP);
+                for(int i=0;i<arr.length;i++){
+                    TextView valueTV = new TextView(getActivity().getBaseContext());
+                    valueTV.setText(arr[i]);
+                    valueTV.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    valueTV.setBackgroundColor(getResources().getColor(R.color.dark_grey));
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(10,10,10,10);
+                    valueTV.setPadding(8,0,8,0);
+                    valueTV.setLayoutParams(params);
+
+
+
+                    ((FlexboxLayout) holder.ll).addView(valueTV);
+                }
+
                 holder.txtBilldate.setText("Date : " + jsonArray.getJSONObject(position).getString("bill_date"));
                 holder.txtBillno.setText(jsonArray.getJSONObject(position).getString("bill_no"));
-                holder.txtRaffles.setText(jsonArray.getJSONObject(position).getString("raffles"));
+                //holder.txtRaffles.setText(jsonArray.getJSONObject(position).getString("raffles"));
                 holder.txtStoreName.setText(jsonArray.getJSONObject(position).getString("storeName" + lang));
                 holder.txtCouponNo.setText(jsonArray.getJSONObject(position).getString("totalCoupons" + lang));
                 Picasso.get().load(jsonArray.getJSONObject(position).getString("store_logo"))
@@ -361,17 +390,18 @@ public class TotalCoupon extends Fragment {
 
             TextView txtStoreName, txtRaffles, txtBillno, txtBilldate, txtCouponNo;
             ImageView imgCoupon;
+            FlexboxLayout ll;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
 
                 txtBilldate = itemView.findViewById(R.id.txtBilldate);
                 txtBillno = itemView.findViewById(R.id.txtBillno);
-                txtRaffles = itemView.findViewById(R.id.txtRaffles);
+                //txtRaffles = itemView.findViewById(R.id.txtRaffles);
                 txtStoreName = itemView.findViewById(R.id.txtStoreName);
                 imgCoupon = itemView.findViewById(R.id.imgCoupon);
                 txtCouponNo = itemView.findViewById(R.id.txtcouponNo);
-
+                ll = itemView.findViewById(R.id.ll);
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

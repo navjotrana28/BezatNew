@@ -70,7 +70,7 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.MyViewHold
 
             txtBilldate = itemView.findViewById(R.id.txtBilldate);
             txtBillno = itemView.findViewById(R.id.txtBillno);
-            txtRaffles = itemView.findViewById(R.id.txtRaffles);
+            //txtRaffles = itemView.findViewById(R.id.txtRaffles);
             txtStoreName = itemView.findViewById(R.id.txtStoreName);
             imgCoupon = itemView.findViewById(R.id.imgCoupon);
 
