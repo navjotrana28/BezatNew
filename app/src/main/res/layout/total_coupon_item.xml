@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_1sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/muli_regular"
+                android:fontFamily="@font/tajawal_regular"
                 android:text="Date: 06/06/2018"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_9sdp" />
@@ -63,7 +63,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:text="Bill No:  "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                 android:background="@drawable/coupan"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:paddingStart="@dimen/_7sdp"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingEnd="@dimen/_7sdp"
@@ -93,7 +93,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:text="No. of coupons  "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp" />
@@ -103,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                 android:background="@drawable/coupan"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:paddingStart="@dimen/_7sdp"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingEnd="@dimen/_7sdp"
@@ -123,7 +123,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:text="Coupons: "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
@@ -133,7 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/dark_grey"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:paddingStart="@dimen/_7sdp"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingEnd="@dimen/_7sdp"

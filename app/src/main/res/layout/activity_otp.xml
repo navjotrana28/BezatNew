@@ -36,7 +36,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textSize="@dimen/default_size"
-                android:fontFamily="@font/muli_bold"
+                android:fontFamily="@font/tajawal_bold"
                 android:text="@string/otp"/>
             <ImageView
                 android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
                         android:textSize="@dimen/_12sdp"
                         android:textColor="@color/colorPrimary"
                         android:paddingStart="@dimen/_8sdp"
-                        android:fontFamily="@font/muli_semibold"
+                        android:fontFamily="@font/tajawal_medium"
                         android:text="@string/resend"/>
             </LinearLayout>
 

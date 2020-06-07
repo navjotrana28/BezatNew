@@ -11,6 +11,7 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@color/white"
         android:textSize="20sp"
+        android:fontFamily="@font/tajawal_regular"
         android:gravity="center"
         android:text="Meet a star"
         android:textColor="@color/colorPrimary" />

@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center"
-        android:fontFamily="Tajawal"
+        android:fontFamily="@font/tajawal_regular"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintDimensionRatio="h,1:0.3"

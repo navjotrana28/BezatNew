@@ -24,6 +24,7 @@
                         android:paddingTop="@dimen/_3sdp"
                         android:paddingBottom="@dimen/_3sdp"
                         android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/tajawal_bold"
                         android:textColor="@color/colorPrimary"
                         android:text="Offer price"/>
         <LinearLayout
@@ -40,7 +41,7 @@
                     android:text="Meet a star"
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/muli_regular"/>
+                    android:fontFamily="@font/tajawal_regular"/>
             <TextView
                     android:id="@+id/discount_price"
                     android:layout_width="wrap_content"
@@ -52,6 +53,7 @@
                     android:paddingBottom="@dimen/_3sdp"
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/tajawal_bold"
                     android:text="BD 50.000"/>
 
         </LinearLayout>
@@ -61,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="Origanal Price:BD 100.00"/>
     </LinearLayout>
 

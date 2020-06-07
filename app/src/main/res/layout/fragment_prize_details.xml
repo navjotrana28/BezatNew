@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_44sdp"
             android:backgroundTint="@color/colorPrimary"
-            android:fontFamily="@font/muli_semibold"
+            android:fontFamily="@font/tajawal_medium"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
 

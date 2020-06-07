@@ -32,7 +32,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:textSize="@dimen/_15sdp"
                     android:textColor="@color/white"
                     android:text="@string/get_coupon"/>

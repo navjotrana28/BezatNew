@@ -26,6 +26,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="10sp"
+        android:fontFamily="@font/tajawal_regular"
         android:layout_marginTop="@dimen/_2sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

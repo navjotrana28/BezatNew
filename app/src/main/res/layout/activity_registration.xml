@@ -196,7 +196,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:padding="@dimen/default_margin"
                     android:text="@string/save"
                     android:textColor="@android:color/white"

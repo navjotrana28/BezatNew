@@ -22,7 +22,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
-                    android:fontFamily="@font/muli_semibold"
+                    android:fontFamily="@font/tajawal_medium"
                     android:gravity="center"
                     android:scaleType="fitCenter"
                     android:text="@string/title_profile"

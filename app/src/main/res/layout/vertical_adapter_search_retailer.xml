@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/tajawal_regular"
                 android:text="Saloon &amp; Spa"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"

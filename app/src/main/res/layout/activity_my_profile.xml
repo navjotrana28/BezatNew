@@ -38,7 +38,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="@dimen/_14sdp"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:text="@string/title_profile"/>
             <ImageView
                     android:layout_width="wrap_content"
@@ -100,7 +100,7 @@
                     android:textColorHint="@color/colorPrimary"
                     android:gravity="start"
                     android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/muli_bold"/>
+                    android:fontFamily="@font/tajawal_bold"/>
 
             <LinearLayout
                     android:layout_marginTop="@dimen/_5sdp"
@@ -119,7 +119,7 @@
                         android:textColorHint="@color/colorPrimary"
                         android:gravity="start"
                         android:backgroundTint="@color/colorPrimary"
-                        android:fontFamily="@font/muli_bold"/>
+                        android:fontFamily="@font/tajawal_bold"/>
 
                     <LinearLayout android:layout_width="wrap_content"
                                   android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                         android:textColorHint="@color/colorPrimary"
                         android:gravity="start"
                         android:backgroundTint="@color/colorPrimary"
-                        android:fontFamily="@font/muli_bold"/>
+                        android:fontFamily="@font/tajawal_bold"/>
 
                 <LinearLayout android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                     android:gravity="start"
                     android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                     android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/muli_bold"/>
+                    android:fontFamily="@font/tajawal_bold"/>
 
             <EditText
                     android:layout_marginTop="@dimen/_5sdp"
@@ -202,7 +202,7 @@
 
                     android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                     android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/muli_bold"/>
+                    android:fontFamily="@font/tajawal_bold"/>
 
             <EditText
                     android:layout_marginTop="@dimen/_5sdp"
@@ -215,7 +215,7 @@
 
                     android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                     android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/muli_bold"/>
+                    android:fontFamily="@font/tajawal_bold"/>
 
             <EditText
                     android:layout_marginTop="@dimen/_5sdp"
@@ -228,7 +228,7 @@
 
                     android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                     android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/muli_bold"/>
+                    android:fontFamily="@font/tajawal_bold"/>
 
 
         </LinearLayout>
