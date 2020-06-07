@@ -63,7 +63,6 @@ public class Feedback extends Fragment {
         addViews(view);
         onCLickSendBtn();
         onClickBackButton(view);
-
         return view;
     }
 

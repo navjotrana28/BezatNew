@@ -90,7 +90,6 @@
                 android:elevation="0dp"
                 android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                 android:textColor="@color/black"
-
                 android:textColorHint="@color/dark_grey"
                 android:textSize="14dp" />
 
