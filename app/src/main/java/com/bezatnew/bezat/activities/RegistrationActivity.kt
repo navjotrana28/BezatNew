@@ -1,8 +1,9 @@
 package com.bezatnew.bezat.activities
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.Dialog
-import android.app.PendingIntent.getActivity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -19,6 +20,7 @@ import com.bezatnew.bezat.ClientRetrofit
 import com.bezatnew.bezat.MyApplication
 import com.bezatnew.bezat.R
 import com.bezatnew.bezat.api.RegisterRequest
+import com.bezatnew.bezat.fragments.ContactUsDialog
 import com.bezatnew.bezat.interfaces.RegisterUserCallBack
 import com.bezatnew.bezat.models.RegisterRequestResponse
 import com.bezatnew.bezat.models.RegisterUserRequest
@@ -76,12 +78,13 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             if (!isOtpValidated) {
 
                 validateForOtpAndSave()
-
+                verifyAge();
             } else {
                 validateAndSave()
-
+                verifyAge();
             }
         }
+
         etDOB.convertToDatePicker { date = it }
 
         GetCountryService().getCountries({ countryData ->
@@ -90,6 +93,15 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                     Picasso.get().load(it.img).into(countryIcon)
                 }) { obj, _ -> code = obj.phoneCode }
         }, {})
+    }
+
+    public fun verifyAge() {
+        val builder=AlertDialog.Builder(this)
+        builder.setTitle("Verification")
+        builder.setMessage("Please verify you are above 17 years old")
+        builder.setPositiveButton("Verify",{ dialogInterface: DialogInterface, i: Int -> })
+        builder.setNegativeButton("Cancel",{ dialogInterface: DialogInterface, i: Int -> })
+        builder.show()
     }
 
     private fun callImageMethod() {
