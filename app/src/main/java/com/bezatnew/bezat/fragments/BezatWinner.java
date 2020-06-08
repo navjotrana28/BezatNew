@@ -34,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -130,6 +131,7 @@ public class BezatWinner extends Fragment {
         });
 
 
+        Log.d("---year---",""+Calendar.getInstance().get(Calendar.YEAR));
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,8 +155,8 @@ public class BezatWinner extends Fragment {
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
-                        .maxYear(2100) // max year in loop
-
+                        .maxYear(Calendar.getInstance().get(Calendar.YEAR)+1)
+                        .maxMonth(Calendar.getInstance().get(Calendar.MONTH))// max year in loop
                         .build();
                 pickerPopWin.showPopWin(getActivity());
             }
@@ -181,8 +183,8 @@ public class BezatWinner extends Fragment {
                         .viewTextSize(25) // pick view text size
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
-                        .minYear(1990) //min year in loop
-                        .maxYear(2100) // max year in loop
+                        .maxYear(Calendar.getInstance().get(Calendar.YEAR)+1)
+                        .maxMonth(Calendar.getInstance().get(Calendar.MONTH)+1)//
                         .build();
                 pickerPopWin.showPopWin(getActivity());
             }
