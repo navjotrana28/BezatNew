@@ -11,6 +11,7 @@ import android.widget.*;
 import androidx.fragment.app.Fragment;
 
 import com.bezatnew.bezat.ClientRetrofit;
+import com.bezatnew.bezat.InstantAutoComplete;
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.api.feedbackResponse.FeedbackRequest;
 import com.bezatnew.bezat.api.feedbackResponse.FeedbackResponse;
@@ -31,7 +32,7 @@ public class Feedback extends Fragment {
     private RatingBar ratingBar;
     Button button;
     ImageView imgBack;
-    private AutoCompleteTextView suggestion_box;
+    private InstantAutoComplete suggestion_box;
     private SearchResponseResult searchResponseResult = new SearchResponseResult();
     private SearchResponseData responseData = new SearchResponseData();
     private SearchView searchView;

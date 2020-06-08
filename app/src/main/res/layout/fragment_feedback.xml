@@ -77,7 +77,7 @@
 
 
 
-            <AutoCompleteTextView
+            <com.bezatnew.bezat.InstantAutoComplete
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:id="@+id/suggestionBox"
