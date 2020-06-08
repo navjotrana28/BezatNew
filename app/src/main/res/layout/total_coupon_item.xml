@@ -30,6 +30,7 @@
             android:orientation="horizontal">
 
         <TextView
+            android:layout_weight="1"
                 android:id="@+id/txtStoreName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,9 +43,8 @@
 
         <TextView
                 android:id="@+id/txtBilldate"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-            android:gravity="end"
             android:layout_marginEnd="@dimen/_1sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/tajawal_regular"
@@ -57,18 +57,21 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
         <LinearLayout
+            android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/tajawal_bold"
-                    android:text="Bill No:  "
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:fontFamily="@font/tajawal_bold"
+                android:text="@string/bill_no"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
             <TextView
                     android:id="@+id/txtBillno"
@@ -82,10 +85,11 @@
                     android:paddingBottom="@dimen/_3sdp"
                     android:text="CF 0905"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
@@ -93,26 +97,29 @@
                 android:orientation="horizontal">
 
             <TextView
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/tajawal_bold"
-                    android:text="No. of coupons  "
+                    android:text="@string/number_of_coupons"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_11sdp" />
+                    android:textSize="12sp" />
 
             <TextView
-                    android:id="@+id/txtcouponNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_7sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingEnd="@dimen/_7sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:gravity="center"
+                android:id="@+id/txtcouponNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/coupan"
-                    android:fontFamily="@font/tajawal_bold"
-                    android:paddingStart="@dimen/_7sdp"
-                    android:paddingTop="@dimen/_3sdp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="@dimen/_3sdp"
-                    android:text="2"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp" />
+                android:fontFamily="@font/tajawal_bold"
+                android:text="2"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -127,9 +134,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/tajawal_bold"
-                    android:text="Coupons: "
+                    android:text="@string/coupons"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="12sp" />
 
             <!--<TextView
                     android:id="@+id/txtRaffles"
