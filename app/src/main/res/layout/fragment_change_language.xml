@@ -38,7 +38,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="@dimen/_14sdp"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:text="Change Language"/>
             <ImageView
                     android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="English"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13sdp"
                 android:backgroundTint="@color/colorPrimary"/>

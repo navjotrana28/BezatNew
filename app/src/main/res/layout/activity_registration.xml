@@ -92,7 +92,7 @@
                             android:id="@+id/phone"
                             style="@style/field"
                             android:layout_marginStart="2dp"
-                            android:hint="@string/phone"
+                            android:hint="@string/phone_number"
                             android:inputType="phone"
                             android:textColor="@android:color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -196,7 +196,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/tajawal_bold"
                     android:padding="@dimen/default_margin"
                     android:text="@string/save"
                     android:textColor="@android:color/white"

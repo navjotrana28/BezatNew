@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/my_scan_history"
                 android:textColor="@color/black"/>
         <View
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/my_favourite"
                 android:textColor="@color/black"/>
         <View
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/about_bezat"
                 android:textColor="@color/black"/>
         <View
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/terms_conditions"
                 android:textColor="@color/black"/>
         <View
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/privacy_policy"
                 android:textColor="@color/black"/>
         <View
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/contact_us"
                 android:textColor="@color/black"/>
         <View
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/faq"
                 android:textColor="@color/black"/>
         <View
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/change_password"
                 android:textColor="@color/black"/>
         <View
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/change_language"
                 android:textColor="@color/black"/>
         <LinearLayout
@@ -220,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/push_notification"
                     android:textSize="@dimen/_14sdp"
-                    android:fontFamily="@font/muli_semibold"
+                    android:fontFamily="@font/tajawal_medium"
                     android:textColor="@color/black"/>
 
             <Switch
@@ -244,7 +244,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/muli_semibold"
+                android:fontFamily="@font/tajawal_medium"
                 android:text="@string/logout"
                 android:textColor="@color/black"/>
         <View

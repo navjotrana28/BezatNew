@@ -198,7 +198,7 @@ public class Dashboard extends Fragment {
         ));
 
         dashBoardItem.add(new DashBoardItem(
-                R.drawable.prize,
+                R.drawable.prize2,
                 getString(R.string.prizes) + ""
         ));
         dashBoardItem.add(new DashBoardItem(

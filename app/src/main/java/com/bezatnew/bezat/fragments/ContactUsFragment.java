@@ -66,12 +66,20 @@ public class ContactUsFragment extends Fragment {
 
     private void onClickSendButton() {
         sendBtn.setOnClickListener(v -> {
-            ContactUsRequest request = new ContactUsRequest();
-            request.setName(name.getText().toString());
-            request.setEmail(email.getText().toString());
-            request.setComments(comments.getText().toString());
-            sendDataToServer(request);
+            if(name.getText().toString().isEmpty() || email.getText().toString().isEmpty() || comments.getText().toString().isEmpty()){
+                open();
+            }else {
+                ContactUsRequest request = new ContactUsRequest();
+                request.setName(name.getText().toString());
+                request.setEmail(email.getText().toString());
+                request.setComments(comments.getText().toString());
+                sendDataToServer(request);
+            }
         });
+    }
+    public void open(){
+        ContactUsDialog contactUsDialog=new ContactUsDialog();
+        contactUsDialog.show(getFragmentManager(),"ContantUs Dialog");
     }
 
     private void sendDataToServer(ContactUsRequest request) {

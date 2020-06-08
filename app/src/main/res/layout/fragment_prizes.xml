@@ -88,7 +88,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/muli_semibold"
+                        android:fontFamily="@font/tajawal_medium"
                         android:gravity="center"
                         android:text="@string/bezat_yearly"
                         android:textColor="@color/colorPrimary"
@@ -119,7 +119,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/muli_semibold"
+                        android:fontFamily="@font/tajawal_medium"
                         android:gravity="center"
                         android:text="@string/bezat_monthly"
                         android:textColor="@color/colorPrimary"
@@ -148,7 +148,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/muli_semibold"
+                        android:fontFamily="@font/tajawal_medium"
                         android:gravity="center"
                         android:text="Other Raffles"
                         android:textColor="@color/colorPrimary"
@@ -183,7 +183,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/white"
             android:elevation="@dimen/_1sdp"
-            android:fontFamily="@font/muli_regular"
+            android:fontFamily="@font/tajawal_regular"
             android:padding="@dimen/_5sdp"
             android:text="@string/bezat_raffle_is_a_product_of_bezat_and_conducts_monthly_raffles_apple_is_not_involved_in_anyway_with_the_sweepstake_and_not_a_sponsor_of_this_application"
             android:textColor="@color/colorPrimary"
