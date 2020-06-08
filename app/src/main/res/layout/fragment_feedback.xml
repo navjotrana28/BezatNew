@@ -54,18 +54,22 @@
 
     </Toolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:layout_marginBottom="8dp"
         android:id="@+id/category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ImageView
             android:id="@+id/img_feedback"
             android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:adjustViewBounds="true"
             android:src="@drawable/feedback"
             app:layout_constraintRight_toLeftOf="@+id/contact_name"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,14 +78,12 @@
 
 
             <AutoCompleteTextView
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:id="@+id/suggestionBox"
-                android:layout_width="250dp"
-                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_feedback"
-                app:layout_constraintTop_toTopOf="parent"
                 android:completionThreshold="1"
                 android:hint="@string/choose_retailer_here"
                 android:paddingEnd="30dp"
@@ -94,7 +96,7 @@
                 android:textSize="14dp" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -110,7 +112,7 @@
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:paddingStart="5dp"
         android:paddingTop="5dp"
         android:hint="@string/type_your_feedback"
