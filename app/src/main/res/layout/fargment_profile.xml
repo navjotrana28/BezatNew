@@ -34,6 +34,7 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:gravity="center"
+                android:fontFamily="@font/tajawal_medium"
                     android:paddingEnd="@dimen/_10sdp"
                     android:text="@string/save" />
         </RelativeLayout>

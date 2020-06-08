@@ -48,6 +48,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
         initUI()
     }
 
+
     var code: String? = null
     var otp: String? = null
     var date: String? = null
