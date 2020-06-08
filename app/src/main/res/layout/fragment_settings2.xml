@@ -135,7 +135,7 @@
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
-                android:text="@string/change_password"
+            android:text="@string/change_password_label"
                 android:textColor="@color/black"/>
         <View
                 android:layout_width="match_parent"

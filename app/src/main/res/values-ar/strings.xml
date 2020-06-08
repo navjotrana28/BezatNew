@@ -18,7 +18,8 @@
     <string name="privacy_policy">سياسة خاصة</string>
     <string name="contact_us">اتصل بنا</string>
     <string name="faq">التعليمات</string>
-    <string name="change_password">غير كلمة السر</string>
+    <string name="change_password">*غير كلمة السر</string>
+    <string name="change_password_label">غير كلمة السر</string>
     <string name="change_language">اللغة تغيرت بنجاح</string>
     <string name="logout">خروج</string>
     <string name="push_notification">إخطارات</string>

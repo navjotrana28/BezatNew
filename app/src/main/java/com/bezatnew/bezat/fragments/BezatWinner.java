@@ -153,7 +153,7 @@ public class BezatWinner extends Fragment {
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
-                        .maxYear(2100) // max year in loop
+                        .maxYear(Integer.parseInt(currentDate.substring(0, 4)) + 1) // max year in loop
 
                         .build();
                 pickerPopWin.showPopWin(getActivity());
@@ -182,7 +182,7 @@ public class BezatWinner extends Fragment {
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
-                        .maxYear(2100) // max year in loop
+                        .maxYear(Integer.parseInt(currentDate.substring(0, 4)) + 1) // max year in loop
                         .build();
                 pickerPopWin.showPopWin(getActivity());
             }
