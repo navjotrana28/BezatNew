@@ -58,6 +58,7 @@ public class MyScanHistory extends Fragment {
     ImageView imgSearch;
     TextView txtDate;
     ImageView imgBack;
+    String lang="";
     private OnFragmentInteractionListener mListener;
 
     public MyScanHistory() {
@@ -96,7 +97,14 @@ public class MyScanHistory extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         container.setClickable(true);
+        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang="_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang="";
 
+        }
         rootView=inflater.inflate(R.layout.fragment_my_scan_history, container, false);
         scanHistory=rootView.findViewById(R.id.scanHistory);
         txtDate = rootView.findViewById(R.id.txtDate);
