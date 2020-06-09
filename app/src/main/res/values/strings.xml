@@ -4,6 +4,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
     <string name="password">*Password</string>
+    <string name="password_label">Password</string>
     <string name="user_name">UserName</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="title_activity_home">HomeActivity</string>
@@ -26,7 +27,7 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="country">Please select country</string>
-    <string name="country_label">*Countr</string>
+    <string name="country_label">*Country</string>
     <string name="address">Address</string>
     <string name="gender">Gender</string>
     <string name="dob">Date Of Birth</string>
@@ -44,7 +45,7 @@
     <string name="someting_wrong">Something, went wrong!</string>
     <string name="ok">OK</string>
     <string name="confirm_password">*Confirm Password</string>
-    <string name="enter_password">Enter Password</string>
+    <string name="enter_password">*Enter Password</string>
     <string name="phone">Phone</string>
     <string name="valid_email">Please enter valid email</string>
     <string name="empty_email">Please enter Email</string>
