@@ -3,31 +3,31 @@
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     >
-    
+
     <LinearLayout
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_marginEnd="30dp"
+        android:gravity="center">
+
         <ImageView
-            android:layout_marginRight="8dp"
             android:id="@+id/iv_language"
             android:layout_width="24dp"
-            android:layout_height="24dp">
-        </ImageView>
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp" />
 
         <TextView
-            android:gravity="center"
             android:id="@+id/tv_language"
-            android:textColor="#000000"
-            android:paddingBottom="5dp"
-            android:hint="CHANGE LANGUAGE"
-            android:textColorHint="@color/dark_grey"
-            android:paddingTop="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="CHANGE LANGUAGE"
+            android:paddingTop="5dp"
+            android:layout_marginEnd="8dp"
+            android:paddingBottom="5dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/dark_grey"
+            android:textSize="@dimen/_14sdp">
 
         </TextView>
 

@@ -4,8 +4,9 @@
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
     <string name="password">*Password</string>
+    <string name="password_label">Password</string>
     <string name="user_name">UserName</string>
-    <string name="forgot_password">Forgot Password ?</string>
+    <string name="forgot_password">Forgot Password</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -18,14 +19,15 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="contact_us">Contact Us</string>
     <string name="faq">FAQ</string>
-    <string name="change_password">Change Password</string>
+    <string name="change_password">*Change Password</string>
+    <string name="change_password_label">Change Password</string>
     <string name="change_language">Change Language</string>
     <string name="logout">Logout</string>
     <string name="push_notification">Push Notification</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="country">Please select country</string>
-    <string name="country_label">*Countr</string>
+    <string name="country_label">*Country</string>
     <string name="address">Address</string>
     <string name="gender">Gender</string>
     <string name="dob">Date Of Birth</string>
@@ -43,7 +45,7 @@
     <string name="someting_wrong">Something, went wrong!</string>
     <string name="ok">OK</string>
     <string name="confirm_password">*Confirm Password</string>
-    <string name="enter_password">Enter Password</string>
+    <string name="enter_password">*Enter Password</string>
     <string name="phone">Phone</string>
     <string name="valid_email">Please enter valid email</string>
     <string name="empty_email">Please enter Email</string>
@@ -118,7 +120,7 @@
     <string name="get_name">NAME:</string>
     <string name="get_email">EMAIL:</string>
     <string name="get_comments">COMMENTS:</string>
-    <string name="user_name_Login">Email / Phone number</string>
+    <string name="user_name_Login">Email / Phone Number</string>
     <string name="skip_login">SKIP</string>
     <string name="you_will_take_to_login_screen">You will be taken to the login screen, okay?</string>
     <string name="search_by_retailer_name"><font size="15">Search by Retailer name</font></string>

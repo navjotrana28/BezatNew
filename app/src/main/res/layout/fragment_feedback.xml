@@ -67,7 +67,7 @@
         <ImageView
             android:id="@+id/img_feedback"
             android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:layout_marginStart="10dp"
             android:adjustViewBounds="true"
             android:src="@drawable/feedback"
