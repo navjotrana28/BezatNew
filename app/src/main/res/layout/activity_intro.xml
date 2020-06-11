@@ -59,10 +59,9 @@
               android:layout_alignParentBottom="true"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="@string/done"
-              android:visibility="gone"
+              android:text="@string/skip_login"
               android:textSize="@dimen/_12sdp"
-              android:backgroundTint="@color/partnerline"/>
+              android:background="@drawable/button_background"/>
       </RelativeLayout>
   </LinearLayout>
 

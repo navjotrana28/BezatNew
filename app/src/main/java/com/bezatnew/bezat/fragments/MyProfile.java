@@ -466,34 +466,35 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             datePickerDialog.show();
         }
         if (view.getId() == R.id.etGender) {
-            if (etGender.getText().equals("Female") || etGender.getText().equals("Male")) {
-                if (ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).toLanguageTags().equals("ar")) {
-                    Toast.makeText(getActivity(), "يرجى الاتصال بالمسؤول لتغيير جنسك", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getActivity(), "Contact admin to change your gender",
-                            Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Dialog dialog = new Dialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog);
-                dialog.setContentView(R.layout.gender_dialog);
-                dialog.show();
-                TextView txtFemale = (TextView) dialog.findViewById(R.id.txtFemale);
-                TextView txtMale = (TextView) dialog.findViewById(R.id.txtMale);
-                txtFemale.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        etGender.setText("Female");
-                        dialog.dismiss();
-                    }
-                });
-                txtMale.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        etGender.setText("Male");
-                        dialog.dismiss();
-                    }
-                });
-            }
+            openDialog();
+//            if (etGender.getText().equals("Female") || etGender.getText().equals("Male")) {
+//                if (ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).toLanguageTags().equals("ar")) {
+//                    Toast.makeText(getActivity(), "يرجى الاتصال بالمسؤول لتغيير جنسك", Toast.LENGTH_LONG).show();
+//                } else {
+//                    Toast.makeText(getActivity(), "Contact admin to change your gender",
+//                            Toast.LENGTH_LONG).show();
+//                }
+//            } else {
+//                Dialog dialog = new Dialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog);
+//                dialog.setContentView(R.layout.gender_dialog);
+//                dialog.show();
+//                TextView txtFemale = (TextView) dialog.findViewById(R.id.txtFemale);
+//                TextView txtMale = (TextView) dialog.findViewById(R.id.txtMale);
+//                txtFemale.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        etGender.setText("Female");
+//                        dialog.dismiss();
+//                    }
+//                });
+//                txtMale.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        etGender.setText("Male");
+//                        dialog.dismiss();
+//                    }
+//                });
+//            }
 
         }
         if (view.getId() == R.id.etCountry) {
@@ -511,6 +512,11 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 recCountry.setAdapter(postAdapter);
             }
         }
+    }
+
+    private void openDialog() {
+        GenderDialog genderDialog=new GenderDialog();
+        genderDialog.show(getFragmentManager(),"any");
     }
 
     Dialog countryDialog;
