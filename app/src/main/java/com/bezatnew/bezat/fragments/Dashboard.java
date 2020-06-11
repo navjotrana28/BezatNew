@@ -134,7 +134,7 @@ public class Dashboard extends Fragment {
 
     private void initSignOutLabel() {
         if (SharedPrefs.isGuestUser(getContext())) {
-            signOutLabel = getString(R.string.sign_up);
+            signOutLabel = getString(R.string.sign_in);
         } else {
             signOutLabel = getString(R.string.sign_out);
         }
@@ -453,13 +453,11 @@ public class Dashboard extends Fragment {
                             if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.total_coupon))) {
                                 toastMsg(view);
-
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
                                 toastMsg(view);
-
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())

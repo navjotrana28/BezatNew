@@ -155,5 +155,6 @@
     <string name="country">الرجاء اختيار البلد</string>
     <string name="number_of_coupons">عدد القسائم: </string>
     <string name="coupons">كوبونات: </string>
+    <string name="sign_in">Sign In</string>
 
 </resources>

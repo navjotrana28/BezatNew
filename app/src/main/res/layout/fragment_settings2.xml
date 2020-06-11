@@ -1,257 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:background="@color/white"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
     <TextView
-            android:id="@+id/topImage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/title_settings"
-            android:gravity="center"
-            android:textSize="@dimen/default_size"
-            android:scaleType="fitCenter"/>
+        android:id="@+id/topImage"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:scaleType="fitCenter"
+        android:text="@string/title_settings"
+        android:textSize="@dimen/default_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topImage"
-            android:id="@+id/rvSettings">
-    <LinearLayout
+        android:id="@+id/rvSettings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topImage">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:padding="@dimen/_5sdp"
             android:orientation="vertical"
+            android:padding="@dimen/_5sdp"
 
             >
-        <TextView
+
+            <TextView
                 android:id="@+id/txtMyScan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/my_scan_history"
-                android:textColor="@color/black"/>
-        <View
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
-        <TextView
-                android:visibility="gone"
+                android:background="@color/colorPrimary" />
+
+            <TextView
                 android:id="@+id/txtMyFav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/my_favourite"
-                android:textColor="@color/black"/>
-        <View
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:visibility="gone" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                    android:visibility="gone"
-                android:background="@color/colorPrimary"/>
-        <TextView
+                android:background="@color/colorPrimary"
+                android:visibility="gone" />
+
+            <TextView
                 android:id="@+id/txtAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/about_bezat"
-                android:textColor="@color/black"/>
-        <View
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
-        <TextView
+                android:background="@color/colorPrimary" />
+
+            <TextView
                 android:id="@+id/txtTerms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/terms_conditions"
-                android:textColor="@color/black"/>
-        <View
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
-        <TextView
+                android:background="@color/colorPrimary" />
+
+            <TextView
                 android:id="@+id/txtPrivacy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/privacy_policy"
-                android:textColor="@color/black"/>
-        <View
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
-        <TextView
+                android:background="@color/colorPrimary" />
+
+            <TextView
                 android:id="@+id/txtContactUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/contact_us"
-                android:textColor="@color/black"/>
-        <View
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
-        <TextView
+                android:background="@color/colorPrimary" />
+
+            <TextView
                 android:id="@+id/txtFaq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/faq"
-                android:textColor="@color/black"/>
-        <View
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
-        <TextView
+                android:background="@color/colorPrimary" />
+
+            <TextView
                 android:id="@+id/txtChangePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
-            android:text="@string/change_password_label"
-                android:textColor="@color/black"/>
-        <View
+                android:padding="@dimen/_12sdp"
+                android:text="@string/change_password_label"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorPrimary" />
 
-        <TextView
+            <TextView
                 android:id="@+id/txtChangeLanguage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/change_language"
-                android:textColor="@color/black"/>
-        <LinearLayout
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <LinearLayout
                 android:id="@+id/layoutLanguage"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@color/colorPrimary"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
-            <ImageButton
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageButton
                     android:layout_width="@dimen/_32sdp"
                     android:layout_height="@dimen/_16sdp"
 
-                    android:scaleType="fitXY"
-                    android:background="@drawable/shape_bg_outgoing_bubble"/>
-            <LinearLayout
+                    android:background="@drawable/shape_bg_outgoing_bubble"
+                    android:scaleType="fitXY" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/ripple_primary_white"
+
                     android:backgroundTint="@color/white"
+                    android:orientation="vertical">
 
-                    android:orientation="vertical"
-                    android:background="@drawable/ripple_primary_white">
-
-                <TextView
+                    <TextView
                         android:id="@+id/txtEnglish"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="English"
                         android:padding="@dimen/_12sdp"
-                        android:textColor="@color/black"/>
-                <View
+                        android:text="English"
+                        android:textColor="@color/black" />
+
+                    <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_1sdp"
-                        android:background="@color/cardview_shadow_start_color"/>
-                <TextView
+                        android:background="@color/cardview_shadow_start_color" />
+
+                    <TextView
                         android:id="@+id/txtArabic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="عربى"
                         android:gravity="end"
                         android:padding="@dimen/_12sdp"
-                        android:textColor="@color/black"/>
-                <View
+                        android:text="عربى"
+                        android:textColor="@color/black" />
+
+                    <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_1sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
-                        android:background="@color/cardview_shadow_start_color"/>
+                        android:background="@color/cardview_shadow_start_color" />
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
-        <View
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorPrimary" />
 
-        <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="@dimen/_12sdp">
-            <TextView
-                    android:layout_weight="1"
+
+                <TextView
+                    android:id="@+id/txt_push_notification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/push_notification"
-                    android:textSize="@dimen/_14sdp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/tajawal_medium"
-                    android:textColor="@color/black"/>
+                    android:text="@string/push_notification"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
 
-            <Switch
+                <Switch
                     android:id="@+id/switches"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:textOff="OFF"
                     android:textOn="ON"
-                    android:theme="@style/Theme.MyTheme"/>
+                    android:theme="@style/Theme.MyTheme" />
 
-        </LinearLayout>
-        <View
+            </LinearLayout>
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorPrimary" />
 
-        <TextView
+            <TextView
                 android:id="@+id/txtLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_12sdp"
-                android:textSize="@dimen/_14sdp"
                 android:fontFamily="@font/tajawal_medium"
+                android:padding="@dimen/_12sdp"
                 android:text="@string/logout"
-                android:textColor="@color/black"/>
-        <View
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorPrimary" />
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
