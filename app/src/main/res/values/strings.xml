@@ -3,10 +3,10 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
-    <string name="password">*Password</string>
+    <string name="password">Password*</string>
     <string name="password_label">Password</string>
-    <string name="user_name">UserName</string>
-    <string name="forgot_password">Forgot Password</string>
+    <string name="user_name">Email/Phone Number</string>
+    <string name="forgot_password">Forgot Password ?</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -24,13 +24,13 @@
     <string name="change_language">Change Language</string>
     <string name="logout">Logout</string>
     <string name="push_notification">Push Notification</string>
-    <string name="name">Name</string>
-    <string name="email">Email</string>
+    <string name="name">NAME:</string>
+    <string name="email">EMAIL</string>
     <string name="country">Please select country</string>
-    <string name="country_label">*Country</string>
+    <string name="country_label">Country*</string>
     <string name="address">Address</string>
     <string name="gender">Gender</string>
-    <string name="dob">Date Of Birth</string>
+    <string name="dob">Date Of Birth*</string>
     <string name="fav_offers">Favourite Offers</string>
     <string name="prizes">Prizes</string>
     <string name="total_coupon">Total Coupons</string>
@@ -40,22 +40,22 @@
     <string name="vip_offers">VIP Offers</string>
     <string name="my_profile">My Profile</string>
     <string name="save">SAVE</string>
-    <string name="skip">Skip</string>
+    <string name="skip">SKIP</string>
     <string name="done">Done</string>
     <string name="someting_wrong">Something, went wrong!</string>
     <string name="ok">OK</string>
     <string name="confirm_password">Confirm Password*</string>
-    <string name="enter_password">*Enter Password</string>
+    <string name="enter_password">Enter Password*</string>
     <string name="phone">Phone</string>
     <string name="valid_email">Please enter valid email</string>
     <string name="empty_email">Please enter Email</string>
     <string name="empty_name">Please enter Name</string>
-    <string name="empty_password">Please enter Password</string>
-    <string name="empty_confirm_password">Please enter confirm password</string>
-    <string name="password_mismatch">Password and Confirm Password not match</string>
+    <string name="empty_password">Please enter Password*</string>
+    <string name="empty_confirm_password">Please enter Confirm password</string>
+    <string name="password_mismatch">Password and Confirm Password does not match</string>
     <string name="empty_dob">Please enter Date of Birth</string>
     <string name="empty_phone">Please enter Phone Number</string>
-    <string name="invalid_phone">Please enter valid phone number</string>
+    <string name="invalid_phone">Please enter valid Phone Number</string>
     <string name="empty_gender">Please enter Gender</string>
     <string name="empty_country">Please enter country</string>
     <string name="loading">loading...</string>
@@ -86,7 +86,7 @@
     <string name="bezat_winner">Bezat Winner</string>
     <string name="phone_number">Phone Number*</string>
     <string name="code">Code</string>
-    <string name="send">Send</string>
+    <string name="send">SEND</string>
     <string name="please_enter_your_register_phone_number_below_we_will_send_a_code_to_reset_your_password">Please Enter
         your register Phone Number below. We will send a code to reset your password
     </string>
@@ -96,22 +96,19 @@
     <string name="instagram">INSTAGRAM</string>
     <string name="twitter">TWITTER</string>
     <string name="bezat_raffle_is_a_product_of_bezat_and_conducts_monthly_raffles_apple_is_not_involved_in_anyway_with_the_sweepstake_and_not_a_sponsor_of_this_application">
-        BEZAT raffle is a product of BEZAT and conducts monthly raffles. Google is not involved in anyway with the
-        sweepstake and not a sponsor of this application
+        BEZAT raffle is a product of BEZAT and conducts monthly raffles. Apple is not involved in anyway with the sweepstake and not a sponsor of this application
     </string>
     <string name="customer_qr_code">Customer QR Code</string>
     <string name="customer_id">Customer ID</string>
-    <string name="bill_no">Bill no: </string>
+    <string name="bill_no">Bill no:</string>
     <string name="store">Store</string>
     <string name="offers">Offers</string>
     <string name="logout_confirm">Are you sure, you want to LOGOUT?</string>
     <string name="select_language">Select Language</string>
-    <string name="please_enter_the_otp_we_have_sent_to_your_registered_phone_number">Please enter the OTP we have sent
-        to your registered Phone Number
-    </string>
+    <string name="please_enter_the_otp_we_have_sent_to_your_registered_phone_number">Please enter the OTP we have sent to your registered Phone Number</string>
     <string name="otp">OTP</string>
-    <string name="resend">RESEND</string>
-    <string name="didn_t_receive_the_otp">Didn\'t receive the OTP?</string>
+    <string name="resend">Resend</string>
+    <string name="didn_t_receive_the_otp">Didn\'t receive the OTP ?</string>
     <string name="yes_label">Yes</string>
     <string name="no_label">No</string>
     <string name="country_logo">Country Logo</string>
@@ -123,7 +120,7 @@
     <string name="user_name_Login">Email / Phone Number</string>
     <string name="skip_login">SKIP</string>
     <string name="you_will_take_to_login_screen">You will be taken to the login screen, okay?</string>
-    <string name="search_by_retailer_name"><font size="15">Search by Retailer name</font></string>
+    <string name="search_by_retailer_name"><font size="15">Search by Retailer</font></string>
     <string name="search_by_retailer_name_caps"><font size="15">SEARCH BY RETAILER NAME</font></string>
     <string name="choose_retailer_here"><font size="18">Choose retailer here</font></string>
     <string name="note_your_feedback_will_be_sent_to_the_retailer">Note: Your feedback will be sent to the retailer</string>
@@ -138,7 +135,7 @@
     <string name="submit_feedback_buton">SUBMIT</string>
     <string name="write_your_feedback_section">Write your feedback</string>
     <string name="prize_prizes_section">Prize :</string>
-    <string name="prize_details_prizes_section">Prize Details</string>
+    <string name="prize_details_prizes_section">Prize Detail</string>
     <string name="raffle_draw_announce_tomorrow">RAFFLE DRAW ANNOUNCE TOMORROW</string>
     <string name="raffle_draw_announce_today">RAFFLE DRAW ANNOUNCE TODAY</string>
     <string name="raffle_held">RAFFLE HELD</string>
@@ -154,7 +151,7 @@
     <string name="code_offer">Code:</string>
     <string name="redeem_in_offer">REDEEM</string>
     <string name="offer_detail_inuser">Offer Detail</string>
-    <string name="no_winners_available">No Winners Available</string>
+    <string name="no_winners_available">Winners not found</string>
     <string name="no_coupons_available">No Coupons Available</string>
     <string name="no_offer_found">No Offer found</string>
     <string name="type_your_feedback">Type your feedback</string>
@@ -169,7 +166,7 @@
 
     <string name="number_of_coupons">No. of coupons: </string>
     <string name="coupons">Coupons: </string>
-    <string name="strings">\@string/done</string>
+    <string name="strings" translatable="false">\@string/done</string>
 
 
 </resources>
