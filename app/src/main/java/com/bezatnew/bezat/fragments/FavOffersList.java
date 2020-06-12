@@ -114,6 +114,9 @@ public class FavOffersList extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fav_offers_lists, container, false);
         imgBack = rootView.findViewById(R.id.img_back);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         searchView = rootView.findViewById(R.id.search_view);
         recyclerViewVertical = rootView.findViewById(R.id.recyclerView_vertical);
         loader = new Loader(getContext());

@@ -23,26 +23,27 @@
             android:background="@color/colorPrimary"
             android:src="@drawable/bezat_name"
             android:scaleType="fitCenter"/>
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_164sdp">
+            android:layout_height="match_parent">
             <androidx.viewpager.widget.ViewPager
+                android:layout_weight="1"
                 android:id="@+id/viewPager"
                 android:background="@color/colorPrimary"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_176sdp" />
+                android:layout_height="match_parent" />
             <com.google.android.material.tabs.TabLayout
+                android:layout_gravity="center"
                 android:id="@+id/indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/_10sdp"
                 app:tabBackground="@drawable/tab_selector"
-                app:tabGravity="center"
-                app:tabIndicatorHeight="0dp" />
-        </RelativeLayout>
+                app:tabGravity="center"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle"
             android:padding="@dimen/_1sdp"

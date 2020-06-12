@@ -53,6 +53,7 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
     EditText etLanguage;
     TextView txtEnglish,txtArabic;
     ImageView imgBack;
+    String lang = "";
     public ChangeLanguage() {
         // Required empty public constructor
     }
@@ -89,11 +90,24 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         container.setClickable(true);
+
+        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang="_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang="";
+
+        }
+
         rootView= inflater.inflate(R.layout.fragment_change_language, container, false);
         etLanguage=rootView.findViewById(R.id.etLanguage);
         txtArabic = rootView.findViewById(R.id.txtArabic);
         txtEnglish = rootView.findViewById(R.id.txtEnglish);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,8 +119,9 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
 
         List<String> l = new ArrayList<>();
         l.add("");
-        l.add("ENGLISH");
         l.add("عربى");
+        l.add("ENGLISH");
+
 
         Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner_language);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getBaseContext(),
@@ -125,11 +140,11 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
                 txtTitle.setText(l.get(position));
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_language);
                 if(position==1){
-                    convertView.setBackgroundColor(0xFFF2F2F2);
-                    imageView.setImageDrawable(getResources().getDrawable(R.drawable.english_icon));
-                }else if(position==2){
-                    convertView.setBackgroundColor(0xFFF2F2F2);
+                    convertView.setBackgroundColor(0xFFF7F7F7);
                     imageView.setImageDrawable(getResources().getDrawable(R.drawable.arabic_icon));
+                }else if(position==2){
+                    convertView.setBackgroundColor(0xFFF7F7F7);
+                    imageView.setImageDrawable(getResources().getDrawable(R.drawable.english_icon));
                 }
                 else{
                     convertView.setBackgroundColor(0xFFFFFFFF);
@@ -179,9 +194,10 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
                 if(position==0){
 
                 }else if(position==1){
-                    setLocale("en");
-                }else{
                     setLocale("ar");
+
+                }else{
+                    setLocale("en");
                 }
             }
 

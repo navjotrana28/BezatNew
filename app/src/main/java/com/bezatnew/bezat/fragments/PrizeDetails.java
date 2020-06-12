@@ -112,6 +112,9 @@ public class PrizeDetails extends Fragment {
         txtPrize = rootView.findViewById(R.id.txtPrize);
         imgPrize = rootView.findViewById(R.id.imgPrize);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         btnDraw = rootView.findViewById(R.id.btnDraw);
         raffle_category = getArguments().getString("raffle_category");
         raffle_id = getArguments().getString("raffle_id");

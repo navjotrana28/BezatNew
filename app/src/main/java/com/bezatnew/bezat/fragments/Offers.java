@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.bezatnew.bezat.R;
+import com.bezatnew.bezat.utils.SharedPrefs;
 import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +40,7 @@ public class Offers extends Fragment {
     private String mParam2;
     RecyclerView recOffer;
     ImageView imgBack;
+    String lang = "";
 
     private OnFragmentInteractionListener mListener;
     View rootView;
@@ -78,9 +80,22 @@ public class Offers extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         container.setClickable(true);
+
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+
+        }
+
         rootView=inflater.inflate(R.layout.fragment_offers, container, false);
         recOffer=rootView.findViewById(R.id.recOffer);
         imgBack=rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

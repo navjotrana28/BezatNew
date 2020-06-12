@@ -123,6 +123,9 @@ public class Partner_store extends Fragment implements View.OnClickListener {
         txtLocation=rootView.findViewById(R.id.txtLocation);
         imgSearch=rootView.findViewById(R.id.imgSearch);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         imgLocation.setOnClickListener(this);
         imgSearch.setOnClickListener(this);
         spinnerText.setOnClickListener(this);

@@ -114,6 +114,9 @@ public class BezatWinner extends Fragment {
 
         recWinner = rootView.findViewById(R.id.recWinner);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         txtDate = rootView.findViewById(R.id.txtDate);
         imgSearch = rootView.findViewById(R.id.imgSearch);
         loader = new Loader(getContext());

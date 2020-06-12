@@ -111,6 +111,9 @@ public class FavouriteOffer extends Fragment {
         rootView = inflater.inflate(R.layout.activity_favourite_offer, container, false);
         storeId = getArguments().getString("storeId");
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         recOffer = rootView.findViewById(R.id.recOffer);
         loader = new Loader(getContext());
         loader.show();

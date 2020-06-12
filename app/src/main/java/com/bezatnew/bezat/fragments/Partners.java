@@ -101,6 +101,9 @@ public class Partners extends Fragment {
         rootView=inflater.inflate(R.layout.fragment_partners, container, false);
         recOffer=rootView.findViewById(R.id.recOffer);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         loader= new Loader(getContext());
         loader.show();
         getFavouriteItem();

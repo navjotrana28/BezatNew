@@ -121,6 +121,9 @@ public class Feedback extends Fragment {
 
     private void onClickBackButton(View view) {
         imgBack = view.findViewById(R.id.img_back);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         imgBack.setOnClickListener(view1 -> getActivity().onBackPressed());
     }
 

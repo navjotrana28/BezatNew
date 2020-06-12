@@ -59,6 +59,7 @@ public class VIPOffer extends Fragment {
     private String storeId = "";
     Loader loader;
     private String currentDate = "";
+    String lang = "";
 
     private OnFragmentInteractionListener mListener;
 
@@ -98,10 +99,23 @@ public class VIPOffer extends Fragment {
                              Bundle savedInstanceState) {
         container.setClickable(true);
         // Inflate the layout for this fragment
+
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+
+        }
+
         rootView = inflater.inflate(R.layout.fragment_vipoffer, container, false);
         recVipOffer = rootView.findViewById(R.id.recVipOffer);
         storeId = getArguments().getString("storeId");
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         loader = new Loader(getContext());
         loader.show();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
