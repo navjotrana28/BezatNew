@@ -106,7 +106,7 @@
             android:ellipsize="end"
             android:textColor="@color/colorPrimary"
             android:fontFamily="@font/tajawal_bold"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/_15sdp"
             android:text="Meet a star" />
 
         <LinearLayout
@@ -119,12 +119,12 @@
 
                 android:layout_width="@dimen/_96sdp"
                 android:layout_height="41dp"
-                android:fontFamily="@font/tajawal_regular"
+                android:fontFamily="@font/tajawal_bold"
                 android:gravity="end"
                 android:padding="@dimen/_3sdp"
                 android:text="@string/offer_price_user"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_14sdp" />
 
             <TextView
 
@@ -156,9 +156,9 @@
                 android:minWidth="@dimen/_148sdp"
                 android:text="@string/orginal_price_user"
                 android:gravity="end"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_14sdp"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/tajawal_regular" />
+                android:fontFamily="@font/tajawal_bold" />
 
             <TextView
                 android:id="@+id/actual_price"

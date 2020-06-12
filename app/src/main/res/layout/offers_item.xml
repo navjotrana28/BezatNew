@@ -16,7 +16,7 @@
             android:gravity="end|bottom"
             android:orientation="vertical">
                 <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/_80sdp"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:paddingStart="@dimen/_10sdp"
@@ -44,10 +44,10 @@
                     android:fontFamily="@font/tajawal_regular"/>
             <TextView
                     android:id="@+id/discount_price"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_80sdp"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_15sdp"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingBottom="@dimen/_3sdp"
