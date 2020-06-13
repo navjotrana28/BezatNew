@@ -103,7 +103,7 @@
     <string name="bill_no">Bill no:</string>
     <string name="store">Store</string>
     <string name="offers">Offers</string>
-    <string name="logout_confirm">Are you sure, you want to LOGOUT?</string>
+    <string name="logout_confirm">Are you sure, you want to SignOut?</string>
     <string name="select_language">Select Language</string>
     <string name="please_enter_the_otp_we_have_sent_to_your_registered_phone_number">Please enter the OTP we have sent to your registered Phone Number</string>
     <string name="otp">OTP</string>

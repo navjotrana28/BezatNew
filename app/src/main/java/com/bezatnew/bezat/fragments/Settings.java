@@ -358,7 +358,7 @@ public class Settings extends Fragment implements View.OnClickListener {
             ft.commit();
         }
         if (view.getId() == R.id.txtLogout) {
-            if (txtLogout.getText().equals(getString(R.string.sign_up))) {
+            if (txtLogout.getText().equals(getString(R.string.sign_in))) {
                 new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
                         .setMessage(getActivity().getString(R.string.you_will_take_to_login_screen))
                         .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {
