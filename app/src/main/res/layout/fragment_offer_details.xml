@@ -177,6 +177,7 @@
             android:id="@+id/imgBarCode"
             android:layout_width="@dimen/_96sdp"
             android:layout_height="@dimen/_96sdp"
+
             android:layout_margin="@dimen/_5sdp" />
 
         <LinearLayout
@@ -191,9 +192,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/code_offer"
                 android:gravity="end"
+                android:textSize="@dimen/_14sdp"
                 android:paddingRight="@dimen/_7sdp"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/tajawal_regular" />
+                android:fontFamily="@font/tajawal_bold" />
 
             <TextView
                 android:id="@+id/offer_coupon_code"
