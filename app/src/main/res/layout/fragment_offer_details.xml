@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.Pages">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:contentInsetLeft="0dp"
         android:contentInsetStart="0dp"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        android:contentInsetRight="0dp"
+        android:contentInsetLeft="0dp"
         android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
         app:contentInsetRight="0dp"
-        app:contentInsetEnd="0dp">
+        app:contentInsetStart="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,48 +36,48 @@
 
             <TextView
                 android:id="@+id/txtPages"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="@dimen/_14sdp"
+                android:layout_weight="1"
                 android:fontFamily="@font/tajawal_bold"
-                android:text="@string/offer_detail_inuser" />
+                android:gravity="center"
+                android:text="@string/offer_detail_inuser"
+                android:textSize="@dimen/_14sdp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_28sdp"
-                android:visibility="invisible"
-                android:src="@mipmap/ic_back" />
+                android:src="@mipmap/ic_back"
+                android:visibility="invisible" />
 
         </LinearLayout>
     </Toolbar>
 
     <LinearLayout
         android:id="@+id/offer_detail_layout"
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:gravity="center_horizontal"
-        android:visibility="visible"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/offer_img"
-            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_124sdp"
+            android:scaleType="fitXY"
             android:src="@color/colorPrimary" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/_10sdp"
-            android:paddingEnd="@dimen/_10sdp"
-            android:paddingTop="@dimen/_5sdp"
             android:gravity="center_vertical"
-            android:paddingBottom="@dimen/_5sdp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_5sdp">
 
             <TextView
                 android:id="@+id/store_name"
@@ -93,21 +93,21 @@
                 android:id="@+id/imgSaved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:tint="@color/partnerline"
-                android:src="@drawable/ic_favorite_black_24dp" />
+                android:src="@drawable/ic_favorite_black_24dp"
+                android:tint="@color/partnerline" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/offer_descp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_7sdp"
-            android:maxLines="1"
             android:ellipsize="end"
-            android:textColor="@color/colorPrimary"
             android:fontFamily="@font/tajawal_bold"
-            android:textSize="@dimen/_16sdp"
-            android:text="Meet a star" />
+            android:maxLines="1"
+            android:padding="@dimen/_7sdp"
+            android:text="Meet a star"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_16sdp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,106 +118,101 @@
             <TextView
 
                 android:layout_width="@dimen/_96sdp"
-                android:layout_height="41dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/tajawal_regular"
                 android:gravity="end"
-                android:padding="@dimen/_3sdp"
+                android:minWidth="@dimen/_148sdp"
                 android:text="@string/offer_price_user"
+                android:padding="@dimen/_3sdp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_13sdp" />
 
             <TextView
-
                 android:id="@+id/discount_price"
                 android:layout_width="@dimen/_96sdp"
-                android:padding="@dimen/_3sdp"
-                android:layout_marginStart="@dimen/_5sdp"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:paddingStart="@dimen/_5sdp"
+                android:fontFamily="@font/tajawal_medium"
                 android:gravity="start"
-                android:textSize="@dimen/_13sdp"
+                android:padding="@dimen/_3sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:text=""
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/tajawal_medium" />
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="@dimen/_3sdp"
             android:orientation="horizontal">
 
             <TextView
-
                 android:layout_width="@dimen/_96sdp"
-                android:padding="@dimen/_3sdp"
                 android:layout_height="wrap_content"
-                android:minWidth="@dimen/_148sdp"
-                android:text="@string/orginal_price_user"
+                android:fontFamily="@font/tajawal_regular"
                 android:gravity="end"
-                android:textSize="@dimen/_13sdp"
+                android:minWidth="@dimen/_148sdp"
+                android:padding="@dimen/_3sdp"
+                android:text="@string/orginal_price_user"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/tajawal_regular" />
+                android:textSize="@dimen/_13sdp" />
 
             <TextView
                 android:id="@+id/actual_price"
                 android:layout_width="@dimen/_96sdp"
-                android:padding="@dimen/_3sdp"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:paddingStart="@dimen/_5sdp"
+                android:fontFamily="@font/tajawal_medium"
                 android:gravity="start"
-                android:textSize="@dimen/_13sdp"
+                android:padding="@dimen/_3sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:text=""
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/tajawal_medium" />
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imgBarCode"
-            android:layout_width="@dimen/_96sdp"
-            android:layout_height="@dimen/_96sdp"
-            android:layout_margin="@dimen/_5sdp" />
+            android:layout_width="@dimen/_126sdp"
+            android:layout_height="@dimen/_126sdp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_5sdp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/code_offer"
+                android:layout_weight="1"
+                android:fontFamily="@font/tajawal_regular"
                 android:gravity="end"
                 android:paddingRight="@dimen/_7sdp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/tajawal_regular" />
+                android:text="@string/code_offer"
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/offer_coupon_code"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HLF1T71"
-                android:paddingStart="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/tajawal_regular"
                 android:gravity="start"
-                android:textSize="@dimen/_14sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:text="HLF1T71"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/tajawal_regular" />
+                android:textSize="@dimen/_14sdp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btnRedeem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/redeem_in_offer"
-            android:textSize="@dimen/_14sdp"
+            android:backgroundTint="@color/colorPrimary"
+            android:padding="@dimen/_7sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp"
-            android:padding="@dimen/_7sdp"
-            android:backgroundTint="@color/colorPrimary" />
+            android:text="@string/redeem_in_offer"
+            android:textSize="@dimen/_14sdp" />
 
     </LinearLayout>
 
