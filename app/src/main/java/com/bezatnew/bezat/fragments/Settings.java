@@ -339,13 +339,13 @@ public class Settings extends Fragment implements View.OnClickListener {
         if (view.getId() == R.id.txtContactUs) {
             if (SharedPrefs.isGuestUser(getContext())) {
                 toastMsgForGuest();
+            } else {
+                ContactUsFragment fragment = new ContactUsFragment();
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
             }
-        } else {
-            ContactUsFragment fragment = new ContactUsFragment();
-            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, fragment);
-            ft.addToBackStack(null);
-            ft.commit();
         }
         if (view.getId() == R.id.txtFaq) {
             Bundle bundle = new Bundle();
