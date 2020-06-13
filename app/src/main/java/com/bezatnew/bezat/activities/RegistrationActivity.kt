@@ -79,10 +79,10 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             if (!isOtpValidated) {
 
                 validateForOtpAndSave()
-                //verifyAge();
+//                verifyAge();
             } else {
                 validateAndSave()
-                //verifyAge();
+//                verifyAge();
             }
         }
 
