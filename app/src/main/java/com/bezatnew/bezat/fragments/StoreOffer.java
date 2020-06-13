@@ -124,6 +124,9 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
         txtStoreName=rootView.findViewById(R.id.txtStoreName);
         btnAllOffer=rootView.findViewById(R.id.btnAllOffer);
         imgBack=rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         wholeStorelayout = rootView.findViewById(R.id.wholeStorelayout);
 
         imgBack.setOnClickListener(this);

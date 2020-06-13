@@ -39,14 +39,13 @@
             android:textColor="@color/colorPrimary"/>
 
         <TextView
-            android:textStyle="bold"
             android:id="@+id/txtPrizePrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="USD:300"
             android:padding="@dimen/_2sdp"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@color/colorPrimary"/>
+            android:text="USD:300"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12sdp" />
 
     </LinearLayout>
 

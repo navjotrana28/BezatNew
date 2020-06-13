@@ -60,7 +60,6 @@ public class VipShopListAdapter extends RecyclerView.Adapter<VipShopListAdapter.
         }
         Picasso.get()
                 .load(responseResult.get(position).getStoreImage())
-                .resize(500, 200)
                 .into(holder.imageHorizontal);
     }
 

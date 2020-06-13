@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -110,7 +111,9 @@ public class MyScanHistory extends Fragment {
         txtDate = rootView.findViewById(R.id.txtDate);
         imgSearch = rootView.findViewById(R.id.imgSearch);
         imgBack = rootView.findViewById(R.id.imgBack);
-
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         loader=new Loader(getContext());
         loader.show();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM");
@@ -300,7 +303,7 @@ public class MyScanHistory extends Fragment {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
 
-
+                Log.d("url",jsonArray.getJSONObject(position).getString("store_logo"));
                 holder.storeName.setText(jsonArray.getJSONObject(position).getString("storeName"));
                 holder.bill_date.setText("Date: "+jsonArray.getJSONObject(position).getString("bill_date"));
                 holder.bill_no.setText("Bill No:"+jsonArray.getJSONObject(position).getString("bill_no"));

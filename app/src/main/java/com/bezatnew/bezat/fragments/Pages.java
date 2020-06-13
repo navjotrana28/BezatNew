@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.utils.Loader;
+import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,6 +51,7 @@ public class Pages extends Fragment {
     Loader loader;
     TextView txtPages;
     ImageView imgBack;
+    String lang = "";
     public Pages() {
         // Required empty public constructor
     }
@@ -84,10 +86,23 @@ public class Pages extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         container.setClickable(true);
+
+        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang="_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang="";
+
+        }
+
         rootView=inflater.inflate(R.layout.fragment_pages, container, false);
         web=rootView.findViewById(R.id.web);
         loader=new Loader(getContext());
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         txtPages=rootView.findViewById(R.id.txtPages);
 
         imgBack.setOnClickListener(new View.OnClickListener() {

@@ -34,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -113,6 +114,9 @@ public class BezatWinner extends Fragment {
 
         recWinner = rootView.findViewById(R.id.recWinner);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         txtDate = rootView.findViewById(R.id.txtDate);
         imgSearch = rootView.findViewById(R.id.imgSearch);
         loader = new Loader(getContext());
@@ -130,6 +134,7 @@ public class BezatWinner extends Fragment {
         });
 
 
+        Log.d("---year---",""+Calendar.getInstance().get(Calendar.YEAR));
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

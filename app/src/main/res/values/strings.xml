@@ -149,8 +149,8 @@
     <string name="fill_the_form_first">Fill the form first!</string>
     <string name="sign_in_to_access_this_action">Sign in to access this section</string>
     <string name="no_coupons_at_this_moment">No Coupons at this moment</string>
-    <string name="offer_price_user">Offer Price :</string>
-    <string name="orginal_price_user">Orginal Price :</string>
+    <string name="offer_price_user">Offer Price:</string>
+    <string name="orginal_price_user">Original Price:</string>
     <string name="code_offer">Code:</string>
     <string name="redeem_in_offer">REDEEM</string>
     <string name="offer_detail_inuser">Offer Detail</string>

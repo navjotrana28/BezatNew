@@ -76,6 +76,9 @@ public class SearchRetailer extends Fragment {
         recyclerViewVertical = view.findViewById(R.id.recyclerView_vertical);
         progressBar = view.findViewById(R.id.progress_bar_search);
         imgBack = view.findViewById(R.id.img_back);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         searchView = view.findViewById(R.id.search_view);
         setUpRecyclerView();
         setUpRecyclerViewVertical();

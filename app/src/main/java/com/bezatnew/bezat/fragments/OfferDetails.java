@@ -126,6 +126,9 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
         btnRedeem=rootView.findViewById(R.id.btnRedeem);
         imgSaved = rootView.findViewById(R.id.imgSaved);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         linearLayout = rootView.findViewById(R.id.offer_detail_layout);
         loader=new Loader(getContext());
          offerId=getArguments().getString("offerId");

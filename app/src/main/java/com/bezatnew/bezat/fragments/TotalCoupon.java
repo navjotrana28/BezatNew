@@ -133,6 +133,9 @@ public class TotalCoupon extends Fragment {
         txtDate = rootView.findViewById(R.id.txtDate);
         imgSearch = rootView.findViewById(R.id.imgSearch);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         searchView = rootView.findViewById(R.id.search_total_coupons);
         int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
         TextView textView = (TextView) searchView.findViewById(id);

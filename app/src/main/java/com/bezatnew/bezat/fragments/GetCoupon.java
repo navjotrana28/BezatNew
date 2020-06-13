@@ -38,6 +38,7 @@ public class GetCoupon extends Fragment {
     TextView txtUserCode;
     ImageView imgQr;
     ImageView imgBack;
+    String lang = "";
     public GetCoupon() {
         // Required empty public constructor
     }
@@ -74,10 +75,23 @@ public class GetCoupon extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         container.setClickable(true);
+
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+
+        }
+
         rootView=inflater.inflate(R.layout.fragment_get_coupon, container, false);
         txtUserCode=rootView.findViewById(R.id.txtUserCode);
         imgQr=rootView.findViewById(R.id.imgQr);
         imgBack = rootView.findViewById(R.id.imgBack);
+        if(lang.equals("_ar")){
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         if(!SharedPrefs.getKey(getActivity(),"user_code").equals("")) {
             Bitmap myBitmap = QRCode.from(SharedPrefs.getKey(getActivity(), "user_code")).bitmap();
             imgQr.setImageBitmap(myBitmap);

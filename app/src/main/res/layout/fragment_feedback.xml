@@ -77,13 +77,13 @@
 
 
 
-            <AutoCompleteTextView
+            <com.bezatnew.bezat.InstantAutoComplete
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:id="@+id/suggestionBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="start|center_vertical"
                 android:completionThreshold="1"
                 android:hint="@string/choose_retailer_here"
                 android:paddingEnd="30dp"
