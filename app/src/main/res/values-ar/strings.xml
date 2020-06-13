@@ -19,17 +19,21 @@
     <string name="privacy_policy">سياسة خاصة</string>
     <string name="contact_us">اتصل بنا</string>
     <string name="faq">التعليمات</string>
-    <string name="change_password">*غير كلمة السر</string>
+    <string name="change_password">غير كلمة السر*</string>
+    <string name="get_name_signup">NAME</string>
     <string name="change_password_label">غير كلمة السر</string>
     <string name="change_language">غير اللغة</string>
     <string name="logout">الخروج</string>
     <string name="push_notification">دفع الإخطار</string>
-    <string name="name">*اسما</string>
-    <string name="email">*البريد الإلكتروني</string>
+    <string name="name">اسما*</string>
+    <string name="email">البريد الإلكتروني*</string>
+    <string name="email_signup">البريد الإلكتروني*</string>
     <string name="country_label">بلد*</string>
     <string name="address">Address</string>
     <string name="gender">جنس*</string>
-    <string name="dob">*تاريخ الولادة</string>
+    <string name="gender_signup">جنس*</string>
+
+    <string name="dob">تاريخ الولادة*</string>
     <string name="fav_offers">العروض المفضلة</string>
     <string name="prizes">جوائز</string>
     <string name="total_coupon">إجمالي القسيمة</string>
@@ -84,6 +88,7 @@
     <string name="bezat_winner">الفائزين</string>
     <string name="phone_number">رقم الهاتف*</string>
     <string name="code">Code</string>
+    <string name="code_signup">Code*</string>
     <string name="send">إرسال</string>
     <string name="please_enter_your_register_phone_number_below_we_will_send_a_code_to_reset_your_password">يرجى إدخال عنوان البريديرجى إدخال رقم هاتفك المسجل أدناه. سنرسل رمزًا لإعادة تعيين كلمة المرور الخاصة بك</string>
     <string name="my_favourite">My Favourite</string>
@@ -123,7 +128,7 @@
     <string name="bezat_yearly">بيزات سنويا</string>
     <string name="bezat_monthly">بيزات شهريًا</string>
     <string name="search_by_retailer">البحث حسب بائع التجزئة</string>
-    <string name="enter_password">يرجى إدخال كلمة المرور*</string>
+    <string name="enter_password">أدخل كلمة المرور*</string>
     <string name="enter_mobile_no">يرجى إدخال رقم الهاتف</string>
     <string name="view_all_offers">عرض جميع العروض</string>
     <string name="SEND">إرسال</string>

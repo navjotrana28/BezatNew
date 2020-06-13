@@ -59,11 +59,14 @@ fun EditText.convertToDatePicker(postAction: ((String) -> Unit)? = null) {
     keyListener = null
     val d = Calendar.getInstance()
     val dialog = DatePickerDialog(context, { _, y, mm, d ->
+
         val m = mm + 1;
         val tmp =
             "$y-${if (m > 9) "$m" else "0$m"}-${if (d < 10) "0$d" else "$d"}";setText(tmp); error =
         null; postAction?.invoke(tmp)
-    }, 1997, 1, 1)
+    }, 2001, 1, 1)
+
+
     setOnClickListener { dialog.show() }
     setOnFocusChangeListener { _, hasFocus -> if (hasFocus) dialog.show() }
 }

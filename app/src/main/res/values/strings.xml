@@ -26,10 +26,12 @@
     <string name="push_notification">Push Notification</string>
     <string name="name">NAME:</string>
     <string name="email">EMAIL</string>
+    <string name="email_signup">EMAIL*</string>
     <string name="country">Please select country</string>
     <string name="country_label">Country*</string>
     <string name="address">Address</string>
     <string name="gender">Gender</string>
+    <string name="gender_signup">Gender*</string>
     <string name="dob">Date Of Birth*</string>
     <string name="fav_offers">Favourite Offers</string>
     <string name="prizes">Prizes</string>
@@ -52,7 +54,7 @@
     <string name="empty_name">Please enter Name</string>
     <string name="empty_password">Please enter Password*</string>
     <string name="empty_confirm_password">Please enter Confirm password</string>
-    <string name="password_mismatch">Password and Confirm Password does not match</string>
+    <string name="password_mismatch">Passwords do not match</string>
     <string name="empty_dob">Please enter Date of Birth</string>
     <string name="empty_phone">Please enter Phone Number</string>
     <string name="invalid_phone">Please enter valid Phone Number</string>
@@ -86,6 +88,7 @@
     <string name="bezat_winner">Bezat Winner</string>
     <string name="phone_number">Phone Number*</string>
     <string name="code">Code</string>
+    <string name="code_signup">Code*</string>
     <string name="send">SEND</string>
     <string name="please_enter_your_register_phone_number_below_we_will_send_a_code_to_reset_your_password">Please Enter
         your register Phone Number below. We will send a code to reset your password
@@ -115,6 +118,7 @@
     <string name="get_feedback">Feedback</string>
     <string name="send_contact_us">SEND</string>
     <string name="get_name">NAME:</string>
+    <string name="get_name_signup">NAME*</string>
     <string name="get_email">EMAIL:</string>
     <string name="get_comments">COMMENTS:</string>
     <string name="user_name_Login">Email / Phone Number</string>
