@@ -27,7 +27,7 @@
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
             <TextView
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:textStyle="bold"
                     android:id="@+id/storeName"
                     android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                     android:id="@+id/bill_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bill No:1211"
+                    android:text="Bill No: 1211"
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/tajawal_regular"/>

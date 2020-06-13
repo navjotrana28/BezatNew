@@ -25,18 +25,20 @@
             android:layout_marginStart="@dimen/_12sdp"
             android:orientation="vertical">
         <LinearLayout
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
         <TextView
+            android:layout_weight="1"
                 android:id="@+id/txtStoreName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/muli_extrabold"
                 android:text="Restaurant name"
             android:layout_marginRight="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_5sdp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_13sdp"/>
 
@@ -45,21 +47,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_1sdp"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/tajawal_regular"
                 android:text="Date: 06/06/2018"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 <LinearLayout
+    android:gravity="center_vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
         <LinearLayout
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
             android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal">
 
             <TextView
@@ -89,7 +92,6 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginLeft="@dimen/_4sdp"
                 android:orientation="horizontal">
 
@@ -106,8 +108,9 @@
             <TextView
                 android:paddingStart="@dimen/_7sdp"
                 android:paddingTop="@dimen/_3sdp"
-                android:paddingEnd="@dimen/_7sdp"
                 android:paddingBottom="@dimen/_3sdp"
+                android:paddingEnd="@dimen/_7sdp"
+
                 android:gravity="center"
                 android:id="@+id/txtcouponNo"
                 android:layout_width="wrap_content"
@@ -124,7 +127,6 @@
             android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
                 android:orientation="horizontal">
 
             <TextView

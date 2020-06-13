@@ -59,7 +59,6 @@ public class FavOffersAdapter extends RecyclerView.Adapter<FavOffersAdapter.MyVi
         }
         Picasso.get()
                 .load(responseResult.get(position).getStoreImage())
-                .resize(500, 200)
                 .into(holder.imageHorizontal);
     }
 

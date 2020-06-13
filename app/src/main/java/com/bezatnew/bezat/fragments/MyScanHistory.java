@@ -306,8 +306,8 @@ public class MyScanHistory extends Fragment {
                 Log.d("url",jsonArray.getJSONObject(position).getString("store_logo"));
                 holder.storeName.setText(jsonArray.getJSONObject(position).getString("storeName"));
                 holder.bill_date.setText("Date: "+jsonArray.getJSONObject(position).getString("bill_date"));
-                holder.bill_no.setText("Bill No:"+jsonArray.getJSONObject(position).getString("bill_no"));
-                holder.purchase_amount.setText("Amount : "+jsonArray.getJSONObject(position).getString("purchase_amount"));
+                holder.bill_no.setText("Bill No: "+jsonArray.getJSONObject(position).getString("bill_no"));
+                holder.purchase_amount.setText("Amount: "+jsonArray.getJSONObject(position).getString("purchase_amount"));
                 Picasso.get().load(jsonArray.getJSONObject(position).getString("store_logo")).into(holder.imgStore);
             } catch (Exception e) {
                 e.printStackTrace();
