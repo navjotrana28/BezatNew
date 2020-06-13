@@ -3,15 +3,14 @@ package com.bezatnew.bezat.utils
 import android.app.DatePickerDialog
 import android.content.Context
 import android.graphics.drawable.InsetDrawable
-import androidx.core.content.ContextCompat
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import android.widget.EditText
 import com.bezatnew.bezat.R
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import org.json.JSONObject
-import java.lang.Exception
 import java.util.*
 
 class Utils {
@@ -65,8 +64,7 @@ fun EditText.convertToDatePicker(postAction: ((String) -> Unit)? = null) {
             "$y-${if (m > 9) "$m" else "0$m"}-${if (d < 10) "0$d" else "$d"}";setText(tmp); error =
         null; postAction?.invoke(tmp)
     }, 2001, 1, 1)
-
-
+    dialog.datePicker.maxDate = System.currentTimeMillis() - 536467742000
     setOnClickListener { dialog.show() }
     setOnFocusChangeListener { _, hasFocus -> if (hasFocus) dialog.show() }
 }
