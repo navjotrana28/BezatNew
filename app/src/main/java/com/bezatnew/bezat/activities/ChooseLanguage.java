@@ -5,6 +5,8 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +16,9 @@ import com.bezatnew.bezat.utils.SharedPrefs;
 import java.util.Locale;
 
 public class ChooseLanguage extends AppCompatActivity implements View.OnClickListener {
-TextView txtArabic,txtEnglish;
+TextView txtArabic,txtEnglish, select;
+LinearLayout pass;
+Button next;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +31,19 @@ TextView txtArabic,txtEnglish;
 
         txtArabic=findViewById(R.id.txtArabic);
         txtEnglish=findViewById(R.id.txtEnglish);
-
+        select=findViewById(R.id.select);
+        pass=findViewById(R.id.pass);
+        next=findViewById(R.id.next);
         txtEnglish.setOnClickListener(this);
         txtArabic.setOnClickListener(this);
+        select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next.setVisibility(View.GONE);
+                pass.setVisibility(View.VISIBLE);
+            }
+        });
     }
-
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.txtEnglish)

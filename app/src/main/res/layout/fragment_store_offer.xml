@@ -167,7 +167,7 @@
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:backgroundTint="@color/partnerline"
+                    android:backgroundTint="@color/orange"
                     android:background="@drawable/phone"/>
 
                 <ImageButton
@@ -176,13 +176,13 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:background="@drawable/whatsapp"
-                    android:backgroundTint="@color/partnerline" />
+                    android:backgroundTint="@color/orange" />
 
                 <ImageButton
                     android:id="@+id/txtInsta"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
-                    android:backgroundTint="@color/partnerline"
+                    android:backgroundTint="@color/orange"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:background="@drawable/ig"/>
 
@@ -191,7 +191,7 @@
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:backgroundTint="@color/partnerline"
+                    android:backgroundTint="@color/orange"
                     android:background="@drawable/snapchat"/>
 
                 <ImageButton
@@ -199,7 +199,7 @@
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:backgroundTint="@color/partnerline"
+                    android:backgroundTint="@color/orange"
                     android:background="@drawable/twitter"/>
 
                 <ImageButton
@@ -208,7 +208,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:background="@drawable/fb"
-                    android:backgroundTint="@color/partnerline" />
+                    android:backgroundTint="@color/orange" />
 
                 <ImageButton
                     android:id="@+id/txtWeb"

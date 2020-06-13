@@ -76,16 +76,17 @@
                         android:id="@+id/etOTP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_65sdp"
                         android:hint="@string/otp"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/cardview_shadow_start_color"
                         android:textSize="@dimen/_14sdp"
+
                         android:paddingStart="@dimen/_10sdp"
                         android:inputType="number"
                         android:backgroundTint="@color/colorPrimary"/>
             <LinearLayout
-                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -102,14 +103,14 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_12sdp"
                         android:textColor="@color/colorPrimary"
-                        android:paddingStart="@dimen/_8sdp"
+                        android:paddingStart="@dimen/_16sdp"
                         android:fontFamily="@font/tajawal_medium"
                         android:text="@string/resend"/>
             </LinearLayout>
 
             <Button
                     android:id="@+id/btnSave"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_70sdp"
                     android:layout_width="@dimen/_196sdp"
                     android:layout_height="@dimen/_44sdp"
                     android:text="@string/save"

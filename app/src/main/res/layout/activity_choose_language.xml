@@ -23,6 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/select"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
             android:drawableTint="@color/white"
             android:fontFamily="@font/muli_semibold"
@@ -40,12 +41,13 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10sdp"
             android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:id="@+id/pass"
             android:orientation="vertical">
 
             <ImageButton
                 android:layout_width="@dimen/_32sdp"
                 android:layout_height="@dimen/_16sdp"
-
                 android:background="@drawable/shape_bg_outgoing_bubble"
                 android:scaleType="fitXY" />
 
@@ -53,7 +55,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ripple_primary_white"
-
                 android:backgroundTint="@color/white"
                 android:orientation="vertical">
 
@@ -87,6 +88,16 @@
             </LinearLayout>
 
         </LinearLayout>
+        <Button
+            android:id="@+id/next"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/skip_login"
+            android:visibility="visible"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/_12sdp"
+            android:layout_marginVertical="@dimen/_45sdp"
+            android:background="@drawable/button_background"/>
     </LinearLayout>
 
 

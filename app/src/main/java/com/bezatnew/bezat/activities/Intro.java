@@ -53,9 +53,9 @@ public class Intro extends AppCompatActivity implements View.OnClickListener {
 
             public void onPageSelected(int position) {
                 if (position == 3) {
-                    btnDone.setVisibility(View.VISIBLE);
+                    btnDone.setText(R.string.done);
                 } else {
-                    btnDone.setVisibility(View.GONE);
+                    btnDone.setText(R.string.skip_login);
                 }
                 // Check if this is the page you want.
             }
