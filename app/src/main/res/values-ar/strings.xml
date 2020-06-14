@@ -20,7 +20,7 @@
     <string name="contact_us">اتصل بنا</string>
     <string name="faq">التعليمات</string>
     <string name="change_password">غير كلمة السر*</string>
-    <string name="get_name_signup">NAME</string>
+    <string name="get_name_signup">اسم:</string>
     <string name="change_password_label">غير كلمة السر</string>
     <string name="change_language">غير اللغة</string>
     <string name="logout">الخروج</string>
@@ -114,7 +114,7 @@
     <string name="country_logo">شعار البلد</string>
     <string name="send_contact_us">ارسال</string>
     <string name="get_name">اسم:</string>
-    <string name="get_email">البريد الالكتروني:</string>
+    <string name="get_email">البريد الإلكتروني:</string>
     <string name="get_comments">تعليقات:</string>
     <string name="user_name_Login">البريد الإلكتروني / رقم الهاتف</string>
     <string name="skip_login">تخطى</string>
