@@ -99,10 +99,11 @@ public class Pages extends Fragment {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang = "_ar";
-            setLocale(lang);
+            setLocale("ar");
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
+            setLocale("en");
 
         }
         web = rootView.findViewById(R.id.web);

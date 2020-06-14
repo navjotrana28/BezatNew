@@ -20,11 +20,13 @@ class LoginActivity : AppCompatActivity() {
             setLocale("ar")
         } else {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR
+            setLocale("en")
         }
         setContentView(R.layout.activity_login)
         initUI()
     }
-    fun initUI(){
+
+    fun initUI() {
         skip_button.setOnClickListener {
             val intent = Intent(this, Homepage::class.java)
             SharedPrefs.setGuestUser(this, true)
@@ -34,52 +36,57 @@ class LoginActivity : AppCompatActivity() {
             doLogin()
         }
         tvSignUp.setOnClickListener {
-            startActivity(Intent(this,RegistrationActivity::class.java))
+            startActivity(Intent(this, RegistrationActivity::class.java))
         }
 
-        txtForgot.setOnClickListener{
-            startActivity(Intent(this,ForgotPassword::class.java))
+        txtForgot.setOnClickListener {
+            startActivity(Intent(this, ForgotPassword::class.java))
         }
     }
 
-    private fun showMessage(message:String = getString(R.string.someting_wrong)){
-        AlertDialog.Builder(this).setMessage(message).setPositiveButton(R.string.ok) {d,_->
+    private fun showMessage(message: String = getString(R.string.someting_wrong)) {
+        AlertDialog.Builder(this).setMessage(message).setPositiveButton(R.string.ok) { d, _ ->
             d.dismiss()
         }.create().show()
     }
 
-    private fun isValid():Boolean{
+    private fun isValid(): Boolean {
         var isValid = true
-        if(etEmail.text?.isEmpty()!=false){
+        if (etEmail.text?.isEmpty() != false) {
             isValid = false
             etEmail.error = getString(R.string.empty_email)
         }
-        if(etPassword.text?.isEmpty()!=false){
+        if (etPassword.text?.isEmpty() != false) {
             isValid = false
             etPassword.error = getString(R.string.empty_password)
         }
         return isValid
     }
 
-    private fun doLogin(){
-        if(isValid())
-        LoginRequest(email = etEmail.text.toString(), password = etPassword.text.toString()).login(
-            this, {
-                it.handleLogin(this, {
+    private fun doLogin() {
+        if (isValid())
+            LoginRequest(
+                email = etEmail.text.toString(),
+                password = etPassword.text.toString()
+            ).login(
+                this, {
+                    it.handleLogin(this, {
 
-                    SharedPrefs.setKey(this@LoginActivity,"userId",it.userID);
-                    SharedPrefs.setKey(this@LoginActivity,"LoggedIn","true");
-                    SharedPrefs.setGuestUser(this, false)
-                    startActivity(Intent(this@LoginActivity,Homepage::class.java))
-                    finishAffinity();
-                }, this::showMessage)
-            },
-            {
-                showMessage()
-            }
-        )
+                        SharedPrefs.setKey(this@LoginActivity, "userId", it.userID);
+                        SharedPrefs.setKey(this@LoginActivity, "LoggedIn", "true");
+                        SharedPrefs.setGuestUser(this, false)
+                        startActivity(Intent(this@LoginActivity, Homepage::class.java))
+                        finishAffinity();
+                    }, this::showMessage)
+                },
+                {
+                    showMessage()
+                }
+            )
     }
+
     fun setLocale(lang: String) {
+        SharedPrefs.setKey(this, "selectedlanguage", lang)
         val myLocale = Locale(lang)
         val res = resources
         val dm = res.displayMetrics
@@ -88,5 +95,4 @@ class LoginActivity : AppCompatActivity() {
         res.updateConfiguration(conf, dm)
 
     }
-
 }

@@ -66,6 +66,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             setLocale("ar");
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            setLocale("en");
         }
         setContentView(R.layout.activity_forgot_password);
         etCode = findViewById(R.id.txtCode);
@@ -261,7 +262,6 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
 
         @Override
@@ -283,7 +283,6 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                 txtCode = itemView.findViewById(R.id.txtCode);
                 txtCountryCode = itemView.findViewById(R.id.txtCountryCode);
 
-
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -296,10 +295,8 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
-
             }
         }
-
     }
 
     public void setLocale(String lang) {
@@ -310,6 +307,5 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-
     }
 }
