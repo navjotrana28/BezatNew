@@ -141,7 +141,6 @@
                         android:layout_weight="1"
                         android:id="@+id/discount_price"
                         android:layout_width="match_parent"
-                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_height="wrap_content"
                         android:text=""
                         android:paddingStart="@dimen/_5sdp"

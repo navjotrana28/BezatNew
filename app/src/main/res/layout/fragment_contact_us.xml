@@ -186,34 +186,35 @@
             android:orientation="horizontal"
             android:gravity="center">
             <ImageView
-                android:layout_marginRight="8dp"
+                android:layout_margin="4dp"
                 android:id="@+id/contact_dialer"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/dialer1"/>
 
             <ImageView
-                android:layout_marginRight="8dp"
+                android:layout_margin="4dp"
                 android:id="@+id/contact_whattsApp"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/whatsapp_logo"/>
 
             <ImageView
-                android:layout_marginRight="8dp"
+                android:layout_margin="4dp"
                 android:id="@+id/contact_insta"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/instagram_logo"/>
 
             <ImageView
-                android:layout_marginRight="8dp"
+                android:layout_margin="4dp"
                 android:id="@+id/contact_twitter"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/twitter_logo" />
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_margin="4dp"
                 android:id="@+id/contact_browser"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

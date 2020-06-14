@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -134,6 +135,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         loader = new Loader(getContext());
         imgProfile = rootView.findViewById(R.id.imgProfile);
         etName = rootView.findViewById(R.id.etName);
+        etName.setGravity(Gravity.START);
         etEmail = rootView.findViewById(R.id.etEmail);
         etCountry = rootView.findViewById(R.id.etCountry);
         etAddress = rootView.findViewById(R.id.etAddress);

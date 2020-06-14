@@ -166,6 +166,7 @@ public class FavouriteOffer extends Fragment {
 
 
     private void getFavouriteItem() {
+        Log.d("---test---",SharedPrefs.getKey(getActivity(), "userId")+" "+currentDate+" "+storeId);
         JSONObject object = new JSONObject();
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
@@ -235,9 +236,9 @@ public class FavouriteOffer extends Fragment {
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
-                holder.reTailerName.setText(jsonArray.getJSONObject(position).getString("store_name" + lang));
+                holder.reTailerName.setText(jsonArray.getJSONObject(position).getString("offer_descp" + lang));
                 Picasso.get().load(jsonArray
-                        .optJSONObject(position).optString("store_logo"))
+                        .optJSONObject(position).optString("offer_img"))
                         .into(holder.imgBanner);
 
             } catch (Exception e) {
