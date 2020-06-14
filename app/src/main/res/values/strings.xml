@@ -111,7 +111,7 @@
     <string name="select_language">Select Language</string>
     <string name="please_enter_the_otp_we_have_sent_to_your_registered_phone_number">Please enter the OTP we have sent to your registered Phone Number</string>
     <string name="otp">OTP</string>
-    <string name="resend">Resend</string>
+    <string name="resend">RESEND</string>
     <string name="didn_t_receive_the_otp">Didn\'t receive the OTP ?</string>
     <string name="yes_label">Yes</string>
     <string name="no_label">No</string>

@@ -215,7 +215,7 @@
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:backgroundTint="@color/partnerline"
+                    android:backgroundTint="@color/orange"
                     android:background="@drawable/web"/>
 
 
