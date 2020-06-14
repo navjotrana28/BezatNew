@@ -2,20 +2,32 @@ package com.bezatnew.bezat.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.widget.*;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import com.android.volley.*;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
@@ -24,11 +36,13 @@ import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.bezatnew.bezat.utils.VolleyMultipartRequest;
 import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -53,13 +67,14 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
     View rootView;
-    EditText etConfirmPassword,etPassword,etPhone;
+    EditText etConfirmPassword, etPassword, etPhone;
     TextView etCode;
     Button btnSave;
     ImageView imgBack;
     PostAdapter postAdapter;
     Loader loader;
-    String lang="";
+    String lang = "";
+
     public ChangePassword() {
         // Required empty public constructor
     }
@@ -97,27 +112,28 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            lang="_ar";
+            lang = "_ar";
+            setLocale("ar");
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            lang="";
+            lang = "";
         }
         container_view = container;
         container.setClickable(true);
-        rootView=inflater.inflate(R.layout.fragment_change_password, container, false);
-        etCode=rootView.findViewById(R.id.etCode);
-        etPhone=rootView.findViewById(R.id.etPhone);
-        etPassword=rootView.findViewById(R.id.etPassword);
-        etConfirmPassword=rootView.findViewById(R.id.etConfirmPassword);
-        btnSave=rootView.findViewById(R.id.btnSave);
+        rootView = inflater.inflate(R.layout.fragment_change_password, container, false);
+        etCode = rootView.findViewById(R.id.etCode);
+        etPhone = rootView.findViewById(R.id.etPhone);
+        etPassword = rootView.findViewById(R.id.etPassword);
+        etConfirmPassword = rootView.findViewById(R.id.etConfirmPassword);
+        btnSave = rootView.findViewById(R.id.btnSave);
         imgBack = rootView.findViewById(R.id.imgBack);
-        if(lang.equals("_ar")){
+        if (lang.equals("_ar")) {
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
         }
         etCode.setOnClickListener(this);
-        etCode.setText(SharedPrefs.getKey(getActivity(),"phone_code"));
-        etPhone.setText(SharedPrefs.getKey(getActivity(),"phone"));
-        loader=new Loader(getContext());
+        etCode.setText(SharedPrefs.getKey(getActivity(), "phone_code"));
+        etPhone.setText(SharedPrefs.getKey(getActivity(), "phone"));
+        loader = new Loader(getContext());
         loader.show();
         getCountryList();
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -130,55 +146,52 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (etCode.getText().toString().isEmpty())
-                {
-                    etCode.setError("please fill code");
-                }
-                else if (etPhone.getText().toString().isEmpty())
-                {
-                    etPhone.setError("Please fill the phone");
-                }
-                else if (etPassword.getText().toString().isEmpty())
-                {
-                    etPhone.setError("Please fill the password");
-                }
-                else if(etConfirmPassword.getText().toString().isEmpty())
-                {
-                    etConfirmPassword.setError("please fill confirm password");
-                }
-                else if (!etConfirmPassword.getText().toString().equals(etPassword.getText().toString()))
-                {
-                    etConfirmPassword.setError("password and confirm password doesn't match");
-                }
-                else {
-                    String phone=etCode.getText().toString()+etPhone.getText().toString();
-                    String password=etPassword.getText().toString();
-                    changePassword(phone,password);
+                if (etCode.getText().toString().isEmpty()) {
+                    etCode.setError(getActivity().getString(R.string.please_enter_code));
+                } else if (etPhone.getText().toString().isEmpty()) {
+                    etPhone.setError(getActivity().getString(R.string.please_enter_phone_number));
+                } else if (etPassword.getText().toString().isEmpty()) {
+                    etPhone.setError(getActivity().getString(R.string.please_enter_password));
+                } else if (etConfirmPassword.getText().toString().isEmpty()) {
+                    etConfirmPassword.setError(getActivity().getString(R.string.please_enter_confirm_password));
+                } else if (!etConfirmPassword.getText().toString().equals(etPassword.getText().toString())) {
+                    etConfirmPassword.setError(getActivity().getString(R.string.passwords_dont_match));
+                } else {
+                    String phone = etCode.getText().toString() + etPhone.getText().toString();
+                    String password = etPassword.getText().toString();
+                    changePassword(phone, password);
                 }
             }
         });
         return rootView;
     }
 
+    public void setLocale(String lang) {
+
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+    }
+
     private void changePassword(String phone, String password) {
-        Loader loader=new Loader(getContext());
+        Loader loader = new Loader(getContext());
         loader.show();
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLS.Companion.getCHANGE_PASSWORD(), new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 loader.dismiss();
                 String res = new String(response.data);
-                Log.v("changepassword",res);
+                Log.v("changepassword", res);
                 try {
-                    JSONObject jsonObject=new JSONObject(res);
-                    Toast.makeText(getActivity(),jsonObject.getString("success_msg"),Toast.LENGTH_LONG).show();
+                    JSONObject jsonObject = new JSONObject(res);
+                    Toast.makeText(getActivity(), jsonObject.getString("success_msg"), Toast.LENGTH_LONG).show();
                     getActivity().onBackPressed();
-//                    {"status":"success","success_msg":"Password changed successfully"}
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -187,16 +200,16 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
                 String json = null;
                 String Message;
                 NetworkResponse response = error.networkResponse;
-                Log.v("response",response.data+"");
+                Log.v("response", response.data + "");
             }
         }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("phone", phone);
-                params.put("password",password);
+                params.put("password", password);
 
-                System.out.println("object"+params+" ");
+                System.out.println("object" + params + " ");
                 return params;
             }
 
@@ -237,9 +250,7 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view.getId()==R.id.etCode)
-        {
-
+        if (view.getId() == R.id.etCode) {
             showDialog();
         }
     }
@@ -247,11 +258,11 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
     private void getCountryList() {
 
         JSONObject object = new JSONObject();
-        String Url= URLS.Companion.getGET_COUNTRY();
+        String Url = URLS.Companion.getGET_COUNTRY();
 
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        Url ,
+                        Url,
                         object,
                         response -> {
                             loader.dismiss();
@@ -274,12 +285,14 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
 
         MyApplication.getInstance().addToRequestQueue(jsonObjectRequest);
     }
+
     Dialog dialog;
+
     private void showDialog() {
-         dialog=new Dialog(getActivity());
+        dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.country_dialog);
         dialog.show();
-        RecyclerView recCountry=dialog.findViewById(R.id.recCountry);
+        RecyclerView recCountry = dialog.findViewById(R.id.recCountry);
         StaggeredGridLayoutManager layoutManager =
                 new StaggeredGridLayoutManager(1, OrientationHelper.VERTICAL);
         layoutManager.setGapStrategy(
@@ -337,7 +350,7 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
 
                 holder.txtCountry.setText(jsonArray.getJSONObject(position).getString("name"));
                 holder.txtCode.setText(jsonArray.getJSONObject(position).getString("phone_code"));
-                holder.txtCountryCode.setText("("+jsonArray.getJSONObject(position).getString("country_code")+")");
+                holder.txtCountryCode.setText("(" + jsonArray.getJSONObject(position).getString("country_code") + ")");
                 Picasso.get().load(jsonArray.getJSONObject(position).getString("img")).into(holder.imgFlag);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -352,18 +365,17 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView txtCountry,txtCode,txtCountryCode;
+            TextView txtCountry, txtCode, txtCountryCode;
             ImageView imgFlag;
 
 
             public MyViewHolder(View itemView) {
                 super(itemView);
-                imgFlag=itemView.findViewById(R.id.imgFlag);
+                imgFlag = itemView.findViewById(R.id.imgFlag);
 
-                txtCountry=itemView.findViewById(R.id.txtCountry);
-                txtCode=itemView.findViewById(R.id.txtCode);
-                txtCountryCode=itemView.findViewById(R.id.txtCountryCode);
-
+                txtCountry = itemView.findViewById(R.id.txtCountry);
+                txtCode = itemView.findViewById(R.id.txtCode);
+                txtCountryCode = itemView.findViewById(R.id.txtCountryCode);
 
 
                 itemView.setOnClickListener(new View.OnClickListener() {

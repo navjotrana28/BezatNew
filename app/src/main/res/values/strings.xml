@@ -6,7 +6,7 @@
     <string name="password">Password*</string>
     <string name="password_label">Password</string>
     <string name="user_name">Email/Phone Number</string>
-    <string name="forgot_password">Forgot Password ?</string>
+    <string name="forgot_password">Forgot Password</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -22,6 +22,7 @@
     <string name="change_password">Change Password*</string>
     <string name="change_password_label">Change Password</string>
     <string name="change_language">Change Language</string>
+    <string name="change_language_cap">CHANGE LANGUAGE</string>
     <string name="logout">Logout</string>
     <string name="push_notification">Push Notification</string>
     <string name="name">NAME:</string>
@@ -133,7 +134,7 @@
     <string name="bezat_yearly">Bezat Yearly</string>
     <string name="bezat_monthly">Bezat Monthly</string>
     <string name="search_by_retailer">Search by Retailer</string>
-    <string name="enter_mobile_no">Enter Mobile No</string>
+    <string name="enter_mobile_no">Enter Mobile No*</string>
     <string name="view_all_offers">View All Offers</string>
     <string name="SEND">SEND</string>
     <string name="submit_feedback_buton">SUBMIT</string>
@@ -172,6 +173,11 @@
     <string name="coupons">Coupons: </string>
     <string name="sign_in">Sign In</string>
     <string name="strings" translatable="false">\@string/done</string>
+    <string name="please_enter_code">Please enter Code</string>
+    <string name="please_enter_phone_number">Please enter Phone Number</string>
+    <string name="please_enter_password">Please Enter Password*</string>
+    <string name="please_enter_confirm_password">Please enter Confirm Password</string>
+    <string name="passwords_dont_match">Password and Confirm Password does not match</string>
 
 
 </resources>

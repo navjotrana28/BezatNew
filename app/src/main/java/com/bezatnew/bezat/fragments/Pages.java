@@ -1,16 +1,20 @@
 package com.bezatnew.bezat.fragments;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.webkit.WebView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -20,10 +24,12 @@ import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.utils.Loader;
 import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -52,6 +58,7 @@ public class Pages extends Fragment {
     TextView txtPages;
     ImageView imgBack;
     String lang = "";
+
     public Pages() {
         // Required empty public constructor
     }
@@ -73,6 +80,7 @@ public class Pages extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,29 +89,29 @@ public class Pages extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         container.setClickable(true);
-
-        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+        rootView = inflater.inflate(R.layout.fragment_pages, container, false);
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            lang="_ar";
+            lang = "_ar";
+            setLocale(lang);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            lang="";
+            lang = "";
 
         }
-
-        rootView=inflater.inflate(R.layout.fragment_pages, container, false);
-        web=rootView.findViewById(R.id.web);
-        loader=new Loader(getContext());
+        web = rootView.findViewById(R.id.web);
+        loader = new Loader(getContext());
         imgBack = rootView.findViewById(R.id.imgBack);
-        if(lang.equals("_ar")){
+        if (lang.equals("_ar")) {
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
         }
-        txtPages=rootView.findViewById(R.id.txtPages);
+        txtPages = rootView.findViewById(R.id.txtPage);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,31 +119,17 @@ public class Pages extends Fragment {
                 getActivity().onBackPressed();
             }
         });
-        msg=getArguments().getString("pages");
+        msg = getArguments().getString("pages");
 
-        if (msg.equalsIgnoreCase("about"))
-        {
-            txtPages.setText("About us");
+        if (msg.equalsIgnoreCase("about")) {
             getPages(URLS.Companion.getPAGES_ABOUT());
-        }
-        else if (msg.equalsIgnoreCase("terms"))
-        {
-            txtPages.setText("Terms & Conditions");
+        } else if (msg.equalsIgnoreCase("terms")) {
             getPages(URLS.Companion.getPAGES_TERMS());
-        }
-        else if (msg.equalsIgnoreCase("privacy"))
-        {
-            txtPages.setText("Privacy Policy");
+        } else if (msg.equalsIgnoreCase("privacy")) {
             getPages(URLS.Companion.getPAGES_PRIVACY());
-        }
-        else if (msg.equalsIgnoreCase("contactus"))
-        {
-            txtPages.setText("Contact Us");
+        } else if (msg.equalsIgnoreCase("contactus")) {
             getPages(URLS.Companion.getPAGES_CONTACTUS());
-        }
-        else if (msg.equalsIgnoreCase("faq"))
-        {
-            txtPages.setText("FAQ");
+        } else if (msg.equalsIgnoreCase("faq")) {
             getPages(URLS.Companion.getPAGES_FAQ());
         }
 
@@ -146,24 +140,25 @@ public class Pages extends Fragment {
 
     private void getPages(String url) {
         JSONObject object = new JSONObject();
-        Log.v("profile",url+" ");
+        Log.v("profile", url + " ");
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
-                        url ,
+                        url,
                         object,
                         response -> {
-                                    loader.dismiss();
-                            Log.v("NotificationResponse",response+" ");
+                            loader.dismiss();
+                            Log.v("NotificationResponse", response + " ");
                             try {
-                                String title=response.getJSONObject("result").getJSONObject("page").getString("content");
+                                String title = response.getJSONObject("result").getJSONObject("page").getString("content" + lang);
+                                txtPages.setText(response.getJSONObject("result").getJSONObject("page").getString("title" + lang));
                                 web.loadData(title, "text/html", "UTF-8");
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         },
                         error -> {
-                        loader.dismiss();
-                            Log.v("NotificationError",error.toString()+" ");
+                            loader.dismiss();
+                            Log.v("NotificationError", error.toString() + " ");
                         }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -213,5 +208,16 @@ public class Pages extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void setLocale(String lang) {
+
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+
     }
 }
