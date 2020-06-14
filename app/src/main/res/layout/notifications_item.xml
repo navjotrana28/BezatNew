@@ -33,29 +33,34 @@
 
             <TextView
                     android:id="@+id/txtTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/tajawal_bold"
-                    android:gravity="center_vertical"
+                android:textDirection="locale"
+                android:textAlignment="viewStart"
                     android:paddingStart="@dimen/_12sdp"
                     android:text="You Won 2 Coupon"
                     android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="4dp"
                     android:textSize="@dimen/_12sdp" />
 
             <TextView
+                android:textDirection="locale"
+                android:textAlignment="viewStart"
                     android:id="@+id/txtDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/tajawal_regular"
-                    android:gravity="center_vertical"
                     android:paddingStart="@dimen/_11sdp"
                     android:text="You Won 2 Coupon"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_11sdp" />
+                    android:textSize="@dimen/_11sdp"
+                android:layout_marginBottom="4dp"/>
 
             <TextView
+                android:layout_gravity="end"
                     android:id="@+id/txtTime"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/tajawal_regular"
                     android:gravity="bottom|end"

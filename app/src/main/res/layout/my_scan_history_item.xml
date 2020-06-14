@@ -10,6 +10,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
         <ImageView
+            android:layout_gravity="center"
             android:adjustViewBounds="true"
                 android:id="@+id/imgStore"
                 android:layout_width="@dimen/_96sdp"
@@ -21,7 +22,8 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:background="@color/colorPrimary"/>
         <LinearLayout
-                android:layout_width="match_parent"
+            android:gravity="start"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/_12sdp"
                 android:layout_gravity="center_vertical"
@@ -30,7 +32,7 @@
                 android:layout_marginBottom="8dp"
                 android:textStyle="bold"
                     android:id="@+id/storeName"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dessange"
                     android:textSize="@dimen/_13sdp"
@@ -39,7 +41,7 @@
             <TextView
                 android:layout_marginBottom="4dp"
                     android:id="@+id/bill_date"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Date: 2019-06-04"
                     android:textSize="@dimen/_12sdp"
@@ -49,7 +51,7 @@
             <TextView
                 android:layout_marginBottom="4dp"
                     android:id="@+id/bill_no"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bill No: 1211"
                     android:textSize="@dimen/_12sdp"
@@ -58,7 +60,7 @@
 
             <TextView
                     android:id="@+id/purchase_amount"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount: 15000"
                     android:textSize="@dimen/_12sdp"

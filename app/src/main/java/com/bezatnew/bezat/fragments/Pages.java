@@ -115,7 +115,7 @@ public class Pages extends Fragment {
 
         if (msg.equalsIgnoreCase("about"))
         {
-            txtPages.setText("About us");
+            txtPages.setText("About Bezat");
             getPages(URLS.Companion.getPAGES_ABOUT());
         }
         else if (msg.equalsIgnoreCase("terms"))
