@@ -87,7 +87,7 @@
                         android:focusable="false"
                         android:focusableInTouchMode="true"
                         android:hint="@string/code_signup"
-                        android:textColorHint="@color/colorPrimary"
+                        android:textColorHint="@color/dark_grey"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1.6"
-                    android:textColorHint="@color/colorPrimary">
+                    android:textColorHint="@color/dark_grey">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/phone"
@@ -135,7 +135,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorPrimary">
+                android:textColorHint="@color/dark_grey">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
@@ -149,7 +149,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorPrimary">
+                android:textColorHint="@color/dark_grey">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etConfirmPassword"
