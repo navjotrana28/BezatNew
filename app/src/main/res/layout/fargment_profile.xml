@@ -165,7 +165,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="20dp"
                     android:drawableEnd="@drawable/ic_expand_more_black_24dp"
-                    android:hint="@string/country"
+                    android:hint="@string/select_country"
                     android:textColor="@color/colorPrimary"
                     android:textColorHint="@color/colorPrimary" />
 

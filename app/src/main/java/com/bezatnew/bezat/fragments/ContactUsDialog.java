@@ -9,11 +9,18 @@ import android.preference.DialogPreference;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class ContactUsDialog extends AppCompatDialogFragment {
+
+    String content;
+
+    public ContactUsDialog(String content) {
+        this.content = content;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
         builder.setTitle("Information")
-                .setMessage("Fill all the fields")
+                .setMessage(content)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

@@ -66,8 +66,12 @@ public class ContactUsFragment extends Fragment {
 
     private void onClickSendButton() {
         sendBtn.setOnClickListener(v -> {
-            if(name.getText().toString().isEmpty() || email.getText().toString().isEmpty() || comments.getText().toString().isEmpty()){
-                open();
+            if(name.getText().toString().isEmpty() ){
+                open("Please enter your name");
+            }else if(email.getText().toString().isEmpty()){
+                open("Please enter your email address");
+            }else if(comments.getText().toString().isEmpty()){
+                open("Please add a comment");
             }else {
                 ContactUsRequest request = new ContactUsRequest();
                 request.setName(name.getText().toString());
@@ -77,8 +81,8 @@ public class ContactUsFragment extends Fragment {
             }
         });
     }
-    public void open(){
-        ContactUsDialog contactUsDialog=new ContactUsDialog();
+    public void open(String content){
+        ContactUsDialog contactUsDialog=new ContactUsDialog(content);
         contactUsDialog.show(getFragmentManager(),"ContantUs Dialog");
     }
 
