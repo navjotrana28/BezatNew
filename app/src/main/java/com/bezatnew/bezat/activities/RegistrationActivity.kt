@@ -9,18 +9,26 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.util.Patterns
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.OrientationHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.bezatnew.bezat.ClientRetrofit
 import com.bezatnew.bezat.MyApplication
 import com.bezatnew.bezat.R
+import com.bezatnew.bezat.activities.RegistrationActivity.PostAdapter.MyViewHolder
 import com.bezatnew.bezat.api.RegisterRequest
-import com.bezatnew.bezat.fragments.ContactUsDialog
 import com.bezatnew.bezat.interfaces.RegisterUserCallBack
 import com.bezatnew.bezat.models.RegisterRequestResponse
 import com.bezatnew.bezat.models.RegisterUserRequest
@@ -28,12 +36,19 @@ import com.bezatnew.bezat.utils.*
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_registration.*
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
 class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
     private var isOtpValidated: Boolean = false
+    internal var loader: Loader? = null
+    internal var dialog: Dialog? = null
+
+
+    internal var postAdapter: PostAdapter? = null
+
     internal var smsHashCodeHelper = SmsHashCodeHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +61,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
         }
         setContentView(R.layout.activity_registration)
         initUI()
+
     }
 
 
@@ -53,11 +69,11 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
     var otp: String? = null
     var date: String? = null
     fun initUI() {
-        val loader = Loader(this);
-        loader.dismiss()
+        loader = Loader(this)
+        loader!!.dismiss()
 
         etGender.setOnClickListener {
-//            etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it }, {})
+            //            etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it }, {})
             val dialog = Dialog(this!!, R.style.Theme_AppCompat_Light_Dialog)
             dialog.setContentView(R.layout.gender_dialog)
             dialog.show()
@@ -75,42 +91,153 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
         }
 
         save.setOnClickListener {
-//            loader.show()
+            //            loader.show()
             if (!isOtpValidated) {
 
                 validateForOtpAndSave()
-                verifyAge();
+//                verifyAge();
             } else {
                 validateAndSave()
-                verifyAge();
+//                verifyAge();
             }
         }
 
         etDOB.convertToDatePicker { date = it }
 
-        GetCountryService().getCountries({ countryData ->
-            country.convertToSpinner(
-                countryData.result, { it.name }, { it.phoneCode }, {
-                    Picasso.get().load(it.img).into(countryIcon)
-                }) { obj, _ -> code = obj.phoneCode }
-        }, {})
+//        GetCountryService().getCountries({ countryData ->
+//            country.convertToSpinner(
+//                countryData.result, { it.name }, { it.phoneCode }, {
+//                    Picasso.get().load(it.img).into(countryIcon)
+//                }) { obj, _ -> code = obj.phoneCode }
+//        }, {})
+        getCountryList()
+        country.setOnClickListener {
+            showDialog()
+        }
     }
+
+    private fun getCountryList() {
+        val `object` = JSONObject()
+        val Url = URLS.GET_COUNTRY
+        val jsonObjectRequest = object : JsonObjectRequest(Request.Method.GET,
+            Url,
+            `object`,
+            { response ->
+                loader?.dismiss()
+                try {
+                    postAdapter = PostAdapter(response.getJSONArray("result"))
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            },
+            { error -> loader?.dismiss() }) {
+            @Throws(AuthFailureError::class)
+            override fun getHeaders(): Map<String, String> {
+                val headers = HashMap<String, String>()
+                headers["apikey"] = "12345678"
+                return headers
+            }
+        }
+
+        MyApplication.getInstance().addToRequestQueue(jsonObjectRequest)
+    }
+
+    private fun showDialog() {
+        dialog = Dialog(this@RegistrationActivity)
+        dialog!!.setContentView(R.layout.country_dialog)
+        dialog!!.show()
+        val recCountry = dialog!!.findViewById<RecyclerView>(R.id.recCountry)
+        val layoutManager = StaggeredGridLayoutManager(1, OrientationHelper.VERTICAL)
+        layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
+        recCountry.setLayoutManager(layoutManager)
+        recCountry.setItemAnimator(DefaultItemAnimator())
+        if (postAdapter != null && postAdapter!!.getItemCount() > 0) {
+            recCountry.setAdapter(postAdapter)
+        }
+    }
+
+    inner class PostAdapter(internal var jsonArray: JSONArray) :
+        RecyclerView.Adapter<MyViewHolder>() {
+
+        fun append(array: JSONArray) {
+            try {
+                for (i in 0 until array.length()) {
+                    this.jsonArray.put(array.get(i))
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+        }
+
+        override fun onCreateViewHolder(
+            parent: ViewGroup,
+            viewType: Int
+        ): MyViewHolder {
+            val itemView = LayoutInflater.from(parent.context)
+                .inflate(R.layout.country_item, parent, false)
+            return MyViewHolder(itemView)
+        }
+
+        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+            try {
+
+
+                holder.txtCountry.text = jsonArray.getJSONObject(position).getString("name")
+                holder.txtCode.text = jsonArray.getJSONObject(position).getString("phone_code")
+                holder.txtCountryCode.text =
+                    "(" + jsonArray.getJSONObject(position).getString("country_code") + ")"
+                Picasso.get().load(jsonArray.getJSONObject(position).getString("img"))
+                    .into(holder.imgFlag)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
+
+        override fun getItemCount(): Int {
+            return jsonArray.length()
+        }
+
+        inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+            internal var txtCountry: TextView
+            internal var txtCode: TextView
+            internal var txtCountryCode: TextView
+            internal var imgFlag: ImageView
+
+
+            init {
+                imgFlag = itemView.findViewById(R.id.imgFlag)
+
+                txtCountry = itemView.findViewById(R.id.txtCountry)
+                txtCode = itemView.findViewById(R.id.txtCode)
+                txtCountryCode = itemView.findViewById(R.id.txtCountryCode)
+
+
+                itemView.setOnClickListener {
+                    try {
+                        country.setText(jsonArray.getJSONObject(adapterPosition).getString("phone_code"))
+                        code = country.text.toString()
+                        dialog?.dismiss()
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                }
+
+            }
+        }
+
+    }
+
 
     public fun verifyAge() {
-        val builder=AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this)
         builder.setTitle("Verification")
         builder.setMessage("Please verify you are above 17 years old")
-        builder.setPositiveButton("Verify",{ dialogInterface: DialogInterface, i: Int -> })
-        builder.setNegativeButton("Cancel",{ dialogInterface: DialogInterface, i: Int -> })
+        builder.setPositiveButton("Verify", { dialogInterface: DialogInterface, i: Int -> })
+        builder.setNegativeButton("Cancel", { dialogInterface: DialogInterface, i: Int -> })
         builder.show()
-    }
-
-    private fun callImageMethod() {
-        if (country.text?.equals("Bahrain")!!)
-            Picasso.get().load("http://bezatapp.com/manage_App/assets/flags/bh.png").into(countryIcon)
-        if (country.text?.equals("India")!!)
-            Picasso.get().load("http://bezatapp.com/manage_App/assets/flags/in.png").into(countryIcon)
-
     }
 
     private fun validateForOtpAndSave() {
@@ -123,7 +250,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
         if (validateForOtp(request)) {
             registerUser(request)
-        }else{
+        } else {
             val loader = Loader(this);
             loader.dismiss()
         }
@@ -144,7 +271,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 //            mobileCode = code ?: "",
             dob = date ?: "",
 //            password = etPassword.text.toString(),
-            userID = SharedPrefs.getKey(this,"userId")
+            userID = SharedPrefs.getKey(this, "userId")
         )
         if (validate(request))
             register(request)
@@ -155,10 +282,10 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             val loader = Loader(this)
             loader.dismiss()
             if (response != null) {
-                SharedPrefs.setKey(this,"userId",response.userID.toString())
+                SharedPrefs.setKey(this, "userId", response.userID.toString())
             }
             otp = response?.userInfo!!.otp.toString()
-            Log.d("otp=",otp)
+            Log.d("otp=", otp)
             val intent = Intent(this@RegistrationActivity, OTP::class.java)
             intent.putExtra("otp", otp)
             intent.putExtra("deviceId", PreferenceManager.instance.deviceId)
@@ -169,9 +296,14 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             intent.putExtra("email", "")
             intent.putExtra("gender", "")
             startActivityForResult(intent, 0)
-        }else{
+        } else {
             if (response != null) {
-                Toast.makeText(this, response.error_msg.toString(), Toast.LENGTH_SHORT).show()
+                androidx.appcompat.app.AlertDialog.Builder(this, R.style.DialogTheme)
+                    .setMessage(response.error_msg.toString())
+                    .setNegativeButton(R.string.ok, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show()
+//                Toast.makeText(this, response.error_msg.toString(), Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -185,7 +317,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
         request.register(this, { response ->
             //response return case
             response.evaluate(this, {
-//                otpVerification()
+                //                otpVerification()
                 Toast.makeText(this, getString(R.string.reg_success), Toast.LENGTH_SHORT).show()
                 finish()
             }) {
@@ -349,11 +481,10 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
                         loader.dismiss()
                     }
                 }
-            }else{
+            } else {
                 onBackPressed()
             }
-        }
-        else{
+        } else {
             onBackPressed()
         }
     }

@@ -9,18 +9,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.widget.*;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.android.volley.*;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.bezatnew.bezat.ClientRetrofit;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
@@ -56,7 +63,7 @@ public class Settings extends Fragment implements View.OnClickListener {
     Switch switches;
     TextView txtMyScan, txtChangePassword, txtAbout, txtTerms,
             txtPrivacy, txtContactUs, txtFaq, txtChangeLanguage,
-            txtLogout, txtMyFav;
+            txtLogout, txtMyFav, txtpushNotification;
     Button btnSave;
     boolean isGuestUser = false;
     View rootView;
@@ -134,6 +141,7 @@ public class Settings extends Fragment implements View.OnClickListener {
         txtTerms = rootView.findViewById(R.id.txtTerms);
         txtPrivacy = rootView.findViewById(R.id.txtPrivacy);
         txtContactUs = rootView.findViewById(R.id.txtContactUs);
+        txtpushNotification = rootView.findViewById(R.id.txt_push_notification);
         txtFaq = rootView.findViewById(R.id.txtFaq);
         switches = rootView.findViewById(R.id.switches);
         txtChangeLanguage = rootView.findViewById(R.id.txtChangeLanguage);
@@ -150,31 +158,55 @@ public class Settings extends Fragment implements View.OnClickListener {
         txtLogout.setOnClickListener(this);
         txtChangeLanguage.setOnClickListener(this);
         txtMyFav.setOnClickListener(this);
-        initSignOutLabel();
+        initGuestUserValidation();
+        pushNotifications();
 
-
-        if (SharedPrefs.getKey(getActivity(), "push_notification_status").equalsIgnoreCase("1")) {
-            switches.setChecked(true);
-        } else {
-            switches.setChecked(false);
-        }
-        switches.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    SharedPrefs.setKey(getActivity(), "push_notification_status", "1");
-                    notificationChange("1");
-                } else {
-                    SharedPrefs.setKey(getActivity(), "push_notification_status", "0");
-                    notificationChange("0");
-                }
-            }
-        });
         return rootView;
     }
 
-    private void initSignOutLabel() {
+    private void pushNotifications() {
         if (SharedPrefs.isGuestUser(getContext())) {
-            txtLogout.setText(getString(R.string.sign_up));
+            switches.setChecked(false);
+            switches.setEnabled(false);
+            txtpushNotification.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    toastMsgForGuest();
+                }
+            });
+        } else {
+
+            if (SharedPrefs.getKey(getActivity(), "push_notification_status").equalsIgnoreCase("1")) {
+                switches.setChecked(true);
+            } else {
+                switches.setChecked(false);
+            }
+            switches.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        SharedPrefs.setKey(getActivity(), "push_notification_status", "1");
+                        notificationChange("1");
+                    } else {
+                        SharedPrefs.setKey(getActivity(), "push_notification_status", "0");
+                        notificationChange("0");
+                    }
+                }
+            });
+        }
+    }
+
+    private void toastMsgForGuest() {
+        Toast.makeText(rootView.getContext(), getString(R.string.sign_in_to_access_this_action),
+                Toast.LENGTH_LONG).show();
+        getActivity().onBackPressed();
+    }
+
+    private void initGuestUserValidation() {
+        if (SharedPrefs.isGuestUser(getContext())) {
+            txtChangePassword.setAlpha(0.5f);
+            txtContactUs.setAlpha(0.5f);
+            txtpushNotification.setAlpha(0.5f);
+            txtLogout.setText(getString(R.string.sign_in));
         } else {
             txtLogout.setText(getString(R.string.sign_out));
         }
@@ -263,10 +295,14 @@ public class Settings extends Fragment implements View.OnClickListener {
             ft.commit();
         }
         if (view.getId() == R.id.txtChangePassword) {
-            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, new ChangePassword());
-            ft.addToBackStack(null);
-            ft.commit();
+            if (SharedPrefs.isGuestUser(getContext())) {
+                toastMsgForGuest();
+            } else {
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, new ChangePassword());
+                ft.addToBackStack(null);
+                ft.commit();
+            }
         }
         if (view.getId() == R.id.txtAbout) {
             Bundle bundle = new Bundle();
@@ -301,14 +337,15 @@ public class Settings extends Fragment implements View.OnClickListener {
             ft.commit();
         }
         if (view.getId() == R.id.txtContactUs) {
-//            Bundle bundle=new Bundle();
-//            bundle.putString("pages", "contactus");
-//            Pages pages=new Pages();
-            ContactUsFragment fragment = new ContactUsFragment();
-            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, fragment);
-            ft.addToBackStack(null);
-            ft.commit();
+            if (SharedPrefs.isGuestUser(getContext())) {
+                toastMsgForGuest();
+            } else {
+                ContactUsFragment fragment = new ContactUsFragment();
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
         }
         if (view.getId() == R.id.txtFaq) {
             Bundle bundle = new Bundle();
@@ -321,7 +358,7 @@ public class Settings extends Fragment implements View.OnClickListener {
             ft.commit();
         }
         if (view.getId() == R.id.txtLogout) {
-            if (txtLogout.getText().equals(getString(R.string.sign_up))) {
+            if (txtLogout.getText().equals(getString(R.string.sign_in))) {
                 new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
                         .setMessage(getActivity().getString(R.string.you_will_take_to_login_screen))
                         .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {

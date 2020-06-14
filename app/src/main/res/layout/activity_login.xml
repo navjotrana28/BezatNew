@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_user_name"
             android:drawablePadding="@dimen/default_margin"
+            android:paddingBottom="6dp"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,6 +63,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_password"
             android:drawablePadding="@dimen/default_margin"
+            android:paddingBottom="6dp"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,6 +88,7 @@
         android:paddingEnd="100dp"
         android:text="@string/login"
         android:textAllCaps="false"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@id/tvSignUp"
         app:layout_constraintEnd_toEndOf="parent"

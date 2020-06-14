@@ -134,7 +134,7 @@ public class Dashboard extends Fragment {
 
     private void initSignOutLabel() {
         if (SharedPrefs.isGuestUser(getContext())) {
-            signOutLabel = getString(R.string.sign_up);
+            signOutLabel = getString(R.string.sign_in);
         } else {
             signOutLabel = getString(R.string.sign_out);
         }
@@ -453,13 +453,11 @@ public class Dashboard extends Fragment {
                             if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.total_coupon))) {
                                 toastMsg(view);
-
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.fav_offers))) {
                                 toastMsg(view);
-
                                 getActivity().finish();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
@@ -513,7 +511,7 @@ public class Dashboard extends Fragment {
                                         .show();
 
                             } else if (dashBoardItems.get(getAdapterPosition())
-                                    .getName().equalsIgnoreCase(getString(R.string.sign_up))) {
+                                    .getName().equalsIgnoreCase(getString(R.string.sign_in))) {
                                 new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme)
                                         .setMessage(getString(R.string.you_will_take_to_login_screen))
                                         .setPositiveButton(R.string.yes_label, new DialogInterface.OnClickListener() {

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -71,11 +72,9 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View view) {
                 if (etPhone.getText().toString().isEmpty()) {
-                    etPhone.setText(getString(R.string.empty_phone));
+                    dialog();
                 }
-                if (etCode.getText().toString().isEmpty()) {
-                    etCode.setText("country code is empty");
-                } else {
+                 else {
                     getOTP(etPhone.getText().toString());
                 }
             }
@@ -88,7 +87,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
-
+ public  void dialog(){
+        ForgotPasswordDialog forgotPasswordDialog=new ForgotPasswordDialog();
+        forgotPasswordDialog.show(getSupportFragmentManager(),"Pass");
+ }
     private void getOTP(String phone) {
         loader.show();
 

@@ -2,6 +2,7 @@ package com.bezatnew.bezat.activities;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -37,6 +38,7 @@ public class Homepage extends AppCompatActivity {
 
     Fragment currentFragment = null;
     FragmentTransaction ft;
+    Context context;
     ViewPagerAdapter adapter;
     ViewPager viewPager;
     FrameLayout frameLayout;
@@ -46,46 +48,15 @@ public class Homepage extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            /*switch (item.getItemId()) {
-                case R.id.navigation_dashboard:
-                    getSupportFragmentManager().popBackStack();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new Dashboard());
-                    ft.commit();
 
-//                    viewPager.setCurrentItem(0);
-                    return true;
-                case R.id.navigation_bell:
-                    getSupportFragmentManager().popBackStack();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new Notification());
-                    ft.commit();
-//                    viewPager.setCurrentItem(1);
-                    return true;
-                case R.id.navigation_profile:
-                    getSupportFragmentManager().popBackStack();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new MyProfile());
-                    ft.commit();
-//                    viewPager.setCurrentItem(2);
-                    return true;
-
-                case R.id.navigation_settings:
-                    getSupportFragmentManager().popBackStack();
-                    ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, new Settings());
-                    ft.commit();
-//                    viewPager.setCurrentItem(3);
-                    return true;
-            }*/
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
-                    if(lang.equals("a")){
+                    if (lang.equals("a")) {
                         ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.container, new BlankFragment());
                         ft.commit();
                         viewPager.setCurrentItem(3);
-                    }else{
+                    } else {
                         ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.container, new BlankFragment());
                         ft.commit();
@@ -94,40 +65,52 @@ public class Homepage extends AppCompatActivity {
                     frameLayout.setClickable(false);
                     break;
                 case R.id.navigation_bell:
-                    if(lang.equals("a")){
-                        ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.container, new BlankFragment());
-                        ft.commit();
-                        viewPager.setCurrentItem(2);
-                    }else{
-                        ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.container, new BlankFragment());
-                        ft.commit();
-                        viewPager.setCurrentItem(1);
+                    if (!SharedPrefs.isGuestUser(getApplicationContext())) {
+
+                        if (lang.equals("a")) {
+                            ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.container, new BlankFragment());
+                            ft.commit();
+                            viewPager.setCurrentItem(2);
+                        } else {
+                            ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.container, new BlankFragment());
+                            ft.commit();
+                            viewPager.setCurrentItem(1);
+                        }
+                        frameLayout.setClickable(false);
+                    } else {
+                        //toast msg
+                        toastMsgHere();
                     }
-                    frameLayout.setClickable(false);
                     break;
                 case R.id.navigation_profile:
-                    if(lang.equals("a")){
-                        ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.container, new BlankFragment());
-                        ft.commit();
-                        viewPager.setCurrentItem(1);
-                    }else{
-                        ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.container, new BlankFragment());
-                        ft.commit();
-                        viewPager.setCurrentItem(2);
+                    if (!SharedPrefs.isGuestUser(getApplicationContext())) {
+
+                        if (lang.equals("a")) {
+                            ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.container, new BlankFragment());
+                            ft.commit();
+                            viewPager.setCurrentItem(1);
+                        } else {
+                            ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.container, new BlankFragment());
+                            ft.commit();
+                            viewPager.setCurrentItem(2);
+                        }
+                        frameLayout.setClickable(false);
+                    } else {
+                        //toast msg here
+                        toastMsgHere();
                     }
-                    frameLayout.setClickable(false);
                     break;
                 case R.id.navigation_settings:
-                    if(lang.equals("a")){
+                    if (lang.equals("a")) {
                         ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.container, new BlankFragment());
                         ft.commit();
                         viewPager.setCurrentItem(0);
-                    }else{
+                    } else {
                         ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.container, new BlankFragment());
                         ft.commit();
@@ -139,6 +122,11 @@ public class Homepage extends AppCompatActivity {
             return false;
         }
     };
+
+    private void toastMsgHere() {
+        Toast.makeText(getApplicationContext(), getString(R.string.sign_in_to_access_this_action),
+                Toast.LENGTH_LONG).show();
+    }
 
     String lang;
 
@@ -189,16 +177,15 @@ public class Homepage extends AppCompatActivity {
         frameLayout = findViewById(R.id.container);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         viewPager = findViewById(R.id.viewPagerhome);
-        if(lang.equals("a")){
+
+        if (lang.equals("a")) {
             addTabsArabic(viewPager);
-        }else{
+        } else {
             addTabsEnglish(viewPager);
         }
 
         frameLayout.setClickable(false);
-
         setPageChangeListener(navView);
-
     }
 
     private void setPageChangeListener(BottomNavigationView navView) {
@@ -215,9 +202,9 @@ public class Homepage extends AppCompatActivity {
                 else
                     navView.getMenu().getItem(0).setChecked(false);
 
-                if(lang.equals("a")){
-                    navView.getMenu().getItem(3-position).setChecked(true);
-                }else{
+                if (lang.equals("a")) {
+                    navView.getMenu().getItem(3 - position).setChecked(true);
+                } else {
                     navView.getMenu().getItem(position).setChecked(true);
                 }
                 prevMenuItem = navView.getMenu().getItem(position);
