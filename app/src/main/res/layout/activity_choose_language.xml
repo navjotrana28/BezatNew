@@ -93,7 +93,7 @@
             android:layout_width="@dimen/_150sdp"
             android:layout_height="wrap_content"
             android:text="@string/skip_login"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/_12sdp"
             android:layout_marginVertical="@dimen/_45sdp"
