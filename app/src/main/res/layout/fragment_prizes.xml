@@ -150,7 +150,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/tajawal_medium"
                         android:gravity="center"
-                        android:text="Other Raffles"
+                    android:text="@string/other_raffles"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_15sdp" />
             </androidx.cardview.widget.CardView>

@@ -11,16 +11,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.android.volley.*;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
@@ -42,6 +49,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
 
     TextView etCode;
     Loader loader;
+    String lang = "";
     PostAdapter postAdapter;
     Context context = ForgotPassword.this;
     SmsHashCodeHelper smsHashCodeHelper = new SmsHashCodeHelper(this);
@@ -54,9 +62,11 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         if (SharedPrefs.getKey(this, "selectedlanguage").contains("ar")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
             setLocale("ar");
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            setLocale("en");
         }
         setContentView(R.layout.activity_forgot_password);
         etCode = findViewById(R.id.txtCode);
@@ -65,6 +75,9 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         imgBack = findViewById(R.id.imgBackForgot);
         etCode.setOnClickListener(this);
         loader = new Loader(context);
+        if (lang.equals("_ar")) {
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         loader.show();
         // sms hash code helper :
 
@@ -73,8 +86,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             public void onClick(View view) {
                 if (etPhone.getText().toString().isEmpty()) {
                     dialog();
-                }
-                 else {
+                } else {
                     getOTP(etPhone.getText().toString());
                 }
             }
@@ -87,10 +99,12 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
- public  void dialog(){
-        ForgotPasswordDialog forgotPasswordDialog=new ForgotPasswordDialog();
-        forgotPasswordDialog.show(getSupportFragmentManager(),"Pass");
- }
+
+    public void dialog() {
+        ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog();
+        forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
+    }
+
     private void getOTP(String phone) {
         loader.show();
 
@@ -248,7 +262,6 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
 
         @Override
@@ -270,7 +283,6 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                 txtCode = itemView.findViewById(R.id.txtCode);
                 txtCountryCode = itemView.findViewById(R.id.txtCountryCode);
 
-
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -283,10 +295,8 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
-
             }
         }
-
     }
 
     public void setLocale(String lang) {
@@ -297,6 +307,5 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-
     }
 }

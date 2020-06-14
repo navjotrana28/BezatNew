@@ -60,6 +60,7 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:visibility="visible"
+        android:layout_below="@+id/toolbar"
         android:orientation="vertical">
 
         <ImageView
@@ -72,11 +73,13 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,17 +108,16 @@
                         android:src="@drawable/ic_favorite_black_24dp" />
                 </LinearLayout>
 
-        <TextView
-            android:id="@+id/offer_descp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_7sdp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/tajawal_bold"
-            android:textSize="@dimen/_15sdp"
-            android:text="Meet a star" />
+                <TextView
+                    android:id="@+id/offer_descp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_7sdp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/tajawal_bold"
+                    android:textSize="@dimen/_15sdp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -123,17 +125,17 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-            <TextView
+                    <TextView
 
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/tajawal_bold"
-                android:gravity="end"
-                android:padding="@dimen/_3sdp"
-                android:text="@string/offer_price_user"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14sdp" />
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/tajawal_bold"
+                        android:gravity="end"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/offer_price_user"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_14sdp" />
 
                     <TextView
                         android:layout_weight="1"
@@ -182,7 +184,7 @@
                     android:layout_marginLeft="75dp"
                     android:layout_marginRight="75dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -204,9 +206,9 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="HLF1T71"
                         android:paddingStart="@dimen/_5sdp"
-                        android:gravity="start"
+                        android:textDirection="locale"
+                        android:textAlignment="viewStart"
                         android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/tajawal_regular" />
                 </LinearLayout>
@@ -217,6 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/redeem_in_offer"
+                    android:fontFamily="@font/tajawal_bold"
                     android:textSize="@dimen/_14sdp"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"

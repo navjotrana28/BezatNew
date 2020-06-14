@@ -147,6 +147,7 @@ public class Homepage extends AppCompatActivity {
         } else {
             lang = "e";
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            setLocale("en");
         }
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel
@@ -248,7 +249,6 @@ public class Homepage extends AppCompatActivity {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-
     }
 
 }

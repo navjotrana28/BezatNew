@@ -31,14 +31,13 @@
                     android:layout_height="@dimen/_28sdp"
                     android:src="@mipmap/ic_back"/>
             <TextView
-                    android:id="@+id/txtPages"
+                android:id="@+id/txtPage"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="@dimen/_16sdp"
-                    android:fontFamily="@font/tajawal_bold"
-                    android:text="@string/terms_conditions"/>
+                    android:fontFamily="@font/tajawal_bold" />
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_28sdp"

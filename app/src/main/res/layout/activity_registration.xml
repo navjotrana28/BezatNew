@@ -6,20 +6,20 @@
 
     <Toolbar
         android:id="@+id/tool"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:contentInsetLeft="0dp"
         android:contentInsetStart="0dp"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        android:contentInsetRight="0dp"
+        android:contentInsetLeft="0dp"
         android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
         app:contentInsetRight="0dp"
-        app:contentInsetEnd="0dp">
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,20 +35,20 @@
                 android:visibility="invisible" />
 
             <TextView
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="@dimen/default_size"
-                android:textColor="@color/white"
+                android:layout_weight="1"
                 android:fontFamily="@font/tajawal_bold"
-                android:text="@string/sign_up" />
+                android:gravity="center"
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_size" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_28sdp"
-                android:visibility="invisible"
-                android:src="@mipmap/ic_back" />
+                android:src="@mipmap/ic_back"
+                android:visibility="invisible" />
 
         </LinearLayout>
     </Toolbar>
@@ -76,8 +76,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:focusable="false"
-                    android:layout_weight="0.4">
+                    android:layout_weight="0.4"
+                    android:focusable="false">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/countryNameContainer"
@@ -96,9 +96,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/country"
                             style="@style/field"
-                            android:focusableInTouchMode="true"
-                            android:focusable="false"
                             android:layout_marginEnd="2dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
                             android:textColor="@android:color/black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -108,9 +109,9 @@
                         android:layout_width="20dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        app:layout_constraintTop_toTopOf="@id/countryNameContainer"
                         app:layout_constraintBottom_toBottomOf="@id/countryNameContainer"
-                        app:layout_constraintEnd_toEndOf="@id/countryNameContainer" />
+                        app:layout_constraintEnd_toEndOf="@id/countryNameContainer"
+                        app:layout_constraintTop_toTopOf="@id/countryNameContainer" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -184,9 +185,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etGender"
                     style="@style/field"
-                    android:hint="@string/gender_signup"
-                    android:focusableInTouchMode="true"
                     android:focusable="false"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/gender_signup"
                     android:textColor="@android:color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>

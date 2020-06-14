@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/_2sdp"
             android:text="USD:300"
+            android:fontFamily="@font/tajawal_regular"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_12sdp" />
 
