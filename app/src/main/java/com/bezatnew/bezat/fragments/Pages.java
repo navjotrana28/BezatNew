@@ -115,27 +115,27 @@ public class Pages extends Fragment {
 
         if (msg.equalsIgnoreCase("about"))
         {
-            txtPages.setText("About Bezat");
+            txtPages.setText(getResources().getString(R.string.about_bezat));
             getPages(URLS.Companion.getPAGES_ABOUT());
         }
         else if (msg.equalsIgnoreCase("terms"))
         {
-            txtPages.setText("Terms & Conditions");
+            txtPages.setText((getResources().getString(R.string.terms_conditions)));
             getPages(URLS.Companion.getPAGES_TERMS());
         }
         else if (msg.equalsIgnoreCase("privacy"))
         {
-            txtPages.setText("Privacy Policy");
+            txtPages.setText((getResources().getString(R.string.privacy_policy)));
             getPages(URLS.Companion.getPAGES_PRIVACY());
         }
         else if (msg.equalsIgnoreCase("contactus"))
         {
-            txtPages.setText("Contact Us");
+            txtPages.setText((getResources().getString(R.string.contact_us)));
             getPages(URLS.Companion.getPAGES_CONTACTUS());
         }
         else if (msg.equalsIgnoreCase("faq"))
         {
-            txtPages.setText("FAQ");
+            txtPages.setText((getResources().getString(R.string.faq)));
             getPages(URLS.Companion.getPAGES_FAQ());
         }
 
@@ -155,7 +155,12 @@ public class Pages extends Fragment {
                                     loader.dismiss();
                             Log.v("NotificationResponse",response+" ");
                             try {
-                                String title=response.getJSONObject("result").getJSONObject("page").getString("content");
+                                String title;
+                                if(url.endsWith("about")){
+                                    title=response.getJSONObject("result").getJSONObject("page").getString("content");
+                                }else{
+                                    title=response.getJSONObject("result").getJSONObject("page").getString("content"+lang);
+                                }
                                 web.loadData(title, "text/html", "UTF-8");
                             } catch (JSONException e) {
                                 e.printStackTrace();
