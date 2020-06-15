@@ -64,13 +64,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.bezatnew.bezat.activities.RegistrationActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/opposite" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.bezatnew.bezat.activities.Homepage"
             android:label="@string/title_activity_home"
-            android:screenOrientation="portrait"
-            android:theme="@style/HomePageTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.bezatnew.bezat.activities.LoginActivity"
             android:label="@string/title_activity_login"

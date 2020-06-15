@@ -68,15 +68,18 @@
             android:popupBackground="@color/white"
             android:popupElevation="0dp"
             android:textAlignment="center"
-            android:theme="@style/MatchSpinnerTheme"></Spinner>
+            android:theme="@style/MatchSpinnerTheme">
+
+        </Spinner>
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
             android:src="@drawable/ic_down">
 
         </ImageView>

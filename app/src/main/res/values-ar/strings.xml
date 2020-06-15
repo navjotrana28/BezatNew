@@ -99,7 +99,7 @@
     <string name="bezat_raffle_is_a_product_of_bezat_and_conducts_monthly_raffles_apple_is_not_involved_in_anyway_with_the_sweepstake_and_not_a_sponsor_of_this_application">BEZAT السحب هو نتاج BEZAT وتجري السحوبات الشهرية. لا تشارك Apple في أي حال مع اليانصيب وليس راعية لهذا التطبيق</string>
     <string name="customer_qr_code">رمز الاستجابة السريعة للعملاء</string>
     <string name="customer_id">هوية الزبون</string>
-    <string name="bill_no">:رقم الفاتوره</string>
+    <string name="bill_no">رقم الفاتوره: </string>
     <string name="store">مخازن</string>
     <string name="offers">عروض</string>
     <string name="logout_confirm">هل أنت متأكد أنك تريد تسجيل الخروج ؟</string>
@@ -161,7 +161,7 @@
     <string name="country">بلد*</string>
     <string name="select_country">Please select country</string>
     <string name="number_of_coupons">عدد القسائم: </string>
-    <string name="coupons">كوبونات </string>
+    <string name="coupons">كوبونات: </string>
     <string name="sign_in">Sign In</string>
     <string name="please_enter_code">Please enter Code</string>
     <string name="please_enter_phone_number">يرجى إدخال رقم الهاتف</string>

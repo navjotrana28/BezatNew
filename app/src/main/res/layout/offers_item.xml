@@ -34,6 +34,8 @@
                 android:paddingBottom="@dimen/_5sdp"
                 android:orientation="horizontal">
             <TextView
+                android:textDirection="locale"
+                android:textAlignment="viewStart"
                     android:id="@+id/offer_descp"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
@@ -58,8 +60,10 @@
 
         </LinearLayout>
         <TextView
+            android:textDirection="locale"
+            android:textAlignment="viewEnd"
                 android:id="@+id/actual_price"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
                 android:textColor="@color/white"
