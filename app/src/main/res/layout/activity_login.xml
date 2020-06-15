@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
-        android:hint="@string/user_name_Login"
+        android:hint="@string/enterUserName"
         app:layout_constraintBottom_toTopOf="@id/tilPassword">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
-        android:hint="@string/password_label"
+        android:hint="@string/enterPassword"
         app:layout_constraintBottom_toTopOf="@id/txtForgot">
 
         <com.google.android.material.textfield.TextInputEditText

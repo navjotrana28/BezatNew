@@ -195,7 +195,7 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/code_offer"
+                        android:text="Code"
                         android:gravity="end"
                         android:paddingRight="@dimen/_7sdp"
                         android:textColor="@color/colorPrimary"

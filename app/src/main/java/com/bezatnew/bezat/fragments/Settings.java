@@ -185,7 +185,7 @@ public class Settings extends Fragment implements View.OnClickListener {
             txtChangePassword.setAlpha(0.5f);
             txtContactUs.setAlpha(0.5f);
             txtpushNotification.setAlpha(0.5f);
-            txtLogout.setText(getString(R.string.sign_in));
+            txtLogout.setText(getString(R.string.login));
         } else {
             txtLogout.setText(getString(R.string.sign_out));
         }
@@ -338,7 +338,7 @@ public class Settings extends Fragment implements View.OnClickListener {
             ft.commit();
         }
         if (view.getId() == R.id.txtLogout) {
-            if (txtLogout.getText().equals(getString(R.string.sign_in))) {
+            if (txtLogout.getText().equals(getString(R.string.login))) {
                 new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
                         .setMessage(getActivity().getString(R.string.you_will_take_to_login_screen))
                         .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {
