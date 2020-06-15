@@ -150,7 +150,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:progressBackgroundTint="@color/divider_grey"
         android:progressTint="@color/golden"
-        android:stepSize="1.5"
+        android:stepSize=".5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/note_text"/>
