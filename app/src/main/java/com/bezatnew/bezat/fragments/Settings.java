@@ -108,30 +108,9 @@ public class Settings extends Fragment implements View.OnClickListener {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             setLocale("ar");
-//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/tajawal_regular");
-//            txtMyScan.setTypeface(typeface);
-//            txtChangeLanguage.setTypeface(typeface);
-//            txtChangePassword.setTypeface(typeface);
-//            txtAbout.setTypeface(typeface);
-//            txtTerms.setTypeface(typeface);
-//            txtPrivacy.setTypeface(typeface);
-//            txtContactUs.setTypeface(typeface);
-//            txtFaq.setTypeface(typeface);
-//            txtLogout.setTypeface(typeface);
-//            txtMyFav.setTypeface(typeface);
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-//            Typeface typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/muli_regular");
-//            txtMyScan.setTypeface(typeface);
-//            txtChangeLanguage.setTypeface(typeface);
-//            txtChangePassword.setTypeface(typeface);
-//            txtAbout.setTypeface(typeface);
-//            txtTerms.setTypeface(typeface);
-//            txtPrivacy.setTypeface(typeface);
-//            txtContactUs.setTypeface(typeface);
-//            txtFaq.setTypeface(typeface);
-//            txtLogout.setTypeface(typeface);
-//            txtMyFav.setTypeface(typeface);
+            setLocale("en");
         }
         rootView = inflater.inflate(R.layout.fragment_settings2, container, false);
 
@@ -364,7 +343,7 @@ public class Settings extends Fragment implements View.OnClickListener {
                         .setMessage(getActivity().getString(R.string.you_will_take_to_login_screen))
                         .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                SharedPrefs.deleteSharedPrefs(getActivity());
+//                                SharedPrefs.deleteSharedPrefs(getActivity());
                                 startActivity(new Intent(getActivity(), LoginActivity.class));
                                 getActivity().finish();
                             }
@@ -382,7 +361,7 @@ public class Settings extends Fragment implements View.OnClickListener {
                                 retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"), new LogoutCallback() {
                                     @Override
                                     public void onSuccess(LogoutResponse responseResult) {
-                                        SharedPrefs.deleteSharedPrefs(getActivity());
+//                                        SharedPrefs.deleteSharedPrefs(getActivity());
                                         startActivity(new Intent(getActivity(), LoginActivity.class));
                                         getActivity().finish();
                                     }

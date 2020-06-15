@@ -259,7 +259,7 @@ public class Dashboard extends Fragment {
                         object,
                         response -> {
 
-                            Log.v("NotificationResponse", response + " ");
+                            Log.v("DashBoard Response", response + " ");
                             try {
                                 SharedPrefs.setKey(getActivity(), "userId", response.getString("userID"));
                                 JSONObject userInfo = response.getJSONObject("userInfo");
@@ -492,7 +492,7 @@ public class Dashboard extends Fragment {
                                                 retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"), new LogoutCallback() {
                                                     @Override
                                                     public void onSuccess(LogoutResponse responseResult) {
-                                                        SharedPrefs.deleteSharedPrefs(getActivity());
+//                                                        SharedPrefs.deleteSharedPrefs(getActivity());
                                                         startActivity(new Intent(getActivity(), LoginActivity.class));
                                                         getActivity().finish();
                                                     }
@@ -516,6 +516,7 @@ public class Dashboard extends Fragment {
                                         .setMessage(getString(R.string.you_will_take_to_login_screen))
                                         .setPositiveButton(R.string.yes_label, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
+                                                startActivity(new Intent(getActivity(), LoginActivity.class));
                                                 getActivity().finish();
                                             }
                                         })
