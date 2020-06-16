@@ -8,6 +8,7 @@
 
     <application
         android:name="com.bezatnew.bezat.MyApplication"
+        android:windowSoftInputMode="stateHidden|adjustResize"
         android:allowBackup="true"
         android:autoMirrored="true"
         android:configChanges="orientation"

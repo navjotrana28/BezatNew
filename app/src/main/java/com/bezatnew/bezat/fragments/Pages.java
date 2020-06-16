@@ -122,29 +122,15 @@ public class Pages extends Fragment {
         });
         msg = getArguments().getString("pages");
 
-        if (msg.equalsIgnoreCase("about"))
-        {
-            txtPages.setText(getResources().getString(R.string.about_bezat));
+        if (msg.equalsIgnoreCase("about")) {
             getPages(URLS.Companion.getPAGES_ABOUT());
-        }
-        else if (msg.equalsIgnoreCase("terms"))
-        {
-            txtPages.setText((getResources().getString(R.string.terms_conditions)));
+        } else if (msg.equalsIgnoreCase("terms")) {
             getPages(URLS.Companion.getPAGES_TERMS());
-        }
-        else if (msg.equalsIgnoreCase("privacy"))
-        {
-            txtPages.setText((getResources().getString(R.string.privacy_policy)));
+        } else if (msg.equalsIgnoreCase("privacy")) {
             getPages(URLS.Companion.getPAGES_PRIVACY());
-        }
-        else if (msg.equalsIgnoreCase("contactus"))
-        {
-            txtPages.setText((getResources().getString(R.string.contact_us)));
+        } else if (msg.equalsIgnoreCase("contactus")) {
             getPages(URLS.Companion.getPAGES_CONTACTUS());
-        }
-        else if (msg.equalsIgnoreCase("faq"))
-        {
-            txtPages.setText((getResources().getString(R.string.faq)));
+        } else if (msg.equalsIgnoreCase("faq")) {
             getPages(URLS.Companion.getPAGES_FAQ());
         }
 
@@ -164,12 +150,8 @@ public class Pages extends Fragment {
                             loader.dismiss();
                             Log.v("NotificationResponse", response + " ");
                             try {
-                                String title;
-                                if(url.endsWith("about")){
-                                    title=response.getJSONObject("result").getJSONObject("page").getString("content");
-                                }else{
-                                    title=response.getJSONObject("result").getJSONObject("page").getString("content"+lang);
-                                }
+                                String title = response.getJSONObject("result").getJSONObject("page").getString("content" + lang);
+                                txtPages.setText(response.getJSONObject("result").getJSONObject("page").getString("title" + lang));
                                 web.loadData(title, "text/html", "UTF-8");
                             } catch (JSONException e) {
                                 e.printStackTrace();

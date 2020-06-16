@@ -92,6 +92,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
     TextView etCountry, etDob, etGender;
     TextView txtSave;
     String phone_code;
+    String lang = "";
     private int mYear, mMonth, mDay;
     PostAdapter postAdapter;
     private final int PICK_IMAGE_CAMERA = 1, PICK_IMAGE_GALLERY = 2;
@@ -130,6 +131,13 @@ public class MyProfile extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
+        } else {
+            getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
+        }
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fargment_profile, container, false);
         loader = new Loader(getContext());
@@ -363,8 +371,6 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                 SharedPrefs.setKey(getActivity(), "language_id", language_id);
                                 String language_name = userInfo.getString("language_name");
                                 SharedPrefs.setKey(getActivity(), "language_name", language_name);
-                                String country_ar = userInfo.getString("country_ar");
-                                SharedPrefs.setKey(getActivity(), "country_ar", country_ar);
                                 String gender = userInfo.getString("gender");
                                 SharedPrefs.setKey(getActivity(), "gender", gender);
                                 String dob = userInfo.getString("dob");
@@ -372,7 +378,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                 phone_code = SharedPrefs.getKey(getActivity(), "phone_code");
                                 etName.setText(SharedPrefs.getKey(getActivity(), "user_name"));
                                 etEmail.setText(SharedPrefs.getKey(getActivity(), "email"));
-                                etCountry.setText(SharedPrefs.getKey(getActivity(), "country"));
+                                etCountry.setText(SharedPrefs.getKey(getActivity(), "country" + lang));
                                 etAddress.setText(SharedPrefs.getKey(getActivity(), "address"));
                                 etGender.setText(SharedPrefs.getKey(getActivity(), "gender"));
                                 etDob.setText(SharedPrefs.getKey(getActivity(), "dob"));

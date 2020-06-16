@@ -2,7 +2,6 @@
     <string name="app_name">Bezat</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="sign_up">Sign Up</string>
-    <string name="login">Login</string>
     <string name="password">Password*</string>
     <string name="password_label">Password</string>
     <string name="user_name">Email/Phone Number</string>
@@ -105,7 +104,8 @@
     </string>
     <string name="customer_qr_code">Customer QR Code</string>
     <string name="customer_id">Customer ID</string>
-    <string name="bill_no">Bill no:</string>
+    <string name="bill_no">Bill No:</string>
+    <string name="billNo">Bill No:</string>
     <string name="store">Store</string>
     <string name="offers">Offers</string>
     <string name="logout_confirm">Are you sure, you want to SignOut?</string>
@@ -127,7 +127,7 @@
     <string name="skip_login">SKIP</string>
     <string name="you_will_take_to_login_screen">You will be taken to the login screen, okay?</string>
     <string name="search_by_retailer_name"><font size="15">Search by Retailer</font></string>
-    <string name="search_by_retailer_name_caps"><font size="15">SEARCH BY RETAILER NAME</font></string>
+    <string name="searchbyretailername"><font size="15">SEARCH BY RETAILER NAME</font></string>
     <string name="choose_retailer_here"><font size="18">Choose retailer here</font></string>
     <string name="note_your_feedback_will_be_sent_to_the_retailer">Note: Your feedback will be sent to the retailer</string>
     <string name="rate_your_star">Rate your star</string>
@@ -161,7 +161,7 @@
     <string name="no_winners_available">Winners not found</string>
     <string name="no_coupons_available">No Coupons Available</string>
     <string name="no_offer_found">No Offer found</string>
-    <string name="type_your_feedback">Type your feedback</string>
+    <string name="enterFeedback">Type your feedback</string>
 
     <string-array name="array_languages">
         <item></item>
@@ -171,15 +171,17 @@
 
     <string name="arabic">عربى</string>
 
-    <string name="number_of_coupons">No. of coupons: </string>
+    <string name="noCoupons">No. of Coupons</string>
     <string name="coupons">Coupons: </string>
-    <string name="sign_in">Sign In</string>
+    <string name="login">Sign In</string>
     <string name="strings" translatable="false">\@string/done</string>
     <string name="please_enter_code">Please enter Code</string>
     <string name="please_enter_phone_number">Please enter Phone Number</string>
     <string name="please_enter_password">Please Enter Password*</string>
     <string name="please_enter_confirm_password">Please enter Confirm Password</string>
     <string name="passwords_dont_match">Password and Confirm Password does not match</string>
+    <string name="enterUserName">Email/ Phone Number</string>
+    <string name="enterPassword">Password</string>
 
 
 </resources>

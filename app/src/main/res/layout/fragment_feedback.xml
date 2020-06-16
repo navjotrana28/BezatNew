@@ -116,7 +116,7 @@
         android:layout_marginTop="8dp"
         android:paddingStart="5dp"
         android:paddingTop="5dp"
-        android:hint="@string/type_your_feedback"
+        android:hint="@string/enterFeedback"
         android:textColorHint="@color/cardview_shadow_start_color"
         android:background="@color/transparent"
         android:gravity="start"
