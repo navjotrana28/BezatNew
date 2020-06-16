@@ -73,19 +73,21 @@
                         android:text="@string/please_enter_the_otp_we_have_sent_to_your_registered_phone_number"/>
 
 
-                <EditText
-                        android:id="@+id/etOTP"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_65sdp"
-                        android:hint="@string/otp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/cardview_shadow_start_color"
-                        android:textSize="@dimen/_14sdp"
+            <EditText
+                android:theme="@style/HomePageTheme"
+                android:id="@+id/etOTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_65sdp"
+                android:backgroundTint="@color/colorPrimary"
+                android:hint="@string/otp"
+                android:inputType="number"
+                android:paddingStart="@dimen/_10sdp"
 
-                        android:paddingStart="@dimen/_10sdp"
-                        android:inputType="number"
-                        android:backgroundTint="@color/colorPrimary"/>
+                android:textColor="@color/black"
+                android:textColorHint="@color/cardview_shadow_start_color"
+                android:textSize="@dimen/_14sdp" />
+
             <LinearLayout
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_width="wrap_content"
@@ -110,14 +112,15 @@
             </LinearLayout>
 
             <Button
-                    android:id="@+id/btnSave"
-                    android:layout_marginTop="@dimen/_70sdp"
-                    android:layout_width="@dimen/_196sdp"
-                    android:layout_height="@dimen/_44sdp"
-                    android:text="@string/save"
-                    android:fontFamily="@font/tajawal_bold"
-                    android:textSize="@dimen/_14sdp"
-                    android:backgroundTint="@color/colorPrimary"/>
+                android:textColor="@color/white"
+                android:id="@+id/btnSave"
+                android:layout_width="@dimen/_196sdp"
+                android:layout_height="@dimen/_44sdp"
+                android:layout_marginTop="@dimen/_70sdp"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/tajawal_bold"
+                android:text="@string/save"
+                android:textSize="@dimen/_14sdp" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

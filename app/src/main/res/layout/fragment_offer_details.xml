@@ -188,6 +188,7 @@
                     android:layout_height="wrap_content" />
 
                 <LinearLayout
+                    android:layoutDirection="ltr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -196,8 +197,9 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Code"
-                        android:gravity="end"
+                        android:text="Code: "
+                        android:textDirection="locale"
+                        android:textAlignment="viewEnd"
                         android:paddingRight="@dimen/_7sdp"
                         android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/tajawal_regular" />
@@ -215,18 +217,18 @@
                 </LinearLayout>
 
                 <Button
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="16dp"
                     android:id="@+id/btnRedeem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/redeem_in_offer"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/colorPrimary"
                     android:fontFamily="@font/tajawal_bold"
-                    android:textSize="@dimen/_14sdp"
+                    android:padding="@dimen/_7sdp"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"
-                    android:padding="@dimen/_7sdp"
-                    android:backgroundTint="@color/colorPrimary" />
+                    android:text="@string/redeem_in_offer"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
         </ScrollView>
 
