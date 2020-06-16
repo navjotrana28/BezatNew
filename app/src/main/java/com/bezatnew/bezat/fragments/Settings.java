@@ -360,7 +360,7 @@ public class Settings extends Fragment implements View.OnClickListener {
         }
         if (view.getId() == R.id.txtLogout) {
             if (txtLogout.getText().equals(getString(R.string.sign_in))) {
-                new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
+                new AlertDialog.Builder(getActivity())
                         .setMessage(getActivity().getString(R.string.you_will_take_to_login_screen))
                         .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -374,7 +374,7 @@ public class Settings extends Fragment implements View.OnClickListener {
                         .show();
 
             } else {
-                new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
+                new AlertDialog.Builder(getActivity())
                         .setMessage(getActivity().getString(R.string.logout_confirm))
                         .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {

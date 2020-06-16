@@ -481,7 +481,7 @@ public class Dashboard extends Fragment {
                         public void onClick(View view) {
                             if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.sign_out))) {
-                                new AlertDialog.Builder(getActivity(), R.style.DialogTheme)
+                                new AlertDialog.Builder(getActivity())
                                         .setMessage(getActivity().getString(R.string.logout_confirm))
 
                                         // Specifying a listener allows you to take an action before dismissing the dialog.
@@ -512,7 +512,7 @@ public class Dashboard extends Fragment {
 
                             } else if (dashBoardItems.get(getAdapterPosition())
                                     .getName().equalsIgnoreCase(getString(R.string.sign_in))) {
-                                new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme)
+                                new AlertDialog.Builder(getActivity())
                                         .setMessage(getString(R.string.you_will_take_to_login_screen))
                                         .setPositiveButton(R.string.yes_label, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {

@@ -36,6 +36,7 @@
                 android:src="@mipmap/ic_back" />
 
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/txtPages"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
@@ -214,6 +215,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:textColor="@color/white"
                     android:layout_marginBottom="16dp"
                     android:id="@+id/btnRedeem"
                     android:layout_width="wrap_content"
