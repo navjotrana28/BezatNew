@@ -178,12 +178,22 @@ public class Homepage extends AppCompatActivity {
         frameLayout = findViewById(R.id.container);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         viewPager = findViewById(R.id.viewPagerhome);
+        viewPager.setOffscreenPageLimit(0);
 
-        if (lang.equals("a")) {
-            addTabsArabic(viewPager);
-        } else {
-            addTabsEnglish(viewPager);
+        if (SharedPrefs.isGuestUser(getApplicationContext())){
+            if (lang.equals("a")) {
+                addTabsArabicGuest(viewPager);
+            } else {
+                addTabsEnglishGuest(viewPager);
+            }
+        }else{
+            if (lang.equals("a")) {
+                addTabsArabic(viewPager);
+            } else {
+                addTabsEnglish(viewPager);
+            }
         }
+
 
         frameLayout.setClickable(false);
         setPageChangeListener(navView);
@@ -198,21 +208,54 @@ public class Homepage extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if (prevMenuItem != null)
-                    prevMenuItem.setChecked(false);
-                else
-                    navView.getMenu().getItem(0).setChecked(false);
 
-                if (lang.equals("a")) {
-                    navView.getMenu().getItem(3 - position).setChecked(true);
-                } else {
-                    navView.getMenu().getItem(position).setChecked(true);
+                if (SharedPrefs.isGuestUser(getApplicationContext())){
+                    if (prevMenuItem != null)
+                        prevMenuItem.setChecked(false);
+                    else
+                        navView.getMenu().getItem(0).setChecked(false);
+
+                    if (lang.equals("a")) {
+                        if(position==0){
+                            navView.getMenu().getItem(3).setChecked(true);
+                        }else{
+                            navView.getMenu().getItem(0).setChecked(true);
+                        }
+                    } else {
+                        if(position==0){
+                            navView.getMenu().getItem(0).setChecked(true);
+                        }else{
+                            navView.getMenu().getItem(3).setChecked(true);
+                        }
+
+                    }
+                    if(position==0){
+                        prevMenuItem = navView.getMenu().getItem(0);
+                    }else{
+                        prevMenuItem = navView.getMenu().getItem(3);
+                    }
+
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new BlankFragment());
+                    ft.commit();
+                    frameLayout.setClickable(false);
+                }else{
+                    if (prevMenuItem != null)
+                        prevMenuItem.setChecked(false);
+                    else
+                        navView.getMenu().getItem(0).setChecked(false);
+
+                    if (lang.equals("a")) {
+                        navView.getMenu().getItem(3 - position).setChecked(true);
+                    } else {
+                        navView.getMenu().getItem(position).setChecked(true);
+                    }
+                    prevMenuItem = navView.getMenu().getItem(position);
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, new BlankFragment());
+                    ft.commit();
+                    frameLayout.setClickable(false);
                 }
-                prevMenuItem = navView.getMenu().getItem(position);
-                ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new BlankFragment());
-                ft.commit();
-                frameLayout.setClickable(false);
             }
 
             @Override
@@ -222,6 +265,14 @@ public class Homepage extends AppCompatActivity {
         });
     }
 
+
+    private void addTabsEnglishGuest(ViewPager viewPager) {
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new Dashboard(), " ");
+        adapter.addFrag(new Settings(), " ");
+        viewPager.setAdapter(adapter);
+    }
+
     private void addTabsEnglish(ViewPager viewPager) {
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new Dashboard(), " ");
@@ -229,6 +280,14 @@ public class Homepage extends AppCompatActivity {
         adapter.addFrag(new MyProfile(), " ");
         adapter.addFrag(new Settings(), " ");
         viewPager.setAdapter(adapter);
+    }
+
+    private void addTabsArabicGuest(ViewPager viewPager) {
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new Settings(), " ");
+        adapter.addFrag(new Dashboard(), " ");
+        viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(3);
     }
 
     private void addTabsArabic(ViewPager viewPager) {

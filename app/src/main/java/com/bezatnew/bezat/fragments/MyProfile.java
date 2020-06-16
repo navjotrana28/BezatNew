@@ -140,6 +140,12 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         }
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fargment_profile, container, false);
+
+        if(SharedPrefs.isGuestUser(getActivity().getBaseContext())){
+            toastMsgHere();
+            return rootView;
+        }
+
         loader = new Loader(getContext());
         imgProfile = rootView.findViewById(R.id.imgProfile);
         etName = rootView.findViewById(R.id.etName);
@@ -177,6 +183,11 @@ public class MyProfile extends Fragment implements View.OnClickListener {
 
         onCLickEditImage(editButtonLayout);
         return rootView;
+    }
+
+    private void toastMsgHere() {
+        Toast.makeText(getActivity().getBaseContext(), getString(R.string.sign_in_to_access_this_action),
+                Toast.LENGTH_LONG).show();
     }
 
 
