@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:theme="@style/HomePageTheme"
     tools:context=".activities.TotalCoupons">
 
     <Toolbar
@@ -67,10 +66,9 @@
             android:layout_height="50dp"
             android:background="@drawable/round_corners"
             android:gravity="center"
-            android:popupBackground="@color/white"
+            android:popupTheme="@style/MatchSpinnerTheme"
             android:popupElevation="0dp"
             android:textAlignment="center"
-            android:spinnerMode="dropdown"
             android:theme="@style/MatchSpinnerTheme">
 
         </Spinner>
