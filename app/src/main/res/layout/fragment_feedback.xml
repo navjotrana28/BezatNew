@@ -41,6 +41,7 @@
             </LinearLayout>
 
             <TextView
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -76,24 +77,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
-            <com.bezatnew.bezat.InstantAutoComplete
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:id="@+id/suggestionBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|center_vertical"
-                android:completionThreshold="1"
-                android:hint="@string/choose_retailer_here"
-                android:paddingEnd="30dp"
-                android:maxLines="1"
-                android:background="@drawable/editback"
-                android:elevation="0dp"
-                android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/dark_grey"
-                android:textSize="14dp" />
+        <com.bezatnew.bezat.InstantAutoComplete
+            android:id="@+id/suggestionBox"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/editback"
+            android:completionThreshold="1"
+            android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
+            android:elevation="0dp"
+            android:gravity="start|center_vertical"
+            android:hint="@string/choose_retailer_here"
+            android:maxLines="1"
+            android:paddingEnd="30dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/dark_grey"
+            android:textSize="14dp" />
 
 
     </LinearLayout>
@@ -109,6 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/category">
 
     <EditText
+        android:theme="@style/HomePageTheme"
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -150,7 +151,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:progressBackgroundTint="@color/divider_grey"
         android:progressTint="@color/golden"
-        android:stepSize="1.5"
+        android:stepSize=".5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/note_text"/>

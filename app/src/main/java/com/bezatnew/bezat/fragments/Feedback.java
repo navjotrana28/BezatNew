@@ -99,10 +99,13 @@ public class Feedback extends Fragment {
         button.setOnClickListener(v -> {
             if (text.getText().toString().matches("") || suggestion_box.getEditableText().toString().matches("")) {
                 Toast.makeText(getActivity(), getString(R.string.fill_the_form_first), Toast.LENGTH_SHORT).show();
+            } else if(ratingBar.getRating()==0){
+                ContactUsDialog contactUsDialog=new ContactUsDialog("Please enter rating");
+                contactUsDialog.show(getFragmentManager(),"ContantUs Dialog");
             } else {
                 FeedbackRequest request = new FeedbackRequest();
                 request.setFeedback(text.getText().toString());
-                request.setRatings(String.valueOf(ratingBar.getNumStars()));
+                request.setRatings(String.valueOf(ratingBar.getRating()));
                 request.setUserId(SharedPrefs.getKey(getActivity(), "userId"));
                 request.setRetailerId(getRetailerId());
                 feedbackToServer(request);

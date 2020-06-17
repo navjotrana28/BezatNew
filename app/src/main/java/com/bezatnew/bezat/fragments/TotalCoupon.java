@@ -2,10 +2,12 @@ package com.bezatnew.bezat.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -123,17 +125,18 @@ public class TotalCoupon extends Fragment {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang = "_ar";
+            setLocale("ar");
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
-
+            setLocale("en");
         }
         rootView = inflater.inflate(R.layout.fragment_total_coupon, container, false);
         recycleTotalCoupons = rootView.findViewById(R.id.recycleTotalCoupons);
         txtDate = rootView.findViewById(R.id.txtDate);
         imgSearch = rootView.findViewById(R.id.imgSearch);
         imgBack = rootView.findViewById(R.id.imgBack);
-        if(lang.equals("_ar")){
+        if (lang.equals("_ar")) {
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
         }
         searchView = rootView.findViewById(R.id.search_total_coupons);
@@ -210,7 +213,7 @@ public class TotalCoupon extends Fragment {
                         .colorCancel(Color.parseColor("#ffffff")) //color of cancel button
                         .colorConfirm(Color.parseColor("#ffffff"))//color of confirm button
                         .minYear(1990) //min year in loop
-                        .maxYear(Integer.parseInt(currentDate.substring(0, 4))+1) // max year in loop
+                        .maxYear(Integer.parseInt(currentDate.substring(0, 4)) + 1) // max year in loop
 
                         .build();
                 pickerPopWin.showPopWin(getActivity());
@@ -355,16 +358,15 @@ public class TotalCoupon extends Fragment {
 
                 holder.ll.setFlexDirection(FlexDirection.ROW);
                 holder.ll.setFlexWrap(FlexWrap.WRAP);
-                for(int i=0;i<arr.length;i++){
+                for (int i = 0; i < arr.length; i++) {
                     TextView valueTV = new TextView(getActivity().getBaseContext());
                     valueTV.setText(arr[i]);
                     valueTV.setTextColor(getResources().getColor(R.color.colorPrimary));
                     valueTV.setBackgroundColor(getResources().getColor(R.color.dark_grey));
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    params.setMargins(10,10,10,10);
-                    valueTV.setPadding(8,0,8,0);
+                    params.setMargins(10, 10, 10, 10);
+                    valueTV.setPadding(8, 0, 8, 0);
                     valueTV.setLayoutParams(params);
-
 
 
                     ((FlexboxLayout) holder.ll).addView(valueTV);
@@ -413,5 +415,15 @@ public class TotalCoupon extends Fragment {
                 });
             }
         }
+    }
+
+    public void setLocale(String lang) {
+
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }

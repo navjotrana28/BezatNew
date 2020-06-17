@@ -298,7 +298,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             startActivityForResult(intent, 0)
         } else {
             if (response != null) {
-                androidx.appcompat.app.AlertDialog.Builder(this, R.style.DialogTheme)
+                androidx.appcompat.app.AlertDialog.Builder(this)
                     .setMessage(response.error_msg.toString())
                     .setNegativeButton(R.string.ok, null)
                     .setIcon(android.R.drawable.ic_dialog_alert)

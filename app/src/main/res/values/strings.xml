@@ -104,7 +104,8 @@
     </string>
     <string name="customer_qr_code">Customer QR Code</string>
     <string name="customer_id">Customer ID</string>
-    <string name="billNo">Bill No:</string>
+    <string name="bill_no">Bill No</string>
+    <string name="billNo">Bill No</string>
     <string name="store">Store</string>
     <string name="offers">Offers</string>
     <string name="logout_confirm">Are you sure, you want to SignOut?</string>
@@ -171,7 +172,7 @@
     <string name="arabic">عربى</string>
 
     <string name="noCoupons">No. of Coupons</string>
-    <string name="coupons">Coupons: </string>
+    <string name="coupons">Coupons</string>
     <string name="login">Sign In</string>
     <string name="strings" translatable="false">\@string/done</string>
     <string name="please_enter_code">Please enter Code</string>

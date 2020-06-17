@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.OrientationHelper;
@@ -96,11 +98,22 @@ public class Notification extends Fragment {
             lang = "";
         }
         rootView = inflater.inflate(R.layout.fragment_notification, container, false);
+
+        if(SharedPrefs.isGuestUser(getActivity().getBaseContext())){
+            toastMsgHere();
+            return rootView;
+        }
+
         recNotiFicationList = rootView.findViewById(R.id.recNotiFicationList);
         loader = new Loader(getContext());
         loader.show();
         getNotificationList();
         return rootView;
+    }
+
+    private void toastMsgHere() {
+        Toast.makeText(getActivity().getBaseContext(), getString(R.string.sign_in_to_access_this_action),
+                Toast.LENGTH_LONG).show();
     }
 
     private void getNotificationList() {

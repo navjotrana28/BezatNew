@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.bezatnew.bezat.activities
 
 import android.content.Intent
@@ -93,6 +95,5 @@ class LoginActivity : AppCompatActivity() {
         val conf = res.configuration
         conf.locale = myLocale
         res.updateConfiguration(conf, dm)
-
     }
 }

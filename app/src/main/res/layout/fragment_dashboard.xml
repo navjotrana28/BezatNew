@@ -35,14 +35,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <com.google.android.material.tabs.TabLayout
-                android:layout_gravity="center"
                 android:id="@+id/indicator"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
+                android:layout_height="8dp"
+                android:layout_gravity="center"
+                android:layout_margin="0dp"
+                android:padding="1dp"
                 app:tabBackground="@drawable/tab_selector"
-                app:tabGravity="center"/>
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp"/>
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle"

@@ -20,10 +20,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:textColor="@color/white"
         android:id="@+id/skip_button"
         android:layout_width="80dp"
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/icon_size_moderate"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/button_background"
         android:text="@string/skip_login"
         android:textSize="14sp"
@@ -32,6 +35,8 @@
         app:layout_constraintTop_toTopOf="@id/topImage" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:id="@+id/tilEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,6 +45,7 @@
         app:layout_constraintBottom_toTopOf="@id/tilPassword">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/white"
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,6 +57,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:id="@+id/tilPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,6 +67,7 @@
         app:layout_constraintBottom_toTopOf="@id/txtForgot">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/white"
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,6 +79,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/txtForgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,7 +99,7 @@
         android:background="@drawable/bg_login"
         android:paddingStart="100dp"
         android:paddingEnd="100dp"
-        android:text="@string/login"
+        android:text="Login"
         android:textAllCaps="false"
         android:textAlignment="center"
         android:fontFamily="@font/tajawal_regular"
@@ -100,6 +110,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

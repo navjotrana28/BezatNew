@@ -31,6 +31,7 @@
                     android:layout_height="@dimen/_28sdp"
                     android:src="@mipmap/ic_back"/>
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/txtPage"
                     android:layout_weight="1"
                     android:layout_width="match_parent"

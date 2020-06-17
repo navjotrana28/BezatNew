@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content">
 
             <TextView
+                android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:fontFamily="@font/tajawal_medium"
@@ -29,6 +30,7 @@
                     android:textSize="@dimen/default_size" />
 
             <TextView
+                android:textColor="@color/white"
                     android:id="@+id/txtSave"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -143,11 +145,13 @@
                 style="@style/field"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="57dp"
-                android:textDirection="locale"
+                android:hint="@string/name"
                 android:textAlignment="viewStart"
-                android:hint="@string/name" />
+                android:textDirection="locale"
+                android:theme="@style/HomePageTheme" />
 
             <EditText
+                android:theme="@style/HomePageTheme"
                 android:textDirection="locale"
                 android:textAlignment="viewStart"
                     android:id="@+id/etEmail"
@@ -178,6 +182,7 @@
                     android:background="@color/colorPrimary" />
 
             <EditText
+                android:theme="@style/HomePageTheme"
                 android:textDirection="locale"
                 android:textAlignment="viewStart"
                     android:id="@+id/etPhone"
@@ -187,6 +192,7 @@
                 android:inputType="number"/>
 
             <EditText
+                android:theme="@style/HomePageTheme"
                 android:textDirection="locale"
                 android:textAlignment="viewStart"
                     android:id="@+id/etAddress"
