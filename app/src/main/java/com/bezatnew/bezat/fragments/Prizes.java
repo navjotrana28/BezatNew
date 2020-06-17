@@ -393,7 +393,7 @@ public class Prizes extends Fragment implements View.OnClickListener {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
                 holder.txtPrizeName.setText(jsonArray.getJSONObject(position).getString("raffle_name" + lang));
-                holder.txtPrizePrice.setText("$"+jsonArray.getJSONObject(position).getString("prize" + lang));
+                holder.txtPrizePrice.setText(jsonArray.getJSONObject(position).getString("prize" + lang));
                 Picasso.get().load(jsonArray.getJSONObject(position).getString("img")).into(holder.imageView);
                 Log.d("---url---",jsonArray.getJSONObject(position).getString("img"));
             } catch (Exception e) {
@@ -471,7 +471,7 @@ public class Prizes extends Fragment implements View.OnClickListener {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             try {
                 holder.txtPrizeName.setText(jsonArray.getJSONObject(position).getString("raffle_name" + lang));
-                holder.txtPrizePrice.setText("$"+jsonArray.getJSONObject(position).getString("prize" + lang));
+                holder.txtPrizePrice.setText(jsonArray.getJSONObject(position).getString("prize" + lang));
                 Picasso.get().load(jsonArray.getJSONObject(position).getString("img")).into(holder.imageView);
 
             } catch (Exception e) {
