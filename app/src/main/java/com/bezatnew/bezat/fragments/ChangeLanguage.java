@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -18,9 +20,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.activities.Homepage;
@@ -51,9 +50,10 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
     private OnFragmentInteractionListener mListener;
     View rootView;
     EditText etLanguage;
-    TextView txtEnglish,txtArabic;
+    TextView txtEnglish, txtArabic;
     ImageView imgBack;
     String lang = "";
+
     public ChangeLanguage() {
         // Required empty public constructor
     }
@@ -91,21 +91,21 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
 
         container.setClickable(true);
 
-        if (SharedPrefs.getKey(getActivity(),"selectedlanguage").contains("ar")) {
+        if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            lang="_ar";
+            lang = "_ar";
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-            lang="";
+            lang = "";
 
         }
 
-        rootView= inflater.inflate(R.layout.fragment_change_language, container, false);
-        etLanguage=rootView.findViewById(R.id.etLanguage);
+        rootView = inflater.inflate(R.layout.fragment_change_language, container, false);
+        etLanguage = rootView.findViewById(R.id.etLanguage);
         txtArabic = rootView.findViewById(R.id.txtArabic);
         txtEnglish = rootView.findViewById(R.id.txtEnglish);
         imgBack = rootView.findViewById(R.id.imgBack);
-        if(lang.equals("_ar")){
+        if (lang.equals("_ar")) {
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
         }
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +127,7 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getBaseContext(),
                 R.layout.spinner_item_language,
                 R.id.tv_language,
-                l){
+                l) {
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
@@ -182,7 +182,8 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
                 }
                 return view;
             }
-        }*/;
+        }*/
+        ;
         adapter.setDropDownViewResource(R.layout.spinner_item_language);
         spinner.setAdapter(adapter);
         spinner.setPrompt("Change language");
@@ -191,12 +192,12 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0){
+                if (position == 0) {
 
-                }else if(position==1){
+                } else if (position == 1) {
                     setLocale("ar");
 
-                }else{
+                } else {
                     setLocale("en");
                 }
             }
@@ -227,19 +228,18 @@ public class ChangeLanguage extends Fragment implements View.OnClickListener {
         super.onDetach();
         mListener = null;
     }
+
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.txtEnglish)
-        {
+        if (view.getId() == R.id.txtEnglish) {
             setLocale("en");
-        }
-        else if (view.getId() == R.id.txtArabic)
-        {
+        } else if (view.getId() == R.id.txtArabic) {
             setLocale("ar");
         }
     }
+
     public void setLocale(String lang) {
-        SharedPrefs.setKey(getActivity(),"selectedlanguage",lang);
+        SharedPrefs.setKey(getActivity(), "selectedlanguage", lang);
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
