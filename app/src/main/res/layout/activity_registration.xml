@@ -195,13 +195,13 @@
                 android:visibility="invisible">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:theme="@style/HomePageTheme"
                     android:id="@+id/etGender"
                     style="@style/field"
                     android:focusable="false"
                     android:focusableInTouchMode="true"
                     android:hint="@string/gender_signup"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:theme="@style/HomePageTheme" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -214,12 +214,12 @@
                 android:visibility="invisible">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:theme="@style/HomePageTheme"
                     android:id="@+id/etEmail"
                     style="@style/field"
                     android:hint="@string/email_signup"
                     android:inputType="textEmailAddress"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:theme="@style/HomePageTheme" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

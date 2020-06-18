@@ -64,7 +64,9 @@ fun EditText.convertToDatePicker(postAction: ((String) -> Unit)? = null) {
             "$y-${if (m > 9) "$m" else "0$m"}-${if (d < 10) "0$d" else "$d"}";setText(tmp); error =
         null; postAction?.invoke(tmp)
     }, 2001, 1, 1)
-    dialog.datePicker.maxDate = System.currentTimeMillis() - 536467742000
+    val calendar = Calendar.getInstance()
+    calendar.add(Calendar.YEAR, -17)
+    dialog.datePicker.maxDate = calendar.timeInMillis
     setOnClickListener { dialog.show() }
     setOnFocusChangeListener { _, hasFocus -> if (hasFocus) dialog.show() }
 }
