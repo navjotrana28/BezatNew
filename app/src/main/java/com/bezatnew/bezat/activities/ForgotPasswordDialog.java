@@ -4,8 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import com.bezatnew.bezat.utils.SharedPrefs;
 
 public class ForgotPasswordDialog extends AppCompatDialogFragment {
     @Override
