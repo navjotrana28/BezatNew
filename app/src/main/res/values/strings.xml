@@ -120,7 +120,7 @@
     <string name="get_feedback">Feedback</string>
     <string name="send_contact_us">SEND</string>
     <string name="get_name">NAME:</string>
-    <string name="get_name_signup">NAME*</string>
+    <string name="get_name_signup">Name*</string>
     <string name="get_email">EMAIL:</string>
     <string name="get_comments">COMMENTS:</string>
     <string name="user_name_Login">Email / Phone Number</string>
