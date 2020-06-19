@@ -59,6 +59,9 @@ public class ChangePassword extends AppCompatActivity {
 
         btnSave = findViewById(R.id.btnSave);
         imgBack = findViewById(R.id.imgBack);
+        if (lang.equals("_ar")) {
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
 
         loader = new Loader(context);
         loader.dismiss();

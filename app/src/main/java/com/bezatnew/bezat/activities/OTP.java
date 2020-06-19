@@ -69,21 +69,28 @@ public class OTP extends AppCompatActivity implements View.OnClickListener,
     Context context = OTP.this;
     TextView txtResend;
     String forgot = "";
+    String lang = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (SharedPrefs.getKey(this, "selectedlanguage").contains("ar")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            lang = "_ar";
             setLocale("ar");
+
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            lang = "";
         }
         setContentView(R.layout.activity_otp);
         etOTP = findViewById(R.id.etOTP);
         btnSave = findViewById(R.id.btnSave);
         txtResend = findViewById(R.id.txtResend);
         imgBack=findViewById(R.id.imgBack);
+        if (lang.equals("_ar")) {
+            imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
         btnSave.setOnClickListener(this);
         txtResend.setOnClickListener(this);
 
