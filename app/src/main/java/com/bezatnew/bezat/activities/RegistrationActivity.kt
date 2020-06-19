@@ -74,7 +74,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
         etGender.setOnClickListener {
             //            etGender.convertToSpinner(listOf("Female", "Male"), { "" }, { it }, {})
-            val dialog = Dialog(this!!, R.style.Theme_AppCompat_Light_Dialog)
+            val dialog = Dialog(this, R.style.Theme_AppCompat_Light_Dialog)
             dialog.setContentView(R.layout.gender_dialog)
             dialog.show()
             val txtFemale = dialog.findViewById(R.id.txtFemale) as TextView

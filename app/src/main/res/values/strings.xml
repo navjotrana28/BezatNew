@@ -26,7 +26,7 @@
     <string name="push_notification">Push Notification</string>
     <string name="name">NAME:</string>
     <string name="email">EMAIL</string>
-    <string name="email_signup">EMAIL*</string>
+    <string name="email_signup">Email*</string>
     <string name="country">Please select country</string>
     <string name="select_country">Please select country</string>
     <string name="country_label">Country*</string>
@@ -120,7 +120,7 @@
     <string name="get_feedback">Feedback</string>
     <string name="send_contact_us">SEND</string>
     <string name="get_name">NAME:</string>
-    <string name="get_name_signup">NAME*</string>
+    <string name="get_name_signup">Name*</string>
     <string name="get_email">EMAIL:</string>
     <string name="get_comments">COMMENTS:</string>
     <string name="user_name_Login">Email / Phone Number</string>
