@@ -84,7 +84,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (etPhone.getText().toString().isEmpty()) {
+                if (etPhone.getText().toString().isEmpty() || etCode.getText().toString().isEmpty()) {
                     dialog();
                 } else {
                     getOTP(etPhone.getText().toString());
@@ -101,8 +101,29 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     }
 
     public void dialog() {
-        ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog();
-        forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
+        if (lang==""){
+            if (etPhone.getText().toString().isEmpty() && etCode.getText().toString().isEmpty()) {
+                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter phone number");
+                forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
+            }else if (etPhone.getText().toString().isEmpty()){
+                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter phone number");
+                forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
+            }else if (etCode.getText().toString().isEmpty()){
+                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter Code");
+                forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
+            }
+    }else {
+            if (etPhone.getText().toString().isEmpty() && etCode.getText().toString().isEmpty()) {
+                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("يرجى إدخال رقم الهاتف");
+                forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
+            }else if (etPhone.getText().toString().isEmpty()){
+                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("يرجى إدخال رقم الهاتف");
+                forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
+            }else if (etCode.getText().toString().isEmpty()){
+                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter Code");
+                forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
+            }
+        }
     }
 
     private void getOTP(String phone) {
