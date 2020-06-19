@@ -3,25 +3,23 @@ package com.bezatnew.bezat.fragments;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -36,7 +34,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.bezatnew.bezat.ClientRetrofit;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
-import com.bezatnew.bezat.activities.ForgotPassword;
 import com.bezatnew.bezat.activities.LoginActivity;
 import com.bezatnew.bezat.adapter.SliderAdapter;
 import com.bezatnew.bezat.interfaces.LogoutCallback;
@@ -46,8 +43,6 @@ import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.google.android.material.tabs.TabLayout;
 
-import net.glxn.qrgen.android.QRCode;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,6 +50,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -86,6 +82,7 @@ public class Dashboard extends Fragment {
     List<DashBoardItem> dashBoardItem;
     View rootView;
     String lang = "";
+    String language = "";
     boolean isGuestUser;
     String signOutLabel;
 
@@ -120,9 +117,13 @@ public class Dashboard extends Fragment {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             lang = "_ar";
+            setLocale("ar");
+            language = "ar";
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             lang = "";
+            setLocale("en");
+            language = "en";
         }
         rootView = inflater.inflate(R.layout.fragment_dashboard, container, false);
         initSignOutLabel();
@@ -492,7 +493,8 @@ public class Dashboard extends Fragment {
                                                 retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"), new LogoutCallback() {
                                                     @Override
                                                     public void onSuccess(LogoutResponse responseResult) {
-//                                                        SharedPrefs.deleteSharedPrefs(getActivity());
+                                                        SharedPrefs.deleteSharedPrefs(getActivity());
+                                                        setLocale(language);
                                                         startActivity(new Intent(getActivity(), LoginActivity.class));
                                                         getActivity().finish();
                                                     }
@@ -607,5 +609,15 @@ public class Dashboard extends Fragment {
                 Toast.LENGTH_LONG).show();
     }
 
+    public void setLocale(String lang) {
+        SharedPrefs.setKey(getActivity(), "selectedlanguage", lang);
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+
+    }
 
 }

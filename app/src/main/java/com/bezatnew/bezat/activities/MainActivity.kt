@@ -10,6 +10,7 @@ import com.bezatnew.bezat.R
 import com.bezatnew.bezat.utils.SharedPrefs
 import com.bezatnew.bezat.utils.URLS
 import com.github.kittinunf.fuel.core.FuelManager
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,8 +19,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main);
         if (SharedPrefs.getKey(this, "selectedlanguage").contains("ar")) {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
+            setLocale("ar")
         } else {
             window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR
+            setLocale("en")
         }
         Handler(Looper.getMainLooper()).postDelayed({
             if (SharedPrefs.getKey(this@MainActivity, "LoggedIn").equals("true")) {
@@ -35,6 +38,16 @@ class MainActivity : AppCompatActivity() {
             basePath = URLS.BASE_PATH
             baseHeaders = mapOf("apiKey" to "12345678")
         }
+    }
+
+    fun setLocale(lang: String) {
+        SharedPrefs.setKey(this, "selectedlanguage", lang)
+        val myLocale = Locale(lang)
+        val res = resources
+        val dm = res.displayMetrics
+        val conf = res.configuration
+        conf.locale = myLocale
+        res.updateConfiguration(conf, dm)
     }
 
 }

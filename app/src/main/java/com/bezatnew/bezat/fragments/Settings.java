@@ -60,6 +60,7 @@ public class Settings extends Fragment implements View.OnClickListener {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String lang = "";
     Switch switches;
     TextView txtMyScan, txtChangePassword, txtAbout, txtTerms,
             txtPrivacy, txtContactUs, txtFaq, txtChangeLanguage,
@@ -108,9 +109,11 @@ public class Settings extends Fragment implements View.OnClickListener {
         if (SharedPrefs.getKey(getActivity(), "selectedlanguage").contains("ar")) {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             setLocale("ar");
+            lang = "ar";
         } else {
             getActivity().getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             setLocale("en");
+            lang = "en";
         }
         rootView = inflater.inflate(R.layout.fragment_settings2, container, false);
 
@@ -343,7 +346,6 @@ public class Settings extends Fragment implements View.OnClickListener {
                         .setMessage(getActivity().getString(R.string.you_will_take_to_login_screen))
                         .setPositiveButton(getString(R.string.yes_label), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-//                                SharedPrefs.deleteSharedPrefs(getActivity());
                                 startActivity(new Intent(getActivity(), LoginActivity.class));
                                 getActivity().finish();
                             }
@@ -361,7 +363,8 @@ public class Settings extends Fragment implements View.OnClickListener {
                                 retrofit.logOutAPi(SharedPrefs.getKey(getActivity(), "userId"), new LogoutCallback() {
                                     @Override
                                     public void onSuccess(LogoutResponse responseResult) {
-//                                        SharedPrefs.deleteSharedPrefs(getActivity());
+                                        SharedPrefs.deleteSharedPrefs(getActivity());
+                                        setLocale(lang);
                                         startActivity(new Intent(getActivity(), LoginActivity.class));
                                         getActivity().finish();
                                     }
@@ -408,7 +411,7 @@ public class Settings extends Fragment implements View.OnClickListener {
     }
 
     public void setLocale(String lang) {
-
+        SharedPrefs.setKey(getActivity(), "selectedlanguage", lang);
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
