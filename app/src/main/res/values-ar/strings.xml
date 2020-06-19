@@ -105,7 +105,7 @@
     <string name="logout_confirm">هل أنت متأكد أنك تريد تسجيل الخروج ؟</string>
     <string name="select_language">اختار اللغة</string>
     <string name="please_enter_the_otp_we_have_sent_to_your_registered_phone_number">يرجى إدخال كلمة المرور لمرة واحدة التي أرسلناها إلى رقم هاتفك المسجل</string>
-    <string name="otp">مكتب المدعي العام</string>
+    <string name="otp">OTP</string>
     <string name="resend">إعادة إرسال</string>
     <string name="didn_t_receive_the_otp">لم أستلم OTP؟</string>
     <string name="yes_label">نعم فعلا</string>
@@ -158,7 +158,7 @@
     <string name="enterFeedback">!الرجاء إدخال تعليق</string>
     <string name="arabic">عربى</string>
     <string name="country">بلد*</string>
-    <string name="select_country">Please select country</string>
+    <string name="select_country">اختر دولة</string>
     <string name="noCoupons">عدد الكوبونات</string>
     <string name="coupons">كوبونات </string>
     <string name="login">تسجيل الدخول</string>
@@ -167,7 +167,8 @@
     <string name="please_enter_password">يرجى إدخال كلمة المرور</string>
     <string name="please_enter_confirm_password">يرجى إدخال تأكيد كلمة المرور</string>
     <string name="passwords_dont_match">كلمة المرور وتأكيد كلمة المرور غير متطابقين</string>
-    <string name="enterUserName">الرجاء إدخال اسم المستخدم</string>
-    <string name="enterPassword">يرجى إدخال كلمة المرور*</string>
+    <string name="enterUserName">البريد الإلكتروني/ رقم الهاتف</string>
+    <string name="enterPassword">كلمه السر</string>
+    <string name="login1">كلمه السر</string>
 
 </resources>

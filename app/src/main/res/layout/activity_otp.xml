@@ -98,6 +98,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_12sdp"
                         android:textColor="@color/black"
+                    android:fontFamily="@font/tajawal_regular"
                         android:text="@string/didn_t_receive_the_otp"/>
 
                 <TextView

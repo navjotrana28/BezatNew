@@ -150,7 +150,7 @@
     <string name="raffle_draw_in">RAFFLE DRAW IN</string>
     <string name="days_prizes">DAYS</string>
     <string name="your_feedback_has_been_sent_successfully">Your feedback has been sent successfully</string>
-    <string name="fill_the_form_first">Fill the form first!</string>
+    <string name="fill_the_form_first">Please select a Retailer</string>
     <string name="sign_in_to_access_this_action">Sign in to access this section</string>
     <string name="no_coupons_at_this_moment">No Coupons at this moment</string>
     <string name="offer_price_user">Offer Price:</string>
@@ -162,6 +162,7 @@
     <string name="no_coupons_available">No Coupons Available</string>
     <string name="no_offer_found">No Offer found</string>
     <string name="enterFeedback">Type your feedback</string>
+    <string name="login1">Login</string>
 
     <string-array name="array_languages">
         <item></item>
@@ -180,7 +181,7 @@
     <string name="please_enter_password">Please Enter Password*</string>
     <string name="please_enter_confirm_password">Please enter Confirm Password</string>
     <string name="passwords_dont_match">Password and Confirm Password does not match</string>
-    <string name="enterUserName">Email/ Phone Number</string>
+    <string name="enterUserName">Email / Phone Number</string>
     <string name="enterPassword">Password</string>
 
 

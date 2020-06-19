@@ -38,7 +38,7 @@ public class Feedback extends Fragment {
     private SearchView searchView;
     private ArrayList<String> category = new ArrayList<>();
     ArrayList<String> store_id = new ArrayList<>();
-    private String lang = "";
+    public String lang = "";
 
     public Feedback() {
         // Required empty public constructor
@@ -97,10 +97,18 @@ public class Feedback extends Fragment {
 
     private void onCLickSendBtn() {
         button.setOnClickListener(v -> {
-            if (text.getText().toString().matches("") || suggestion_box.getEditableText().toString().matches("")) {
+            if (lang==""){
+            if (text.getText().toString().matches("") && suggestion_box.getEditableText().toString().matches("")) {
                 Toast.makeText(getActivity(), getString(R.string.fill_the_form_first), Toast.LENGTH_SHORT).show();
-            } else if(ratingBar.getRating()==0){
-                ContactUsDialog contactUsDialog=new ContactUsDialog("Please enter rating");
+            }
+                else if (suggestion_box.getEditableText().toString().matches("")) {
+                    Toast.makeText(getActivity(), getString(R.string.fill_the_form_first), Toast.LENGTH_SHORT).show();
+                }
+                if (text.getText().toString().matches("")){
+                    Toast.makeText(getActivity(), "Please enter feedback", Toast.LENGTH_SHORT).show();
+                }
+             else if(ratingBar.getRating()==0){
+                ContactUsDialog contactUsDialog=new ContactUsDialog("Rate your star");
                 contactUsDialog.show(getFragmentManager(),"ContantUs Dialog");
             } else {
                 FeedbackRequest request = new FeedbackRequest();
@@ -109,6 +117,27 @@ public class Feedback extends Fragment {
                 request.setUserId(SharedPrefs.getKey(getActivity(), "userId"));
                 request.setRetailerId(getRetailerId());
                 feedbackToServer(request);
+            }}else {
+                if (text.getText().toString().matches("") && suggestion_box.getEditableText().toString().matches("")) {
+                    Toast.makeText(getActivity(), "يرجى اختيار تاجر التجزئة!", Toast.LENGTH_SHORT).show();
+                }
+                    if (suggestion_box.getEditableText().toString().matches("")) {
+                        Toast.makeText(getActivity(), "يرجى اختيار تاجر التجزئة!", Toast.LENGTH_SHORT).show();
+                    }
+                    if (text.getText().toString().matches("")){
+                        Toast.makeText(getActivity(), "الرجاء إدخال تعليق!", Toast.LENGTH_SHORT).show();
+                    }
+                 else if(ratingBar.getRating()==0){
+                    ContactUsDialog contactUsDialog=new ContactUsDialog("معدل نجمك");
+                    contactUsDialog.show(getFragmentManager(),"ContantUs Dialog");
+                } else {
+                    FeedbackRequest request = new FeedbackRequest();
+                    request.setFeedback(text.getText().toString());
+                    request.setRatings(String.valueOf(ratingBar.getRating()));
+                    request.setUserId(SharedPrefs.getKey(getActivity(), "userId"));
+                    request.setRetailerId(getRetailerId());
+                    feedbackToServer(request);
+                }
             }
         });
     }
