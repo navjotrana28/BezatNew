@@ -178,6 +178,8 @@
             android:visibility="gone" />
 
     <TextView
+        android:textDirection="ltr"
+        android:textAlignment="viewStart"
             android:id="@+id/txtBottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

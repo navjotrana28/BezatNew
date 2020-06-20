@@ -186,5 +186,7 @@
     <string name="please_enter_feedback">Please enter feedback!</string>
     <string name="please_rate_your_star">Rate your star</string>
 
+    <string name="login_login">Login</string>
+
 
 </resources>
