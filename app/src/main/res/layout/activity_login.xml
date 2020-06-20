@@ -99,7 +99,7 @@
         android:background="@drawable/bg_login"
         android:paddingStart="100dp"
         android:paddingEnd="100dp"
-        android:text="Login"
+        android:text="@string/login_login"
         android:textAllCaps="false"
         android:textAlignment="center"
         android:fontFamily="@font/tajawal_regular"

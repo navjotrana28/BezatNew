@@ -183,5 +183,7 @@
     <string name="enterUserName">Email/ Phone Number</string>
     <string name="enterPassword">Password</string>
 
+    <string name="login_login">Login</string>
+
 
 </resources>

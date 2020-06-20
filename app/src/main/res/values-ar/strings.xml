@@ -129,7 +129,7 @@
     <string name="bezat_monthly">بيزات شهريًا</string>
     <string name="other_raffles">Other Raffles</string>
     <string name="search_by_retailer">البحث عن طريق التجزئة</string>
-    <string name="enter_password">أدخل كلمة المرور*</string>
+    <string name="enter_password">يرجى إدخال كلمة المرور*</string>
     <string name="enter_mobile_no">يرجى إدخال رقم الهاتف*</string>
     <string name="view_all_offers">عرض جميع العروض</string>
     <string name="SEND">إرسال</string>
@@ -169,5 +169,8 @@
     <string name="passwords_dont_match">كلمة المرور وتأكيد كلمة المرور غير متطابقين</string>
     <string name="enterUserName">الرجاء إدخال اسم المستخدم</string>
     <string name="enterPassword">يرجى إدخال كلمة المرور*</string>
+
+    <string name="login_login">تسجيل الدخول</string>
+
 
 </resources>
