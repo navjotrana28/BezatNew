@@ -2,15 +2,22 @@ package com.bezatnew.bezat.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
-import com.android.volley.*;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.bezatnew.bezat.MyApplication;
 import com.bezatnew.bezat.R;
 import com.bezatnew.bezat.utils.Loader;
@@ -18,7 +25,6 @@ import com.bezatnew.bezat.utils.SharedPrefs;
 import com.bezatnew.bezat.utils.URLS;
 import com.bezatnew.bezat.utils.VolleyMultipartRequest;
 
-import org.intellij.lang.annotations.JdkConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -73,15 +79,15 @@ public class ChangePassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (etCode.getText().toString().isEmpty()) {
-                    etCode.setError("please fill code");
+                    etCode.setError(getString(R.string.please_enter_code));
                 } else if (etPhone.getText().toString().isEmpty()) {
-                    etPhone.setError("Please fill the phone");
+                    etPhone.setError(getString(R.string.please_enter_phone_number));
                 } else if (etPassword.getText().toString().isEmpty()) {
-                    etPhone.setError("Please fill the password");
+                    etPhone.setError(getString(R.string.please_enter_password));
                 } else if (etConfirmPassword.getText().toString().isEmpty()) {
-                    etConfirmPassword.setError("please fill confirm password");
+                    etConfirmPassword.setError(getString(R.string.please_enter_confirm_password));
                 } else if (!etConfirmPassword.getText().toString().equals(etPassword.getText().toString())) {
-                    etConfirmPassword.setError("password and confirm password doesn't match");
+                    etConfirmPassword.setError(getString(R.string.passwords_dont_match));
                 } else {
                     String phone = etCode.getText().toString() + etPhone.getText().toString();
                     String password = etPassword.getText().toString();

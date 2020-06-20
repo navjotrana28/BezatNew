@@ -8,7 +8,6 @@ import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -22,8 +21,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -83,7 +80,7 @@ public class OTP extends AppCompatActivity implements View.OnClickListener,
         etOTP = findViewById(R.id.etOTP);
         btnSave = findViewById(R.id.btnSave);
         txtResend = findViewById(R.id.txtResend);
-        imgBack=findViewById(R.id.imgBack);
+        imgBack = findViewById(R.id.imgBack);
         btnSave.setOnClickListener(this);
         txtResend.setOnClickListener(this);
 
@@ -307,7 +304,7 @@ public class OTP extends AppCompatActivity implements View.OnClickListener,
         mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Log.d( "SMS Retriever Started","Starting");
+                Log.d("SMS Retriever Started", "Starting");
             }
         });
         mTask.addOnFailureListener(new OnFailureListener() {
