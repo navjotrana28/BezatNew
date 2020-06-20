@@ -143,8 +143,8 @@
     <string name="days_before">قبل أيام</string>
     <string name="raffle_draw_in">السحب في السحب</string>
     <string name="days_prizes">ايام</string>
-    <string name="your_feedback_has_been_sent_successfully">تم إرسال ملاحظاتك بنجاح</string>
-    <string name="fill_the_form_first">ملء النموذج أولا!</string>
+    <string name="your_feedback_has_been_sent_successfully">Your feedback has been sent successfully</string>
+    <string name="please_select_retailer">ملء النموذج أولا!</string>
     <string name="sign_in_to_access_this_action">تسجيل الدخول للوصول إلى هذا القسم</string>
     <string name="no_coupons_at_this_moment">لا كوبونات في هذه اللحظة</string>
     <string name="offer_price_user">سعر العرض:</string>
@@ -170,5 +170,7 @@
     <string name="enterUserName">البريد الإلكتروني/ رقم الهاتف</string>
     <string name="enterPassword">كلمه السر</string>
     <string name="login1">كلمه السر</string>
+    <string name="please_enter_feedback">الرجاء إدخال تعليق!</string>
+    <string name="please_rate_your_star">"معدل نجمك"</string>
 
 </resources>

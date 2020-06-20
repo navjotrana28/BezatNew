@@ -90,6 +90,8 @@
             android:gravity="start|center_vertical"
             android:hint="@string/choose_retailer_here"
             android:maxLines="1"
+            android:textCursorDrawable="@null"
+            android:cursorVisible="true"
             android:paddingEnd="30dp"
             android:textColor="@color/black"
             android:textColorHint="@color/dark_grey"
