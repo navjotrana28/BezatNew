@@ -239,6 +239,19 @@
                     android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/tv_verify"
+                android:visibility="invisible"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:text="Please verify you are above 17+ years old before continuing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
             <Button
                 android:id="@+id/save"
                 android:layout_width="@dimen/_140sdp"
