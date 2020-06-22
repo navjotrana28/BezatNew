@@ -2,11 +2,15 @@ package com.bezatnew.bezat.fragments;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 
@@ -38,7 +42,7 @@ public class Feedback extends Fragment {
     private SearchView searchView;
     private ArrayList<String> category = new ArrayList<>();
     ArrayList<String> store_id = new ArrayList<>();
-    private String lang = "";
+    public String lang = "";
 
     public Feedback() {
         // Required empty public constructor
@@ -97,11 +101,15 @@ public class Feedback extends Fragment {
 
     private void onCLickSendBtn() {
         button.setOnClickListener(v -> {
-            if (text.getText().toString().matches("") || suggestion_box.getEditableText().toString().matches("")) {
-                Toast.makeText(getActivity(), getString(R.string.fill_the_form_first), Toast.LENGTH_SHORT).show();
-            } else if(ratingBar.getRating()==0){
-                ContactUsDialog contactUsDialog=new ContactUsDialog("Please enter rating");
-                contactUsDialog.show(getFragmentManager(),"ContantUs Dialog");
+            if (suggestion_box.getEditableText().toString().matches("")) {
+                ContactUsDialog contactUsDialog = new ContactUsDialog(getString(R.string.please_select_retailer));
+                contactUsDialog.show(getFragmentManager(), "ContactUs Dialog");
+            } else if (text.getText().toString().matches("")) {
+                ContactUsDialog contactUsDialog = new ContactUsDialog(getString(R.string.please_enter_feedback));
+                contactUsDialog.show(getFragmentManager(), "ContactUs Dialog");
+            } else if (ratingBar.getRating() == 0) {
+                ContactUsDialog contactUsDialog = new ContactUsDialog(getString(R.string.please_rate_your_star));
+                contactUsDialog.show(getFragmentManager(), "ContactUs Dialog");
             } else {
                 FeedbackRequest request = new FeedbackRequest();
                 request.setFeedback(text.getText().toString());
@@ -124,7 +132,7 @@ public class Feedback extends Fragment {
 
     private void onClickBackButton(View view) {
         imgBack = view.findViewById(R.id.img_back);
-        if(lang.equals("_ar")){
+        if (lang.equals("_ar")) {
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
         }
         imgBack.setOnClickListener(view1 -> getActivity().onBackPressed());
@@ -135,7 +143,8 @@ public class Feedback extends Fragment {
         clientRetrofit.feedBackRequestApi(request, new FeedbackCallback() {
             @Override
             public void onSuccess(FeedbackResponse response) {
-                Toast.makeText(getContext(),getString(R.string.your_feedback_has_been_sent_successfully), Toast.LENGTH_LONG).show();
+                ContactUsDialog contactUsDialog = new ContactUsDialog(getString(R.string.your_feedback_has_been_sent_successfully));
+                contactUsDialog.show(getFragmentManager(), "ContactUs Dialog");
                 getActivity().onBackPressed();
             }
 
@@ -150,10 +159,7 @@ public class Feedback extends Fragment {
     private void addViews(View view) {
         text = view.findViewById(R.id.edit_text);
         ratingBar = view.findViewById(R.id.rating_bar);
-//        ratingBar.setRating(5);
         button = view.findViewById(R.id.send_button);
-
-
     }
 
 }

@@ -234,7 +234,7 @@ public class VIPOffer extends Fragment {
             try {
 
 
-                holder.txtDesc.setText(jsonArray.getJSONObject(position).getString("offer_descp"));
+                holder.txtDesc.setText(jsonArray.getJSONObject(position).getString("offer_descp" + lang));
                 Picasso.get().load(jsonArray
                         .optJSONObject(position).optString("store_logo"))
                         .into(holder.imgBanner);

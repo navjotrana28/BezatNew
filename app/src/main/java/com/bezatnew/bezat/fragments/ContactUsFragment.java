@@ -58,6 +58,7 @@ public class ContactUsFragment extends Fragment {
 
     private void onClickSendButton() {
         sendBtn.setOnClickListener(v -> {
+            if (lang==""){
             if(name.getText().toString().isEmpty() ){
                 open("Please enter your name");
             }else if(email.getText().toString().isEmpty()){
@@ -70,6 +71,20 @@ public class ContactUsFragment extends Fragment {
                 request.setEmail(email.getText().toString());
                 request.setComments(comments.getText().toString());
                 sendDataToServer(request);
+            }}else {
+                if(name.getText().toString().isEmpty() ){
+                    open("يرجى إدخال الاسم");
+                }else if(email.getText().toString().isEmpty()){
+                    open("يرجى إدخال البريد الإلكتروني");
+                }else if(comments.getText().toString().isEmpty()){
+                    open("الرجاء إدخال تعليق!");
+                }else {
+                    ContactUsRequest request = new ContactUsRequest();
+                    request.setName(name.getText().toString());
+                    request.setEmail(email.getText().toString());
+                    request.setComments(comments.getText().toString());
+                    sendDataToServer(request);
+                }
             }
         });
     }
