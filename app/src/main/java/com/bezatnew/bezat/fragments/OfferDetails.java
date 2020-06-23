@@ -51,9 +51,8 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
     private String mParam2;
     View rootView;
     ImageView imgBarCode,offer_img;
-    TextView offer_coupon_code,store_name,offer_descp,discount_price,actual_price;
+    TextView offer_coupon_code,store_name,offer_descp,discount_price,actual_price,customer_phone,customer_code;
     Loader loader;
-    Button btnRedeem;
     ImageView imgSaved;
     private OnFragmentInteractionListener mListener;
     boolean is_saved;
@@ -123,11 +122,16 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
         offer_descp=rootView.findViewById(R.id.offer_descp);
         discount_price=rootView.findViewById(R.id.discount_price);
         actual_price=rootView.findViewById(R.id.actual_price);
-        btnRedeem=rootView.findViewById(R.id.btnRedeem);
         imgSaved = rootView.findViewById(R.id.imgSaved);
+        customer_code = rootView.findViewById(R.id.offer_customer_code);
+        customer_phone = rootView.findViewById(R.id.offer_mobile_number);
         imgBack = rootView.findViewById(R.id.imgBack);
         if(lang.equals("_ar")){
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
+        }
+        if(!SharedPrefs.getKey(getActivity(),"user_code").equals("")) {
+            customer_code.setText(SharedPrefs.getKey(getActivity(), "user_code"));
+            customer_phone.setText(SharedPrefs.getKey(getActivity(), "phone"));
         }
         linearLayout = rootView.findViewById(R.id.offer_detail_layout);
         loader=new Loader(getContext());
@@ -141,7 +145,6 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
                 getActivity().onBackPressed();
             }
         });
-        btnRedeem.setOnClickListener(this);
         imgSaved.setOnClickListener(this);
         return rootView;
     }
@@ -216,14 +219,7 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (view.getId()==R.id.btnRedeem)
-        {
-            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, new GetCoupon());
-            ft.addToBackStack(null);
-            ft.commit();
-        }
-        else if (view.getId()==R.id.imgSaved)
+        if (view.getId()==R.id.imgSaved)
         {
             loader.show();
             if (is_saved)

@@ -113,7 +113,6 @@
                     android:id="@+id/offer_descp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_7sdp"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:textColor="@color/colorPrimary"
@@ -130,10 +129,9 @@
 
                         android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/tajawal_bold"
                         android:gravity="end"
-                        android:padding="@dimen/_3sdp"
                         android:text="@string/offer_price_user"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_14sdp" />
@@ -154,7 +152,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/_3sdp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -197,6 +194,64 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Customer Mobile: "
+                        android:textDirection="ltr"
+                        android:textAlignment="viewEnd"
+                        android:paddingRight="@dimen/_7sdp"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/tajawal_regular" />
+
+                    <TextView
+                        android:id="@+id/offer_mobile_number"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:textDirection="locale"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/tajawal_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layoutDirection="ltr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Customer Code: "
+                        android:textDirection="ltr"
+                        android:textAlignment="viewEnd"
+                        android:paddingRight="@dimen/_7sdp"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/tajawal_regular" />
+
+                    <TextView
+                        android:id="@+id/offer_customer_code"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:textDirection="locale"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/tajawal_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layoutDirection="ltr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:text="Code: "
                         android:textDirection="ltr"
                         android:textAlignment="viewEnd"
@@ -215,20 +270,6 @@
                         android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/tajawal_regular" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnRedeem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/tajawal_bold"
-                    android:padding="@dimen/_7sdp"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingEnd="@dimen/_10sdp"
-                    android:text="@string/redeem_in_offer"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
         </ScrollView>
 
