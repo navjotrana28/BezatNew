@@ -217,6 +217,8 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
                 itemView.setOnClickListener {
                     try {
+                        Picasso.get().load(jsonArray.getJSONObject(adapterPosition).getString("img"))
+                            .into(countryIcon)
                         country.setText(jsonArray.getJSONObject(adapterPosition).getString("phone_code"))
                         code = country.text.toString()
                         dialog?.dismiss()
