@@ -70,19 +70,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="horizontal">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.4"
+                    android:layout_weight="2"
                     android:focusable="false">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:layout_weight="1"
                         android:layoutDirection="ltr"
                         android:id="@+id/countryNameContainer"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:focusable="false"
@@ -108,21 +110,20 @@
 
                     <ImageView
                         android:id="@+id/countryIcon"
-                        android:layout_width="20dp"
+                        android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
                         app:layout_constraintBottom_toBottomOf="@id/countryNameContainer"
                         app:layout_constraintEnd_toEndOf="@id/countryNameContainer"
                         app:layout_constraintTop_toTopOf="@id/countryNameContainer" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:theme="@style/HomePageTheme"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1"
                     android:textColorHint="@color/dark_grey">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -238,6 +239,19 @@
                     android:hint="@string/dob"
                     android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_verify"
+                android:visibility="invisible"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:text="Please verify you are above 17+ years old before continuing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
 
             <Button
                 android:id="@+id/save"

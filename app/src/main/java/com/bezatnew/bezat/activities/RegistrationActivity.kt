@@ -217,6 +217,8 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
                 itemView.setOnClickListener {
                     try {
+                        Picasso.get().load(jsonArray.getJSONObject(adapterPosition).getString("img"))
+                            .into(countryIcon)
                         country.setText(jsonArray.getJSONObject(adapterPosition).getString("phone_code"))
                         code = country.text.toString()
                         dialog?.dismiss()
@@ -335,6 +337,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             findViewById<TextInputLayout>(R.id.gender_edit_text).visibility = View.VISIBLE
             findViewById<TextInputLayout>(R.id.email_edit_text).visibility = View.VISIBLE
             findViewById<TextInputLayout>(R.id.date_of_birth_edit_text).visibility = View.VISIBLE
+            findViewById<TextView>(R.id.tv_verify).visibility = View.VISIBLE
         }, 250)
     }
 

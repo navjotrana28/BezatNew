@@ -64,6 +64,12 @@ public class Feedback extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
         suggestion_box = view.findViewById(R.id.suggestionBox);
+        suggestion_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                suggestion_box.showDropDown();
+            }
+        });
         apiCallForSuggestionViewData();
         addViews(view);
         onCLickSendBtn();

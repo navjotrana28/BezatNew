@@ -56,6 +56,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     Button btnSend;
     ImageView imgBack;
     EditText etPhone;
+    ImageView countryIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         etPhone = findViewById(R.id.etPhone);
         imgBack = findViewById(R.id.imgBackForgot);
         etCode.setOnClickListener(this);
+        countryIcon = findViewById(R.id.countryIcon);
         loader = new Loader(context);
         if (lang.equals("_ar")) {
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
@@ -309,6 +311,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                     public void onClick(View view) {
 
                         try {
+                            Picasso.get().load(jsonArray.getJSONObject(getAdapterPosition()).getString("img")).into(countryIcon);
                             etCode.setText(jsonArray.getJSONObject(getAdapterPosition()).getString("phone_code"));
                             dialog.dismiss();
                         } catch (JSONException e) {

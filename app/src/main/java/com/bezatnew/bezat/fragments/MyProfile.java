@@ -464,7 +464,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+            DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),R.style.datepicker,
                     new DatePickerDialog.OnDateSetListener() {
 
                         @Override
@@ -480,6 +480,9 @@ public class MyProfile extends Fragment implements View.OnClickListener {
 
                         }
                     }, mYear, mMonth, mDay);
+            Calendar c1 = Calendar.getInstance();
+            c1.add(Calendar.YEAR,-17);
+            datePickerDialog.getDatePicker().setMaxDate(c1.getTimeInMillis());
             datePickerDialog.show();
         }
         if (view.getId() == R.id.etGender) {
