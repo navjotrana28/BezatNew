@@ -86,7 +86,7 @@ public class ChangePassword extends AppCompatActivity {
                 } else if (etPhone.getText().toString().isEmpty()) {
                     etPhone.setError(getString(R.string.please_enter_phone_number));
                 } else if (etPassword.getText().toString().isEmpty()) {
-                    etPhone.setError(getString(R.string.please_enter_password));
+                    etPassword.setError(getString(R.string.please_enter_password));
                 } else if (etConfirmPassword.getText().toString().isEmpty()) {
                     etConfirmPassword.setError(getString(R.string.please_enter_confirm_password));
                 } else if (!etConfirmPassword.getText().toString().equals(etPassword.getText().toString())) {

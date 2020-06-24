@@ -70,6 +70,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
                         android:gravity="center"
+                    android:fontFamily="@font/tajawal_regular"
                         android:text="@string/please_enter_the_otp_we_have_sent_to_your_registered_phone_number"/>
 
 
@@ -81,6 +82,7 @@
                 android:layout_marginTop="@dimen/_65sdp"
                 android:backgroundTint="@color/colorPrimary"
                 android:hint="@string/otp"
+                android:fontFamily="@font/tajawal_regular"
                 android:inputType="number"
                 android:paddingStart="@dimen/_10sdp"
 

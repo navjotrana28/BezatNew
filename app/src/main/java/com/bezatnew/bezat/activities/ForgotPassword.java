@@ -103,10 +103,10 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     public void dialog() {
         if (lang==""){
             if (etPhone.getText().toString().isEmpty() && etCode.getText().toString().isEmpty()) {
-                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter phone number");
+                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter Phone Number");
                 forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
             }else if (etPhone.getText().toString().isEmpty()){
-                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter phone number");
+                ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter Phone Number");
                 forgotPasswordDialog.show(getSupportFragmentManager(), "Pass");
             }else if (etCode.getText().toString().isEmpty()){
                 ForgotPasswordDialog forgotPasswordDialog = new ForgotPasswordDialog("Please enter Code");
