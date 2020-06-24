@@ -21,6 +21,8 @@ import com.bezatnew.bezat.api.contactusResponse.ContactUsResponse;
 import com.bezatnew.bezat.interfaces.ContactUsSuccessResponse;
 import com.bezatnew.bezat.utils.SharedPrefs;
 
+import java.util.regex.Pattern;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -60,11 +62,13 @@ public class ContactUsFragment extends Fragment {
         sendBtn.setOnClickListener(v -> {
             if (lang==""){
             if(name.getText().toString().isEmpty() ){
-                open("Please enter your name");
+                open("Please enter Name");
             }else if(email.getText().toString().isEmpty()){
-                open("Please enter your email address");
+                open("Please enter Email");
+            }else if(!isValid(email.getText().toString())){
+                open("Please enter valid Email");
             }else if(comments.getText().toString().isEmpty()){
-                open("Please add a comment");
+                open("Please enter a comment");
             }else {
                 ContactUsRequest request = new ContactUsRequest();
                 request.setName(name.getText().toString());
@@ -76,8 +80,10 @@ public class ContactUsFragment extends Fragment {
                     open("يرجى إدخال الاسم");
                 }else if(email.getText().toString().isEmpty()){
                     open("يرجى إدخال البريد الإلكتروني");
+                }else if(!isValid(email.getText().toString())){
+                    open("الرجاء إدخال بريد إلكتروني صحيح");
                 }else if(comments.getText().toString().isEmpty()){
-                    open("الرجاء إدخال تعليق!");
+                    open("Please enter a comment");
                 }else {
                     ContactUsRequest request = new ContactUsRequest();
                     request.setName(name.getText().toString());
@@ -88,6 +94,20 @@ public class ContactUsFragment extends Fragment {
             }
         });
     }
+
+    public static boolean isValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
+    }
+
     public void open(String content){
         ContactUsDialog contactUsDialog=new ContactUsDialog(content);
         contactUsDialog.show(getFragmentManager(),"ContantUs Dialog");
@@ -98,7 +118,11 @@ public class ContactUsFragment extends Fragment {
         clientRetrofit.SendDataViaApi(request, new ContactUsSuccessResponse() {
             @Override
             public void onSuccess(ContactUsResponse response) {
-                Toast.makeText(getContext(), response.getMessage(), Toast.LENGTH_LONG).show();
+                if(lang.equals("")){
+                    Toast.makeText(getContext(), response.getMessage(), Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getContext(), "لقد تم ارسال الرساله بنجاح. سوف يتم التواصل معاكم قريبا", Toast.LENGTH_LONG).show();
+                }
                 getActivity().onBackPressed();
             }
 
