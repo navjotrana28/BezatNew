@@ -151,7 +151,7 @@ public class Homepage extends AppCompatActivity {
         }
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel
-                    ("MyNotifications", "MyNotifications", NotificationManager.IMPORTANCE_DEFAULT);
+                    ("MyNotifications", "MyNotifications", NotificationManager.IMPORTANCE_HIGH);
 
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
@@ -180,13 +180,13 @@ public class Homepage extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPagerhome);
         viewPager.setOffscreenPageLimit(0);
 
-        if (SharedPrefs.isGuestUser(getApplicationContext())){
+        if (SharedPrefs.isGuestUser(getApplicationContext())) {
             if (lang.equals("a")) {
                 addTabsArabicGuest(viewPager);
             } else {
                 addTabsEnglishGuest(viewPager);
             }
-        }else{
+        } else {
             if (lang.equals("a")) {
                 addTabsArabic(viewPager);
             } else {
@@ -209,29 +209,29 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
 
-                if (SharedPrefs.isGuestUser(getApplicationContext())){
+                if (SharedPrefs.isGuestUser(getApplicationContext())) {
                     if (prevMenuItem != null)
                         prevMenuItem.setChecked(false);
                     else
                         navView.getMenu().getItem(0).setChecked(false);
 
                     if (lang.equals("a")) {
-                        if(position==0){
+                        if (position == 0) {
                             navView.getMenu().getItem(3).setChecked(true);
-                        }else{
+                        } else {
                             navView.getMenu().getItem(0).setChecked(true);
                         }
                     } else {
-                        if(position==0){
+                        if (position == 0) {
                             navView.getMenu().getItem(0).setChecked(true);
-                        }else{
+                        } else {
                             navView.getMenu().getItem(3).setChecked(true);
                         }
 
                     }
-                    if(position==0){
+                    if (position == 0) {
                         prevMenuItem = navView.getMenu().getItem(0);
-                    }else{
+                    } else {
                         prevMenuItem = navView.getMenu().getItem(3);
                     }
 
@@ -239,7 +239,7 @@ public class Homepage extends AppCompatActivity {
                     ft.replace(R.id.container, new BlankFragment());
                     ft.commit();
                     frameLayout.setClickable(false);
-                }else{
+                } else {
                     if (prevMenuItem != null)
                         prevMenuItem.setChecked(false);
                     else
