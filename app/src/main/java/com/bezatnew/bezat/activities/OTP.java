@@ -339,7 +339,7 @@ public class OTP extends AppCompatActivity implements View.OnClickListener,
 
     @Override
     public void onOtpReceived(String otp) {
-        Toast.makeText(this, "Otp Received " + otp, Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "Otp Received " + otp, Toast.LENGTH_LONG).show();
         etOTP.setText(otp);
     }
 
