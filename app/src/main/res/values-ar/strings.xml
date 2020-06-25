@@ -144,7 +144,7 @@
     <string name="raffle_draw_in">السحب في السحب</string>
     <string name="days_prizes">ايام</string>
     <string name="your_feedback_has_been_sent_successfully">Your feedback has been sent successfully</string>
-    <string name="please_select_retailer">ملء النموذج أولا!</string>
+    <string name="please_select_retailer">يرجى اختيار تاجر التجزئة!</string>
     <string name="sign_in_to_access_this_action">تسجيل الدخول للوصول إلى هذا القسم</string>
     <string name="no_coupons_at_this_moment">لا كوبونات في هذه اللحظة</string>
     <string name="offer_price_user">سعر العرض:</string>
