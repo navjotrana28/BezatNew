@@ -69,7 +69,8 @@ class LoginActivity : AppCompatActivity() {
         if (isValid())
             LoginRequest(
                 email = etEmail.text.toString(),
-                password = etPassword.text.toString()
+                password = etPassword.text.toString(),
+                os = "Android"
             ).login(
                 this, {
                     it.handleLogin(this, {

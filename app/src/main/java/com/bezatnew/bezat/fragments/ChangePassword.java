@@ -151,7 +151,7 @@ public class ChangePassword extends Fragment implements View.OnClickListener {
                 } else if (etPhone.getText().toString().isEmpty()) {
                     etPhone.setError(getActivity().getString(R.string.please_enter_phone_number));
                 } else if (etPassword.getText().toString().isEmpty()) {
-                    etPhone.setError(getActivity().getString(R.string.please_enter_password));
+                    etPassword.setError(getActivity().getString(R.string.please_enter_password));
                 } else if (etConfirmPassword.getText().toString().isEmpty()) {
                     etConfirmPassword.setError(getActivity().getString(R.string.please_enter_confirm_password));
                 } else if (!etConfirmPassword.getText().toString().equals(etPassword.getText().toString())) {
