@@ -36,7 +36,7 @@
     <string name="fav_offers">العروض المفضلة</string>
     <string name="prizes">جوائز</string>
     <string name="total_coupon">إجمالي القسيمة</string>
-    <string name="partners">التجارية</string>
+    <string name="partners">المحلات التجارية</string>
     <string name="winners">الفائزين</string>
     <string name="sign_out">خروج</string>
     <string name="vip_offers">عروض كبار الشخصيات</string>
@@ -125,9 +125,9 @@
     <string name="note_your_feedback_will_be_sent_to_the_retailer">ملاحظة: سيتم إرسال ملاحظاتك إلى بائع التجزئة</string>
     <string name="rate_your_star">معدل نجمك</string>
     <string name="search_retailer">البحث عن بائع تجزئة</string>
-    <string name="bezat_yearly">بيزات سنويا</string>
-    <string name="bezat_monthly">بيزات شهريًا</string>
-    <string name="other_raffles">Other Raffles</string>
+    <string name="bezat_yearly">سحوبات سنوية</string>
+    <string name="bezat_monthly">سحوبات شهرية</string>
+    <string name="other_raffles">سحوبات اخرى</string>
     <string name="search_by_retailer">البحث عن طريق التجزئة</string>
     <string name="enter_password">يرجى إدخال كلمة المرور*</string>
     <string name="enter_mobile_no">يرجى إدخال رقم الهاتف*</string>
@@ -155,7 +155,7 @@
     <string name="no_winners_available">لا يوجد فائزون متاحون</string>
     <string name="no_coupons_available">لا تتوفر كوبونات</string>
     <string name="no_offer_found">لم يتم العثور على عرض</string>
-    <string name="enterFeedback">!الرجاء إدخال تعليق</string>
+    <string name="enterFeedback">الرجاء إدخال تعليق!</string>
     <string name="arabic">عربى</string>
     <string name="country">بلد*</string>
     <string name="select_country">اختر دولة</string>

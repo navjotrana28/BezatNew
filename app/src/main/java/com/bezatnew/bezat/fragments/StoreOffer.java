@@ -185,12 +185,14 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
                                     txtWeb.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
                                 } else {
                                     google = jsonObject.getString("website");
+                                    Log.d("website",google);
                                 }
                                 if (jsonObject.isNull("snapchat")
                                         || jsonObject.getString("snapchat").equals("")) {
                                     txtSnap.setBackgroundTintList(getResources().getColorStateList(R.color.btn_cancel_color));
                                 } else {
                                     snap = jsonObject.getString("snapchat");
+                                    Log.d("snap",snap);
                                 }
                                 if (jsonObject.isNull("google_location")
                                         || jsonObject.getString("google_location").equals("")) {

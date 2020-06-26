@@ -66,7 +66,6 @@
 
         <ImageView
             android:id="@+id/offer_img"
-            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_124sdp"
             android:src="@color/colorPrimary" />

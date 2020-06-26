@@ -91,7 +91,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/tajawal_medium"
                         android:gravity="center"
-                        android:text="Bezat Yearly"
+                        android:text="@string/bezat_yearly"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_15sdp" />
             </androidx.cardview.widget.CardView>
@@ -122,7 +122,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/tajawal_medium"
                         android:gravity="center"
-                        android:text="Bezat Monthly"
+                        android:text="@string/bezat_monthly"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/_15sdp" />
             </androidx.cardview.widget.CardView>
