@@ -58,8 +58,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -358,7 +356,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                 JSONObject userInfo = response.getJSONObject("userInfo");
                                 String user_code = userInfo.getString("user_code");
                                 SharedPrefs.setKey(getActivity(), "user_code", user_code);
-                                String user_name = decode_str(userInfo.getString("user_name"));
+                                String user_name = userInfo.getString("user_name");
                                 SharedPrefs.setKey(getActivity(), "user_name", user_name);
                                 String user_type = userInfo.getString("user_type");
                                 SharedPrefs.setKey(getActivity(), "user_type", user_type);
@@ -549,7 +547,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                                String dob, String country_id, String image) {
 
         String saveddata = "{" + "\"phone_code\":" + "\"" + phone_code + "\","
-                + "\"user_name\":" + "\"" + encode_str(user_name) + "\"," +
+                + "\"user_name\":" + "\"" + user_name + "\"," +
                 "\"email\":" + "\"" + email + "\"," +
                 "\"dob\":" + "\"" + dob + "\"," +
                 "\"phone\":" + "\"" + phone + "\"," +
@@ -623,24 +621,6 @@ public class MyProfile extends Fragment implements View.OnClickListener {
         };
         MyApplication.getInstance().addToRequestQueue(volleyMultipartRequest);
 
-    }
-
-    private String encode_str(String str){
-        try {
-            return URLEncoder.encode(str, "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-
-    private String decode_str(String str){
-        try {
-            return URLDecoder.decode(str, "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 
     /**
@@ -722,11 +702,5 @@ public class MyProfile extends Fragment implements View.OnClickListener {
 
             }
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        getProfile();
     }
 }
