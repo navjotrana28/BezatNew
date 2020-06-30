@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -85,9 +86,9 @@ public class MyProfile extends Fragment implements View.OnClickListener {
     View rootView;
     private OnFragmentInteractionListener mListener;
     ImageView imgProfile;
-    EditText etName, etEmail, etAddress, etPhone;
+    EditText etName, etEmail, etAddress;
     Loader loader;
-    TextView etCountry, etDob, etGender;
+    TextView etCountry, etDob, etGender,etPhone;
     TextView txtSave;
     String phone_code;
     String lang = "";
@@ -170,6 +171,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
 
         }
         etGender.setOnClickListener(this);
+        etPhone.setOnClickListener(this);
         txtSave.setOnClickListener(this);
 
         loader = new Loader(getContext());
@@ -457,6 +459,13 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                     image
             );
         }
+        if (view.getId()==R.id.etPhone){
+            etPhone.setRawInputType(InputType.TYPE_NULL);
+            etPhone.setFocusable(false);
+
+            openPhoneDialog();
+            etPhone.setInputType(InputType.TYPE_NULL);
+        }
         if (view.getId() == R.id.etDob) {
             final Calendar c = Calendar.getInstance();
             mYear = c.get(Calendar.YEAR);
@@ -532,6 +541,11 @@ public class MyProfile extends Fragment implements View.OnClickListener {
                 recCountry.setAdapter(postAdapter);
             }
         }
+    }
+
+    private void openPhoneDialog() {
+        PhoneDialog phoneDialog=new PhoneDialog();
+        phoneDialog.show(getFragmentManager(),"any");
     }
 
     private void openDialog() {
