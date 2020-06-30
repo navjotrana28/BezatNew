@@ -181,15 +181,23 @@
                     android:layout_marginEnd="60dp"
                     android:background="@color/colorPrimary" />
 
-            <EditText
+            <TextView
                 android:theme="@style/HomePageTheme"
                 android:textDirection="locale"
                 android:textAlignment="viewStart"
                     android:id="@+id/etPhone"
                     style="@style/field"
                 android:layout_marginEnd="57dp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:hint="@string/phone_number"
                 android:inputType="number"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="60dp"
+                android:background="@color/colorPrimary" />
 
             <EditText
                 android:theme="@style/HomePageTheme"
