@@ -227,7 +227,7 @@ public class Notification extends Fragment {
             try {
                 holder.txtDesc.setText(jsonArray.getJSONObject(position).getString("description" + lang));
                 holder.txtTitle.setText(jsonArray.getJSONObject(position).getString("title" + lang));
-                holder.txtTime.setText(jsonArray.getJSONObject(position).getString("time_ago"));
+                holder.txtTime.setText(jsonArray.getJSONObject(position).getString("created_date"));
                 String path = jsonArray.getJSONObject(position).getString("image");
                 Picasso.get().load(path).into(notifyImg);
             } catch (Exception e) {
