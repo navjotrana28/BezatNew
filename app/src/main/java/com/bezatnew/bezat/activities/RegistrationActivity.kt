@@ -265,6 +265,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
 
     private fun validateAndSave() {
         var request = RegisterRequest(
+            os = "Android",
             deviceId = PreferenceManager.instance.deviceId,
             email = etEmail.text.toString(),
             name = etName.text.toString(),
@@ -297,6 +298,7 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             intent.putExtra("dob", "")
             intent.putExtra("email", "")
             intent.putExtra("gender", "")
+            intent.putExtra("os", "")
             startActivityForResult(intent, 0)
         } else {
             if (response != null) {
