@@ -28,6 +28,7 @@ import com.bezatnew.bezat.ClientRetrofit
 import com.bezatnew.bezat.MyApplication
 import com.bezatnew.bezat.R
 import com.bezatnew.bezat.activities.RegistrationActivity.PostAdapter.MyViewHolder
+import com.bezatnew.bezat.api.LoginRequest
 import com.bezatnew.bezat.api.RegisterRequest
 import com.bezatnew.bezat.interfaces.RegisterUserCallBack
 import com.bezatnew.bezat.models.RegisterRequestResponse
@@ -35,7 +36,10 @@ import com.bezatnew.bezat.models.RegisterUserRequest
 import com.bezatnew.bezat.utils.*
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
+import kotlinx.android.synthetic.main.activity_registration.etEmail
+import kotlinx.android.synthetic.main.activity_registration.etPassword
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -322,8 +326,8 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             //response return case
             response.evaluate(this, {
                 //                otpVerification()
+                doLogin()
                 Toast.makeText(this, getString(R.string.reg_success), Toast.LENGTH_SHORT).show()
-                finish()
             }) {
                 this@RegistrationActivity.showMessage(it)
             }
@@ -331,6 +335,29 @@ class RegistrationActivity : AppCompatActivity(), RegisterUserCallBack {
             this.showMessage(it)
             //connection error case
         }
+    }
+
+    private fun doLogin() {
+        LoginRequest(
+            email = etEmail.text.toString(),
+            password = etPassword.text.toString(),
+            os = "Android"
+        ).loginReg(
+            this, {
+                it.handleLoginReg(this, {
+
+                    SharedPrefs.setKey(this@RegistrationActivity, "userId", it.userID);
+                    SharedPrefs.setKey(this@RegistrationActivity, "LoggedIn", "true");
+                    SharedPrefs.setGuestUser(this, false)
+                    startActivity(Intent(this@RegistrationActivity, Homepage::class.java))
+                    finishAffinity();
+                }, this::showMessage)
+            },
+            {
+                showMessage()
+            }
+        )
+
     }
 
     private fun showAllView() {
