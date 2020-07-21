@@ -76,7 +76,7 @@ public class SearchRetailer extends Fragment {
         recyclerViewVertical = view.findViewById(R.id.recyclerView_vertical);
         progressBar = view.findViewById(R.id.progress_bar_search);
         imgBack = view.findViewById(R.id.img_back);
-        if(lang.equals("_ar")){
+        if (lang.equals("_ar")) {
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
         }
         searchView = view.findViewById(R.id.search_view);
@@ -84,7 +84,7 @@ public class SearchRetailer extends Fragment {
         setUpRecyclerViewVertical();
         loadSeachData();
         onCLickBackButton();
-            initSearchView();
+        initSearchView();
         int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
         TextView textView = searchView.findViewById(id);
         textView.setHintTextColor(Color.rgb(105, 105, 105));
@@ -106,7 +106,12 @@ public class SearchRetailer extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                getAfterQuery(retailerData, newText);
+                if (lang.equals("_ar")) {
+                    getAfterQueryForArabic(retailerData, newText);
+                } else {
+                    getAfterQuery(retailerData, newText);
+
+                }
                 return false;
             }
         });
@@ -176,7 +181,7 @@ public class SearchRetailer extends Fragment {
         CompositeDisposable disposable = new CompositeDisposable();
         Observable.just(searchableData)
                 .flatMap(Observable::fromIterable)
-                .filter(searchRetailerStore -> (searchRetailerStore.getStoreName() + lang).toLowerCase().contains(query.toLowerCase()))
+                .filter(searchRetailerStore -> (searchRetailerStore.getStoreName()).toLowerCase().contains(query.toLowerCase()))
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -198,4 +203,32 @@ public class SearchRetailer extends Fragment {
                 });
 
     }
+
+    public void getAfterQueryForArabic(List<SearchRetailerStore> searchableData, String query) {
+        CompositeDisposable disposable = new CompositeDisposable();
+        Observable.just(searchableData)
+                .flatMap(Observable::fromIterable)
+                .filter(searchRetailerStore -> (searchRetailerStore.getStoreNameAr()).contains(query))
+                .toList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<SearchRetailerStore>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(List<SearchRetailerStore> searchRetailerStores) {
+                        verticalAdapter.setDatumList(searchRetailerStores);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+
+    }
+
 }
