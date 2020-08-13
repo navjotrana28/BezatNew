@@ -27,7 +27,7 @@ class Selector<T>(
         super.onCreate(savedInstanceState)
         val root = RecyclerView(context)
         initRoot(root)
-        window.requestFeature(Window.FEATURE_NO_TITLE)
+        window?.requestFeature(Window.FEATURE_NO_TITLE)
         setContentView(root)
     }
 

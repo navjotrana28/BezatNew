@@ -10,7 +10,7 @@ import com.bezatnew.bezat.R
 class Loader(context: Context):Dialog(context){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setContentView(R.layout.dialog_loader)
     }
 }
