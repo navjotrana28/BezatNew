@@ -492,6 +492,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             Calendar c1 = Calendar.getInstance();
             c1.add(Calendar.YEAR,-17);
             datePickerDialog.getDatePicker().setMaxDate(c1.getTimeInMillis());
+            datePickerDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             datePickerDialog.show();
         }
         if (view.getId() == R.id.etGender) {
