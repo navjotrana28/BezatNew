@@ -360,9 +360,12 @@ public class TotalCoupon extends Fragment {
                 //holder.txtRaffles.setText(arr.length+"");
 
                 int n = Integer.valueOf(jsonArray.getJSONObject(position).getString("totalCoupons" + lang));
+                //Log.d("Count at "+position,n+"");
+                //Log.d("Child Count at "+position,holder.ll.getChildCount()+"");
 
                 holder.ll.setFlexDirection(FlexDirection.ROW);
                 holder.ll.setFlexWrap(FlexWrap.WRAP);
+                holder.ll.removeAllViews();
 
                 if(holder.ll.getChildCount()<n){
                     for (int i = 0; i < arr.length; i++) {
@@ -374,9 +377,9 @@ public class TotalCoupon extends Fragment {
                         params.setMargins(10, 10, 10, 10);
                         valueTV.setPadding(8, 0, 8, 0);
                         valueTV.setLayoutParams(params);
-
-
                         ((FlexboxLayout) holder.ll).addView(valueTV);
+
+                        //Log.d("Added at "+position,arr[i]);
                     }
                 }
 
@@ -391,6 +394,7 @@ public class TotalCoupon extends Fragment {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.d("Error",position+"");
             }
 
         }
