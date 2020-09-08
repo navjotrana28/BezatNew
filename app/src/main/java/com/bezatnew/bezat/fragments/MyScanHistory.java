@@ -56,8 +56,8 @@ public class MyScanHistory extends Fragment {
     View rootView;
     RecyclerView scanHistory;
     Loader loader;
-    ImageView imgSearch;
-    TextView txtDate;
+    //ImageView imgSearch;
+    //TextView txtDate;
     ImageView imgBack;
     String lang="";
     private OnFragmentInteractionListener mListener;
@@ -108,8 +108,8 @@ public class MyScanHistory extends Fragment {
         }
         rootView=inflater.inflate(R.layout.fragment_my_scan_history, container, false);
         scanHistory=rootView.findViewById(R.id.scanHistory);
-        txtDate = rootView.findViewById(R.id.txtDate);
-        imgSearch = rootView.findViewById(R.id.imgSearch);
+        //txtDate = rootView.findViewById(R.id.txtDate);
+        //imgSearch = rootView.findViewById(R.id.imgSearch);
         imgBack = rootView.findViewById(R.id.imgBack);
         if(lang.equals("_ar")){
             imgBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back_rtl));
@@ -119,7 +119,7 @@ public class MyScanHistory extends Fragment {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM");
         Date date = new Date();
        String currentDate=formatter.format(date);
-        txtDate.setText(currentDate);
+        //txtDate.setText(currentDate);
         getScanHistory(currentDate);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +127,7 @@ public class MyScanHistory extends Fragment {
                 getActivity().onBackPressed();
             }
         });
-        txtDate.setOnClickListener(new View.OnClickListener() {
+        /*txtDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -158,9 +158,9 @@ public class MyScanHistory extends Fragment {
                 pickerPopWin.showPopWin(getActivity());
 
             }
-        });
+        });*/
 
-        imgSearch.setOnClickListener(new View.OnClickListener() {
+        /*imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
@@ -189,7 +189,7 @@ public class MyScanHistory extends Fragment {
                         .build();
                 pickerPopWin.showPopWin(getActivity());
             }
-        });
+        });*/
         return rootView;
     }
 
