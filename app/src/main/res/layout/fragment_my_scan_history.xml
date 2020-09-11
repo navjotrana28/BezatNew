@@ -52,13 +52,15 @@
                     android:background="@color/white"
                     android:textSize="@dimen/_10sdp"
                     android:padding="@dimen/_5sdp"
-                    android:textColor="@color/colorPrimary"/>
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone"/>
             <ImageView
                     android:id="@+id/imgSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_7sdp"
-                    android:src="@drawable/search"/>
+                    android:src="@drawable/search"
+                    android:visibility="gone"/>
         </LinearLayout>
     </Toolbar>
     <LinearLayout
