@@ -24,7 +24,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     private SearchResponseResult responseResult;
     private String lang;
     private SearchRetailerCallback searchRetailerCallback;
-    private static int previousValue = 0;
+    public static int previousValue = 0;
 
     public SearchAdapter(Context context, SearchResponseResult responseResult, SearchRetailerCallback searchRetailerCallback) {
         mcontext = context;

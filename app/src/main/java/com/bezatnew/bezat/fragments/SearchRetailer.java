@@ -148,7 +148,7 @@ public class SearchRetailer extends Fragment {
                 searchResponseResult = responseResult;
                 adapter.setDatumList(responseResult);
                 adapter.notifyDataSetChanged();
-                verticalAdapter.setDatumList(responseResult.getResult().get(0).getStores());
+                verticalAdapter.setDatumList(responseResult.getResult().get(adapter.previousValue).getStores());
                 progressBar.setVisibility(View.GONE);
             }
 
