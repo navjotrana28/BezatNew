@@ -26,7 +26,9 @@ import com.bezatnew.bezat.models.searchRetailerResponses.SearchResponseResult;
 import com.bezatnew.bezat.utils.SharedPrefs;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +43,7 @@ public class Feedback extends Fragment {
     private SearchResponseData responseData = new SearchResponseData();
     private SearchView searchView;
     private ArrayList<String> category = new ArrayList<>();
+    Set<String> set = new HashSet<>();
     ArrayList<String> store_id = new ArrayList<>();
     public String lang = "";
 
@@ -86,13 +89,15 @@ public class Feedback extends Fragment {
                 for (int i = 0; i < searchResponseResult.getResult().size(); i++) {
                     for (int j = 0; j < searchResponseResult.getResult().get(i).getStores().size(); j++) {
                         if (lang.equals("_ar")) {
-                            category.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreNameAr());
+                            set.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreNameAr());
                         } else {
-                            category.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreName());
+                            set.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreName());
                         }
                         store_id.add(searchResponseResult.getResult().get(i).getStores().get(j).getStoreId());
                     }
                 }
+
+                category = new ArrayList<>(set);
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                         android.R.layout.simple_spinner_dropdown_item, category);

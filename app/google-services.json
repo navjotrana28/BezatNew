@@ -15,10 +15,55 @@
       },
       "oauth_client": [
         {
+          "client_id": "908654007934-nbb8tbejbicbp4et3nol7a97s938el3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bezatnew.bezat",
+            "certificate_hash": "106005650eaf2254da1feef489904658d17569b2"
+          }
+        },
+        {
           "client_id": "908654007934-9c4r68hrqk8b0bejr7n4v0355q265jc1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.bezatnew.bezat",
+            "certificate_hash": "07d8f90265f366d41e4624994abc1be4865411d2"
+          }
+        },
+        {
+          "client_id": "908654007934-bhek89rhsrp2032928djh2f0qng28u4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrKtF_1DlZgmnN3cWzAvsroN70mcZUias"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908654007934-bhek89rhsrp2032928djh2f0qng28u4q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908654007934:android:457e486b1d611f2b532a2f",
+        "android_client_info": {
+          "package_name": "com.bezatretailernew.bezat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908654007934-gdnhlc30hccegh2vucmvfriioduvujso.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bezatretailernew.bezat",
             "certificate_hash": "07d8f90265f366d41e4624994abc1be4865411d2"
           }
         },
