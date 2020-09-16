@@ -286,7 +286,7 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
                startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse(insta)));
             }
             else {
-                startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://instagram.com/")));
+                //startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://instagram.com/")));
             }
         }
        else if (view.getId()==R.id.txtFb)
@@ -295,11 +295,11 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
                 startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse(fb)));
             }
             else {
-                startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://facebook.com/")));
+                //startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://facebook.com/")));
             }
         } else if (view.getId() == R.id.txtWhatsapp) {
             //Toast.makeText(getActivity().getBaseContext(), "Yay", Toast.LENGTH_SHORT).show();
-            if (phone != null && !phone.isEmpty()) {
+            if (whatsapp != null && !whatsapp.isEmpty()) {
                 Intent i = new Intent(Intent.ACTION_VIEW,
                         Uri.parse(
                                 whatsapp
@@ -338,7 +338,7 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
                 Log.d("---web---",google);
             }
             else {
-                startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://google.com/")));
+                //startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://google.com/")));
             }
         }
         else if (view.getId()==R.id.txtPhone)
@@ -354,7 +354,7 @@ public class StoreOffer extends Fragment implements View.OnClickListener {
                 startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse(twit)));
             }
             else {
-                startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://twitter.com/")));
+                //startActivity( new Intent(Intent.ACTION_VIEW,Uri.parse("https://twitter.com/")));
             }
         }
         else if (view.getId() == R.id.imgBack)
