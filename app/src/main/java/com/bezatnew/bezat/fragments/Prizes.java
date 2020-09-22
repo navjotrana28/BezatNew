@@ -160,7 +160,7 @@ public class Prizes extends Fragment implements View.OnClickListener {
                                         objectRaffles.put("raffle_id", array.getJSONObject(i).getString("raffle_id"));
                                         objectRaffles.put("raffle_name", array.getJSONObject(i).getString("raffle_name"));
                                         objectRaffles.put("raffle_name_ar", array.getJSONObject(i).getString("raffle_name_ar"));
-                                        objectRaffles.put("prize", "$ "+array.getJSONObject(i).getString("prize") );
+                                        objectRaffles.put("prize", array.getJSONObject(i).getString("prize") );
                                         objectRaffles.put("prize_ar", array.getJSONObject(i).getString("prize_ar"));
                                         objectRaffles.put("draw_date", array.getJSONObject(i).getString("draw_date"));
                                         objectRaffles.put("crcdt", array.getJSONObject(i).getString("crcdt"));
@@ -173,7 +173,7 @@ public class Prizes extends Fragment implements View.OnClickListener {
                                         objectRaffles.put("raffle_id", array.getJSONObject(i).getString("raffle_id"));
                                         objectRaffles.put("raffle_name", array.getJSONObject(i).getString("raffle_name"));
                                         objectRaffles.put("raffle_name_ar", array.getJSONObject(i).getString("raffle_name_ar"));
-                                        objectRaffles.put("prize", "$ "+array.getJSONObject(i).getString("prize"));
+                                        objectRaffles.put("prize", array.getJSONObject(i).getString("prize"));
                                         objectRaffles.put("prize_ar", array.getJSONObject(i).getString("prize_ar"));
                                         objectRaffles.put("draw_date", array.getJSONObject(i).getString("draw_date"));
                                         objectRaffles.put("crcdt", array.getJSONObject(i).getString("crcdt"));
@@ -186,7 +186,7 @@ public class Prizes extends Fragment implements View.OnClickListener {
                                         objectRaffles.put("raffle_id", array.getJSONObject(i).getString("raffle_id"));
                                         objectRaffles.put("raffle_name", array.getJSONObject(i).getString("raffle_name"));
                                         objectRaffles.put("raffle_name_ar", array.getJSONObject(i).getString("raffle_name_ar"));
-                                        objectRaffles.put("prize", "$ "+array.getJSONObject(i).getString("prize"));
+                                        objectRaffles.put("prize", array.getJSONObject(i).getString("prize"));
                                         objectRaffles.put("prize_ar", array.getJSONObject(i).getString("prize_ar"));
                                         objectRaffles.put("draw_date", array.getJSONObject(i).getString("draw_date"));
                                         objectRaffles.put("crcdt", array.getJSONObject(i).getString("crcdt"));

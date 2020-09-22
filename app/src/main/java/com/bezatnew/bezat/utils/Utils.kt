@@ -57,7 +57,7 @@ fun <T> EditText.convertToSpinner(
 fun EditText.convertToDatePicker(postAction: ((String) -> Unit)? = null) {
     keyListener = null
     val d = Calendar.getInstance()
-    val dialog = DatePickerDialog(context, { _, y, mm, d ->
+    val dialog = DatePickerDialog(context,R.style.datepicker, { _, y, mm, d ->
 
         val m = mm + 1;
         val tmp =
@@ -66,6 +66,7 @@ fun EditText.convertToDatePicker(postAction: ((String) -> Unit)? = null) {
     }, 2001, 1, 1)
     val calendar = Calendar.getInstance()
     calendar.add(Calendar.YEAR, -17)
+    dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
     dialog.datePicker.maxDate = calendar.timeInMillis
     setOnClickListener { dialog.show() }
     setOnFocusChangeListener { _, hasFocus -> if (hasFocus) dialog.show() }

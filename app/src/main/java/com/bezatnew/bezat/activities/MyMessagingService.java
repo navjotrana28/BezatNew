@@ -19,7 +19,7 @@ public class MyMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder builder = new NotificationCompat.Builder
                 (this, "MyNotifications")
                 .setContentTitle(title)
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.drawable.app_logo)
                 .setAutoCancel(true)
                 .setContentText(message);
 

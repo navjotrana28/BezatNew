@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:clickable="true"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -166,16 +167,16 @@
                     android:id="@+id/txtPhone"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:backgroundTint="@color/orange"
                     android:background="@drawable/phone"/>
 
                 <ImageButton
-                    android:id="@+id/txtLoc"
+                    android:id="@+id/txtWhatsapp"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/whatsapp"
                     android:backgroundTint="@color/orange" />
 
@@ -184,14 +185,14 @@
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:backgroundTint="@color/orange"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/ig"/>
 
                 <ImageButton
                     android:id="@+id/txtSnap"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="10dp"
                     android:backgroundTint="@color/orange"
                     android:background="@drawable/snapchat"/>
 
@@ -199,7 +200,7 @@
                     android:id="@+id/txtTwitter"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="10dp"
                     android:backgroundTint="@color/orange"
                     android:background="@drawable/twitter"/>
 
@@ -207,7 +208,7 @@
                     android:id="@+id/txtFb"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/fb"
                     android:backgroundTint="@color/orange" />
 
@@ -215,9 +216,17 @@
                     android:id="@+id/txtWeb"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="10dp"
                     android:backgroundTint="@color/orange"
                     android:background="@drawable/web"/>
+
+                <ImageButton
+                    android:id="@+id/txtLocation"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/location_active"
+                    android:backgroundTint="@color/orange" />
 
 
 

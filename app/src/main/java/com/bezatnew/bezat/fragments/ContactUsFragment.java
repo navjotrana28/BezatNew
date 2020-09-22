@@ -179,10 +179,17 @@ public class ContactUsFragment extends Fragment {
         whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(
+                                "https://api.whatsapp.com/send?phone=+97313399993"
+                        )
+                );
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getActivity().startActivity(i);/*
                 Uri uri = Uri.parse("smsto:" + "+97313399993");
                 Intent i = new Intent(Intent.ACTION_SENDTO, uri);
                 i.setPackage("com.whatsapp");
-                startActivity(Intent.createChooser(i, "+97313399993"));
+                startActivity(Intent.createChooser(i, "+97313399993"));*/
             }
         });
 

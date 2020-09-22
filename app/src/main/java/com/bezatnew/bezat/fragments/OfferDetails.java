@@ -167,10 +167,9 @@ public class OfferDetails extends Fragment implements View.OnClickListener {
                                 offer_descp.setText(jsonResult.getString("offer_descp"+lang));
                                 discount_price.setText(jsonResult.getString("discount_price"));
                                 actual_price.setText(jsonResult.getString("actual_price"));
-                                Bitmap myBitmap = QRCode.from(jsonResult.getString("offer_coupon_code")).bitmap();
+                                Bitmap myBitmap = QRCode.from(SharedPrefs.getKey(getActivity(), "user_code")).bitmap();
                                 imgBarCode.setScaleType(ImageView.ScaleType.FIT_XY);
                                 imgBarCode.setImageBitmap(myBitmap);
-                                imgBarCode.setScaleType(ImageView.ScaleType.FIT_XY);
                                 if (jsonResult.getString("is_saved").equalsIgnoreCase("1")) {
                                     imgSaved.setImageResource(R.drawable.ic_favorite_black_24dp);
                                     is_saved=true;

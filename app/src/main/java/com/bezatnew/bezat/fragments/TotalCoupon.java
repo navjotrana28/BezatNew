@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -48,6 +50,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -249,7 +252,7 @@ public class TotalCoupon extends Fragment {
         JSONObject object = new JSONObject();
         String Url = URLS.Companion.getTOTAL_COUPON() + "userId=" + SharedPrefs.getKey(getActivity(), "userId")
                 + "&year_month=" + currentDate;
-
+        Log.d("Total",Url);
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
                         Url,
@@ -258,12 +261,11 @@ public class TotalCoupon extends Fragment {
                             loader.dismiss();
                             try {
                                 PostAdapter postAdapter = new PostAdapter(response.getJSONObject("result").getJSONArray("raffles"));
-                                StaggeredGridLayoutManager layoutManager =
+                                /*StaggeredGridLayoutManager layoutManager =
                                         new StaggeredGridLayoutManager(1, OrientationHelper.VERTICAL);
                                 layoutManager.setGapStrategy(
-                                        StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
-                                recycleTotalCoupons.setLayoutManager(layoutManager);
-                                recycleTotalCoupons.setItemAnimator(new DefaultItemAnimator());
+                                        StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);*/
+                                recycleTotalCoupons.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
                                 if (postAdapter != null && postAdapter.getItemCount() > 0) {
                                     recycleTotalCoupons.setAdapter(postAdapter);
                                     recycleTotalCoupons.setVisibility(View.VISIBLE);
@@ -331,15 +333,16 @@ public class TotalCoupon extends Fragment {
             this.jsonArray = array;
         }
 
-        public void append(JSONArray array) {
+        /*public void append(JSONArray array) {
             try {
+
                 for (int i = 0; i < array.length(); i++) {
                     this.jsonArray.put(array.get(i));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
 
         @Override
         public PostAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -356,21 +359,30 @@ public class TotalCoupon extends Fragment {
                 String[] arr = s.split(",");
                 //holder.txtRaffles.setText(arr.length+"");
 
+                int n = Integer.valueOf(jsonArray.getJSONObject(position).getString("totalCoupons" + lang));
+                //Log.d("Count at "+position,n+"");
+                //Log.d("Child Count at "+position,holder.ll.getChildCount()+"");
+
                 holder.ll.setFlexDirection(FlexDirection.ROW);
                 holder.ll.setFlexWrap(FlexWrap.WRAP);
-                for (int i = 0; i < arr.length; i++) {
-                    TextView valueTV = new TextView(getActivity().getBaseContext());
-                    valueTV.setText(arr[i]);
-                    valueTV.setTextColor(getResources().getColor(R.color.colorPrimary));
-                    valueTV.setBackgroundColor(getResources().getColor(R.color.dark_grey));
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    params.setMargins(10, 10, 10, 10);
-                    valueTV.setPadding(8, 0, 8, 0);
-                    valueTV.setLayoutParams(params);
+                holder.ll.removeAllViews();
 
+                if(holder.ll.getChildCount()<n){
+                    for (int i = 0; i < arr.length; i++) {
+                        TextView valueTV = new TextView(getActivity().getBaseContext());
+                        valueTV.setText(arr[i]);
+                        valueTV.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        valueTV.setBackgroundColor(getResources().getColor(R.color.dark_grey));
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        params.setMargins(10, 10, 10, 10);
+                        valueTV.setPadding(8, 0, 8, 0);
+                        valueTV.setLayoutParams(params);
+                        ((FlexboxLayout) holder.ll).addView(valueTV);
 
-                    ((FlexboxLayout) holder.ll).addView(valueTV);
+                        //Log.d("Added at "+position,arr[i]);
+                    }
                 }
+
 
                 holder.txtBilldate.setText("Date : " + jsonArray.getJSONObject(position).getString("bill_date"));
                 holder.txtBillno.setText(jsonArray.getJSONObject(position).getString("bill_no"));
@@ -382,6 +394,7 @@ public class TotalCoupon extends Fragment {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.d("Error",position+"");
             }
 
         }

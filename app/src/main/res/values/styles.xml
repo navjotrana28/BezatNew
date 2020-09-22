@@ -51,7 +51,7 @@
         <item name="android:dropDownListViewStyle">@style/MatchSpinnerStyle</item>
     </style>
 
-    <style name="datepicker" parent="Theme.AppCompat.Light.Dialog">
+    <style name="datepicker" parent="@android:style/Theme.Holo.Light.Dialog">
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
